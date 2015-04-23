@@ -1,13 +1,20 @@
+<?php
+print_r($_POST);
+$title = $_POST['choice']." ".$_POST['month']." ".$_POST['contract'];
+$choice = $_POST['choice'];
+$contract = $_POST['contract'];
+$month = $_POST['month'];
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title><?php echo "Naslov"?></title>
+        <title><?php echo $title?></title>
         
         <!--[if gte mso 6]>
         <style>
-            table.mcnFollowContent {width:100% !important;}
-            table.mcnShareContent {width:100% !important;}
+            table.FollowContent {width:100% !important;}
+            table.ShareContent {width:100% !important;}
         </style>
         <![endif]-->
     <style type="text/css">
@@ -48,10 +55,10 @@
 		#bodyCell{
 			padding:20px;
 		}
-		.mcnImage{
+		.Image{
 			vertical-align:bottom;
 		}
-		.mcnTextContent img{
+		.TextContent img{
 			height:auto !important;
 		}
 		body,#bodyTable{
@@ -121,14 +128,14 @@
 			border-top:0;
 			border-bottom:2px solid #F2F2F2;
 		}
-		.preheaderContainer .mcnTextContent,.preheaderContainer .mcnTextContent p{
+		.preheaderContainer .TextContent,.preheaderContainer .TextContent p{
 			color:#606060;
 			font-family:Helvetica;
 			font-size:11px;
 			line-height:125%;
 			text-align:left;
 		}
-		.preheaderContainer .mcnTextContent a{
+		.preheaderContainer .TextContent a{
 			color:#606060;
 			font-weight:normal;
 			text-decoration:underline;
@@ -138,14 +145,14 @@
 			border-top:0;
 			border-bottom:2px solid #F2F2F2;
 		}
-		.headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
+		.headerContainer .TextContent,.headerContainer .TextContent p{
 			color:#606060;
 			font-family:Helvetica;
 			font-size:15px;
 			line-height:150%;
 			text-align:left;
 		}
-		.headerContainer .mcnTextContent a{
+		.headerContainer .TextContent a{
 			color:#6DC6DD;
 			font-weight:normal;
 			text-decoration:underline;
@@ -155,14 +162,14 @@
 			border-top:10px solid #999999;
 			border-bottom:1px solid #cccccc;
 		}
-		.bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
+		.bodyContainer .TextContent,.bodyContainer .TextContent p{
 			color:#606060;
 			font-family:Helvetica;
 			font-size:15px;
 			line-height:150%;
 			text-align:left;
 		}
-		.bodyContainer .mcnTextContent a{
+		.bodyContainer .TextContent a{
 			color:#505050;
 			font-weight:normal;
 			text-decoration:underline;
@@ -172,14 +179,14 @@
 			border-top:0;
 			border-bottom:0;
 		}
-		.footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
+		.footerContainer .TextContent,.footerContainer .TextContent p{
 			color:#606060;
 			font-family:Helvetica;
 			font-size:11px;
 			line-height:125%;
 			text-align:left;
 		}
-		.footerContainer .mcnTextContent a{
+		.footerContainer .TextContent a{
 			color:#606060;
 			font-weight:normal;
 			text-decoration:underline;
@@ -201,12 +208,12 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-		table[class=mcnTextContentContainer]{
+		table[class=TextContentContainer]{
 			width:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		table[class=mcnBoxedTextContentContainer]{
+		table[class=BoxedTextContentContainer]{
 			width:100% !important;
 		}
 
@@ -217,88 +224,88 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-		img[class=mcnImage]{
+		img[class=Image]{
 			width:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		table[class=mcnImageGroupContentContainer]{
+		table[class=ImageGroupContentContainer]{
 			width:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageGroupContent]{
+		td[class=ImageGroupContent]{
 			padding:9px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageGroupBlockInner]{
+		td[class=ImageGroupBlockInner]{
 			padding-bottom:0 !important;
 			padding-top:0 !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		tbody[class=mcnImageGroupBlockOuter]{
+		tbody[class=ImageGroupBlockOuter]{
 			padding-bottom:9px !important;
 			padding-top:9px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		table[class=mcnCaptionTopContent],table[class=mcnCaptionBottomContent]{
+		table[class=CaptionTopContent],table[class=CaptionBottomContent]{
 			width:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		table[class=mcnCaptionLeftTextContentContainer],table[class=mcnCaptionRightTextContentContainer],table[class=mcnCaptionLeftImageContentContainer],table[class=mcnCaptionRightImageContentContainer],table[class=mcnImageCardLeftTextContentContainer],table[class=mcnImageCardRightTextContentContainer]{
+		table[class=CaptionLeftTextContentContainer],table[class=CaptionRightTextContentContainer],table[class=CaptionLeftImageContentContainer],table[class=CaptionRightImageContentContainer],table[class=ImageCardLeftTextContentContainer],table[class=ImageCardRightTextContentContainer]{
 			width:100% !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageCardLeftImageContent],td[class=mcnImageCardRightImageContent]{
+		td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
 			padding-right:18px !important;
 			padding-left:18px !important;
 			padding-bottom:0 !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageCardBottomImageContent]{
+		td[class=ImageCardBottomImageContent]{
 			padding-bottom:9px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageCardTopImageContent]{
+		td[class=ImageCardTopImageContent]{
 			padding-top:18px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageCardLeftImageContent],td[class=mcnImageCardRightImageContent]{
+		td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
 			padding-right:18px !important;
 			padding-left:18px !important;
 			padding-bottom:0 !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageCardBottomImageContent]{
+		td[class=ImageCardBottomImageContent]{
 			padding-bottom:9px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnImageCardTopImageContent]{
+		td[class=ImageCardTopImageContent]{
 			padding-top:18px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		table[class=mcnCaptionLeftContentOuter] td[class=mcnTextContent],table[class=mcnCaptionRightContentOuter] td[class=mcnTextContent]{
+		table[class=CaptionLeftContentOuter] td[class=TextContent],table[class=CaptionRightContentOuter] td[class=TextContent]{
 			padding-top:9px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnCaptionBlockInner] table[class=mcnCaptionTopContent]:last-child td[class=mcnTextContent]{
+		td[class=CaptionBlockInner] table[class=CaptionTopContent]:last-child td[class=TextContent]{
 			padding-top:18px !important;
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=mcnBoxedTextContentColumn]{
+		td[class=BoxedTextContentColumn]{
 			padding-left:18px !important;
 			padding-right:18px !important;
 		}
@@ -334,7 +341,7 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-		table[class=mcnBoxedTextContentContainer] td[class=mcnTextContent]{
+		table[class=BoxedTextContentContainer] td[class=TextContent]{
 			font-size:18px !important;
 			line-height:125% !important;
 		}
@@ -345,7 +352,7 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=preheaderContainer] td[class=mcnTextContent]{
+		td[class=preheaderContainer] td[class=TextContent]{
 			font-size:14px !important;
 			line-height:115% !important;
 			padding-right:18px !important;
@@ -353,7 +360,7 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=headerContainer] td[class=mcnTextContent]{
+		td[class=headerContainer] td[class=TextContent]{
 			font-size:18px !important;
 			line-height:125% !important;
 			padding-right:18px !important;
@@ -361,7 +368,7 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=bodyContainer] td[class=mcnTextContent]{
+		td[class=bodyContainer] td[class=TextContent]{
 			font-size:18px !important;
 			line-height:125% !important;
 			padding-right:18px !important;
@@ -369,7 +376,7 @@
 		}
 
 }	@media only screen and (max-width: 480px){
-		td[class=footerContainer] td[class=mcnTextContent]{
+		td[class=footerContainer] td[class=TextContent]{
 			font-size:14px !important;
 			line-height:115% !important;
 			padding-right:18px !important;
@@ -396,14 +403,14 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="600" id="templatePreheader" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 2px solid #F2F2F2;">
                                         <tr>
                                             <td valign="top" class="preheaderContainer" style="padding-top: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="mcnTextBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody class="TextBlockOuter">
                                                         <tr>
-                                                            <td valign="top" class="mcnTextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">                
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="366" class="mcnTextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">                
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="366" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>                        
-                                                                            <td valign="top" class="mcnTextContent" style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <span style="font-size:11px;">
 <!--PREHEADER LEFT-->                                                                <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Trade Recommendation</span>                                                                                        
                                                                                 </span>
@@ -411,10 +418,10 @@
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>                
-                                                                <table align="right" border="0" cellpadding="0" cellspacing="0" width="197" class="mcnTextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="right" border="0" cellpadding="0" cellspacing="0" width="197" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>                        
-                                                                            <td valign="top" class="mcnTextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: right;">
                                                                                 <span style="font-size:11px;">
                                                                                     <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
@@ -442,16 +449,16 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 2px solid #F2F2F2;">
                                         <tr>
                                             <td valign="top" class="headerContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="mcnImageBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="ImageBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody class="ImageBlockOuter">
                                                         <tr>
-                                                            <td valign="top" style="padding: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="mcnImageBlockInner">
-                                                                <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="padding: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="ImageBlockInner">
+                                                                <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="ImageContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td class="mcnImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                            <td class="ImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <a href="http://www.northernadvisors.com/" title="" class="" target="_blank" style="word-wrap: break-word !important;">
-<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://gallery.mailchimp.com/266e1d2de1370b67c9c21eb60/images/Northern_Advisors_Logo.jpg" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;" class="mcnImage"/>
+<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://gallery.mailchimp.com/266e1d2de1370b67c9c21eb60/images/Northern_Advisors_Logo.jpg" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;" class="Image"/>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -473,15 +480,19 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 10px solid #999999;border-bottom: 1px solid #cccccc;">
                                         <tr>
                                             <td valign="top" class="bodyContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="mcnTextBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody class="TextBlockOuter">
                                                         <tr>
-                                                            <td valign="top" class="mcnTextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="mcnTextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-<!--BODY TITLE-->                                                                <span style="font-size:24px"><span style="font-family:arial,helvetica neue,helvetica,sans-serif"><strong><br></br>Trade Recommendation</strong></span></span>
+                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                                <span style="font-size:24px">
+                                                                                    <span style="font-family:arial,helvetica neue,helvetica,sans-serif">
+<!--BODY TITLE-->                                                                       <strong><br></br>Trade Recommendation</strong>
+                                                                                    </span>
+                                                                                </span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -490,15 +501,17 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="mcnTextBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody class="TextBlockOuter">
                                                         <tr>
-                                                            <td valign="top" class="mcnTextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="mcnTextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-<!--BODY MAIN-->                                                                 <p class="01Head" style="margin-bottom: 2.0pt;line-height: normal;page-break-after: avoid;tab-stops: 82.0pt;color: #606060;font-family: Helvetica;font-size: 15px;text-align: left;"></p>
+                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                                <p class="01Head" style="margin-bottom: 2.0pt;line-height: normal;page-break-after: avoid;tab-stops: 82.0pt;color: #606060;font-family: Helvetica;font-size: 15px;text-align: left;">
+<!--BODY MAIN-->                                                                   <?php echo $choice." ".$contract?>
+                                                                                </p>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -519,14 +532,14 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateFooter" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 0;">
                                         <tr>
                                             <td valign="top" class="footerContainer" style="padding-bottom: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="mcnTextBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody class="TextBlockOuter">
                                                         <tr>
-                                                            <td valign="top" class="mcnTextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="mcnTextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="mcnTextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: justify;">
 <!--DISCLOSURE FOOTER-->                                                              THE RISK OF LOSS IN TRADING COMMODITY FUTURES CONTRACTS CAN BE SUBSTANTIAL. YOU SHOULD THEREFORE CAREFULLY CONSIDER WHETHER SUCH TRADING IS SUITABLE FOR YOU IN LIGHT OF YOUR FINANCIAL CONDITION. YOU MAY SUSTAIN A TOTAL LOSS OF THE INITIAL MARGIN FUNDS AND ANY ADDITIONAL FUNDS THAT YOU DEPOSIT WITH YOUR BROKER TO ESTABLISH OR MAINTAIN A POSITION IN THE COMMODITY FUTURES MARKET.<br></br>HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS HAVE CERTAIN LIMITATIONS. UNLIKE AN ACTUAL PERFORMANCE RECORD, SIMULATED RESULTS DO NOT REPRESENT ACTUAL TRADING. ALSO, SINCE TRADES MAY OR MAY NOT HAVE BEEN EXECUTED, THE RESULTS MAY HAVE UNDER OR OVER-COMPENSATED FOR THE IMPACT, IF ANY OF CERTAIN MARKET FACTORS, SUCH AS LACK OF LIQUIDITY. NO REPRESENTATION CAN, WILL OR IS BEING MADE THAT ANY ACCOUNT WILL, OR IS LIKELY TO, ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN IN ANY HYPOTHETICAL PERFORMANCE RECORD.<br></br>THIS EMAIL IS NOT INTENDED AS AN OFFER OR SOLICITATION FOR THE PURCHASE OR SALE OF ANY COMMODITY OR FUTURES CONTRACT OR OPTION OR AS AN OFFICIAL CONFIRMATION OF ANY TRANSACTION. ALL MARKET PRICES, DATA AND OTHER INFORMATION ARE NOT WARRANTED AS TO COMPLETENESS OR ACCURACY AND ARE SUBJECT TO CHANGE WITHOUT NOTICE. ANY COMMENTS OR STATEMENTS MADE HEREIN DO NOT NECESSARILY REFLECT THOSE OF NORTHERN ADVISORS, LLC OR ITS AFFILIATES.<br></br>PAST PERFORMANCE IS NOT NECESSARILY A GUIDE TO FUTURE PERFORMANCE. THE VALUE OF INVESTMENTS AND THE INCOME FROM THEM CAN GO DOWN AS WELL AS UP. YOU MAY NOT GET BACK THE AMOUNT ORIGINALLY INVESTED.<br></br>CHARTS COURTESY OF STOCKCHARTS.COM.                                                                                                                                                                                
                                                                                 </div>

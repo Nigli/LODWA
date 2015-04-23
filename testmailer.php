@@ -1,7 +1,7 @@
 <?php
 require 'PHPMailer-master/PHPMailerAutoload.php';
 
-$title = "Naslov";
+$title = "title";
 $body = file_get_contents("emailtemplates/rjo_temp.php");
         
 //$mail = new PHPMailer();
