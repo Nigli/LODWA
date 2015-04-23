@@ -1,5 +1,5 @@
 <?php
-print_r($_POST);
+//print_r($_POST);
 $title = $_POST['choice']." ".$_POST['month']." ".$_POST['contract'];
 $choice = $_POST['choice'];
 $contract = $_POST['contract'];
@@ -9,7 +9,7 @@ $month = $_POST['month'];
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title><?php echo $title?></title>
+        <title></title>
         
         <!--[if gte mso 6]>
         <style>
@@ -93,6 +93,7 @@ $month = $_POST['month'];
 			letter-spacing:-.75px;
 			margin:0;
 			text-align:left;
+                        border-bottom: 1px solid #cccccc;
 		}
 		h3{
 			color:#606060 !important;
@@ -143,7 +144,7 @@ $month = $_POST['month'];
 		#templateHeader{
 			background-color:#ffffff;
 			border-top:0;
-			border-bottom:2px solid #F2F2F2;
+			border-bottom:0;
 		}
 		.headerContainer .TextContent,.headerContainer .TextContent p{
 			color:#606060;
@@ -153,14 +154,14 @@ $month = $_POST['month'];
 			text-align:left;
 		}
 		.headerContainer .TextContent a{
-			color:#6DC6DD;
+			color:#505050;
 			font-weight:normal;
 			text-decoration:underline;
 		}
 		#templateBody{
 			background-color:#ffffff;
-			border-top:10px solid #999999;
-			border-bottom:1px solid #cccccc;
+			border-top:3px solid #DEE0E2;
+			border-bottom:3px solid #DEE0E2;
 		}
 		.bodyContainer .TextContent,.bodyContainer .TextContent p{
 			color:#606060;
@@ -175,7 +176,7 @@ $month = $_POST['month'];
 			text-decoration:underline;
 		}
 		#templateFooter{
-			background-color:#ffffff;
+			background-color:#cccccc;
 			border-top:0;
 			border-bottom:0;
 		}
@@ -388,7 +389,21 @@ $month = $_POST['month'];
 			display:block !important;
 		}
 
-}</style>
+}		.bodyContainer .TextContent{
+			color:#666666;
+		}
+		.headerContainer .TextContent{
+			color:#000000;
+		}
+		.bodyContainer .TextContent a,.bodyContainer .TextContent a .yshortcuts{
+			color:#eb4102;
+		}
+		.footerContainer .TextContent{
+			font-size:9px;
+			line-height:110%;
+			text-align:left;
+		}
+</style>
     </head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="margin: 0;padding: 0;background-color: #dee0e2;">
         <center>
@@ -406,28 +421,28 @@ $month = $_POST['month'];
                                                 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                     <tbody class="TextBlockOuter">
                                                         <tr>
-                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">                
+                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="366" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
-                                                                        <tr>                        
-                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
-                                                                                <span style="font-size:11px;">
-<!--PREHEADER LEFT-->                                                                <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Trade Recommendation</span>                                                                                        
+                                                                        <tr>
+                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">                                                                            
+                                                                                <span style="font-family:arial,helvetica neue,helvetica,sans-serif;">
+<!--PREHEADER LEFT-->                                                               <span style="font-size: 11px;">Trade Recommendation</span>                                                                                    
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
-                                                                </table>                
+                                                                </table>
                                                                 <table align="right" border="0" cellpadding="0" cellspacing="0" width="197" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
-                                                                        <tr>                        
+                                                                        <tr>
                                                                             <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: right;">
-                                                                                <span style="font-size:11px;">
-                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--PREHEADER RIGHT-->                                                                  <a href="http://www.northernadvisors.com" target="_blank" style="color: #606060;font-weight: normal;text-decoration: underline;word-wrap: break-word !important;">Please visit our website</a>
-                                                                                    </span>
-                                                                                </span><!-- *|END:IF|* -->
+                                                                                    <span style="font-size:11px;">
+                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--PREHEADER RIGHT-->                                                                      <a href="http://www.northernadvisors.com" target="_blank" style="color: #606060;font-weight: normal;text-decoration: underline;word-wrap: break-word !important;">Please visit our web site</a>
+                                                                                        </span>
+                                                                                    </span><!-- *|END:IF|* -->
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
@@ -446,19 +461,19 @@ $month = $_POST['month'];
                             <tr>
                                 <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                     <!-- BEGIN HEADER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 2px solid #F2F2F2;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 0;">
                                         <tr>
                                             <td valign="top" class="headerContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="ImageBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                     <tbody class="ImageBlockOuter">
                                                         <tr>
-                                                            <td valign="top" style="padding: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="ImageBlockInner">
+                                                            <td valign="top" style="padding-top: 30px; padding-right: 0px; padding-bottom: 20px;padding-left: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="ImageBlockInner">
                                                                 <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="ImageContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
                                                                             <td class="ImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                <a href="http://www.northernadvisors.com/" title="" class="" target="_blank" style="word-wrap: break-word !important;">
-<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://gallery.mailchimp.com/266e1d2de1370b67c9c21eb60/images/Northern_Advisors_Logo.jpg" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;" class="Image"/>
+                                                                                <a href="http://northernadvisors.com/" title="" class="" target="_self" style="word-wrap: break-word !important;">
+<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://gallery.mailchimp.com/266e1d2de1370b67c9c21eb60/images/Northern_Advisors_Logo.jpg" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;" class="Image">
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -477,7 +492,7 @@ $month = $_POST['month'];
                             <tr>
                                 <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                     <!-- BEGIN BODY // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 10px solid #999999;border-bottom: 1px solid #cccccc;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 3px solid #DEE0E2;border-bottom: 3px solid #DEE0E2;">
                                         <tr>
                                             <td valign="top" class="bodyContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -487,19 +502,14 @@ $month = $_POST['month'];
                                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                                                                                 <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:24px;">
+                                                                                    <span style="font-size:22px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BODY TITLE-->                                                                           Trade Recommendation: <?php echo $contract?>&nbsp;
+<!--BODY TITLE-->                                                                           Trade Recommendation: SELL WTI Crude Oil September&nbsp;
                                                                                         </span>                                                                                            
                                                                                     </span>
                                                                                 </h1>
-                                                                                <strong><span style="font-size:18px;">
-                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BODY DATE-->                                                                        24 September 2015
-                                                                                    </span>                                                                                        
-                                                                                </span></strong>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -515,64 +525,169 @@ $month = $_POST['month'];
                                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <p class="01Head" style="margin-bottom: 2.0pt;line-height: normal;page-break-after: avoid;tab-stops: 82.0pt;color: #606060;font-family: Helvetica;font-size: 15px;text-align: left;">
-<!--BODY MAIN-->                                                                    <?php echo $choice." ".$contract?>                                                                                    
-                                                                                </p>                                                                                
+                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                                <h2 style="border-bottom: 1px solid #cccccc; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                    <span style="font-size:18px;">
+                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            Trade Details
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </h2>
+                                                                                <table border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Date
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE DATE-->                                                                                   25 April 2015
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Time (CST, Chicago)
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE TIME-->                                                                                   700
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Strategy
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE STRATEGY NAME-->                                                                             Energy Long Short
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Month
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE MONTH NAME-->                                                                             June
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Futures Contract
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE FUTURES CONTRACT-->                                                                       WTI Light Crude Oil
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE CHOICE-->                                                                                 <strong>SELL</strong>
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE CHOICE PRICE-->                                                                           <strong>97.00</strong>
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Price Target
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE TARGET PRICE-->                                                                           <strong>94.00</strong>
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Stop Loss
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE STOP LOSS PRICE-->                                                                        <strong>99.00</strong>
+                                                                                                </span></span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
                                                                             </td>
                                                                         </tr>
-                                                                    </tbody>                                                                    
-                                                                </table>
-                                                                <table border="0" cellpadding="0" cellspacing="0" style="width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
-                                                                    <tbody>
-                                                                            <tr>
-                                                                                    <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Name</span></span></td>
-                                                                                    <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Light Crude Oil August 2013 future</span></span></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                    <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">SELL</span></span></td>
-                                                                                    <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">97.00</span></span></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                    <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Price Target</span></span></td>
-                                                                                    <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">94.00</span></span></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                    <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Stop Loss</span></span></td>
-                                                                                    <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">99.00</span></span></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                    <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Ratio of target to stop</span></span></td>
-                                                                                    <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">3-to-2</span></span></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                    <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Trading Strategy</span></span></td>
-                                                                                    <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">D22</span></span></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                    <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Asset Class</span></span></td>
-                                                                                    <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Commodity - Energy</span></span></td>
-                                                                            </tr>
                                                                     </tbody>
-                                                            </table>
+                                                                </table>                
                                                             </td>
                                                         </tr>
                                                     </tbody>
-                                                </table>                                                
+                                                </table>
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody class="TextBlockOuter">
+                                                        <tr>
+                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                                <span style="font-size:12px;">
+                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TR DETAILS DESCRIPTION-->                                                             *The Entry order is a limit or better. The Stop Loss and Profit Target orders are OCO’s (one cancels the other). All orders are placed on a not held basis.
+                                                                                    </span>
+                                                                                </span><br>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody class="TextBlockOuter">
+                                                        <tr>
+                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 36px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                                <span style="font-size:14px;">
+                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                        <h2 style="display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                            <span style="font-size:18px;">
+                                                                                                <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Description</span>
+                                                                                            </span>
+                                                                                        </h2>
+<!--CONTRACT DESCRIPTION-->                                                             West Texas Intermediate (WTI) Light Sweet Crude is a grade of crude oil and it is used in benchmark oil pricing. This grade is described as light because of its relatively low density, and sweet because of its low sulfur content. WTI futures contracts are traded on the NYMEX (CME) with delivery months of nine years forward. Consecutive months are listed in the current year and the next five years. June and December months are listed beyond the sixth year. WTI Crude oil is quoted in dollars and cents per barrel.
+                                                                                    </span>
+                                                                                </span><br>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </td>
                                         </tr>
                                     </table>
@@ -582,7 +697,7 @@ $month = $_POST['month'];
                             <tr>
                                 <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                     <!-- BEGIN FOOTER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateFooter" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 0;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateFooter" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #cccccc;border-top: 0;border-bottom: 0;">
                                         <tr>
                                             <td valign="top" class="footerContainer" style="padding-bottom: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -592,9 +707,9 @@ $month = $_POST['month'];
                                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: justify;">
-<!--DISCLOSURE FOOTER-->                                                              THE RISK OF LOSS IN TRADING COMMODITY FUTURES CONTRACTS CAN BE SUBSTANTIAL. YOU SHOULD THEREFORE CAREFULLY CONSIDER WHETHER SUCH TRADING IS SUITABLE FOR YOU IN LIGHT OF YOUR FINANCIAL CONDITION. YOU MAY SUSTAIN A TOTAL LOSS OF THE INITIAL MARGIN FUNDS AND ANY ADDITIONAL FUNDS THAT YOU DEPOSIT WITH YOUR BROKER TO ESTABLISH OR MAINTAIN A POSITION IN THE COMMODITY FUTURES MARKET.<br></br>HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS HAVE CERTAIN LIMITATIONS. UNLIKE AN ACTUAL PERFORMANCE RECORD, SIMULATED RESULTS DO NOT REPRESENT ACTUAL TRADING. ALSO, SINCE TRADES MAY OR MAY NOT HAVE BEEN EXECUTED, THE RESULTS MAY HAVE UNDER OR OVER-COMPENSATED FOR THE IMPACT, IF ANY OF CERTAIN MARKET FACTORS, SUCH AS LACK OF LIQUIDITY. NO REPRESENTATION CAN, WILL OR IS BEING MADE THAT ANY ACCOUNT WILL, OR IS LIKELY TO, ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN IN ANY HYPOTHETICAL PERFORMANCE RECORD.<br></br>THIS EMAIL IS NOT INTENDED AS AN OFFER OR SOLICITATION FOR THE PURCHASE OR SALE OF ANY COMMODITY OR FUTURES CONTRACT OR OPTION OR AS AN OFFICIAL CONFIRMATION OF ANY TRANSACTION. ALL MARKET PRICES, DATA AND OTHER INFORMATION ARE NOT WARRANTED AS TO COMPLETENESS OR ACCURACY AND ARE SUBJECT TO CHANGE WITHOUT NOTICE. ANY COMMENTS OR STATEMENTS MADE HEREIN DO NOT NECESSARILY REFLECT THOSE OF NORTHERN ADVISORS, LLC OR ITS AFFILIATES.<br></br>PAST PERFORMANCE IS NOT NECESSARILY A GUIDE TO FUTURE PERFORMANCE. THE VALUE OF INVESTMENTS AND THE INCOME FROM THEM CAN GO DOWN AS WELL AS UP. YOU MAY NOT GET BACK THE AMOUNT ORIGINALLY INVESTED.<br></br>CHARTS COURTESY OF STOCKCHARTS.COM.                                                                                                                                                                                
+<!--DISCLOSURE FOOTER-->                                                              THE RISK OF LOSS IN TRADING COMMODITY FUTURES CONTRACTS CAN BE SUBSTANTIAL. YOU SHOULD THEREFORE CAREFULLY CONSIDER WHETHER SUCH TRADING IS SUITABLE FOR YOU IN LIGHT OF YOUR FINANCIAL CONDITION. YOU MAY SUSTAIN A TOTAL LOSS OF THE INITIAL MARGIN FUNDS AND ANY ADDITIONAL FUNDS THAT YOU DEPOSIT WITH YOUR BROKER TO ESTABLISH OR MAINTAIN A POSITION IN THE COMMODITY FUTURES MARKET.<br></br>HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS HAVE CERTAIN LIMITATIONS. UNLIKE AN ACTUAL PERFORMANCE RECORD, SIMULATED RESULTS DO NOT REPRESENT ACTUAL TRADING. ALSO, SINCE TRADES MAY OR MAY NOT HAVE BEEN EXECUTED, THE RESULTS MAY HAVE UNDER OR OVER-COMPENSATED FOR THE IMPACT, IF ANY OF CERTAIN MARKET FACTORS, SUCH AS LACK OF LIQUIDITY. NO REPRESENTATION CAN, WILL OR IS BEING MADE THAT ANY ACCOUNT WILL, OR IS LIKELY TO, ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN IN ANY HYPOTHETICAL PERFORMANCE RECORD.<br></br>THIS EMAIL IS NOT INTENDED AS AN OFFER OR SOLICITATION FOR THE PURCHASE OR SALE OF ANY COMMODITY OR FUTURES CONTRACT OR OPTION OR AS AN OFFICIAL CONFIRMATION OF ANY TRANSACTION. ALL MARKET PRICES, DATA AND OTHER INFORMATION ARE NOT WARRANTED AS TO COMPLETENESS OR ACCURACY AND ARE SUBJECT TO CHANGE WITHOUT NOTICE. ANY COMMENTS OR STATEMENTS MADE HEREIN DO NOT NECESSARILY REFLECT THOSE OF NORTHERN ADVISORS, LLC OR ITS AFFILIATES.<br></br>PAST PERFORMANCE IS NOT NECESSARILY A GUIDE TO FUTURE PERFORMANCE. THE VALUE OF INVESTMENTS AND THE INCOME FROM THEM CAN GO DOWN AS WELL AS UP. YOU MAY NOT GET BACK THE AMOUNT ORIGINALLY INVESTED.                                                                                                                                                                                
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
@@ -624,5 +739,3 @@ $month = $_POST['month'];
         </style>
     </body>
 </html>
-
-
