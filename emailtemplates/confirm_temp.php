@@ -731,6 +731,7 @@ $month = $_POST['month'];
                 </tr>
             </table>
         </center>
+<!--ADD SENDER INFORMATION-->
         <style type="text/css">
             @media only screen and (max-width: 480px){
                 table[id="canspamBar"] td{font-size:14px !important;}
