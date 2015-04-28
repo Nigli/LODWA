@@ -1,9 +1,17 @@
-<?php
-//print_r($_POST);
-$title = $_POST['choice']." ".$_POST['month']." ".$_POST['contract'];
-$choice = $_POST['choice'];
-$contract = $_POST['contract'];
-$month = $_POST['month'];
+<?php 
+require '../config.php';
+$tr=new TradeRec(TradeRecDAO::GetLastTradeRec());
+$bodytitle= $tr->title;
+$date=$tr->date;
+$time=$tr->time;
+$tr_strategy=$tr->tr_strategy;
+$month=$tr->month;
+$futures_name=$tr->futures_name;
+$entry_choice=$tr->entry_choice;
+$entry_price=$tr->entry_price;
+$price_target=$tr->price_target;
+$stop_loss=$tr->stop_loss;
+$description=$tr->description;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -473,7 +481,7 @@ $month = $_POST['month'];
                                                                         <tr>
                                                                             <td class="ImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <a href="http://northernadvisors.com/" title="" class="" target="_self" style="word-wrap: break-word !important;">
-<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://gallery.mailchimp.com/266e1d2de1370b67c9c21eb60/images/Northern_Advisors_Logo.jpg" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;" class="Image">
+<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://gallery.mailchimp.com/266e1d2de1370b67c9c21eb60/images/Northern_Advisors_Logo.jpg" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;" class="Image"/>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -506,7 +514,7 @@ $month = $_POST['month'];
                                                                                 <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
                                                                                     <span style="font-size:22px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BODY TITLE-->                                                                           Trade Recommendation: SELL WTI Crude Oil September&nbsp;
+<!--BODY TITLE-->                                                                           <?php echo $bodytitle ?>
                                                                                         </span>                                                                                            
                                                                                     </span>
                                                                                 </h1>
@@ -543,7 +551,7 @@ $month = $_POST['month'];
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE DATE-->                                                                                   25 April 2015
+<!--TABLE DATE-->                                                                                   <?php echo $date ?>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -555,7 +563,7 @@ $month = $_POST['month'];
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE TIME-->                                                                                   700
+<!--TABLE TIME-->                                                                                   <?php echo $time ?>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -567,7 +575,7 @@ $month = $_POST['month'];
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE STRATEGY NAME-->                                                                             Energy Long Short
+<!--TABLE STRATEGY NAME-->                                                                             <?php echo $tr_strategy ?>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -579,7 +587,7 @@ $month = $_POST['month'];
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE MONTH NAME-->                                                                             June
+<!--TABLE MONTH NAME-->                                                                             <?php echo $month ?>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -591,19 +599,23 @@ $month = $_POST['month'];
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE FUTURES CONTRACT-->                                                                       WTI Light Crude Oil
+<!--TABLE FUTURES CONTRACT-->                                                                       <?php echo $futures_name ?>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE CHOICE-->                                                                                 <strong>SELL</strong>
+<!--TABLE CHOICE-->                                                                                 <strong>
+                                                                                                    <?php echo $entry_choice ?>
+                                                                                                    </strong>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE CHOICE PRICE-->                                                                           <strong>97.00</strong>
+<!--TABLE CHOICE PRICE-->                                                                           <strong>
+                                                                                                    <?php echo $entry_price ?>
+                                                                                                    </strong>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -615,7 +627,9 @@ $month = $_POST['month'];
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE TARGET PRICE-->                                                                           <strong>94.00</strong>
+<!--TABLE TARGET PRICE-->                                                                           <strong>
+                                                                                                    <?php echo $price_target ?>   
+                                                                                                    </strong>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -627,7 +641,9 @@ $month = $_POST['month'];
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE STOP LOSS PRICE-->                                                                        <strong>99.00</strong>
+<!--TABLE STOP LOSS PRICE-->                                                                        <strong>
+                                                                                                    <?php echo $stop_loss ?>
+                                                                                                    </strong>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -650,8 +666,8 @@ $month = $_POST['month'];
                                                                         <tr>
                                                                             <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                                                                                 <span style="font-size:12px;">
-                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TR DETAILS DESCRIPTION-->                                                             *The Entry order is a limit or better. The Stop Loss and Profit Target orders are OCO’s (one cancels the other). All orders are placed on a not held basis.
+                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">                                                                                       
+<!--TR DETAILS DESCRIPTION -->                                                          *The Entry order is a limit or better. The Stop Loss and Profit Target orders are OCO’s (one cancels the other). All orders are placed on a not held basis.
                                                                                     </span>
                                                                                 </span><br>
                                                                             </td>
@@ -677,8 +693,9 @@ $month = $_POST['month'];
                                                                                                 <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Description</span>
                                                                                             </span>
                                                                                         </h2>
-<!--CONTRACT DESCRIPTION-->                                                             West Texas Intermediate (WTI) Light Sweet Crude is a grade of crude oil and it is used in benchmark oil pricing. This grade is described as light because of its relatively low density, and sweet because of its low sulfur content. WTI futures contracts are traded on the NYMEX (CME) with delivery months of nine years forward. Consecutive months are listed in the current year and the next five years. June and December months are listed beyond the sixth year. WTI Crude oil is quoted in dollars and cents per barrel.
-                                                                                    </span>
+<!--CONTRACT DESCRIPTION-->                                                             <?php echo $description ?>                                                                                        
+                                                                                        <!--West Texas Intermediate (WTI) Light Sweet Crude is a grade of crude oil and it is used in benchmark oil pricing. This grade is described as light because of its relatively low density, and sweet because of its low sulfur content. WTI futures contracts are traded on the NYMEX (CME) with delivery months of nine years forward. Consecutive months are listed in the current year and the next five years. June and December months are listed beyond the sixth year. WTI Crude oil is quoted in dollars and cents per barrel.                                                                                   
+                                                                                        --></span>
                                                                                 </span><br>
                                                                             </td>
                                                                         </tr>

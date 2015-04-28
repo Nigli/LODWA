@@ -2,7 +2,7 @@
 class ReceiverFandFDAO {
     public static function GetFandF(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT * FROM receivers WHERE fk_receiver_type = 3");
+        $res = $db->prepare("SELECT * FROM receivers WHERE fk_receiver_type = 3 AND active = 1");
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "ReceiverFandF");
         return $receivers;//!!!have to check if array exists

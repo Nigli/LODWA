@@ -1,19 +1,20 @@
 <?php
+require 'mail_function.php';
 require 'PHPMailer-master/PHPMailerAutoload.php';
 
 $title = "title";
-$body = file_get_contents("emailtemplates/rjo_temp.php");
+$body = email($tr);
         
-//$mail = new PHPMailer();
+$mail = new PHPMailer();
 $mail->isSMTP();
-$mail->Host = 'relay-hosting.secureserver.net';  // Specify main and backup SMTP servers
+$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'nikola@northernadvisors.com';                 // SMTP username
-$mail->Password = 'ngna321';                           // SMTP password
+$mail->Username = 'glisovicnikola@gmail.com';                 // SMTP username
+$mail->Password = 'ljubivojemirjana';                           // SMTP password
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465;                                    // TCP port to connect to
+$mail->Port = 587;                                    // TCP port to connect to
 
-$mail->From = 'nikola@northernadvisors.com';
+$mail->From = 'glisovicnikola@gmail.com';
 $mail->FromName = 'Glisho';
 //$mail->addAddress('bodzi.boja@gmail.com', 'Bole');     // Add a recipient
 //$mail->addAddress('ellen@example.com');               // Name is optional

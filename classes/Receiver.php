@@ -8,8 +8,9 @@ class Receiver {
     public $active;
     public $date_added;
     public $date_inactive;
-
-    public function date(){
-        echo $this->date_added;
-    }
+    public $recipient;
+    
+    public function __construct(){        
+        $this->recipient="'".$this->email."', '".$this->first_name." ".$this->last_name."'";
+    }   
 }
