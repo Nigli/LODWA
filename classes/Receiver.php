@@ -11,6 +11,6 @@ class Receiver {
     public $recipient;
     
     public function __construct(){        
-        $this->recipient="'".$this->email."', '".$this->first_name." ".$this->last_name."'";
+        $this->recipient=$this->email.", ".$this->first_name." ".$this->last_name;
     }   
 }

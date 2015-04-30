@@ -1,10 +1,3 @@
-<?php
-//print_r($_POST);
-$title = $_POST['choice']." ".$_POST['month']." ".$_POST['contract'];
-$choice = $_POST['choice'];
-$contract = $_POST['contract'];
-$month = $_POST['month'];
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
