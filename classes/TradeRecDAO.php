@@ -21,12 +21,7 @@ class TradeRecDAO {
                 . "WHERE fk_future = if(:fk_future IS NULL,fk_future,:fk_future) ORDER BY id_tr DESC LIMIT 1");
         $res->bindParam(':fk_future',$fk_future);
         $res->execute();
-        
-        
         $tr=$res->fetch(PDO::FETCH_ASSOC);
-        
-        //$res->setFetchMode(PDO::FETCH_CLASS, "TradeRec");
-        //$tr = $res->fetch();
         return $tr;
     }
     public static function InsertTradeRec($tr){

@@ -20,8 +20,6 @@ class TradeRec {
         foreach($array as $k=>$v){
             $this->$k = $v;
             $this->title="Trade Recommendation: ".$this->entry_choice." ".$this->futures_name." ".$this->month;
-        }
-        
-    }
-    
+        }        
+    }    
 }

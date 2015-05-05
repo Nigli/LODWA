@@ -1,12 +1,11 @@
 <?php 
 require 'config.php';
 
-$clients=ReceiverDao::GetClientsReceivers();
-$email_temp=EmailTemp::GetEmailTemp();
-$tr=new TradeRec(TradeRecDAO::GetLastTradeRec());
-$email=new Email($clients,$tr,$email_temp);
+$tr=new TradeRec(TradeRecDAO::GetLastTradeRec());//comes from form
+$email=new Email($tr);
 
-require 'PHPMailer-master/PHPMailerAutoload.php';
+print_r($email);
+
 ob_start();
 include 'emailtemplates/rjo_temp.php';
 $rjo= ob_get_clean();
@@ -15,37 +14,33 @@ ob_start();
 include 'emailtemplates/confirm_temp.php';
 $conf= ob_get_clean();
 
-$mail = new PHPMailer($rjo,$email->title,$email->recipients);
-$mail->isSMTP();
-$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'glisovicnikola@gmail.com';                 // SMTP username
-$mail->Password = 'ljubivojemirjana';                           // SMTP password
-$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                                    // TCP port to connect to
+require 'PHPMailer-master/PHPMailerAutoload.php';
 
-$mail->From = 'glisovicnikola@gmail.com';
-$mail->FromName = 'Glisho';
-$mail->addReplyTo('glisovicnikola@gmail.com', 'Glisho');
-//$mail->addAddress('bodzi.boja@gmail.com', 'Bole');     // Add a recipient
-//$mail->addAddress('ellen@example.com');               // Name is optional
-//$mail->addCC('cc@example.com');
-foreach($email->recipients as $recipient){
-    $add_and_name=  explode(',', $recipient);
-    $mail->addBCC($add_and_name[0],$add_and_name[1]);
-    
-}
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-$mail->isHTML(true);                                  // Set email format to HTML
-$mail->Subject = $email->title;
-$mail->Body    = $rjo;
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Message has been sent';
-}
+//$mail = new PHPMailer();
+//$mail->isSMTP();
+//$mail->Host = $email->na_host;  // Specify main and backup SMTP servers
+//$mail->SMTPAuth = true;                               // Enable SMTP authentication
+//$mail->Username = $email->na_email;                 // SMTP username
+//$mail->Password = $email->na_pass;                           // SMTP password
+//$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+//$mail->Port = $email->na_port;                                    // TCP port to connect to
+//
+//$mail->From = $email->na_email;
+//$mail->FromName = $email->na_from;
+//$mail->addReplyTo($email->na_email, $email->na_from);
+//foreach($email->recipients as $recipient){
+//    $add_and_name=  explode(',', $recipient);
+//    $mail->addBCC($add_and_name[0],$add_and_name[1]);    
+//}
+//
+//$mail->isHTML(true);                                  // Set email format to HTML
+//$mail->Subject = $email->title;
+//$mail->Body    = $rjo;
+//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+//
+//if(!$mail->send()) {
+//    echo 'Message could not be sent.';
+//    echo 'Mailer Error: ' . $mail->ErrorInfo;
+//} else {
+//    echo 'Message has been sent';
+//}
