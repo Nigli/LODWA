@@ -1,7 +1,9 @@
 <?php
+namespace receiver;
+use PDO;
 class ReceiverPrimaryDAO {
     public static function GetPrimary(){
-        $db= Conn::GetConnection();
+        $db= \dbase\Conn::GetConnection();
         $res = $db->prepare("SELECT * from receivers WHERE fk_receiver_type = 1 AND active = 1");
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "ReceiverPrimary");

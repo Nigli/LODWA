@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$na_info=new NaInfo(NaInfoDAO::GetNaInfo());
+$sender_info=new \sender\SenderInfo(\sender\SenderInfoDAO::GetSenderInfo());
 
-print_r($na_info);
+print_r($sender_info);
 

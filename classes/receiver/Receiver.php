@@ -1,4 +1,5 @@
 <?php
+namespace receiver;
 class Receiver {
     public $id_receiver;
     public $fk_receiver_type;

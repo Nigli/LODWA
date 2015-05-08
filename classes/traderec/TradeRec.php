@@ -1,6 +1,8 @@
 <?php
+namespace traderec;
 class TradeRec {
     public $id_tr;
+    public $fk_tr_type;
     public $fk_future;
     public $futures_name;
     public $month;

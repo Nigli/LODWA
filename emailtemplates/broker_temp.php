@@ -499,10 +499,21 @@
                                                                                 <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
                                                                                     <span style="font-size:22px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BODY TITLE-->                                                                           <?php echo $tr->title ?>
+<!--BODY TITLE-->                                                                           <?php echo $this->title ?>
                                                                                         </span>                                                                                            
                                                                                     </span>
                                                                                 </h1>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="top" class="TextContent" style="padding-top: 1px;padding-right: 18px;padding-bottom: 1px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                                <h3 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: normal;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                    <span style="font-size:16px;">
+                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--BLOCK ORDER-->                                                                           Total Quantity for Block Order is: <?php echo $this->num_subs ?>
+                                                                                        </span>                                                                                            
+                                                                                    </span>
+                                                                                </h3>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -523,6 +534,13 @@
                                                                                     <span style="font-size:18px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                             Trade Details
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </h2>
+                                                                                <h2 style="border-bottom: 1px solid #cccccc; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                    <span style="font-size:18px;">
+                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            TRADE REC
                                                                                         </span>
                                                                                     </span>
                                                                                 </h2>
@@ -679,8 +697,7 @@
                                                                                             </span>
                                                                                         </h2>
 <!--CONTRACT DESCRIPTION-->                                                             <?php echo $tr->description ?>                                                                                        
-                                                                                        <!--West Texas Intermediate (WTI) Light Sweet Crude is a grade of crude oil and it is used in benchmark oil pricing. This grade is described as light because of its relatively low density, and sweet because of its low sulfur content. WTI futures contracts are traded on the NYMEX (CME) with delivery months of nine years forward. Consecutive months are listed in the current year and the next five years. June and December months are listed beyond the sixth year. WTI Crude oil is quoted in dollars and cents per barrel.                                                                                   
-                                                                                        --></span>
+                                                                                        </span>
                                                                                 </span><br>
                                                                             </td>
                                                                         </tr>
@@ -711,7 +728,7 @@
                                                                         <tr>
                                                                             <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: justify;">
-<!--DISCLOSURE FOOTER-->                                                              THE RISK OF LOSS IN TRADING COMMODITY FUTURES CONTRACTS CAN BE SUBSTANTIAL. YOU SHOULD THEREFORE CAREFULLY CONSIDER WHETHER SUCH TRADING IS SUITABLE FOR YOU IN LIGHT OF YOUR FINANCIAL CONDITION. YOU MAY SUSTAIN A TOTAL LOSS OF THE INITIAL MARGIN FUNDS AND ANY ADDITIONAL FUNDS THAT YOU DEPOSIT WITH YOUR BROKER TO ESTABLISH OR MAINTAIN A POSITION IN THE COMMODITY FUTURES MARKET.<br></br>HYPOTHETICAL OR SIMULATED PERFORMANCE RESULTS HAVE CERTAIN LIMITATIONS. UNLIKE AN ACTUAL PERFORMANCE RECORD, SIMULATED RESULTS DO NOT REPRESENT ACTUAL TRADING. ALSO, SINCE TRADES MAY OR MAY NOT HAVE BEEN EXECUTED, THE RESULTS MAY HAVE UNDER OR OVER-COMPENSATED FOR THE IMPACT, IF ANY OF CERTAIN MARKET FACTORS, SUCH AS LACK OF LIQUIDITY. NO REPRESENTATION CAN, WILL OR IS BEING MADE THAT ANY ACCOUNT WILL, OR IS LIKELY TO, ACHIEVE PROFITS OR LOSSES SIMILAR TO THOSE SHOWN IN ANY HYPOTHETICAL PERFORMANCE RECORD.<br></br>THIS EMAIL IS NOT INTENDED AS AN OFFER OR SOLICITATION FOR THE PURCHASE OR SALE OF ANY COMMODITY OR FUTURES CONTRACT OR OPTION OR AS AN OFFICIAL CONFIRMATION OF ANY TRANSACTION. ALL MARKET PRICES, DATA AND OTHER INFORMATION ARE NOT WARRANTED AS TO COMPLETENESS OR ACCURACY AND ARE SUBJECT TO CHANGE WITHOUT NOTICE. ANY COMMENTS OR STATEMENTS MADE HEREIN DO NOT NECESSARILY REFLECT THOSE OF NORTHERN ADVISORS, LLC OR ITS AFFILIATES.<br></br>PAST PERFORMANCE IS NOT NECESSARILY A GUIDE TO FUTURE PERFORMANCE. THE VALUE OF INVESTMENTS AND THE INCOME FROM THEM CAN GO DOWN AS WELL AS UP. YOU MAY NOT GET BACK THE AMOUNT ORIGINALLY INVESTED.                                                                                                                                                                                
+<!--DISCLOSURE FOOTER-->                                                            <?php echo $this->disclosure ?>
                                                                                 </div>
                                                                             </td>
                                                                         </tr>

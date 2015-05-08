@@ -1,19 +1,17 @@
 <?php
 require 'config.php';
 
+$tr = new \traderec\TradeRec(\traderec\TradeRecDAO::GetLastTradeRec());//new trade from form
 
-
-$tr = new TradeRec(TradeRecDAO::GetLastTradeRec());//new trade from form
-
-$clients=ReceiverDao::GetClientsReceivers();
-$email_temp=EmailTemp::GetEmailTemp();
-
-
+echo gettype($tr);
 
 echo "<pre>";
-print_r($clients);
+print_r($tr);
 echo "</pre>";
 //print_r($recipients);
 
-$email=new Email($clients,$tr,$email_temp);
+$email=new \email\Email($tr);
+
+echo "<pre>";
 print_r($email);
+echo "</pre>";

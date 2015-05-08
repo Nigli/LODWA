@@ -21,7 +21,7 @@ $test = TradeRecDAO::GetLastTradeRec();
 echo "<br>";
 //echo $test->date;
 
-$test2 = new TradeRec($test);
+$test2 = new \traderec\TradeRec($test);
 print_r($test2);
 
-//TradeRecDAO::NewTradeRec($fk_future,$fk_tr_strategy,$month,$year,$num_contr,$entry_choice,$entry_price,$price_target,$stop_loss);
+//\traderec\TradeRecDAO::NewTradeRec($fk_future,$fk_tr_strategy,$month,$year,$num_contr,$entry_choice,$entry_price,$price_target,$stop_loss);

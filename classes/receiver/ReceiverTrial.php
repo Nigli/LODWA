@@ -1,5 +1,6 @@
 <?php
-class ReceiverPrimary extends Receiver {    
+namespace receiver;
+class ReceiverTrial extends Receiver{    
     public $na_number;
     public $fk_tr_strategy;
     public $num_cl_subs;
