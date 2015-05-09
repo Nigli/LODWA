@@ -1,10 +1,12 @@
-<?php 
-
+<?php
 require 'config.php';
 require 'function_phpmailer.php';
-$tr=new \traderec\TradeRec(\traderec\TradeRecDAO::GetLastTradeRec());//comes from form
-$email=new \email\Email($tr);
+use traderec\TradeRec,traderec\TradeRecDAO,email\Email;
 
-//print_r($email);
+$tr=new TradeRec(TradeRecDAO::GetLastTradeRec());//comes from form
+$email=new Email($tr);
 
+echo"<pre>";
+print_r($email);
+echo "</pre>";
 //phpmailer($email);

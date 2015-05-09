@@ -1,5 +1,5 @@
 <?php
-namespace dbase;
+namespace utils;
 use PDO;
 class Conn{
     const DBUSER = "root";

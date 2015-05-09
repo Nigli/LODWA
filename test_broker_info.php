@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
-
-$broker=new \broker\Broker(\broker\BrokerDAO::GetBrokerInfo());
+use broker\Broker,broker\BrokerDAO;
+$broker=new Broker(BrokerDAO::GetBrokerInfo());
 
 print_r($broker);
 

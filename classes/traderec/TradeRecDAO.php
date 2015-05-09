@@ -1,9 +1,9 @@
 <?php
 namespace traderec;
-use PDO;
+use PDO,utils\Conn;
 class TradeRecDAO {
     public static function GetTradeRec(){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_strategy,description,entry_choice,"
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
@@ -14,7 +14,7 @@ class TradeRecDAO {
         return $tr;//!!!have to check if array exists
     }
     public static function GetLastTradeRec($fk_future=null){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_strategy,description,entry_choice,"
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
@@ -27,7 +27,7 @@ class TradeRecDAO {
         return $tr;
     }
     public static function InsertTradeRec($tr){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("INSERT INTO trade_rec (id_tr,fk_tr_type,fk_future,month,year,num_contr,entry_choice,entry_price,price_target,stop_loss,date) VALUES ('',:fk_tr_type,:fk_future,:month,:year,:num_contr,:entry_choice,:entry_price,:price_target,:stop_loss,now())");
         $res->bindParam(':fk_future',$tr->fk_future);
         $res->bindParam(':fk_tr_type',$tr->fk_tr_type);

@@ -1,7 +1,7 @@
 <?php
-
+use phpmailer\PHPMailer;
 function phpmailer($email){
-    $mail=new \phpmailer\PHPMailer();
+    $mail=new PHPMailer();
     $mail->isSMTP();
     $mail->Host = $email->sender_host;  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication

@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
-
-$tr = new \traderec\TradeRec(\traderec\TradeRecDAO::GetLastTradeRec());
+use traderc\TradeRec,traderc\TradeRecDAO;
+$tr = new TradeRec(TradeRecDAO::GetLastTradeRec());
 
 function email($tr){
     

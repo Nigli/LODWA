@@ -1,10 +1,12 @@
 <?php
 require 'config.php';
-
-
+use traderec\TradeRec,traderec\TradeRecDAO;
+echo"<pre>";
 print_r($_POST);
+echo "</pre>";
 echo "<br>";
-$tr=new \traderec\TradeRec($_POST);
+$tr=new TradeRec($_POST);
+echo"<pre>";
 print_r($tr);
-echo "<br>";
-//TradeRecDAO::InsertTradeRec($tr);
+echo "</pre>";
+//$sent=TradeRecDAO::InsertTradeRec($tr);

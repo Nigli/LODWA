@@ -1,12 +1,20 @@
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <?php
     require 'config.php';
-    $lastTR= new \traderec\TradeRec(\traderec\TradeRecDAO::GetLastTradeRec());
-    $futuresContr=\futures\FuturesContractDAO::GetFutures();
+    use traderec\TradeRec,traderec\TradeRecDAO,futures\FuturesContractDAO;
+    
+    $lastTR= new TradeRec(TradeRecDAO::GetLastTradeRec());
+    $futuresContr= FuturesContractDAO::GetFutures();
+    
+    
+    echo "<pre>";
     print_r($lastTR);
+    echo "</pre>";
     echo " <br>";
     echo "futures cont: <br>";
+    echo "<pre>";
     print_r($futuresContr);
+    echo "</pre>";
 ?>
 <form method="post" action="process.php">
     <input type="hidden" name="fk_tr_type" value="1"/><!--Value based on choice-->
@@ -48,7 +56,7 @@
     </select>
     <br>
     <p><?php echo $lastTR->tr_strategy?></p><br>
-    <p>Num of cont</p>
+    <p>Number of contracts</p>
     <input name="num_contr" type="text" value="<?php echo $lastTR->num_contr?>"/><br>
     <p>Entry Price</p>
     <input name="entry_price" type="text" value="<?php echo $lastTR->entry_price?>"/>

@@ -1,12 +1,12 @@
 <?php
 namespace futures;
-use PDO;
+use PDO,utils\Conn;
 class FuturesContractDAO {
     public static function GetFutures(){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("SELECT * FROM futures_cont");
         $res->execute();
-        $receivers = $res->fetchAll(PDO::FETCH_CLASS, "FuturesContract");
+        $receivers = $res->fetchAll(PDO::FETCH_CLASS, "futures\FuturesContract");
         return $receivers;//!!!have to check if array exists
     }
 }

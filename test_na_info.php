@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
-
-$sender_info=new \sender\SenderInfo(\sender\SenderInfoDAO::GetSenderInfo());
+use sender\SenderInfo,sender\SenderInfoDAO;
+$sender_info=new SenderInfo(SenderInfoDAO::GetSenderInfo());
 
 print_r($sender_info);
 

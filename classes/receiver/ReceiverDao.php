@@ -1,23 +1,23 @@
 <?php
 namespace receiver;
-use PDO;
+use PDO,utils\Conn;
 class ReceiverDao {    
     public static function GetActiveReceivers(){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added FROM receivers WHERE active = 1");
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists
     }
     public static function GetInactiveReceivers(){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added FROM receivers WHERE active = 0");
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists
     }
     public static function GetClientsReceivers(){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added,na_number,rjo_account,any_account "
                 . "FROM receivers "
                 . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
@@ -27,7 +27,7 @@ class ReceiverDao {
         return $receivers;//!!!have to check if exists
     }
     public static function GetClientsSubs($tr_strat,$num_contr){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("SELECT SUM(num_subs * :num_contr) as total_subs "
                 . "FROM subscriptions "
                 . "WHERE fk_tr_strategy = :tr_strat");
@@ -38,7 +38,7 @@ class ReceiverDao {
         return $receivers;//!!!have to check if exists
     }
     public static function DeactivateReceiver($id_receiver){
-        $db= \dbase\Conn::GetConnection();
+        $db= Conn::GetConnection();
         $res = $db->prepare("UPDATE receivers set active=0 WHERE id_receiver=:id");
         $res->bindParam(':id',$id_receiver);
         $res->execute();
