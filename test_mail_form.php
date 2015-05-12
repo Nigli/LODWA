@@ -1,7 +1,11 @@
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <?php
     require 'config.php';
-    use traderec\TradeRec,traderec\TradeRecDAO,futures\FuturesContractDAO;
+    use traderec\TradeRec,traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Session;
+    
+    Session::start();
+    $token=md5(uniqid(rand(),true));
+    Session::set('token', $token);
     
     $lastTR= new TradeRec(TradeRecDAO::GetLastTradeRec());
     $futuresContr= FuturesContractDAO::GetFutures();
@@ -17,7 +21,8 @@
     echo "</pre>";
 ?>
 <form method="post" action="process.php">
-    <input type="hidden" name="fk_tr_type" value="1"/><!--Value based on choice-->
+    <input type="hidden" name="token" value="<?php echo $token?>"/>
+    <input type="hidden" name="fk_tr_type" value="1"/><!--Value based on choice???-->
     <select id="form_future" name="fk_future">
         <?php        
             foreach ($futuresContr as $key => $value) {
