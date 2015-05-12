@@ -27,18 +27,12 @@
     </select>
     <br>
     <select id="form_month" name="month">
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-        <option value="December">December</option>        
+        <?php
+        $months = cal_info(0)['months'];
+        for($i=1;$i<=count($months);$i++){
+            echo "<option value='".$months[$i]."'>".$months[$i]."</option>";
+        }
+        ?>
     </select>
     <br>
     <select id="form_year" name="year">
