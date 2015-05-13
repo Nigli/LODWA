@@ -10,9 +10,9 @@ echo"<pre>";
 //print_r($tr);
 echo "</pre>";
 
-$valid = Validate::validForm($_POST);
-
+$valid = Validate::tr($_POST);
 echo"<pre>";
 var_dump($valid);
 echo "</pre>";
+
 //$inser=TradeRecDAO::InsertTradeRec($valid);

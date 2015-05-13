@@ -3,12 +3,11 @@
     require 'config.php';
     use traderec\TradeRec,traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Session;
     
-    Session::start();
-    $token=md5(uniqid(rand(),true));
-    Session::set('token', $token);
+    $tr_token=md5(uniqid(rand(),true));
+    Session::set('tr_token', $tr_token);
     
-    $lastTR= new TradeRec(TradeRecDAO::GetLastTradeRec());
-    $futuresContr= FuturesContractDAO::GetFutures();
+    $lastTR = new TradeRec(TradeRecDAO::GetLastTradeRec());
+    $futuresContr = FuturesContractDAO::GetFutures();
     
     
     echo "<pre>";
@@ -21,7 +20,7 @@
     echo "</pre>";
 ?>
 <form method="post" action="process.php">
-    <input type="hidden" name="token" value="<?php echo $token?>"/>
+    <input type="hidden" name="tr_token" value="<?php echo $tr_token?>"/>
     <input type="hidden" name="fk_tr_type" value="1"/><!--Value based on choice???-->
     <select id="form_future" name="fk_future">
         <?php        
