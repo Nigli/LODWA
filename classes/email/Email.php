@@ -1,6 +1,6 @@
 <?php
 namespace email;
-use sender\SenderInfo,sender\SenderInfoDAO,broker\Broker,broker\BrokerDAO,receiver\Receiver,receiver\ReceiverDao,email\EmailTemp;
+use sender\SenderInfo,sender\SenderInfoDAO,broker\Broker,broker\BrokerDAO,receiver\ReceiverDao,email\EmailTemp;
 
 class Email{
     public $id_sender;
@@ -43,12 +43,14 @@ class Email{
         $this->title=$tr->title;
         
         $this->disclosure=EmailTemp::GetEmailTemp()->disclosure;
+
+        $elements_in = array($this->title,$this->num_subs,$tr->date,$tr->time,$tr->tr_strategy,$tr->month,$tr->futures_name,$tr->entry_choice,$tr->entry_price,$tr->price_target,$tr->stop_loss,$tr->description,$this->disclosure);
+        $elements_out = array('[TITLE]','[BLOCK_ORDER]','[DATE]','[TIME]','[STRATEGY]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]');
         
-        ob_start();
-        include 'emailtemplates/broker_temp.php';
-        $this->broker_temp= ob_get_clean();
-        ob_start();
-        include 'emailtemplates/client_temp.php';
-        $this->client_temp= ob_get_clean();
+        $broker_temp = file_get_contents('emailtemplates/broker_temp.php');
+        $this->broker_temp = str_replace($elements_out, $elements_in, $broker_temp);
+        
+        $client_temp = file_get_contents( 'emailtemplates/client_temp.php');
+        $this->client_temp = str_replace($elements_out, $elements_in, $client_temp);
     }
 }

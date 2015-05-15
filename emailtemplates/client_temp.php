@@ -499,7 +499,7 @@
                                                                                 <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
                                                                                     <span style="font-size:22px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BODY TITLE-->                                                                           <?php echo $this->title ?>
+<!--BODY TITLE-->                                                                           [TITLE]
                                                                                         </span>                                                                                            
                                                                                     </span>
                                                                                 </h1>
@@ -543,7 +543,7 @@
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE DATE-->                                                                                   <?php echo $tr->date ?>
+<!--TABLE DATE-->                                                                                   [DATE]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -555,7 +555,7 @@
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE TIME-->                                                                                   <?php echo $tr->time ?>
+<!--TABLE TIME-->                                                                                   [TIME]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -567,7 +567,7 @@
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE STRATEGY NAME-->                                                                             <?php echo $tr->tr_strategy ?>
+<!--TABLE STRATEGY NAME-->                                                                             [STRATEGY]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -579,7 +579,7 @@
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE MONTH NAME-->                                                                             <?php echo $tr->month ?>
+<!--TABLE MONTH NAME-->                                                                             [MONTH]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -591,7 +591,7 @@
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE FUTURES CONTRACT-->                                                                       <?php echo $tr->futures_name ?>
+<!--TABLE FUTURES CONTRACT-->                                                                       [FUTURE]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -599,14 +599,14 @@
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE CHOICE-->                                                                                 <strong>
-                                                                                                    <?php echo $tr->entry_choice ?>
+                                                                                                    [ENTRY_CHOICE]
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE CHOICE PRICE-->                                                                           <strong>
-                                                                                                    <?php echo $tr->entry_price ?>
+                                                                                                    [ENTRY_PRICE]
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
@@ -620,7 +620,7 @@
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE TARGET PRICE-->                                                                           <strong>
-                                                                                                    <?php echo $tr->price_target ?>   
+                                                                                                    [PRICE_TARGET]
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
@@ -634,7 +634,7 @@
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE STOP LOSS PRICE-->                                                                        <strong>
-                                                                                                    <?php echo $tr->stop_loss ?>
+                                                                                                    [STOP_LOSS]
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
@@ -685,8 +685,8 @@
                                                                                                 <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Description</span>
                                                                                             </span>
                                                                                         </h2>
-<!--CONTRACT DESCRIPTION-->                                                             <?php echo $tr->description ?>
-                                                                                    </span>
+<!--CONTRACT DESCRIPTION-->                                                             [DESCRIPTION]                      
+                                                                                        </span>
                                                                                 </span><br>
                                                                             </td>
                                                                         </tr>
@@ -717,7 +717,7 @@
                                                                         <tr>
                                                                             <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: justify;">
-<!--DISCLOSURE FOOTER-->                                                            <?php echo $this->disclosure ?> 
+<!--DISCLOSURE FOOTER-->                                                            [DISCLOSURE]
                                                                                 </div>
                                                                             </td>
                                                                         </tr>

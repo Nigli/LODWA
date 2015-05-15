@@ -7,4 +7,5 @@
     function redirect_to($new_location) {
         header("Location: " . $new_location);
     }
-    define("TR_REFERER", "http://localhost/LODWA/test_mail_form.php");
+//referer constants
+    define("TR_REFERER", "http://localhost/LODWA/test_form_view.php");
