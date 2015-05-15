@@ -1,5 +1,5 @@
 <div id="tr_form">
-    <form method="post" action="process.php">
+    <form method="post" action="process/process_tr.php">
         <input type="hidden" name="tr_token" value="[TR_TOKEN]"/>
         <input type="hidden" name="fk_tr_type" value="1"/><!--Value based on choice TR,SCX OR CXR???-->
         <div id="tr_form-top">
@@ -16,7 +16,7 @@
             <select id='tr_form_future' name='fk_future'>
                [FUTURE_CONTRACTS]
             </select>
-            <input id="tr_num_contr" name="num_contr" type="number" value="[TR_NUM_CONTR]"/><br> 
+            <input id="tr_form_num_contr" name="num_contr" type="number" value="[TR_NUM_CONTR]"/><br> 
             <label for="tr_form_month">Month and Year</label><br>
             <select id="tr_form_month" name="month">
                 [MONTHS]

@@ -31,7 +31,7 @@ class Validate {
             'price_target'  => array('filter'=> FILTER_VALIDATE_FLOAT,   'options'=> array('decimal'=>'.') ),
             'stop_loss'     => array('filter'=> FILTER_VALIDATE_FLOAT,   'options'=> array('decimal'=>'.') )
         );
-        if(Validate::checkToken($form,"tr_token")&&Validate::checkReferer(TR_REFERER)){////IF THERE IS A TOKENI AND A REFERER
+        if(Validate::checkToken($form,"tr_token")&&Validate::checkReferer(TR_REFERER)){////IF THERE IS A TOKEN AND A REFERER
             array_filter($form, array('self', 'trim'));
             $valid = filter_var_array($form,$args);
             if(!in_array(NULL || FALSE,$valid)&&in_array($valid['month'],cal_info(0)['months'])&&in_array($valid['entry_choice'],array('BUY','SELL'))){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE, MONTH AND ENTRY_CHOICE ARE VALID
@@ -39,7 +39,6 @@ class Validate {
                 return $valid;
             }else {
                 echo "NIJE PROSAO POLJE JE EMPTY ILI FALSE ILI MESEC ILI ENTRY CHOICE NE VALJA<BR>";//ERROR LOG
-                return $valid;
             }
         }else {
             echo "NIJE PROSAO NEMA REFERERA ILI LOS TOKEN";//ERROR LOG

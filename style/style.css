@@ -9,6 +9,15 @@ body {
     padding: 10px;
     width: 960px;
 }
+#tr_form, #tr_list, #receiver_list {
+    margin:60px auto 0px auto;    
+    padding: 15px;
+    width: 800px;
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow:    1px 1px 1px 1px rgba(50, 50, 50, 0.2);
+    box-shadow:         1px 1px 1px 1px rgba(50, 50, 50, 0.2);
+}
+/* HEADER */
 #header-outer {
     padding-top: 50px;
     background-color: #ffffff;
@@ -82,14 +91,8 @@ body {
 #header-nav a:hover {
     color: #1B3664;
 }
-#tr_form, #tr_list-5 {
-    margin:50px auto 0px auto;    
-    padding: 15px;
-    width: 800px;
-    -webkit-box-shadow: 1px 1px 1px 1px rgba(50, 50, 50, 0.2);
-    -moz-box-shadow:    1px 1px 1px 1px rgba(50, 50, 50, 0.2);
-    box-shadow:         1px 1px 1px 1px rgba(50, 50, 50, 0.2);
-}
+
+/* TR FORM */
 #tr_form-top {
     overflow: hidden;
 }
@@ -129,7 +132,7 @@ body {
 #tr_form_future, #tr_form_month {
     width: 70%;
 }
-#tr_num_contr {
+#tr_form_num_contr {
     width: 18%;
     margin-left: 5px;
     padding: 4px 4px 4px 8px; 
@@ -154,49 +157,70 @@ body {
     clear: both;
     overflow: hidden;
 }
-#tr_list-5 {
-    margin-top: 100px;    
-    overflow: hidden;
-}
-#tr_list-5 h2 {
-    margin-top: 0px;
-}
-#tr_list-5 span {
-    padding: 5px;
-    float: left;
+
+/******TABLES*******/
+table {
+    border: 0;
+    border-collapse: collapse;
+    padding-bottom: 0;
     display: block;
+    width: 100%;
 }
-.tr_list_row {    
-    cursor: pointer;
+table th {
+    text-align: left;
+    border-bottom: 2px solid #eee;
+    vertical-align: bottom;
+    padding: 0 10px 10px 10px;
+    text-align: left;
 }
-#tr_list_number,#tr_list_contract,#tr_list_entry_choice,#tr_list_entry_price,#tr_list_price_target,#tr_list_stop_loss,#tr_list_date,#tr_list_time {
-    font-size: 18px;
-    font-weight: bold;    
-    border-right: 1px solid #1B3664;
-}
-#tr_list_number, .tr_list_number {
-    width: 20px;    
-    border-right: 1px solid #1B3664;
-}
-#tr_list_contract, .tr_list_contract {
-    width: 120px;
-    border-right: 1px solid #1B3664;
-}
-#tr_list_entry_choice,.tr_list_entry_choice {
-    width: 110px;
-    border-right: 1px solid #1B3664;
-}
-.tr_list_entry_choice{    
-    text-align: center;
-}
-#tr_list_entry_price,#tr_list_price_target,#tr_list_stop_loss,.tr_list_entry_price,.tr_list_price_target,.tr_list_stop_loss,#tr_list_date,.tr_list_date {
-    width: 100px;
-    border-right: 1px solid #1B3664;
-}
-.tr_list_entry_price,.tr_list_price_target,.tr_list_stop_loss,.tr_list_date,.tr_list_time {
+table td {
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    padding: 10px;
     text-align: right;
 }
-#tr_list_time,.tr_list_time {
-    width: 50px;
-    border: none;
+table tr:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+#receiver_list table{
+    font-size: 15px;
+}
+/******TABLES RESPONSIVE*******/
+@media screen and (max-width: 480px) {
+    table,
+    tbody {
+        display: block;
+        width: 100%;
+    }
+    thead { display: none; }
+    table tr,
+    table th,
+    table td {
+        display: block;
+        padding: 0;
+        text-align: left;
+        white-space: normal;
+    }
+    table tr {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 11px;
+        margin-bottom: 11px;
+    }
+    table th[data-title]:before,
+    table td[data-title]:before {
+        content: attr(data-title) ":\00A0";
+        font-weight: bold;
+    }
+    table td {
+        border: none;
+        margin-bottom: 6px;
+    }
+    table td:empty { display: none; }
+    table td:first-child {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+    table td:first-child:before { content: ''; }
 }

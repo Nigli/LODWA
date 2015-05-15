@@ -8,7 +8,7 @@ class TradeRecDAO {
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
                 . "FROM trade_rec "
-                . "LEFT JOIN futures_cont ON fk_future=id_futures");
+                . "LEFT JOIN futures_cont ON fk_future=id_futures ORDER BY id_tr DESC");
         $res->execute();
         $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
         return $tr;//!!!have to check if array exists

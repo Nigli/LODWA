@@ -2,6 +2,5 @@
 require 'config.php';
 use receiver\Receiver,receiver\ReceiverDao;
 
-print_r(ReceiverDao::GetActiveReceivers());
-$test = ReceiverDao::GetActiveReceivers();
+var_dump(ReceiverDao::GetActiveReceivers());
 echo "<br>";

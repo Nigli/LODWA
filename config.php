@@ -8,4 +8,4 @@
         header("Location: " . $new_location);
     }
 //referer constants
-    define("TR_REFERER", "http://localhost/LODWA/test_form_view.php");
+    define("TR_REFERER", "http://localhost/LODWA/index.php");

@@ -4,7 +4,11 @@ use PDO,utils\Conn;
 class ReceiverDao {    
     public static function GetActiveReceivers(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added FROM receivers WHERE active = 1");
+        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,receiver_type,first_name,last_name,email,active,date_added,na_number,broker_account,any_account "
+                . "FROM receivers "
+                . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
+                . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
+                . "WHERE active = 1");
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists

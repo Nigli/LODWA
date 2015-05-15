@@ -1,8 +1,12 @@
 <?php
 namespace utils;
-
+use traderec\TradeRec,traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Session,receiver\ReceiverDao;
 class Render{
-    public static function formRend($futuresContr,$lastTR,$tr_token){        
+    public static function trform(){
+        $tr_token=md5(uniqid(rand(),true));
+        Session::set('tr_token', $tr_token);
+        $lastTR = new TradeRec(TradeRecDAO::GetLastTradeRec());
+        $futuresContr = FuturesContractDAO::GetFutures();
         $future = "";
         foreach ($futuresContr as $key => $value) {
             $future .= "<option value='{$value->id_futures}'>{$value->futures_name}</option>";
@@ -25,26 +29,72 @@ class Render{
         
         $elements_in = array($tr_token,$future,$months,$years,$lastTR->tr_strategy,$lastTR->num_contr,$lastTR->entry_price,$lastTR->price_target,$lastTR->stop_loss,$lastTR->fk_future,$lastTR->month,$lastTR->year,$lastTR->entry_choice,);
         $elements_out = array('[TR_TOKEN]','[FUTURE_CONTRACTS]','[MONTHS]','[YEARS]','[TR_STRATEGY]','[TR_NUM_CONTR]','[TR_ENTRY_PRICE]','[TR_PRICE_TARGET]','[TR_STOP_LOSS]','[TR_FUTURE_CONTRACT]','[TR_MONTH]','[TR_YEAR]','[TR_ENTRY_CHOICE]');
-        $form = file_get_contents('test_mail_form.html');
-        return str_replace($elements_out, $elements_in, $form);
+        $form = str_replace($elements_out, $elements_in, file_get_contents('view/tr_form.html'));        
+        $layout =file_get_contents("view/layout.html");
+        echo str_replace('[CONTENT]', $form, $layout);
     }
-    public static function trListRend($last5trs){
+    
+    public static function trlist5(){
+        $last5trs = TradeRecDAO::GetLast5TradeRecs();
         $listnumb = 0;
-        $list5trs = "";
+        $listtrs = "";
         foreach ($last5trs as $k=>$tr){
             $listnumb++;
-            $list5trs .= "<div class=tr_list_row><span class='tr_list_number'>".$listnumb
-            ."</span><span class='tr_list_contract'>".$tr->futures_name
-            ."</span><span class='tr_list_entry_choice'>".$tr->entry_choice
-            ."</span><span class='tr_list_entry_price'>".$tr->entry_price
-            ."</span><span class='tr_list_price_target'>".$tr->price_target
-            ."</span><span class='tr_list_stop_loss'>".$tr->stop_loss
-            ."</span><span class='tr_list_date'>".$tr->date
-            ."</span><span class='tr_list_time'>".$tr->time
-            ."</span></div>";
+            $listtrs .= "<tr>"
+            ."<td data-title=''>".$listnumb
+            ."</td><td data-title='Futures Name'>".$tr->futures_name
+            ."</td><td data-title='Entry Choice'>".$tr->entry_choice
+            ."</td><td data-title='Entry Price'>".$tr->entry_price
+            ."</td><td data-title='Price Target'>".$tr->price_target
+            ."</td><td data-title='Stop Loss'>".$tr->stop_loss
+            ."</td><td data-title='Date'>".$tr->date
+            ."</td><td data-title='Time'>".$tr->time
+            ."</td></tr>";
         }
-        $list5trs .= "";
-        $list = file_get_contents('test_tr_list.html');
-        return str_replace('[LIST]', $list5trs, $list);
+        $listtrs .= "";
+        echo str_replace('[LIST]', $listtrs, file_get_contents('view/tr_list.html'));
+        
+    }
+    public static function trlist(){
+        $lasttrs = TradeRecDAO::GetTradeRecs();
+        $listnumb = 0;
+        $listtrs = "";
+        foreach ($lasttrs as $k=>$tr){
+            $listnumb++;
+            $listtrs .= "<tr>"
+            ."<td data-title=''>".$listnumb
+            ."</td><td data-title='Futures Name'>".$tr->futures_name
+            ."</td><td data-title='Entry Choice'>".$tr->entry_choice
+            ."</td><td data-title='Entry Price'>".$tr->entry_price
+            ."</td><td data-title='Price Target'>".$tr->price_target
+            ."</td><td data-title='Stop Loss'>".$tr->stop_loss
+            ."</td><td data-title='Date'>".$tr->date
+            ."</td><td data-title='Time'>".$tr->time
+            ."</td></tr>";
+        }
+        $listtrs .= "";
+        $list = str_replace('[LIST]', $listtrs, file_get_contents('view/tr_list.html'));
+        $layout =file_get_contents("view/layout.html");
+        echo str_replace('[CONTENT]', $list, $layout);
+    }
+    public static function receiverlist(){
+        $rec = ReceiverDao::GetActiveReceivers();        
+        $listrec = "";
+        foreach ($rec as $k=>$receiver) {
+            $listrec .= "<tr>"
+                ."<td data-title='Receiver Type'>".$receiver->receiver_type
+                ."</td><td data-title='First Name'>".$receiver->first_name
+                ."</td><td data-title='Last Name'>".$receiver->last_name
+                ."</td><td data-title='Email'>".$receiver->email
+                ."</td><td data-title='Active'>".$receiver->active
+                ."</td><td data-title='Date Added'>".date("d M Y", strtotime($receiver->date_added))
+                ."</td><td data-title='NA Number'>".$receiver->na_number
+                ."</td><td data-title='Broker Account'>".$receiver->broker_account
+                ."</td></tr>";                      
+        }
+        $listrec .= "";
+        $list = str_replace('[LIST]', $listrec, file_get_contents('view/receivers_list.html'));
+        $layout =file_get_contents("view/layout.html");
+        echo str_replace('[CONTENT]', $list, $layout);
     }
 }
