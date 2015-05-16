@@ -27,7 +27,7 @@ class Render{
         }
         $years .= "";
         
-        $elements_in = array($tr_token,$future,$months,$years,$lastTR->tr_program,$lastTR->num_contr,$lastTR->entry_price,$lastTR->price_target,$lastTR->stop_loss,$lastTR->fk_future,$lastTR->month,$lastTR->year,$lastTR->entry_choice,);
+        $elements_in = array($tr_token,$future,$months,$years,$lastTR->tr_program_name,$lastTR->num_contr,$lastTR->entry_price,$lastTR->price_target,$lastTR->stop_loss,$lastTR->fk_future,$lastTR->month,$lastTR->year,$lastTR->entry_choice,);
         $elements_out = array('[TR_TOKEN]','[FUTURE_CONTRACTS]','[MONTHS]','[YEARS]','[TR_PROGRAM]','[TR_NUM_CONTR]','[TR_ENTRY_PRICE]','[TR_PRICE_TARGET]','[TR_STOP_LOSS]','[TR_FUTURE_CONTRACT]','[TR_MONTH]','[TR_YEAR]','[TR_ENTRY_CHOICE]');
         $form = str_replace($elements_out, $elements_in, file_get_contents('view/tr_form.html'));        
         $layout =file_get_contents("view/layout.html");

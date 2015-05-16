@@ -8,7 +8,7 @@ class TradeRec {
     public $month;
     public $year;
     public $num_contr;
-    public $tr_program;
+    public $tr_program_name;
     public $description;
     public $entry_choice;
     public $entry_price;
