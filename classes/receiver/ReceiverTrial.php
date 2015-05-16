@@ -2,7 +2,7 @@
 namespace receiver;
 class ReceiverTrial extends Receiver{    
     public $na_number;
-    public $fk_tr_strategy;
+    public $fk_tr_program;
     public $num_cl_subs;
     public $num_es_subs;
     public $rjo_account;

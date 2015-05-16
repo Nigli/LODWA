@@ -4,7 +4,7 @@ use PDO,utils\Conn;
 class TradeRecDAO {
     public static function GetTradeRecs(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_strategy,description,entry_choice,"
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program,description,entry_choice,"
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
                 . "FROM trade_rec "
@@ -15,7 +15,7 @@ class TradeRecDAO {
     }
     public static function GetLastTradeRec($fk_future=null){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_strategy,description,entry_choice,"
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program,description,entry_choice,"
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
                 . "FROM trade_rec "
@@ -28,7 +28,7 @@ class TradeRecDAO {
     }    
     public static function GetLast5TradeRecs(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_strategy,description,entry_choice,"
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program,description,entry_choice,"
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
                 . "FROM trade_rec "

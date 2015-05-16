@@ -567,7 +567,7 @@
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE STRATEGY NAME-->                                                                             [STRATEGY]
+<!--TABLE PROGRAM NAME-->                                                                           [PROGRAM]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>

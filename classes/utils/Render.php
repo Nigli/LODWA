@@ -27,8 +27,8 @@ class Render{
         }
         $years .= "";
         
-        $elements_in = array($tr_token,$future,$months,$years,$lastTR->tr_strategy,$lastTR->num_contr,$lastTR->entry_price,$lastTR->price_target,$lastTR->stop_loss,$lastTR->fk_future,$lastTR->month,$lastTR->year,$lastTR->entry_choice,);
-        $elements_out = array('[TR_TOKEN]','[FUTURE_CONTRACTS]','[MONTHS]','[YEARS]','[TR_STRATEGY]','[TR_NUM_CONTR]','[TR_ENTRY_PRICE]','[TR_PRICE_TARGET]','[TR_STOP_LOSS]','[TR_FUTURE_CONTRACT]','[TR_MONTH]','[TR_YEAR]','[TR_ENTRY_CHOICE]');
+        $elements_in = array($tr_token,$future,$months,$years,$lastTR->tr_program,$lastTR->num_contr,$lastTR->entry_price,$lastTR->price_target,$lastTR->stop_loss,$lastTR->fk_future,$lastTR->month,$lastTR->year,$lastTR->entry_choice,);
+        $elements_out = array('[TR_TOKEN]','[FUTURE_CONTRACTS]','[MONTHS]','[YEARS]','[TR_PROGRAM]','[TR_NUM_CONTR]','[TR_ENTRY_PRICE]','[TR_PRICE_TARGET]','[TR_STOP_LOSS]','[TR_FUTURE_CONTRACT]','[TR_MONTH]','[TR_YEAR]','[TR_ENTRY_CHOICE]');
         $form = str_replace($elements_out, $elements_in, file_get_contents('view/tr_form.html'));        
         $layout =file_get_contents("view/layout.html");
         echo str_replace('[CONTENT]', $form, $layout);
@@ -86,10 +86,10 @@ class Render{
                 ."</td><td data-title='First Name'>".$receiver->first_name
                 ."</td><td data-title='Last Name'>".$receiver->last_name
                 ."</td><td data-title='Email'>".$receiver->email
-                ."</td><td data-title='Active'>".$receiver->active
                 ."</td><td data-title='Date Added'>".date("d M Y", strtotime($receiver->date_added))
                 ."</td><td data-title='NA Number'>".$receiver->na_number
                 ."</td><td data-title='Broker Account'>".$receiver->broker_account
+                ."</td><td data-title='Active'>".$receiver->active
                 ."</td></tr>";                      
         }
         $listrec .= "";

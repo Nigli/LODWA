@@ -30,13 +30,13 @@ class ReceiverDao {
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists
     }
-    public static function GetClientsSubs($tr_strat,$num_contr){
+    public static function GetClientsSubs($tr_prog,$num_contr){
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT SUM(num_subs * :num_contr) as total_subs "
                 . "FROM subscriptions "
-                . "WHERE fk_tr_strategy = :tr_strat");
+                . "WHERE fk_tr_program = :tr_prog");
         $res->bindParam(':num_contr',$num_contr);
-        $res->bindParam(':tr_strat',$tr_strat);
+        $res->bindParam(':tr_prog',$tr_prog);
         $res->execute();
         $receivers = $res->fetchColumn();
         return $receivers;//!!!have to check if exists

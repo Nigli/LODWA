@@ -44,8 +44,8 @@ class Email{
         
         $this->disclosure=EmailTemp::GetEmailTemp()->disclosure;
 
-        $elements_in = array($this->title,$this->num_subs,$tr->date,$tr->time,$tr->tr_strategy,$tr->month,$tr->futures_name,$tr->entry_choice,$tr->entry_price,$tr->price_target,$tr->stop_loss,$tr->description,$this->disclosure);
-        $elements_out = array('[TITLE]','[BLOCK_ORDER]','[DATE]','[TIME]','[STRATEGY]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]');
+        $elements_in = array($this->title,$this->num_subs,$tr->date,$tr->time,$tr->tr_program,$tr->month,$tr->futures_name,$tr->entry_choice,$tr->entry_price,$tr->price_target,$tr->stop_loss,$tr->description,$this->disclosure);
+        $elements_out = array('[TITLE]','[BLOCK_ORDER]','[DATE]','[TIME]','[PROGRAM]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]');
         
         $broker_temp = file_get_contents('emailtemplates/broker_temp.php');
         $this->broker_temp = str_replace($elements_out, $elements_in, $broker_temp);
