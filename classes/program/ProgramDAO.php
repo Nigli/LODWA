@@ -4,7 +4,7 @@ use PDO,utils\Conn;
 class ProgramDAO {
     public static function GetProgram(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT tr_program_name, futures_name "
+        $res = $db->prepare("SELECT tr_program_name, GROUP_CONCAT(futures_name ORDER BY futures_name ASC SEPARATOR ',') AS futures_name "
                 . "FROM trade_program "
                 . "LEFT JOIN futures_cont ON id_tr_program=fk_tr_program "
                 . "GROUP BY tr_program_name");
