@@ -1,5 +1,8 @@
-<div id="tr_list">
-    <h2>Trade Recommendations</h2>    
+<?php
+
+?>
+<div id="program_list">
+    <h2>Trading Programs</h2>    
     <table>
         <thead>
             <tr>

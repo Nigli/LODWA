@@ -4,12 +4,12 @@ use PDO,utils\Conn;
 class TradeRecDAO {
     public static function GetTradeRecs(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice,"
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
-                . "LEFT JOIN trade_program ON fk_tr_program=tr_program_name "
+                . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
                 . "ORDER BY id_tr DESC");
         $res->execute();
         $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
@@ -17,12 +17,12 @@ class TradeRecDAO {
     }
     public static function GetLastTradeRec($fk_future=null){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice,"
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
-                . "LEFT JOIN trade_program ON fk_tr_program=tr_program_name "
+                . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
                 . "WHERE fk_future = if(:fk_future IS NULL,fk_future,:fk_future) ORDER BY id_tr DESC LIMIT 1");
         $res->bindParam(':fk_future',$fk_future);
         $res->execute();
@@ -31,12 +31,12 @@ class TradeRecDAO {
     }    
     public static function GetLast5TradeRecs(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice,"
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
                 . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
-                . "LEFT JOIN trade_program ON fk_tr_program=tr_program_name "
+                . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
                 . "ORDER BY id_tr DESC LIMIT 5");
         $res->execute();
         $tr=$res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");

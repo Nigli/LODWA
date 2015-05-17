@@ -7,8 +7,7 @@ use utils\Render;
 //$cont->loadView($_GET);
 //echo Render::formRend($futuresContr,$lastTR,$tr_token);
 if(!isset($_GET['p']) || $_GET['p']=='trform') {
-    Render::trform();
-    Render::trlist5();
+    Render::view('trform');
 }else {    
-    Render::$_GET['p']();
+    Render::view($_GET['p']);
 }
