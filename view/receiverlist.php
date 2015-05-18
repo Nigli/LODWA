@@ -11,7 +11,6 @@ $rec = ReceiverDao::GetActiveReceivers();
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
-                <th>Active</th>
                 <th>Date Added</th>
                 <th>NA Number</th>
                 <th>BA</th>
@@ -28,7 +27,6 @@ $rec = ReceiverDao::GetActiveReceivers();
                 <td data-title='Date Added'><?php echo date("d M Y", strtotime($receiver->date_added))?></td>
                 <td data-title='NA Number'><?php echo $receiver->na_number ?></td>
                 <td data-title='Broker Account'><?php echo $receiver->broker_account ?></td>
-                <td data-title='Active'><?php echo $receiver->active ?></td>
             </tr>
         <?php
         }

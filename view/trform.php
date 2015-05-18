@@ -3,7 +3,10 @@ use traderec\TradeRec,traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Sess
 $tr_token=md5(uniqid(rand(),true));
 Session::set('tr_token', $tr_token);
 $lastTR = new TradeRec(TradeRecDAO::GetLastTradeRec());
-$futuresContr = FuturesContractDAO::GetFutures();    
+$futuresContr = FuturesContractDAO::GetFutures();
+foreach ($futuresContr as $key => $future) {
+    Session::set("cont".$future->id_futures,$future->tr_program_name);
+}
 $last5trs = TradeRecDAO::GetLast5TradeRecs();
 $listnumb = 0;
 ?>
@@ -13,7 +16,7 @@ $listnumb = 0;
         <input type="hidden" name="fk_tr_type" value="1"/><!--Value based on choice TR,SCX OR CXR???-->
         <div id="tr_form-top">
             <h2>New Trade Rec</h2>    
-            <span id="tr_form_program">Selected program: <?php echo $lastTR->tr_program_name ?></span><br>
+            <span id="tr_form_program"><?php include "process/program_name.php" ?></span><br>
         </div>
         <div id="tr_form-left">
             <label for="tr_form_entry_choice">Entry Choice</label>
@@ -26,7 +29,7 @@ $listnumb = 0;
                 <?php
                 foreach ($futuresContr as $key => $value) { 
                 ?>
-                    <option value='<?php echo $value->id_futures ?>'><?php echo $value->futures_name ?></option>
+                    <option value='<?php echo $value->id_futures ?>' ><?php echo $value->futures_name ?></option>
                 <?php                
                 }
                 ?>
@@ -99,6 +102,10 @@ $listnumb = 0;
     </table>    
 </div>
 <script>
+    $('#tr_form_future').on('change', function() {
+        var value = $(this).val();
+        $('#tr_form_program').load('process/program_name.php?f='+value);
+    });
     $("#tr_form_future").val("<?php echo $lastTR->fk_future ?>");
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");

@@ -2,9 +2,10 @@
 namespace futures;
 class FuturesContract {
     public $id_futures;
+    public $fk_tr_program;    
     public $futures_name;
-    public $tr_program_name;
     public $description;
-    public $decimal_places;
+    public $dec_places;
+    public $tr_program_name;
 }
 

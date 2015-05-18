@@ -9,7 +9,7 @@ body {
     padding: 10px;
     width: 960px;
 }
-#tr_form, #tr_list, #receiver_list {
+#tr_form, #tr_list, #receiver_list, #program_list {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
@@ -163,7 +163,6 @@ table {
     border: 0;
     border-collapse: collapse;
     padding-bottom: 0;
-    display: block;
     width: 100%;
 }
 table th {

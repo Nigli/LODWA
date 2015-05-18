@@ -2,10 +2,9 @@
 use traderec\TradeRecDAO;
 $lasttrs = TradeRecDAO::GetTradeRecs();
 $listnumb = 0;
-var_dump($lasttrs);
 ?>
 <div id="tr_list">
-    <h2>Last 5 Trade Recommendations</h2>    
+    <h2>Trade Recommendations</h2>    
     <table>
         <thead>
             <tr>
@@ -35,5 +34,5 @@ var_dump($lasttrs);
         <?php        
         }
         ?>
-    </table>    
+    </table>
 </div>
