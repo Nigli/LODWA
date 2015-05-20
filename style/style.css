@@ -35,10 +35,7 @@ body {
 #header-inner #logo {
     float: left;
 }
-#header-inner #logo img {
-    display: block;
-}
-#header-inner #logo a{
+#header-inner #logo img, #header-inner #logo a {
     display: block;
 }
 #header-nav {
@@ -76,9 +73,6 @@ body {
     display: block;
 }
 #header-nav ul .settings > a{
-    background-image: url(../images/settings-icon.png);
-    background-position: right;
-    background-repeat: no-repeat;
     display: block;
     width: 24px;
     height: 24px;
@@ -143,19 +137,27 @@ body {
 #tr_form_year {  
     width: 22%;
 }
-#tr_form_submit {
+#tr_form-bottom {    
+    clear: both;
+    overflow: hidden;
+}
+#tr_form-bottom-left button{    
+    font-size: 16px;
+    margin-right: 5px;
+    float: left;
+}
+#tr_form-bottom-right button{    
+    font-size: 20px;
+    float: right;
+}
+#tr_form button {
     font-family: 'PT Sans', sans-serif;        
     color: #ffffff;
     background-color: #1B3664;
-    font-size: 20px;
-    width: 90px;
+    width: 110px;
     padding: 7px;
-    margin: 5px auto;
     border: 0px;
-    display: block;
     cursor: pointer;
-    clear: both;
-    overflow: hidden;
 }
 
 /******TABLES*******/
@@ -178,7 +180,10 @@ table td {
     padding: 10px;
     text-align: right;
 }
-table tr:hover {
+table .td_hidden {
+    display: none;
+}
+table tbody tr:hover {
     background-color: #eee;
     cursor: pointer;
 }

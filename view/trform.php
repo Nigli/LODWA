@@ -1,13 +1,13 @@
 <?php
-use traderec\TradeRec,traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Session;
+use traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Session;
 $tr_token=md5(uniqid(rand(),true));
 Session::set('tr_token', $tr_token);
-$lastTR = new TradeRec(TradeRecDAO::GetLastTradeRec());
 $futuresContr = FuturesContractDAO::GetFutures();
 foreach ($futuresContr as $key => $future) {
     Session::set("cont".$future->id_futures,$future->tr_program_name);
 }
 $last5trs = TradeRecDAO::GetLast5TradeRecs();
+$lastTR = $last5trs[0];
 $listnumb = 0;
 ?>
 <div id="tr_form">
@@ -40,7 +40,7 @@ $listnumb = 0;
                 <?php                 
                 $mon = cal_info(0)['months'];
                 for($i=1;$i<=count($mon);$i++){
-                ?>
+               ?>
                     <option value='<?php echo $mon[$i] ?>'><?php echo $mon[$i] ?></option>
                 <?php                
                 }
@@ -64,7 +64,15 @@ $listnumb = 0;
             <label for="tr_form_stop_loss">Stop Loss</label>
             <input id="tr_form_stop_loss" name="stop_loss" type="text" value="<?php echo $lastTR->stop_loss ?>"/>
         </div>
-        <input id="tr_form_submit" type="submit" value="Send" name="submit"/>
+        <div id="tr_form-bottom">
+            <div id="tr_form-bottom-left">
+                <button id="tr_form_cxl" type="submit" value="Cancel TR" name="cancel_tr">STR CXL</button>
+                <button id="tr_form_rpl" type="submit" value="Replace TR" name="replace_tr">CXL and RPL</button>
+            </div>
+            <div id="tr_form-bottom-right">                
+                <button id="tr_form_submit" type="submit" value="Send" name="send_tr">Send</button>
+            </div>
+        </div>
     </form>
 </div>
 <div id="tr_list">
@@ -95,6 +103,10 @@ $listnumb = 0;
                 <td data-title='Stop Loss'><?php echo $tr->stop_loss ?></td>
                 <td data-title='Date'><?php echo $tr->date ?></td>
                 <td data-title='Time'><?php echo $tr->time ?></td>
+                <td data-title='Id Futures' class="td_hidden"><?php echo $tr->fk_future ?></td>
+                <td data-title='Month' class="td_hidden"><?php echo $tr->month ?></td>
+                <td data-title='Year' class="td_hidden"><?php echo $tr->year ?></td>              
+                <td data-title='Number of Contracts' class="td_hidden"><?php echo $tr->num_contr ?></td>                
             </tr>
         <?php        
         }
@@ -110,4 +122,21 @@ $listnumb = 0;
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");
     $("#tr_form_entry_choice").val("<?php echo $lastTR->entry_choice ?>");
+    
+    $(document).ready(function () {
+        $("tr").on("click", function () {
+            $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
+                        tr_form_entry_choice:$(this).find("[data-title='Entry Choice']").html(),
+                        tr_form_entry_price:$(this).find("[data-title='Entry Price']").html(),
+                        tr_form_price_target:$(this).find("[data-title='Price Target']").html(),
+                        tr_form_stop_loss:$(this).find("[data-title='Stop Loss']").html(),
+                        tr_form_num_contr:$(this).find("[data-title='Number of Contracts']").html(),
+                        tr_form_month:$(this).find("[data-title='Month']").html(),
+                        tr_form_year:$(this).find("[data-title='Year']").html()
+                    };
+            $.each($tr_form, function(key, value){
+                $("#"+key).val(value);
+            });
+        });
+    });
 </script>

@@ -25,20 +25,20 @@ class TradeRecDAO {
      * formats prices depending on DECIMAL places, REPLACE NOT to have ',' as *1234.56*
      * formats date as *15 May 2015*
      **/
-    public static function GetLastTradeRec($fk_future=null){
-        $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
-                . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
-                . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
-                . "FROM trade_rec "
-                . "LEFT JOIN futures_cont ON fk_future=id_futures "
-                . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
-                . "WHERE fk_future = if(:fk_future IS NULL,fk_future,:fk_future) ORDER BY id_tr DESC LIMIT 1");
-        $res->bindParam(':fk_future',$fk_future);
-        $res->execute();
-        $tr=$res->fetch(PDO::FETCH_ASSOC);
-        return $tr;
-    }  
+//    public static function GetLastTradeRec($fk_future=null){
+//        $db= Conn::GetConnection();
+//        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
+//                . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
+//                . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
+//                . "FROM trade_rec "
+//                . "LEFT JOIN futures_cont ON fk_future=id_futures "
+//                . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
+//                . "WHERE fk_future = if(:fk_future IS NULL,fk_future,:fk_future) ORDER BY id_tr DESC LIMIT 1");
+//        $res->bindParam(':fk_future',$fk_future);
+//        $res->execute();
+//        $tr=$res->fetch(PDO::FETCH_ASSOC);
+//        return $tr;
+//    }  
     /**     
      * returns LAST 5 trade recs as an array of objects, 
      * formats prices depending on decimal places,
