@@ -1,29 +1,33 @@
 <?php
 use traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Session;
+//CREATING TOKEN AND PUTTING IT TO SESSION
 $tr_token=md5(uniqid(rand(),true));
 Session::set('tr_token', $tr_token);
-$futuresContr = FuturesContractDAO::GetFutures();
+$futuresContr = FuturesContractDAO::GetFutures();//CREATIN FUTURES CONTRACT ARRAY WITH FUTURES CONTRACT OBJECTS
 foreach ($futuresContr as $key => $future) {
-    Session::set("cont".$future->id_futures,$future->tr_program_name);
+    Session::set("cont".$future->id_futures,$future->tr_program_name);//PUTTING ID FUTURE AN PROGRAM NAME TO SESSION FOR DYNAMIC PROGRAM NAME ON FORM PAGE
 }
-$last5trs = TradeRecDAO::GetLast5TradeRecs();
-$lastTR = $last5trs[0];
+$last5trs = TradeRecDAO::GetLast5TradeRecs();//CREATING LAST 5 TR ARRAY WITH TRADE RECOMMENDATION OBJECTS
+$lastTR = $last5trs[0];//SELECTING LAST TR FROM $LAST5TRS
 $listnumb = 0;
 ?>
 <div id="tr_form">
     <form method="post" action="process/process_tr.php">
         <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
-        <input type="hidden" name="fk_tr_type" value="1"/><!--Value based on choice TR,SCX OR CXR???-->
         <div id="tr_form-top">
             <h2>New Trade Rec</h2>    
             <span id="tr_form_program"><?php include "process/program_name.php" ?></span><br>
         </div>
         <div id="tr_form-left">
+            <!--***-->
+            <!--ENTRY CHOICE SELECT-->
             <label for="tr_form_entry_choice">Entry Choice</label>
             <select id="tr_form_entry_choice" name="entry_choice">
                 <option value="BUY">BUY</option>
                 <option value="SELL">SELL</option>
             </select>
+            <!--***-->
+            <!--FUTURE CONTRACT SELECT-->
             <label for="tr_form_future">Contract and number of contracts</label>
             <select id='tr_form_future' name='fk_future'>
                 <?php
@@ -34,7 +38,9 @@ $listnumb = 0;
                 }
                 ?>
             </select>
-            <input id="tr_form_num_contr" name="num_contr" type="number" value='<?php echo $lastTR->num_contr ?>'/><br> 
+            <input id="tr_form_num_contr" name="num_contr" type="number" value='<?php echo $lastTR->num_contr ?>'/><br>
+            <!--***-->
+            <!--MONTH AND YEAR SELECT-->
             <label for="tr_form_month">Month and Year</label><br>
             <select id="tr_form_month" name="month">
                 <?php                 
@@ -56,6 +62,8 @@ $listnumb = 0;
                 ?>
             </select>
         </div>
+        <!--***-->
+        <!--PRICES INPUT-->
         <div id="tr_form-right">
             <label for="tr_form_entry_price">Entry Price</label>
             <input id="tr_form_entry_price" name="entry_price" type="text" value="<?php echo $lastTR->entry_price ?>"/><br> 
@@ -64,17 +72,21 @@ $listnumb = 0;
             <label for="tr_form_stop_loss">Stop Loss</label>
             <input id="tr_form_stop_loss" name="stop_loss" type="text" value="<?php echo $lastTR->stop_loss ?>"/>
         </div>
+        <!--***-->
+        <!--BUTTONS-->
         <div id="tr_form-bottom">
             <div id="tr_form-bottom-left">
-                <button id="tr_form_cxl" type="submit" value="Cancel TR" name="cancel_tr">STR CXL</button>
-                <button id="tr_form_rpl" type="submit" value="Replace TR" name="replace_tr">CXL and RPL</button>
+                <button id="tr_form_cxl" type="submit" value="3" name="fk_tr_type">STR CXL</button>
+                <button id="tr_form_rpl" type="submit" value="2" name="fk_tr_type">CXL and RPL</button>
             </div>
             <div id="tr_form-bottom-right">                
-                <button id="tr_form_submit" type="submit" value="Send" name="send_tr">Send</button>
+                <button id="tr_form_submit" type="submit" value="1" name="fk_tr_type">Send</button>
             </div>
         </div>
     </form>
 </div>
+<!--***-->
+<!--LAST 5 TR TABLE-->
 <div id="tr_list">
     <h2>Last 5 Trade Recommendations</h2>    
     <table>
@@ -106,7 +118,8 @@ $listnumb = 0;
                 <td data-title='Id Futures' class="td_hidden"><?php echo $tr->fk_future ?></td>
                 <td data-title='Month' class="td_hidden"><?php echo $tr->month ?></td>
                 <td data-title='Year' class="td_hidden"><?php echo $tr->year ?></td>              
-                <td data-title='Number of Contracts' class="td_hidden"><?php echo $tr->num_contr ?></td>                
+                <td data-title='Number of Contracts' class="td_hidden"><?php echo $tr->num_contr ?></td>
+                <td data-title='Program name' class="td_hidden"><?php echo $tr->tr_program_name ?></td>
             </tr>
         <?php        
         }
@@ -114,15 +127,16 @@ $listnumb = 0;
     </table>    
 </div>
 <script>
-    $('#tr_form_future').on('change', function() {
-        var value = $(this).val();
-        $('#tr_form_program').load('process/program_name.php?f='+value);
-    });
+    
+    //    LOADING LAST TR TO FORM
+    /**/
     $("#tr_form_future").val("<?php echo $lastTR->fk_future ?>");
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");
     $("#tr_form_entry_choice").val("<?php echo $lastTR->entry_choice ?>");
-    
+    /**/
+    //    LOADING CLICKED TR TO FORM
+    /**/
     $(document).ready(function () {
         $("tr").on("click", function () {
             $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
@@ -132,11 +146,21 @@ $listnumb = 0;
                         tr_form_stop_loss:$(this).find("[data-title='Stop Loss']").html(),
                         tr_form_num_contr:$(this).find("[data-title='Number of Contracts']").html(),
                         tr_form_month:$(this).find("[data-title='Month']").html(),
-                        tr_form_year:$(this).find("[data-title='Year']").html()
+                        tr_form_year:$(this).find("[data-title='Year']").html(),
+                        tr_form_program:$(this).find("[data-title='Program name']").html()
                     };
             $.each($tr_form, function(key, value){
                 $("#"+key).val(value);
+                $("#tr_form_program").html("Selected program: "+$tr_form.tr_form_program);
             });
         });
     });
+    /**/
+    //    LOADING PROGRAM NAME BASED ON SELECTED FUTURE CONTRACT SENDING VALUE WITH GET
+    /**/
+    $('#tr_form_future').on('change', function() {
+        var value = $(this).val();
+        $('#tr_form_program').load('process/program_name.php?f='+value);
+    });
+    /**/
 </script>

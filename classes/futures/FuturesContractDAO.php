@@ -8,7 +8,18 @@ class FuturesContractDAO {
                 . "FROM futures_cont "
                 . "LEFT JOIN trade_program ON id_tr_program=fk_tr_program");
         $res->execute();
-        $receivers = $res->fetchAll(PDO::FETCH_CLASS, "futures\FuturesContract");
-        return $receivers;//!!!have to check if array exists
+        $futures = $res->fetchAll(PDO::FETCH_CLASS, "futures\FuturesContract");
+        return $futures;//!!!have to check if array exists
+    }
+    public static function GetFuturesById($futures_id){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT id_futures,fk_tr_program,futures_name,description,dec_places,tr_program_name "
+                . "FROM futures_cont "
+                . "LEFT JOIN trade_program ON id_tr_program=fk_tr_program "
+                . "WHERE id_futures=:futures_id LIMIT 1");
+        $res->bindParam(':futures_id',$futures_id);
+        $res->execute();
+        $futures = $res->fetchObject("futures\FuturesContract");;
+        return $futures;//!!!have to check if array exists
     }
 }

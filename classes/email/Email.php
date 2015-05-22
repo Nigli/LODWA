@@ -21,7 +21,7 @@ class Email{
     public $recipients=array();
     public $title;
     public $num_subs;
-    
+    public $tr_type_name;
     public $disclosure;
     
     public $broker_temp;
@@ -40,17 +40,17 @@ class Email{
             $this->recipients[]=$v->recipient;
         }
         $this->num_subs=ReceiverDao::GetClientsSubs($tr->fk_future, $tr->num_contr);
-        $this->title=$tr->title;
         
+        $this->title=$tr->title;
         $this->disclosure=EmailTemp::GetEmailTemp()->disclosure;
 
-        $elements_in = array($this->title,$this->num_subs,$tr->date,$tr->time,$tr->tr_program_name,$tr->month,$tr->futures_name,$tr->entry_choice,$tr->entry_price,$tr->price_target,$tr->stop_loss,$tr->description,$this->disclosure);
-        $elements_out = array('[TITLE]','[BLOCK_ORDER]','[DATE]','[TIME]','[PROGRAM]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]');
+        $elements_in = array($this->title,$tr->tr_type_name,$this->num_subs,$tr->date,$tr->time,$tr->tr_program_name,$tr->month,$tr->futures_name,$tr->entry_choice,$tr->entry_price,$tr->price_target,$tr->stop_loss,$tr->description,$this->disclosure);
+        $elements_out = array('[TITLE]','[TRADE_TYPE]','[BLOCK_ORDER]','[DATE]','[TIME]','[PROGRAM]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]');
         
-        $broker_temp = file_get_contents('emailtemplates/broker_temp.php');
+        $broker_temp = file_get_contents('../emailtemplates/broker_temp.php');
         $this->broker_temp = str_replace($elements_out, $elements_in, $broker_temp);
         
-        $client_temp = file_get_contents( 'emailtemplates/client_temp.php');
+        $client_temp = file_get_contents('../emailtemplates/client_temp.php');
         $this->client_temp = str_replace($elements_out, $elements_in, $client_temp);
     }
 }

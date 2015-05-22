@@ -7,7 +7,7 @@ function phpmailer($email){
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = $email->sender_email;                 // SMTP username
     $mail->Password = $email->sender_pass;                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    //$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = $email->sender_port;                                    // TCP port to connect to
     
     $mail->From = $email->sender_email;

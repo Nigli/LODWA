@@ -11,7 +11,7 @@ class TradeRecDAO {
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
-                . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
+                . "date, time "
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
                 . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
@@ -20,26 +20,7 @@ class TradeRecDAO {
         $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
         return $tr;//!!!have to check if array exists
     }
-    /**     
-     * returns LAST trade rec as an array, 
-     * formats prices depending on DECIMAL places, REPLACE NOT to have ',' as *1234.56*
-     * formats date as *15 May 2015*
-     **/
-//    public static function GetLastTradeRec($fk_future=null){
-//        $db= Conn::GetConnection();
-//        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
-//                . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
-//                . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
-//                . "FROM trade_rec "
-//                . "LEFT JOIN futures_cont ON fk_future=id_futures "
-//                . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
-//                . "WHERE fk_future = if(:fk_future IS NULL,fk_future,:fk_future) ORDER BY id_tr DESC LIMIT 1");
-//        $res->bindParam(':fk_future',$fk_future);
-//        $res->execute();
-//        $tr=$res->fetch(PDO::FETCH_ASSOC);
-//        return $tr;
-//    }  
-    /**     
+    /*
      * returns LAST 5 trade recs as an array of objects, 
      * formats prices depending on decimal places,
      * formats date as *15 May 2015*
@@ -48,7 +29,7 @@ class TradeRecDAO {
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
                 . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
-                . "date_format(date,'%e %M %Y') AS date,date_format(date,'%k%s') AS time "
+                . "date, time "
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
                 . "LEFT JOIN trade_program ON fk_tr_program=id_tr_program "
@@ -57,12 +38,21 @@ class TradeRecDAO {
         $tr=$res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
         return $tr;
     }
+    public static function GetTradeRecType($type_id){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT tr_type FROM trade_types "
+                . "WHERE id_tr_type=:tr_type_id LIMIT 1");
+        $res->bindParam(':tr_type_id',$type_id);
+        $res->execute();
+        $tr_type = $res->fetchColumn();;
+        return $tr_type;
+    }
     /**     
      * inserts ONE trade rec
      **/
     public static function InsertTradeRec($tr){
         $db= Conn::GetConnection();
-        $res = $db->prepare("INSERT INTO trade_rec (id_tr,fk_tr_type,fk_future,month,year,num_contr,entry_choice,entry_price,price_target,stop_loss,date) VALUES ('',:fk_tr_type,:fk_future,:month,:year,:num_contr,:entry_choice,:entry_price,:price_target,:stop_loss,now())");
+        $res = $db->prepare("INSERT INTO trade_rec (id_tr,fk_tr_type,fk_future,month,year,num_contr,entry_choice,entry_price,price_target,stop_loss,date,time) VALUES ('',:fk_tr_type,:fk_future,:month,:year,:num_contr,:entry_choice,:entry_price,:price_target,:stop_loss,:date,:time)");
         $res->bindParam(':fk_future',$tr->fk_future);
         $res->bindParam(':fk_tr_type',$tr->fk_tr_type);
         $res->bindParam(':month',$tr->month);
@@ -72,6 +62,8 @@ class TradeRecDAO {
         $res->bindParam(':entry_price',$tr->entry_price);
         $res->bindParam(':price_target',$tr->price_target);
         $res->bindParam(':stop_loss',$tr->stop_loss);
+        $res->bindParam(':date',$tr->date);
+        $res->bindParam(':time',$tr->time);
         $res->execute();
     }
 }

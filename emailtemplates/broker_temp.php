@@ -540,7 +540,7 @@
                                                                                 <h2 style="border-bottom: 1px solid #cccccc; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
                                                                                     <span style="font-size:18px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                            TRADE REC
+                                                                                            [TRADE_TYPE]
                                                                                         </span>
                                                                                     </span>
                                                                                 </h2>

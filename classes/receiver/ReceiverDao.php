@@ -22,7 +22,7 @@ class ReceiverDao {
     }
     public static function GetClientsReceivers(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added,na_number,rjo_account,any_account "
+        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added,na_number,broker_account,any_account "
                 . "FROM receivers "
                 . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
                 . "WHERE (fk_receiver_type=1 OR fk_receiver_type=2) AND active = 1");
@@ -34,7 +34,7 @@ class ReceiverDao {
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT SUM(num_subs * :num_contr) as total_subs "
                 . "FROM subscriptions "
-                . "WHERE fk_tr_program = :tr_prog");
+                . "WHERE fk_tr_program = :tr_prog LIMIT 1");
         $res->bindParam(':num_contr',$num_contr);
         $res->bindParam(':tr_prog',$tr_prog);
         $res->execute();
