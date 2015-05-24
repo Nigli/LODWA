@@ -17,6 +17,9 @@ body {
     -moz-box-shadow:    1px 1px 1px 1px rgba(50, 50, 50, 0.2);
     box-shadow:         1px 1px 1px 1px rgba(50, 50, 50, 0.2);
 }
+.visible {
+    display: block;
+}
 /* HEADER */
 #header-outer {
     padding-top: 50px;
@@ -52,38 +55,79 @@ body {
     padding: 5px;
     position:relative;
 }
-#header-nav ul li a{
+#header-nav ul li:last-child {
+    margin-bottom: 5px;
+}
+#header-nav a{
     text-decoration: none;
     display: block;
-    text-align: center;
     font-size: 18px;
     color: #58585A;
 }
-#header-nav ul ul {
+.settings ul {
     position:absolute;
     right: 0px;
-    display: none;
-    padding: 5px;
+    width: 90px;
+    background: #ffffff;    
+    -webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 2px 2px 0px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 2px 2px 0px rgba(50, 50, 50, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0.1s,opacity 0.3s;
+    -moz-transition: visibility 0.1s,opacity 0.3s;
+    transition: visibility 0.1s, opacity 0.3s;
 }
 #header-nav ul ul li {
-    float:none;
-    margin: 0px;
+    float:right;
+    margin-left: 0px;
 }
 #header-nav ul li:hover ul {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition-delay:0s;
 }
-#header-nav ul .settings > a{
-    display: block;
-    width: 24px;
-    height: 24px;
-    margin-bottom: 5px;
-}
-#header-nav ul .settings ul li a{
-    display: block;
-    text-align: right;
-}
-#header-nav a:hover {
+#header-nav ul li:hover  i{
     color: #1B3664;
+    cursor:pointer;
+}
+.settings i {
+    margin-bottom: 18px;
+    font-size: 26px;
+}
+#header-nav a::before,
+#header-nav a::after {
+	display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+
+#header-nav a::before {
+        margin-right: 5px;
+	content: '[';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
+}
+
+#header-nav a::after {
+	margin-left: 5px;
+	content: ']';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+
+#header-nav a:hover::before,
+#header-nav a:hover::after,
+#header-nav a:focus::before,
+#header-nav a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
 }
 
 /* TR FORM */
@@ -140,15 +184,24 @@ body {
 #tr_form-bottom {    
     clear: both;
     overflow: hidden;
+    height: 45px;
+}
+#tr_form-bottom-left {    
+    float: left;
+    height: 40px;
 }
 #tr_form-bottom-left button{    
     font-size: 16px;
-    margin-right: 5px;
-    float: left;
+    margin-right: 5px;    
+    height: 40px;
+}
+#tr_form-bottom-right {    
+    float: right;
+    height: 45px;
 }
 #tr_form-bottom-right button{    
     font-size: 20px;
-    float: right;
+    height: 45px;
 }
 #tr_form button {
     font-family: 'PT Sans', sans-serif;        
@@ -158,8 +211,16 @@ body {
     padding: 7px;
     border: 0px;
     cursor: pointer;
+    border: none;	
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
-
+#tr_form button:hover{
+    color: #1B3664;
+    background-color: #eee;
+    border: 1px solid #1B3664;
+}
 /******TABLES*******/
 table {
     border: 0;
@@ -189,6 +250,10 @@ table tbody tr:hover {
 }
 #receiver_list table{
     font-size: 15px;
+}
+.activetr {
+    background-color: #1B3664;
+    color: #ffffff;
 }
 /******TABLES RESPONSIVE*******/
 @media screen and (max-width: 480px) {

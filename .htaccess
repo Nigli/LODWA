@@ -4,5 +4,6 @@ RewriteRule ^trade$ index.php?p=trform [NC]
 RewriteRule ^trlist$ index.php?p=trlist [NC]
 RewriteRule ^programlist$ index.php?p=programlist [NC]
 RewriteRule ^receiverlist$ index.php?p=receiverlist [NC]
+RewriteRule ^processtr$ process/process_tr.php [NC]
 
 #RewriteRule ^DROP$ index.php [F] [NC]

@@ -8,4 +8,4 @@
         header("Location: " . $new_location);
     }
 //referer constants
-    define("TR_REFERER", "http://localhost/LODWA/trade");
+    define("TR_REFERER", "http://localhost/LODWP/trade");

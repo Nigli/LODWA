@@ -3,6 +3,7 @@ use phpmailer\PHPMailer;
 function phpmailer($email){
     $mail=new PHPMailer();
     $mail->isSMTP();
+    $mail->SMTPDebug  = 2;
     $mail->Host = $email->sender_host;  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = $email->sender_email;                 // SMTP username

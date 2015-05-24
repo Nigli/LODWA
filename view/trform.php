@@ -10,9 +10,10 @@ foreach ($futuresContr as $key => $future) {
 $last5trs = TradeRecDAO::GetLast5TradeRecs();//CREATING LAST 5 TR ARRAY WITH TRADE RECOMMENDATION OBJECTS
 $lastTR = $last5trs[0];//SELECTING LAST TR FROM $LAST5TRS
 $listnumb = 0;
+//var_dump($lastTR);
 ?>
 <div id="tr_form">
-    <form method="post" action="process/process_tr.php">
+    <form method="post" action="processtr">
         <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
         <div id="tr_form-top">
             <h2>New Trade Rec</h2>    
@@ -38,7 +39,7 @@ $listnumb = 0;
                 }
                 ?>
             </select>
-            <input id="tr_form_num_contr" name="num_contr" type="number" value='<?php echo $lastTR->num_contr ?>'/><br>
+            <input id="tr_form_num_contr" name="num_contr" type="number" value="" required="" min="1"/><br>
             <!--***-->
             <!--MONTH AND YEAR SELECT-->
             <label for="tr_form_month">Month and Year</label><br>
@@ -66,11 +67,11 @@ $listnumb = 0;
         <!--PRICES INPUT-->
         <div id="tr_form-right">
             <label for="tr_form_entry_price">Entry Price</label>
-            <input id="tr_form_entry_price" name="entry_price" type="text" value="<?php echo $lastTR->entry_price ?>"/><br> 
+            <input id="tr_form_entry_price" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"><br> 
             <label for="tr_form_price_target">Price Target</label>
-            <input id="tr_form_price_target" name="price_target" type="text" value="<?php echo $lastTR->price_target ?>"/><br> 
+            <input id="tr_form_price_target" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
             <label for="tr_form_stop_loss">Stop Loss</label>
-            <input id="tr_form_stop_loss" name="stop_loss" type="text" value="<?php echo $lastTR->stop_loss ?>"/>
+            <input id="tr_form_stop_loss" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/>
         </div>
         <!--***-->
         <!--BUTTONS-->
@@ -126,19 +127,22 @@ $listnumb = 0;
         ?>
     </table>    
 </div>
-<script>
-    
+<script>    
     //    LOADING LAST TR TO FORM
     /**/
     $("#tr_form_future").val("<?php echo $lastTR->fk_future ?>");
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");
     $("#tr_form_entry_choice").val("<?php echo $lastTR->entry_choice ?>");
+    $("#tr_form_entry_price").val("<?php echo $lastTR->entry_price ?>");
+    $("#tr_form_price_target").val("<?php echo $lastTR->price_target ?>");    
+    $("#tr_form_stop_loss").val("<?php echo $lastTR->stop_loss ?>");
+    $("#tr_form_num_contr").val("<?php echo $lastTR->num_contr ?>");
     /**/
     //    LOADING CLICKED TR TO FORM
     /**/
     $(document).ready(function () {
-        $("tr").on("click", function () {
+        $("tbody tr").on("click", function () {
             $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
                         tr_form_entry_choice:$(this).find("[data-title='Entry Choice']").html(),
                         tr_form_entry_price:$(this).find("[data-title='Entry Price']").html(),
@@ -153,6 +157,7 @@ $listnumb = 0;
                 $("#"+key).val(value);
                 $("#tr_form_program").html("Selected program: "+$tr_form.tr_form_program);
             });
+            $(this).toggleClass("activetr");
         });
     });
     /**/

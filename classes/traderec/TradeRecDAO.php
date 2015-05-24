@@ -10,7 +10,7 @@ class TradeRecDAO {
     public static function GetTradeRecs(){
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
-                . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
+                . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
                 . "date, time "
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
@@ -28,7 +28,7 @@ class TradeRecDAO {
     public static function GetLast5TradeRecs(){
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
-                . "FORMAT(entry_price, dec_places) AS entry_price,FORMAT(price_target,dec_places) AS price_target,FORMAT(stop_loss,dec_places) AS stop_loss,"
+                . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
                 . "date, time "
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
