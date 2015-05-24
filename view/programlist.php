@@ -8,6 +8,7 @@ $listnumb =0;
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>#</th>
                 <th>Program Name</th>
                 <th>Futures Contracts</th>
@@ -22,7 +23,7 @@ $listnumb =0;
                 <td data-title='Futures Contracts'>
                     <?php
                     for($i=0;$i<count($program->futures_name);$i++){
-                        echo $program->futures_name[$i]."<br>";
+                        echo $program->futures_name[$i].($i!=count($program->futures_name)-1?", ":"");
                     }
                     ?>
                 </td>

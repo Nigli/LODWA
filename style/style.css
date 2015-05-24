@@ -92,44 +92,64 @@ body {
     cursor:pointer;
 }
 .settings i {
-    margin-bottom: 18px;
+    margin-bottom: 12px;
     font-size: 26px;
 }
 #header-nav a::before,
-#header-nav a::after {
-	display: inline-block;
-	opacity: 0;
-	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
-	transition: transform 0.3s, opacity 0.2s;
+#header-nav a::after,
+table tbody tr::before,
+table tbody tr::after{
+    display: inline-block;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+    transition: transform 0.3s, opacity 0.2s;
 }
-
-#header-nav a::before {
-        margin-right: 5px;
-	content: '[';
-	-webkit-transform: translateX(20px);
-	-moz-transform: translateX(20px);
-	transform: translateX(20px);
+#header-nav a::before,table tbody tr::before {
+    font-weight: bold;
+    margin-right: 5px;
+    content: '[';
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    transform: translateX(20px);
 }
-
-#header-nav a::after {
-	margin-left: 5px;
-	content: ']';
-	-webkit-transform: translateX(-20px);
-	-moz-transform: translateX(-20px);
-	transform: translateX(-20px);
+#header-nav a::after,table tbody tr::after {    
+    font-weight: bold;
+    margin-left: 5px;
+    content: ']';
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    transform: translateX(-20px);
 }
 
 #header-nav a:hover::before,
 #header-nav a:hover::after,
 #header-nav a:focus::before,
-#header-nav a:focus::after {
-	opacity: 1;
-	-webkit-transform: translateX(0px);
-	-moz-transform: translateX(0px);
-	transform: translateX(0px);
+#header-nav a:focus::after,
+table tbody tr:hover::before,
+table tbody tr:hover::after,
+table tbody tr:focus::before,
+table tbody tr:focus::after{
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
 }
 
+table tbody tr::before {
+    padding: 10px;
+    margin-right: -5px;
+}
+table tbody tr::after {
+    padding: 10px;
+    margin-left: -5px;
+}
+table tr th:first-child {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    border-bottom-width: 0px;
+}
 /* TR FORM */
 #tr_form-top {
     overflow: hidden;
@@ -245,7 +265,6 @@ table .td_hidden {
     display: none;
 }
 table tbody tr:hover {
-    background-color: #eee;
     cursor: pointer;
 }
 #receiver_list table{

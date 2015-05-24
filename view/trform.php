@@ -93,6 +93,7 @@ $listnumb = 0;
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>#</th>
                 <th>Contract</th>
                 <th>Entry Choice</th>
@@ -157,7 +158,9 @@ $listnumb = 0;
                 $("#"+key).val(value);
                 $("#tr_form_program").html("Selected program: "+$tr_form.tr_form_program);
             });
-            $(this).toggleClass("activetr");
+            $("tbody tr").removeClass("activetr");
+            $(this).addClass("activetr");
+            $("html, body").animate({ scrollTop: 0 }, 600);
         });
     });
     /**/

@@ -8,6 +8,7 @@ $listnumb = 0;
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>#</th>
                 <th>Contract</th>
                 <th>Entry Choice</th>

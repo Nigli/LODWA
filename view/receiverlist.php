@@ -7,6 +7,7 @@ $rec = ReceiverDao::GetActiveReceivers();
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>Type</th>
                 <th>First Name</th>
                 <th>Last Name</th>
