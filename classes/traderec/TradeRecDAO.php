@@ -4,8 +4,7 @@ use PDO,utils\Conn;
 class TradeRecDAO {
     /**     
      * returns ALL trade recs as an array of objects, 
-     * formats prices depending on decimal places,
-     * formats date as *15 May 2015*
+     * formats prices depending on decimal places
      **/
     public static function GetTradeRecs(){
         $db= Conn::GetConnection();
@@ -22,8 +21,7 @@ class TradeRecDAO {
     }
     /*
      * returns LAST 5 trade recs as an array of objects, 
-     * formats prices depending on decimal places,
-     * formats date as *15 May 2015*
+     * formats prices depending on decimal places
      **/
     public static function GetLast5TradeRecs(){
         $db= Conn::GetConnection();

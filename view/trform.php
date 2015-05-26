@@ -15,11 +15,11 @@ $listnumb = 0;
 <div id="tr_form">
     <form method="post" action="processtr">
         <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
-        <div id="tr_form-top">
+        <div id="top">
             <h2>New Trade Rec</h2>    
             <span id="tr_form_program"><?php include "process/program_name.php" ?></span><br>
         </div>
-        <div id="tr_form-left">
+        <div id="left">
             <!--***-->
             <!--ENTRY CHOICE SELECT-->
             <label for="tr_form_entry_choice">Entry Choice</label>
@@ -65,7 +65,7 @@ $listnumb = 0;
         </div>
         <!--***-->
         <!--PRICES INPUT-->
-        <div id="tr_form-right">
+        <div id="right">
             <label for="tr_form_entry_price">Entry Price</label>
             <input id="tr_form_entry_price" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"><br> 
             <label for="tr_form_price_target">Price Target</label>
@@ -75,12 +75,12 @@ $listnumb = 0;
         </div>
         <!--***-->
         <!--BUTTONS-->
-        <div id="tr_form-bottom">
-            <div id="tr_form-bottom-left">
+        <div id="bottom">
+            <div id="bottom-left">
                 <button id="tr_form_cxl" type="submit" value="3" name="fk_tr_type">STR CXL</button>
                 <button id="tr_form_rpl" type="submit" value="2" name="fk_tr_type">CXL and RPL</button>
             </div>
-            <div id="tr_form-bottom-right">                
+            <div id="bottom-right">                
                 <button id="tr_form_submit" type="submit" value="1" name="fk_tr_type">Send</button>
             </div>
         </div>

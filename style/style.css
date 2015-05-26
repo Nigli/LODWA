@@ -9,7 +9,57 @@ body {
     padding: 10px;
     width: 960px;
 }
-#tr_form, #tr_list, #receiver_list, #program_list {
+h2 {
+    float: left;
+    margin-top: 0px;
+}
+#top {
+    overflow: hidden;
+}
+
+#left {
+    float:left;
+}
+#right {
+    float:right;
+}
+#right input, #left select {
+    margin: 10px 0px 30px 5px;
+    padding: 4px;    
+    font-size: 16px;
+    line-height: 18px
+}
+#right input {
+    width: 95%;    
+    height: 26px;
+}
+#left select {
+    height: 36px;
+}
+
+#bottom {    
+    clear: both;
+    overflow: hidden;
+    height: 45px;
+}
+#bottom-left {    
+    float: left;
+    height: 40px;
+}
+#bottom-left button{    
+    font-size: 16px;
+    margin-right: 5px;    
+    height: 40px;
+}
+#bottom-right {    
+    float: right;
+    height: 45px;
+}
+#bottom-right button{    
+    font-size: 20px;
+    height: 45px;
+}
+#tr_form, #tr_list, #receiver_list, #program_list,#profile {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
@@ -95,94 +145,14 @@ body {
     margin-bottom: 12px;
     font-size: 26px;
 }
-#header-nav a::before,
-#header-nav a::after,
-table tbody tr::before,
-table tbody tr::after{
-    display: inline-block;
-    opacity: 0;
-    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-    -moz-transition: -moz-transform 0.3s, opacity 0.2s;
-    transition: transform 0.3s, opacity 0.2s;
-}
-#header-nav a::before,table tbody tr::before {
-    font-weight: bold;
-    margin-right: 5px;
-    content: '[';
-    -webkit-transform: translateX(20px);
-    -moz-transform: translateX(20px);
-    transform: translateX(20px);
-}
-#header-nav a::after,table tbody tr::after {    
-    font-weight: bold;
-    margin-left: 5px;
-    content: ']';
-    -webkit-transform: translateX(-20px);
-    -moz-transform: translateX(-20px);
-    transform: translateX(-20px);
-}
-
-#header-nav a:hover::before,
-#header-nav a:hover::after,
-#header-nav a:focus::before,
-#header-nav a:focus::after,
-table tbody tr:hover::before,
-table tbody tr:hover::after,
-table tbody tr:focus::before,
-table tbody tr:focus::after{
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-    -moz-transform: translateX(0px);
-    transform: translateX(0px);
-}
-
-table tbody tr::before {
-    padding: 10px;
-    margin-right: -5px;
-}
-table tbody tr::after {
-    padding: 10px;
-    margin-left: -5px;
-}
-table tr th:first-child {
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    border-bottom-width: 0px;
-}
 /* TR FORM */
-#tr_form-top {
-    overflow: hidden;
-}
-#tr_form h2 {
-    float: left;
-    margin-top: 0px;
-}
+
 #tr_form_program {
     float: right;
 }
-#tr_form-left,#tr_form-right {        
+#left,#right {        
     width: 44%;
     margin-bottom: 15px;
-}
-#tr_form-left {
-    float:left;
-}
-#tr_form-right {
-    float:right;
-}
-#tr_form-right input, #tr_form-left select {
-    margin: 10px 0px 30px 5px;
-    padding: 4px;    
-    font-size: 16px;
-    line-height: 18px
-}
-#tr_form-right input {
-    width: 95%;    
-    height: 26px;
-}
-#tr_form-left select {
-    height: 36px;
 }
 #tr_form_entry_choice {
     width: 95%;
@@ -201,29 +171,17 @@ table tr th:first-child {
 #tr_form_year {  
     width: 22%;
 }
-#tr_form-bottom {    
-    clear: both;
-    overflow: hidden;
-    height: 45px;
+/******PROFILE*******/
+#profile #left {
+    width: 100%;
 }
-#tr_form-bottom-left {    
-    float: left;
-    height: 40px;
+#profile p {
+    font-weight: bold;
+    margin-bottom: 5px;
 }
-#tr_form-bottom-left button{    
-    font-size: 16px;
-    margin-right: 5px;    
-    height: 40px;
-}
-#tr_form-bottom-right {    
-    float: right;
-    height: 45px;
-}
-#tr_form-bottom-right button{    
-    font-size: 20px;
-    height: 45px;
-}
-#tr_form button {
+/******BUTTONS*******/
+
+#tr_form button, #profile button {
     font-family: 'PT Sans', sans-serif;        
     color: #ffffff;
     background-color: #1B3664;
@@ -236,7 +194,7 @@ table tr th:first-child {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
-#tr_form button:hover{
+#tr_form button:hover, #profile button:hover{
     color: #1B3664;
     background-color: #eee;
     border: 1px solid #1B3664;
@@ -273,6 +231,60 @@ table tbody tr:hover {
 .activetr {
     background-color: #1B3664;
     color: #ffffff;
+}
+/******HOVER EFFECTS*******/
+
+#header-nav a::before,
+#header-nav a::after,
+table tbody tr::before,
+table tbody tr::after{
+    display: inline-block;
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+    transition: transform 0.3s, opacity 0.2s;
+}
+#header-nav a::before,table tbody tr::before {
+    font-weight: bold;
+    margin-right: 5px;
+    content: '[';
+    -webkit-transform: translateX(20px);
+    -moz-transform: translateX(20px);
+    transform: translateX(20px);
+}
+#header-nav a::after,table tbody tr::after {    
+    font-weight: bold;
+    margin-left: 5px;
+    content: ']';
+    -webkit-transform: translateX(-20px);
+    -moz-transform: translateX(-20px);
+    transform: translateX(-20px);
+}
+#header-nav a:hover::before,
+#header-nav a:hover::after,
+#header-nav a:focus::before,
+#header-nav a:focus::after,
+table tbody tr:hover::before,
+table tbody tr:hover::after,
+table tbody tr:focus::before,
+table tbody tr:focus::after{
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+table tbody tr::before {
+    padding: 10px;
+    margin-right: -5px;
+}
+table tbody tr::after {
+    padding: 10px;
+    margin-left: -5px;
+}
+table tr th:first-child {
+    padding: 0px;
+    border-bottom-width: 0px;
 }
 /******TABLES RESPONSIVE*******/
 @media screen and (max-width: 480px) {

@@ -2,6 +2,7 @@
 namespace broker;
 class Broker {
     public $id_broker;
+    public $broker_company;
     public $broker_first_name;
     public $broker_last_name;
     public $broker_email;

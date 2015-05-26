@@ -85,7 +85,6 @@
 			line-height:125%;
 			letter-spacing:-.75px;
 			margin:0;
-			text-align:left;
                         border-bottom: 1px solid #cccccc;
 		}
 		h3{
@@ -530,20 +529,28 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <h2 style="border-bottom: 1px solid #cccccc; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:18px;">
-                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                            Trade Details
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </h2>
-                                                                                <h2 style="border-bottom: 1px solid #cccccc; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:18px;">
-                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                            [TRADE_TYPE]
-                                                                                        </span>
-                                                                                    </span>
-                                                                                </h2>
+                                                                                <table border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
+                                                                                    <tr>
+                                                                                        <td style="width: 368px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <h2 style="border-bottom: 1px solid #cccccc; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                                <span style="font-size:18px;">
+                                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                        Trade Details
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </h2>
+                                                                                        </td>
+                                                                                        <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <h2 style="border-bottom: 1px solid #cccccc; text-align: right; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;color: #666666 !important;">
+                                                                                                <span style="font-size:18px;">
+                                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                        [TRADE_TYPE]
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </h2>
+                                                                                        </td>
+                                                                                        </tr>
+                                                                                </table>
                                                                                 <table border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
                                                                                     <tbody>
                                                                                         <tr>
@@ -670,7 +677,7 @@
                                                                             <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                                                                                 <span style="font-size:12px;">
                                                                                     <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">                                                                                       
-<!--TR DETAILS DESCRIPTION -->                                                          *The Entry order is a limit or better. The Stop Loss and Profit Target orders are OCO’s (one cancels the other). All orders are placed on a not held basis.
+<!--TR DETAILS DESCRIPTION -->                                                          *The Entry order is a limit or better. The Stop Loss and Profit Target orders are OCO&#39;s (one cancels the other). All orders are placed on a not held basis.
                                                                                     </span>
                                                                                 </span><br>
                                                                             </td>
@@ -750,7 +757,28 @@
                 </tr>
             </table>
         </center>
-<!--ADD SENDER INFORMATION-->
+        <center>
+            <br />
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" id="canspamBarWrapper" style="background-color:#FFFFFF; border-top:1px solid #E5E5E5;">
+                <tr>
+                    <td align="center" valign="top" style="padding-top:20px; padding-bottom:20px;">
+                        <table border="0" cellpadding="0" cellspacing="0" id="canspamBar">
+                            <tr>
+                                <td align="center" valign="top" style="color:#606060; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:150%; padding-right:20px; padding-bottom:5px; padding-left:20px; text-align:center;"><br />
+                                    <a href="*|ABOUT_LIST|*" target="_blank" style="color:#404040 !important;"><em>why did I get this?</em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="*|UNSUB|*" style="color:#404040 !important;">unsubscribe from this list</a>
+                                    <br />
+                                    This email was sent from <a href="mailto:[SENDER_EMAIL]" target="_blank" style="color:#404040 !important;">[SENDER_EMAIL]</a>
+                                    <br />
+                                    <a href="http://[COMPANY_WEBSITE]" target="_blank" style="color:#404040 !important;">[COMPANY_NAME]</a>
+                                    <br />
+                                    [ADDRESS]
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </center>
         <style type="text/css">
             @media only screen and (max-width: 480px){
                 table[id="canspamBar"] td{font-size:14px !important;}
