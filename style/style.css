@@ -40,11 +40,6 @@ h2 {
 #bottom {    
     clear: both;
     overflow: hidden;
-    height: 45px;
-}
-#bottom-left {    
-    float: left;
-    height: 40px;
 }
 #bottom-left button{    
     font-size: 16px;
@@ -59,7 +54,7 @@ h2 {
     font-size: 20px;
     height: 45px;
 }
-#tr_form, #tr_list, #receiver_list, #program_list,#profile {
+#tr_form, #tr_list, #receiver_list, #program_list, #profile, #login {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
@@ -70,7 +65,8 @@ h2 {
 .visible {
     display: block;
 }
-/* HEADER */
+
+/***** HEADER *****/
 #header-outer {
     padding-top: 50px;
     background-color: #ffffff;
@@ -145,8 +141,8 @@ h2 {
     margin-bottom: 12px;
     font-size: 26px;
 }
-/* TR FORM */
 
+/***** TR FORM *****/
 #tr_form_program {
     float: right;
 }
@@ -157,7 +153,7 @@ h2 {
 #tr_form_entry_choice {
     width: 95%;
 }
-#tr_form_future, #tr_form_month {
+#tr_form_future, #tr_form_month, #tr_form_entry_choice {
     width: 70%;
 }
 #tr_form_num_contr {
@@ -168,8 +164,12 @@ h2 {
     font-size: 16px;
     line-height: 18px
 }
-#tr_form_year {  
+#tr_form_year,#tr_form_duration {  
     width: 22%;
+}
+/******LOGIN*******/
+#login input{
+    margin-bottom: 15px;
 }
 /******PROFILE*******/
 #profile #left {
@@ -179,9 +179,9 @@ h2 {
     font-weight: bold;
     margin-bottom: 5px;
 }
-/******BUTTONS*******/
 
-#tr_form button, #profile button {
+/******BUTTONS*******/
+#tr_form button, #profile button, #login button {
     font-family: 'PT Sans', sans-serif;        
     color: #ffffff;
     background-color: #1B3664;
@@ -194,11 +194,12 @@ h2 {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
-#tr_form button:hover, #profile button:hover{
+#tr_form button:hover, #profile button:hover, #login button:hover{
     color: #1B3664;
     background-color: #eee;
     border: 1px solid #1B3664;
 }
+
 /******TABLES*******/
 table {
     border: 0;
@@ -232,8 +233,8 @@ table tbody tr:hover {
     background-color: #1B3664;
     color: #ffffff;
 }
-/******HOVER EFFECTS*******/
 
+/******HOVER EFFECTS*******/
 #header-nav a::before,
 #header-nav a::after,
 table tbody tr::before,
@@ -286,8 +287,73 @@ table tr th:first-child {
     padding: 0px;
     border-bottom-width: 0px;
 }
-/******TABLES RESPONSIVE*******/
-@media screen and (max-width: 480px) {
+
+/******RESPONSIVE*******/
+@media screen and (max-width: 960px) {
+    #main,#wrapper {
+        width: 340px;
+    }
+    
+    /******NAV RESP*******/
+    #header-inner {
+        width: 340px;
+    }
+    #header-nav {
+        display: none;
+   }
+/*  #header-nav ul li {
+        display: block;
+        float: none;
+    }
+    #header-nav ul li ul {
+        visibility: visible;
+        opacity: 1;
+        background: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow:    none;
+        box-shadow:         none;
+    }
+    #header-nav ul li ul li {
+        display: block;
+        float: none;
+    }
+    .settings i{
+        display: none;
+    }
+    .settings{
+        padding: 0px;
+        margin: 0px;
+    }*/
+
+    /******TR FORM RESP*******/
+    #tr_list,#tr_form,#receiver_list,#program_list,#profile{
+        width: 310px;
+    }
+    #left,#right {
+        width: 100%;
+    }
+    #right {
+        float:none;
+    }#tr_form_program {
+        float: none;
+        display: block;
+        clear: both;
+    }
+    #bottom-right {    
+        float: none;
+        height: 45px;
+        margin-bottom: 15px;
+    }
+    
+    /******HOVER RESP*******/
+    #header-nav a::before,
+    #header-nav a::after,
+    table tbody tr::before,
+    table tbody tr::after{
+        display: none;
+    }
+    
+    /******TABLES RESP*******/
     table,
     tbody {
         display: block;
@@ -306,6 +372,7 @@ table tr th:first-child {
         border-bottom: 1px solid #eee;
         padding-bottom: 11px;
         margin-bottom: 11px;
+        clear: both;
     }
     table th[data-title]:before,
     table td[data-title]:before {

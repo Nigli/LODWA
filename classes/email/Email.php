@@ -46,8 +46,8 @@ class Email{
         $this->title=$tr->title;
         $this->disclosure=EmailTemp::GetEmailTemp()->disclosure;
 
-        $elements_in = array($this->title,$tr->tr_type_name,$this->num_subs,$tr->date,$tr->time,$tr->tr_program_name,$tr->month,$tr->futures_name,$tr->entry_choice,$tr->entry_price,$tr->price_target,$tr->stop_loss,$tr->description,$this->disclosure,$this->sender_email,$this->company_website,$this->company_name,$this->sender_address);
-        $elements_out = array('[TITLE]','[TRADE_TYPE]','[BLOCK_ORDER]','[DATE]','[TIME]','[PROGRAM]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]','[SENDER_EMAIL]','[COMPANY_WEBSITE]','[COMPANY_NAME]','[ADDRESS]');
+        $elements_in = array($this->title,$tr->tr_type_name,$this->num_subs,$tr->date,$tr->time,$tr->tr_program_name,$tr->month,$tr->futures_name,$tr->entry_choice,$tr->duration,$tr->entry_price,$tr->price_target,$tr->stop_loss,$tr->description,$this->disclosure,$this->sender_email,$this->company_website,$this->company_name,$this->sender_address);
+        $elements_out = array('[TITLE]','[TRADE_TYPE]','[BLOCK_ORDER]','[DATE]','[TIME]','[PROGRAM]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[DURATION]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]','[SENDER_EMAIL]','[COMPANY_WEBSITE]','[COMPANY_NAME]','[ADDRESS]');
         
         $broker_temp = file_get_contents('../emailtemplates/broker_temp.php');
         $this->broker_temp = str_replace($elements_out, $elements_in, $broker_temp);

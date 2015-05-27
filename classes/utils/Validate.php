@@ -29,6 +29,7 @@ class Validate {
             'month'         => FILTER_SANITIZE_STRING,
             'year'          => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => date('Y'), 'max_range' => date('Y')+5)),
             'entry_choice'  => FILTER_SANITIZE_STRING,
+            'duration'      => FILTER_SANITIZE_STRING,
             'num_contr'     => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => 1)),
             'entry_price'   => array('filter'=> FILTER_SANITIZE_NUMBER_FLOAT,  'flags'  => FILTER_FLAG_ALLOW_FRACTION, 'options'=> array('decimal'=>'.') ),
             'price_target'  => array('filter'=> FILTER_SANITIZE_NUMBER_FLOAT,  'flags'  => FILTER_FLAG_ALLOW_FRACTION, 'options'=> array('decimal'=>'.') ),
@@ -38,11 +39,28 @@ class Validate {
             array_filter($form, array('self', 'trim'));
             array_filter($form, array('self', 'replace'));
             $valid = filter_var_array($form,$args);
-            if(!in_array(NULL || FALSE,$valid)&&in_array($valid['month'],cal_info(0)['months'])&&in_array($valid['entry_choice'],array('BUY','SELL'))){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE, MONTH AND ENTRY_CHOICE ARE VALID
+            if(!in_array(NULL || FALSE,$valid)&&in_array($valid['month'],cal_info(0)['months'])&&in_array($valid['entry_choice'],array('BUY','SELL'))&&in_array($valid['duration'],array('DAY','GTC'))){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE, MONTH AND ENTRY_CHOICE ARE VALID
                 echo "sve ok";//WITHOUT MESSAGE
                 return $valid;
             }else {
                 echo "NIJE PROSAO POLJE JE EMPTY ILI FALSE ILI MESEC ILI ENTRY CHOICE NE VALJA<BR>";//ERROR LOG
+            }
+        }else {
+            echo "NIJE PROSAO NEMA REFERERA ILI LOS TOKEN";//ERROR LOG
+        }
+    }
+    static function login($form) {
+        if(Validate::checkToken($form,"login_token")&&Validate::checkReferer(LOG_REFERER)){////IF THERE IS A TOKEN AND A REFERER            
+            array_filter($form, array('self', 'trim'));
+            $email = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
+            $pass = strlen($form['pass'])>=8?$form['pass']:NULL;
+            $valid = array('email'=>$pass,'pass'=>$email);
+            //var_dump($valid);
+            if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
+                echo "sve ok";//WITHOUT MESSAGE
+                return $valid;
+            }else {
+                echo "NIJE PROSAO POLJE JE EMPTY ILI FALSE<BR>";//ERROR LOG
             }
         }else {
             echo "NIJE PROSAO NEMA REFERERA ILI LOS TOKEN";//ERROR LOG

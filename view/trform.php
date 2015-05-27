@@ -22,11 +22,15 @@ $listnumb = 0;
         <div id="left">
             <!--***-->
             <!--ENTRY CHOICE SELECT-->
-            <label for="tr_form_entry_choice">Entry Choice</label>
+            <label for="tr_form_entry_choice">Entry Choice and duration</label><br>
             <select id="tr_form_entry_choice" name="entry_choice">
                 <option value="BUY">BUY</option>
                 <option value="SELL">SELL</option>
             </select>
+            <select id="tr_form_duration" name="duration">
+                <option value="DAY">DAY</option>
+                <option value="GTC">GTC</option>
+            </select><br>
             <!--***-->
             <!--FUTURE CONTRACT SELECT-->
             <label for="tr_form_future">Contract and number of contracts</label>
@@ -76,13 +80,13 @@ $listnumb = 0;
         <!--***-->
         <!--BUTTONS-->
         <div id="bottom">
-            <div id="bottom-left">
-                <button id="tr_form_cxl" type="submit" value="3" name="fk_tr_type">STR CXL</button>
-                <button id="tr_form_rpl" type="submit" value="2" name="fk_tr_type">CXL and RPL</button>
-            </div>
             <div id="bottom-right">                
                 <button id="tr_form_submit" type="submit" value="1" name="fk_tr_type">Send</button>
             </div>
+            <div id="bottom-left">
+                <button id="tr_form_cxl" type="submit" value="3" name="fk_tr_type">STR CXL</button>
+                <button id="tr_form_rpl" type="submit" value="2" name="fk_tr_type">CXL and RPL</button>
+            </div>            
         </div>
     </form>
 </div>
@@ -121,6 +125,7 @@ $listnumb = 0;
                 <td data-title='Month' class="td_hidden"><?php echo $tr->month ?></td>
                 <td data-title='Year' class="td_hidden"><?php echo $tr->year ?></td>              
                 <td data-title='Number of Contracts' class="td_hidden"><?php echo $tr->num_contr ?></td>
+                <td data-title='Duration' class="td_hidden"><?php echo $tr->duration ?></td>
                 <td data-title='Program name' class="td_hidden"><?php echo $tr->tr_program_name ?></td>
             </tr>
         <?php        
@@ -135,6 +140,7 @@ $listnumb = 0;
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");
     $("#tr_form_entry_choice").val("<?php echo $lastTR->entry_choice ?>");
+    $("#tr_form_duration").val("<?php echo $lastTR->duration ?>");
     $("#tr_form_entry_price").val("<?php echo $lastTR->entry_price ?>");
     $("#tr_form_price_target").val("<?php echo $lastTR->price_target ?>");    
     $("#tr_form_stop_loss").val("<?php echo $lastTR->stop_loss ?>");
@@ -150,6 +156,7 @@ $listnumb = 0;
                         tr_form_price_target:$(this).find("[data-title='Price Target']").html(),
                         tr_form_stop_loss:$(this).find("[data-title='Stop Loss']").html(),
                         tr_form_num_contr:$(this).find("[data-title='Number of Contracts']").html(),
+                        tr_form_duration:$(this).find("[data-title='Duration']").html(),
                         tr_form_month:$(this).find("[data-title='Month']").html(),
                         tr_form_year:$(this).find("[data-title='Year']").html(),
                         tr_form_program:$(this).find("[data-title='Program name']").html()

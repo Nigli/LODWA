@@ -8,7 +8,7 @@ class TradeRecDAO {
      **/
     public static function GetTradeRecs(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice,duration, "
                 . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
                 . "date, time "
                 . "FROM trade_rec "
@@ -25,7 +25,7 @@ class TradeRecDAO {
      **/
     public static function GetLast5TradeRecs(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice, "
+        $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,tr_program_name,description,entry_choice,duration, "
                 . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
                 . "date, time "
                 . "FROM trade_rec "
@@ -50,13 +50,14 @@ class TradeRecDAO {
      **/
     public static function InsertTradeRec($tr){
         $db= Conn::GetConnection();
-        $res = $db->prepare("INSERT INTO trade_rec (id_tr,fk_tr_type,fk_future,month,year,num_contr,entry_choice,entry_price,price_target,stop_loss,date,time) VALUES ('',:fk_tr_type,:fk_future,:month,:year,:num_contr,:entry_choice,:entry_price,:price_target,:stop_loss,:date,:time)");
+        $res = $db->prepare("INSERT INTO trade_rec (id_tr,fk_tr_type,fk_future,month,year,num_contr,entry_choice,duration,entry_price,price_target,stop_loss,date,time) VALUES ('',:fk_tr_type,:fk_future,:month,:year,:num_contr,:entry_choice,:duration,:entry_price,:price_target,:stop_loss,:date,:time)");
         $res->bindParam(':fk_future',$tr->fk_future);
         $res->bindParam(':fk_tr_type',$tr->fk_tr_type);
         $res->bindParam(':month',$tr->month);
         $res->bindParam(':year',$tr->year);
         $res->bindParam(':num_contr',$tr->num_contr);
         $res->bindParam(':entry_choice',$tr->entry_choice);
+        $res->bindParam(':duration',$tr->duration);
         $res->bindParam(':entry_price',$tr->entry_price);
         $res->bindParam(':price_target',$tr->price_target);
         $res->bindParam(':stop_loss',$tr->stop_loss);

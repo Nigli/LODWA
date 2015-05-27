@@ -13,6 +13,7 @@ class TradeRec {
     public $tr_program_name;
     public $description;
     public $entry_choice;
+    public $duration;
     public $entry_price;
     public $price_target;
     public $stop_loss;

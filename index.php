@@ -1,8 +1,8 @@
 <?php
 require 'config.php';
 use utils\Render;
-if(!isset($_GET['p']) || $_GET['p']=='trform') {
-    Render::view('trform');
+if(!isset($_GET['p'])) {
+    Render::view('login');
 }else {    
     Render::view($_GET['p']);
 }
