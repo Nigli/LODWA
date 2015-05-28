@@ -10,7 +10,6 @@ foreach ($futuresContr as $key => $future) {
 $last5trs = TradeRecDAO::GetLast5TradeRecs();//CREATING LAST 5 TR ARRAY WITH TRADE RECOMMENDATION OBJECTS
 $lastTR = $last5trs[0];//SELECTING LAST TR FROM $LAST5TRS
 $listnumb = 0;
-//var_dump($lastTR);
 ?>
 <div id="tr_form">
     <form method="post" action="processtr">

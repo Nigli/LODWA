@@ -1,11 +1,12 @@
 <?php
+/*
+ * @function trim_replace 
+ * trimming $_POST fields values from form   
+ * before calling next function filter_var_array
+ */
 namespace utils;
+use user\UserDAO;
 class Validate {
-    /*
-     * @function trim_replace 
-     * trimming $_POST fields values from form   
-     * before calling next function filter_var_array
-     */
     static function trim(&$value){
         $value = trim($value);
     }
@@ -19,6 +20,11 @@ class Validate {
     }
     static function checkReferer($referer){
         if (isset($_SERVER['HTTP_REFERER'])&&$_SERVER['HTTP_REFERER']==$referer){
+            return TRUE;
+        }
+    }
+    static function checkPassHash($pass,$hash){
+        if (password_verify($pass, $hash)) {
             return TRUE;
         }
     }
@@ -53,9 +59,8 @@ class Validate {
         if(Validate::checkToken($form,"login_token")&&Validate::checkReferer(LOG_REFERER)){////IF THERE IS A TOKEN AND A REFERER            
             array_filter($form, array('self', 'trim'));
             $email = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
-            $pass = strlen($form['pass'])>=8?$form['pass']:NULL;
-            $valid = array('email'=>$pass,'pass'=>$email);
-            //var_dump($valid);
+            $pass = strlen($form['pass'])>=4?$form['pass']:NULL;
+            $valid = array('email'=>$email,'pass'=>$pass);
             if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
                 echo "sve ok";//WITHOUT MESSAGE
                 return $valid;
