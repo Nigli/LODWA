@@ -46,5 +46,12 @@ class ReceiverDao {
         $res = $db->prepare("UPDATE receivers set active=0 WHERE id_receiver=:id");
         $res->bindParam(':id',$id_receiver);
         $res->execute();
+    }    
+    public static function GetTypes(){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT * FROM receiver_type");
+        $res->execute();
+        $receivers = $res->fetchAll(PDO::FETCH_ASSOC);
+        return $receivers;//!!!have to check if exists
     }
 }

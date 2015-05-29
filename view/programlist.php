@@ -31,5 +31,19 @@ $listnumb =0;
         <?php        
         }
         ?>
-    </table>    
+    </table>
+    <form>
+        <div id="bottom">
+            <div id="bottom-left">
+                <button id="change" type="button" value="change">Change</button>
+                <button id="update" type="submit" value="update">Update</button>
+            </div>
+        </div>
+    </form>
 </div>
+<script>
+    $("#change").on("click",function(){
+        $(this).hide();
+        $("#update").show();
+    });
+</script>

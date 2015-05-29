@@ -16,7 +16,6 @@ h2 {
 #top {
     overflow: hidden;
 }
-
 #left {
     float:left;
 }
@@ -41,20 +40,18 @@ h2 {
     clear: both;
     overflow: hidden;
 }
-#bottom-left button{    
-    font-size: 16px;
-    margin-right: 5px;    
-    height: 40px;
-}
 #bottom-right {    
     float: right;
-    height: 45px;
 }
-#bottom-right button{    
-    font-size: 20px;
-    height: 45px;
+#bottom-right button,#bottom-left button{    
+    font-size: 16px;
+    height: 40px;
 }
-#tr_form, #tr_list, #receiver_list, #program_list, #profile, #login {
+
+#bottom-left button{
+    margin-right: 5px;
+}
+#tr_form, #tr_list, #receiver_list_form, #program_list, #profile, #login {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
@@ -65,7 +62,9 @@ h2 {
 .visible {
     display: block;
 }
-
+.hidden {
+    display: none;
+}
 /***** HEADER *****/
 #header-outer {
     padding-top: 50px;
@@ -148,7 +147,6 @@ h2 {
 }
 #left,#right {        
     width: 44%;
-    margin-bottom: 15px;
 }
 #tr_form_entry_choice {
     width: 95%;
@@ -179,9 +177,25 @@ h2 {
     font-weight: bold;
     margin-bottom: 5px;
 }
+#profile input {    
+    width: 50%;
+}
+.readonly  {
+    border: none;
+    color: #58585A;
+    font-family: "PT Sans",sans-serif;
+    font-size: 16px;
+}
+#update {
+   display: none;
+}
 
+#program_list input {
+    width: 100%;
+}
 /******BUTTONS*******/
-#tr_form button, #profile button, #login button {
+#tr_form button, #profile button, #login button, #program_list button, #receiver_list_form button {
+    margin-top: 15px;
     font-family: 'PT Sans', sans-serif;        
     color: #ffffff;
     background-color: #1B3664;
@@ -194,7 +208,7 @@ h2 {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
-#tr_form button:hover, #profile button:hover, #login button:hover{
+#tr_form button:hover, #profile button:hover, #login button:hover, #program_list button:hover, #receiver_list_form button:hover{
     color: #1B3664;
     background-color: #eee;
     border: 1px solid #1B3664;
@@ -218,7 +232,6 @@ table td {
     border-bottom: 1px solid #eee;
     vertical-align: top;
     padding: 10px;
-    text-align: right;
 }
 table .td_hidden {
     display: none;
@@ -226,14 +239,29 @@ table .td_hidden {
 table tbody tr:hover {
     cursor: pointer;
 }
-#receiver_list table{
+#receiver_list_form table{
     font-size: 15px;
 }
 .activetr {
     background-color: #1B3664;
     color: #ffffff;
 }
-
+/******RECEIVERS LIST*******/
+#receiver_list_form input{
+    width: 100%;
+}
+#receiver_list_form select {
+    height: 25px;
+}
+#receiver_list_form  #email {
+    width: 200px;
+}
+.edit {
+    margin-top: 80px;
+}
+.edit td{
+    cursor: default;
+}
 /******HOVER EFFECTS*******/
 #header-nav a::before,
 #header-nav a::after,
@@ -284,10 +312,18 @@ table tbody tr::after {
     margin-left: -5px;
 }
 table tr th:first-child {
-    padding: 0px;
-    border-bottom-width: 0px;
+    text-align: left;
+    border-bottom: 2px solid #eee;
+    vertical-align: bottom;
+    padding: 0 10px 10px 10px;
+    text-align: left;
 }
-
+.edit tr th:first-child {
+    
+}
+.edit tr:before, .edit tr:after {
+    content: '';
+}
 /******RESPONSIVE*******/
 @media screen and (max-width: 960px) {
     #main,#wrapper {
@@ -326,7 +362,7 @@ table tr th:first-child {
     }*/
 
     /******TR FORM RESP*******/
-    #tr_list,#tr_form,#receiver_list,#program_list,#profile{
+    #tr_list,#tr_form,#receiver_list_form,#program_list,#profile, #login{
         width: 310px;
     }
     #left,#right {
@@ -389,5 +425,7 @@ table tr th:first-child {
         font-weight: bold;
         margin-bottom: 6px;
     }
-    table td:first-child:before { content: ''; }
+    table td:first-child:before { 
+        content: ''; 
+    }
 }

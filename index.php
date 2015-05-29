@@ -7,5 +7,5 @@ if($loged && isset($_GET['p'])) {
 }elseif($loged && !isset($_GET['p'])) {
     Render::view('trform');
 }else {
-    redirect_to("view/login.php");
+    redirect_to("login");
 }

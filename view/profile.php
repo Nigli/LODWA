@@ -1,26 +1,37 @@
 <?php
-use sender\SenderInfoDAO,sender\SenderInfo;
+use sender\SenderInfoDAO,sender\SenderInfo,utils\Session;
+$profile_token=md5(uniqid(rand(),true));
+Session::set('profile_token', $profile_token);
 $sender = new SenderInfo(SenderInfoDAO::GetSenderInfo());
 ?>
-<div id="profile">
+<form id="profile" method="post">
+    <input type="hidden" name="profile_token" value="<?php echo $profile_token ?>"/>
     <div id="top">
         <h2>Company Information</h2>
     </div>
-    <div id="left">    
+    <div id="left">
         <p>Company Name:</p>
-        <span><?php echo $sender->company_name;?></span><br>
+        <input class="readonly" type="text" value="<?php echo $sender->company_name;?>" readonly/><br>
         <p>Website:</p>
-        <span><a href="http://<?php echo $sender->company_website;?>" target="_blank"><?php echo $sender->company_website;?></a></span><br>
+        <input class="readonly" type="text" value="<?php echo $sender->company_website;?>" readonly/><br>
         <p>Address:</p>
-        <span><?php echo $sender->sender_address;?></span><br>
+        <input class="readonly" type="text" value="<?php echo $sender->sender_address;?>" readonly/><br>
         <p>Sender Name:</p>
-        <span><?php echo $sender->sender_from;?></span><br>
+        <input class="readonly" type="text" value="<?php echo $sender->sender_from;?>" readonly/><br>
         <p>Sender Email:</p>
-        <span><?php echo $sender->sender_email;?></span><br>        
+        <input class="readonly" type="email" value="<?php echo $sender->sender_email;?>" readonly/><br>  
     </div>
     <div id="bottom">
         <div id="bottom-left">
-            <a href=""><button id="profilechange" value="change">Change</button></a>
+            <button id="change" type="button" value="change">Change</button>
+            <button id="update" type="submit" value="update">Update</button>
         </div>
     </div>
-</div>
+</form>
+<script>
+    $("#change").on("click",function(){
+        $("#profile input").removeAttr("readonly").removeClass("readonly");
+        $(this).hide();
+        $("#update").show();
+    });
+</script>
