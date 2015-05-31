@@ -30,7 +30,7 @@ $type = ReceiverDao::GetTypes();
     <div id="bottom">
         <div id="bottom-left">
             <button id="reset" class="reset" type="reset" value="reset">Clear</button>
-            <button id="delete" class="delete" type="submit" value="delete">Delete</button>
+            <button id="delete" class="delete" type="submit" value="unsubscribe">Unsubscribe</button>
             <button id="update" class="update" type="submit" value="update">Update</button>
             <button id="new" type="submit" value="new">New</button>
         </div>
