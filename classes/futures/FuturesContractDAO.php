@@ -22,4 +22,12 @@ class FuturesContractDAO {
         $futures = $res->fetchObject("futures\FuturesContract");;
         return $futures;//!!!have to check if array exists
     }
+    
+    public static function GetFuturesNames(){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT  id_futures, futures_name FROM futures_cont");
+        $res->execute();
+        $futures = $res->fetchAll(PDO::FETCH_ASSOC);
+        return $futures;//!!!have to check if array exists
+    }
 }

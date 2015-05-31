@@ -23,8 +23,8 @@ $sender = new SenderInfo(SenderInfoDAO::GetSenderInfo());
     </div>
     <div id="bottom">
         <div id="bottom-left">
-            <button id="change" type="button" value="change">Change</button>
-            <button id="update" type="submit" value="update">Update</button>
+            <button id="change" class="change" type="button" value="change">Change</button>
+            <button id="update" class="update" type="submit" value="update">Update</button>
         </div>
     </div>
 </form>

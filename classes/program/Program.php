@@ -1,6 +1,7 @@
 <?php
 namespace program;
 class Program {
+    public $id_tr_program;
     public $tr_program_name;
     public $futures_name;
     

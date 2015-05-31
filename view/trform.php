@@ -16,7 +16,7 @@ $listnumb = 0;
         <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
         <div id="top">
             <h2>New Trade Rec</h2>    
-            <span id="tr_form_program"><?php include "process/program_name.php" ?></span><br>
+            <span id="rightspan"><?php include "process/program_name.php" ?></span><br>
         </div>
         <div id="left">
             <!--***-->
@@ -158,11 +158,11 @@ $listnumb = 0;
                         tr_form_duration:$(this).find("[data-title='Duration']").html(),
                         tr_form_month:$(this).find("[data-title='Month']").html(),
                         tr_form_year:$(this).find("[data-title='Year']").html(),
-                        tr_form_program:$(this).find("[data-title='Program name']").html()
+                        rightspan:$(this).find("[data-title='Program name']").html()
                     };
             $.each($tr_form, function(key, value){
                 $("#"+key).val(value);
-                $("#tr_form_program").html("Selected program: "+$tr_form.tr_form_program);
+                $("#rightspan").html("Selected program: "+$tr_form.rightspan);
             });
             $("tbody tr").removeClass("activetr");
             $(this).addClass("activetr");
@@ -174,7 +174,7 @@ $listnumb = 0;
     /**/
     $('#tr_form_future').on('change', function() {
         var value = $(this).val();
-        $('#tr_form_program').load('process/program_name.php?f='+value);
+        $('#rightspan').load('process/program_name.php?f='+value);
     });
     /**/
 </script>
