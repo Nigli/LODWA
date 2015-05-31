@@ -3,6 +3,7 @@ use receiver\ReceiverDao;
 $rec = ReceiverDao::GetActiveReceivers();
 $type = ReceiverDao::GetTypes();
 ?>
+<script src="js/receiver.js" type="text/javascript"></script>
 <form id="receiver_list_form" class="edit" method="post" action="process/process_receivers.php">
     <h2>Edit or add New</h2>
     <span id="rightspan">To edit receiver click on the table row</span><br>
@@ -29,10 +30,10 @@ $type = ReceiverDao::GetTypes();
     <input id="id_receiver" type="hidden" name="id_receiver" value=""/>    
     <div id="bottom">
         <div id="bottom-left">
-            <button id="reset" class="reset" type="reset" value="reset">Clear</button>
-            <button id="delete" class="delete" type="submit" value="unsubscribe">Unsubscribe</button>
-            <button id="update" class="update" type="submit" value="update">Update</button>
-            <button id="new" type="submit" value="new">New</button>
+            <button id="reset" class="reset" type="reset" name="submit" value="reset">Clear</button>
+            <button id="delete" class="delete" type="submit" name="submit" value="unsubscribe">Unsubscribe</button>
+            <button id="update" class="update" type="submit" name="submit" value="update">Update</button>
+            <button id="new" type="submit" name="submit" value="new">New</button>
         </div>
     </div>
 </form>
@@ -69,39 +70,3 @@ $type = ReceiverDao::GetTypes();
         ?>
     </table>
 </div>
-<script>
-    $("#receiver_list tbody tr").on("click", function () {
-        $rec = {type:$(this).find("[data-title='Receiver Type']").html(),
-                first_name:$(this).find("[data-title='First Name']").html(),
-                last_name:$(this).find("[data-title='Last Name']").html(),
-                email:$(this).find("[data-title='Email']").html(),
-                date_added:$(this).find("[data-title='Date Added']").html(),
-                na_number:$(this).find("[data-title='NA Number']").html(),
-                broker_acc:$(this).find("[data-title='Broker Account']").html(),
-                id_receiver:$(this).find("[data-title='Receiver Id']").html()
-                };
-        $.each($rec, function(key, value){
-            $("#"+key).val(value);
-            if($rec.broker_acc==1){
-                $("#broker_acc").prop('checked', true);
-            }else{
-                $("#broker_acc").prop('checked', false);
-            };
-        });
-        $("#receiver_list tbody tr").removeClass("activetr");
-        $(this).addClass("activetr");
-        $("html, body").animate({ scrollTop: 0 }, 600);
-        
-        $("#update").show();
-        $("#delete").show();
-        $("#reset").show();
-        $("#new").hide();
-    });    
-    $("#reset").on("click",function(){
-        $(this).hide();
-        $("#update").hide();
-        $("#delete").hide();
-        $("#new").show();
-        $("#id_receiver").val("");
-    });
-</script>

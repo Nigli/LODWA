@@ -11,6 +11,7 @@ $last5trs = TradeRecDAO::GetLast5TradeRecs();//CREATING LAST 5 TR ARRAY WITH TRA
 $lastTR = $last5trs[0];//SELECTING LAST TR FROM $LAST5TRS
 $listnumb = 0;
 ?>
+<script src="js/tr.js" type="text/javascript"></script>
 <div id="tr_form">
     <form method="post" action="processtr">
         <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
@@ -132,9 +133,7 @@ $listnumb = 0;
         ?>
     </table>    
 </div>
-<script>    
-    //    LOADING LAST TR TO FORM
-    /**/
+<script>
     $("#tr_form_future").val("<?php echo $lastTR->fk_future ?>");
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");
@@ -144,37 +143,4 @@ $listnumb = 0;
     $("#tr_form_price_target").val("<?php echo $lastTR->price_target ?>");    
     $("#tr_form_stop_loss").val("<?php echo $lastTR->stop_loss ?>");
     $("#tr_form_num_contr").val("<?php echo $lastTR->num_contr ?>");
-    /**/
-    //    LOADING CLICKED TR TO FORM
-    /**/
-    $(document).ready(function () {
-        $("tbody tr").on("click", function () {
-            $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
-                        tr_form_entry_choice:$(this).find("[data-title='Entry Choice']").html(),
-                        tr_form_entry_price:$(this).find("[data-title='Entry Price']").html(),
-                        tr_form_price_target:$(this).find("[data-title='Price Target']").html(),
-                        tr_form_stop_loss:$(this).find("[data-title='Stop Loss']").html(),
-                        tr_form_num_contr:$(this).find("[data-title='Number of Contracts']").html(),
-                        tr_form_duration:$(this).find("[data-title='Duration']").html(),
-                        tr_form_month:$(this).find("[data-title='Month']").html(),
-                        tr_form_year:$(this).find("[data-title='Year']").html(),
-                        rightspan:$(this).find("[data-title='Program name']").html()
-                    };
-            $.each($tr_form, function(key, value){
-                $("#"+key).val(value);
-                $("#rightspan").html("Selected program: "+$tr_form.rightspan);
-            });
-            $("tbody tr").removeClass("activetr");
-            $(this).addClass("activetr");
-            $("html, body").animate({ scrollTop: 0 }, 600);
-        });
-    });
-    /**/
-    //    LOADING PROGRAM NAME BASED ON SELECTED FUTURE CONTRACT SENDING VALUE WITH GET
-    /**/
-    $('#tr_form_future').on('change', function() {
-        var value = $(this).val();
-        $('#rightspan').load('process/program_name.php?f='+value);
-    });
-    /**/
 </script>

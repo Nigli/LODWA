@@ -3,6 +3,7 @@ use program\ProgramDAO,futures\FuturesContractDAO;
 $prog = ProgramDAO::GetProgram();
 $future = FuturesContractDAO::GetFutures();
 ?>
+<script src="js/program.js" type="text/javascript"></script>
 <div id="program_list_form" class="edit">
     <div id="top">
         <h2>Edit or add New</h2>
@@ -28,16 +29,16 @@ $future = FuturesContractDAO::GetFutures();
     </form>
     <div id="bottom">
         <div id="bottom-left">
-            <button form="left" id="reset-left" class="reset" type="reset" value="reset">Clear</button>
-            <button form="left" id="delete-left" class="delete" type="submit" value="delete">Delete</button>
-            <button form="left" id="update-left" class="update" type="submit" value="update">Update</button>
-            <button form="left" id="new-left" type="submit" value="new">New</button>
+            <button form="left" id="reset-left" class="reset" name="submit" type="reset" value="reset">Clear</button>
+            <button form="left" id="delete-left" class="delete" name="submit" type="submit" value="delete">Delete</button>
+            <button form="left" id="update-left" class="update" name="submit" type="submit" value="update">Update</button>
+            <button form="left" id="new-left" type="submit" name="submit" value="new">New</button>
         </div>
         <div id="bottom-right">
-            <button form="right" id="reset-right" class="reset" type="reset" value="reset">Clear</button>
-            <button form="right" id="delete-right" class="delete" type="submit" value="delete">Delete</button>
-            <button form="right" id="update-right" class="update" type="submit" value="update">Update</button>
-            <button form="right" id="new-right" type="submit" value="new">New</button>
+            <button form="right" id="reset-right" name="submit" class="reset" type="reset" value="reset">Clear</button>
+            <button form="right" id="delete-right" name="submit" class="delete" type="submit" value="delete">Delete</button>
+            <button form="right" id="update-right" name="submit" class="update" type="submit" value="update">Update</button>
+            <button form="right" id="new-right" name="submit" type="submit" value="new">New</button>
         </div>
     </div>
 </div>
@@ -101,54 +102,3 @@ $future = FuturesContractDAO::GetFutures();
         ?>
     </table>    
 </div>
-<script>
-    $("#futures_list tbody tr").on("click", function () {
-        $rec = {futures_name:$(this).find("[data-title='Futures Name']").html(),
-                futures_description:$(this).find("[data-title='Futures Description']").html(),
-                id_futures:$(this).find("[data-title='Id Futures']").html(),
-                futures_dec:$(this).find("[data-title='Futures Decimal Places']").html(),
-                futures_prog:$(this).find("[data-title='Futures Program Name']").html()
-                };
-        $.each($rec, function(key, value){
-            $("#"+key).val(value);
-            $("#futures_desc").html($rec.futures_description);
-        });
-        $("#futures_list tbody tr").removeClass("activetr");
-        $(this).addClass("activetr");
-        $("html, body").animate({ scrollTop: 0 }, 600);        
-        $("#update-left").show();
-            $("#delete-left").show();
-            $("#reset-left").show();
-            $("#new-left").hide();
-        });    
-    $("#reset-left").on("click",function(){
-        $(this).hide();
-        $("#update-left").hide();
-        $("#delete-left").hide();
-        $("#new-left").show();
-        $("#id_program").val("");
-        $("#futures_desc").html("");
-    });
-    $("#program_list tbody tr").on("click", function () {
-        $rec = {program_name:$(this).find("[data-title='Program Name']").html(),                
-                id_program:$(this).find("[data-title='Id Program']").html()
-                };
-        $.each($rec, function(key, value){
-            $("#"+key).val(value);
-        });
-        $("#program_list tbody tr").removeClass("activetr");
-        $(this).addClass("activetr");
-        $("html, body").animate({ scrollTop: 0 }, 600);        
-        $("#update-right").show();
-            $("#delete-right").show();
-            $("#reset-right").show();
-            $("#new-right").hide();
-        });    
-    $("#reset-right").on("click",function(){
-        $(this).hide();
-        $("#update-right").hide();
-        $("#delete-right").hide();
-        $("#new-right").show();
-        $("#id_futures").val("");
-    });
-</script>

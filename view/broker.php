@@ -4,6 +4,7 @@ $broker_token=md5(uniqid(rand(),true));
 Session::set('broker_token', $broker_token);
 $broker = new Broker(BrokerDAO::GetBrokerInfo());
 ?>
+<script src="js/broker.js" type="text/javascript"></script>
 <form id="profile">
     <input type="hidden" name="broker_token" value="<?php echo $broker_token ?>"/>
     <div id="top">
@@ -24,10 +25,3 @@ $broker = new Broker(BrokerDAO::GetBrokerInfo());
         </div>
     </div>
 </form>
-<script>
-    $("#change").on("click",function(){
-        $("#profile input").removeAttr("readonly").removeClass("readonly");
-        $(this).hide();
-        $("#update").show();
-    });
-</script>

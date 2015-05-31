@@ -8,7 +8,7 @@
         header("Location: " . $new_location);
     }
 //referer constants
-    define("TR_REFERER", "http://localhost/LODWP/trade");
-    define("LOG_REFERER", "http://localhost/LODWP/login");
+    define("TR_REFERER", "http://localhost/LODWA/trade");
+    define("LOG_REFERER", "http://localhost/LODWA/login");
 //    define("LOG_REFERER", "http://www.srlevel.com/login");
 //    define("TR_REFERER", "http://www.srlevel.com/trade");

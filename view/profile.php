@@ -4,6 +4,7 @@ $profile_token=md5(uniqid(rand(),true));
 Session::set('profile_token', $profile_token);
 $sender = new SenderInfo(SenderInfoDAO::GetSenderInfo());
 ?>
+<script src="js/profile.js" type="text/javascript"></script>
 <form id="profile" method="post">
     <input type="hidden" name="profile_token" value="<?php echo $profile_token ?>"/>
     <div id="top">
@@ -23,15 +24,8 @@ $sender = new SenderInfo(SenderInfoDAO::GetSenderInfo());
     </div>
     <div id="bottom">
         <div id="bottom-left">
-            <button id="change" class="change" type="button" value="change">Change</button>
-            <button id="update" class="update" type="submit" value="update">Update</button>
+            <button id="change" class="change" name="submit" type="button" value="change">Change</button>
+            <button id="update" class="update" name="submit" type="submit" value="update">Update</button>
         </div>
     </div>
 </form>
-<script>
-    $("#change").on("click",function(){
-        $("#profile input").removeAttr("readonly").removeClass("readonly");
-        $(this).hide();
-        $("#update").show();
-    });
-</script>
