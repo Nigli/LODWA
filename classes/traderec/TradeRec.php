@@ -27,13 +27,14 @@ class TradeRec {
         }
         foreach($array as $k=>$v){
             $this->$k = $v;
-            $this->title=$this->tr_type_name.": ".$this->entry_choice." ".$future->futures_name." ".$this->month;
+            $this->title=$this->entry_choice." ".$future->futures_name." ".$this->month." ".$this->year;
+            $this->op_entry_choice=($this->entry_choice=="BUY")?"SELL":"BUY";
             $this->tr_type_name=TradeRecDAO::GetTradeRecType($this->fk_tr_type);
             $this->futures_name = $future->futures_name;
             $this->tr_program_name = $future->tr_program_name;
             $this->description = $future->description;
             $this->date = date("j F Y");
-            $this->time = date("Gi");
+            $this->time = date("G:i");
         }
     }    
 }

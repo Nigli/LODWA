@@ -494,7 +494,18 @@
                                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
+                                                                                <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                    <span style="font-size:22px;">
+                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--BODY TITLE TRADE TYPE-->                                                            [TRADE_TYPE]:
+                                                                                        </span>                                                                                            
+                                                                                    </span>
+                                                                                </h1>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td valign="top" class="TextContent" style="padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                                                                                 <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
                                                                                     <span style="font-size:22px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
@@ -617,7 +628,7 @@
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE CHOICE-->                                                                                 <strong>
-                                                                                                    [ENTRY_CHOICE]
+                                                                                                    [ENTRY_CHOICE] (Entry)
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
@@ -632,13 +643,13 @@
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                                    Price Target
+                                                                                                    [OP_ENTRY_CHOICE] Stop Loss
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE TARGET PRICE-->                                                                           <strong>
-                                                                                                    [PRICE_TARGET]
+<!--TABLE STOP LOSS PRICE-->                                                                        <strong>
+                                                                                                    [STOP_LOSS]
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
@@ -646,13 +657,13 @@
                                                                                         <tr>
                                                                                             <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                                    Stop Loss
+                                                                                                    [OP_ENTRY_CHOICE] Profit Target
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE STOP LOSS PRICE-->                                                                        <strong>
-                                                                                                    [STOP_LOSS]
+<!--TABLE TARGET PRICE-->                                                                           <strong>
+                                                                                                    [PRICE_TARGET]
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
