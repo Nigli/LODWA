@@ -1,6 +1,7 @@
 $(function(){
     $("#receiver_list tbody tr").on("click", function () {
         $rec = {type:$(this).find("[data-title='Receiver Type']").html(),
+                type_id:$(this).find("[data-title='Receiver Type Id']").html(),
                 first_name:$(this).find("[data-title='First Name']").html(),
                 last_name:$(this).find("[data-title='Last Name']").html(),
                 email:$(this).find("[data-title='Email']").html(),

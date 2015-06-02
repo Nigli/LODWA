@@ -4,7 +4,8 @@ $(function(){
                 futures_description:$(this).find("[data-title='Futures Description']").html(),
                 id_futures:$(this).find("[data-title='Id Futures']").html(),
                 futures_dec:$(this).find("[data-title='Futures Decimal Places']").html(),
-                futures_prog:$(this).find("[data-title='Futures Program Name']").html()
+                futures_prog:$(this).find("[data-title='Futures Program Name']").html(),
+                fk_tr_program:$(this).find("[data-title='Futures Program Id']").html()
                 };
         $.each($rec, function(key, value){
             $("#"+key).val(value);

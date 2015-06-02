@@ -32,6 +32,7 @@ $user=='3'?include 'admin/receiverlist.php':'';
                 <td data-title='NA Number'><?php echo $receiver->na_number ?></td>
                 <td data-title='Broker Account'><?php echo $receiver->broker_account ?></td>                
                 <td data-title='Receiver Id' class="td_hidden"><?php echo $receiver->id_receiver ?></td>
+                <td data-title='Receiver Type Id' class="td_hidden"><?php echo $receiver->fk_receiver_type ?></td>
             </tr>
         <?php
         }

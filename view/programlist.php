@@ -26,6 +26,7 @@ $user=='3'?include 'admin/programlist.php':'';
                 <td data-title='Futures Description'><?php echo $fut->description ?></td>
                 <td data-title='Id Futures' class="td_hidden"><?php echo $fut->id_futures ?></td>
                 <td data-title='Futures Decimal Places' class="td_hidden"><?php echo $fut->dec_places ?></td>
+                <td data-title='Futures Program Id' class="td_hidden"><?php echo $fut->fk_tr_program ?></td>
                 <td data-title='Futures Program Name' class="td_hidden"><?php echo $fut->tr_program_name ?></td>
             </tr>
         <?php
