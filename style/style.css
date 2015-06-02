@@ -61,6 +61,10 @@ h2 {
 .hidden {
     display: none;
 }
+.clear {    
+    clear: both;
+    overflow: hidden;
+}
 /***** HEADER *****/
 #header-outer {
     padding-top: 50px;
@@ -138,7 +142,6 @@ h2 {
 }
 
 /***** TR FORM *****/
-
 #tr_form #right input, #tr_form #left input {
     margin: 10px 0px 30px 5px;
     padding: 4px;
@@ -212,6 +215,10 @@ h2 {
     width: 98%;
 }
 /******LOGIN*******/
+.notice {
+    color: #eb4102;
+    font-size: 22px;
+}
 #login input{
     margin-bottom: 15px;
 }

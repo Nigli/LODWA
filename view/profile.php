@@ -2,6 +2,7 @@
 use sender\SenderInfoDAO,sender\SenderInfo,utils\Session;
 $profile_token=md5(uniqid(rand(),true));
 Session::set('profile_token', $profile_token);
+$user = Session::get('user_status');
 $sender = new SenderInfo(SenderInfoDAO::GetSenderInfo());
 ?>
 <script src="js/profile.js" type="text/javascript"></script>
@@ -23,9 +24,6 @@ $sender = new SenderInfo(SenderInfoDAO::GetSenderInfo());
         <input class="readonly" type="email" value="<?php echo $sender->sender_email;?>" readonly/><br>  
     </div>
     <div id="bottom">
-        <div id="bottom-left">
-            <button id="change" class="change" name="submit" type="button" value="change">Change</button>
-            <button id="update" class="update" name="submit" type="submit" value="update">Update</button>
-        </div>
+        <?php $user=='3'?include 'admin/profile.html':''; ?>
     </div>
 </form>

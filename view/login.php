@@ -3,6 +3,7 @@ use utils\Session;
 require '../config.php';
 $login_token=md5(uniqid(rand(),true));
 Session::set('login_token', $login_token);
+$error = Session::get('err');
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -29,7 +30,8 @@ Session::set('login_token', $login_token);
                     <form method="post" action="process/process_login.php">
                         <input type="hidden" name="login_token" value="<?php echo $login_token ?>"/>
                         <div id="top">
-                            <h2>Please Log In</h2>  
+                            <h2>Please Log In</h2>
+                            <?php echo (isset($error)&&$error=='loginerror')?"<span id='rightspan' class='notice'>Your login credentials are not valid</span>":""; ?>
                         </div>
                         <div id="left">
                             <label for="email">Email address</label><br>
