@@ -1,8 +1,3 @@
-<?php
-use traderec\TradeRecDAO;
-$lasttrs = TradeRecDAO::GetTradeRecs();
-$listnumb = 0;
-?>
 <div id="tr_list">
     <h2>Trade Recommendations</h2>    
     <table>

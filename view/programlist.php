@@ -1,10 +1,3 @@
-<?php
-use program\ProgramDAO,futures\FuturesContractDAO,utils\Session;
-$prog = ProgramDAO::GetProgram();
-$future = FuturesContractDAO::GetFutures();
-$user = Session::get('user_status');
-$user=='3'?include 'admin/programlist.php':'';
-?>
 <div id="futures_list">
     <h2>Futures</h2>
     <table>

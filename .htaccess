@@ -8,6 +8,7 @@ RewriteRule ^profile$ index.php?p=profile [NC]
 RewriteRule ^broker$ index.php?p=broker [NC]
 RewriteRule ^processtr$ process/process_tr.php [NC]
 RewriteRule ^login$ view/login.php [NC]
+RewriteRule ^loginprocess$ process/process_login.php [NC]
 RewriteRule ^logout$ process/process_logout.php [NC]
 
 #RewriteRule ^DROP$ index.php [F] [NC]

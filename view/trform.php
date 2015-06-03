@@ -1,16 +1,3 @@
-<?php
-use traderec\TradeRecDAO,futures\FuturesContractDAO,utils\Session;
-//CREATING TOKEN AND PUTTING IT TO SESSION
-$tr_token=md5(uniqid(rand(),true));
-Session::set('tr_token', $tr_token);
-$futuresContr = FuturesContractDAO::GetFutures();//CREATIN FUTURES CONTRACT ARRAY WITH FUTURES CONTRACT OBJECTS
-foreach ($futuresContr as $key => $future) {
-    Session::set("cont".$future->id_futures,$future->tr_program_name);//PUTTING ID FUTURE AN PROGRAM NAME TO SESSION FOR DYNAMIC PROGRAM NAME ON FORM PAGE
-}
-$last5trs = TradeRecDAO::GetLast5TradeRecs();//CREATING LAST 5 TR ARRAY WITH TRADE RECOMMENDATION OBJECTS
-$lastTR = $last5trs[0];//SELECTING LAST TR FROM $LAST5TRS
-$listnumb = 0;
-?>
 <script src="js/tr.js" type="text/javascript"></script>
 <div id="tr_form">
     <form method="post" action="processtr">

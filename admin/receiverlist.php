@@ -1,5 +1,5 @@
 <script src="js/receiver.js" type="text/javascript"></script>
-<form id="receiver_list_form" class="edit" method="post" action="process/process_admin.php">
+<form id="receiver_list_form" class="edit" method="post" action="process/process_receiver.php">
     <h2>Edit or add New</h2>
     <span id="rightspan">To edit receiver click on the table row</span><br>
     <table>
@@ -25,10 +25,10 @@
     <input id="id_receiver" type="hidden" name="id_receiver" value=""/>    
     <div id="bottom">
         <div id="bottom-left">
-            <button id="reset" class="reset" type="reset" name="receiver_submit" value="reset">Clear</button>
-            <button id="delete" class="delete" type="submit" name="receiver_submit" value="unsubscribe">Unsubscribe</button>
-            <button id="update" class="update" type="submit" name="receiver_submit" value="update">Update</button>
-            <button id="new" type="submit" name="receiver_submit" value="new">New</button>
+            <button id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
+            <button id="delete" class="delete" type="submit" name="receiver-submit" value="unsubscribe">Unsubscribe</button>
+            <button id="update" class="update" type="submit" name="receiver-submit" value="update">Update</button>
+            <button id="new" type="submit" name="receiver-submit" value="new">New</button>
         </div>
     </div>
 </form>

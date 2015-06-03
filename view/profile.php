@@ -1,10 +1,5 @@
-<?php
-use sender\SenderInfoDAO,sender\SenderInfo,utils\Session;
-$user = Session::get('user_status');
-$sender = new SenderInfo(SenderInfoDAO::GetSenderInfo());
-?>
 <script src="js/profile.js" type="text/javascript"></script>
-<form id="profile" method="post" action="process/process_admin.php">
+<form id="profile" method="post" action="process/process_profile.php">
     <div id="top">
         <h2>Company Information</h2>
     </div>

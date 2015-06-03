@@ -1,10 +1,5 @@
-<?php
-use broker\Broker,broker\BrokerDAO,utils\Session;
-$user = Session::get('user_status');
-$broker = new Broker(BrokerDAO::GetBrokerInfo());
-?>
 <script src="js/broker.js" type="text/javascript"></script>
-<form id="profile" method="post"  action="process/process_admin.php">
+<form id="profile" method="post"  action="process/process_broker.php">
     <div id="top">
         <h2>Broker Information</h2>
     </div>

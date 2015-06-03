@@ -4,7 +4,7 @@
         <h2>Edit or add New</h2>
         <span id="rightspan">To edit future or program click on the table row</span><br>
     </div>
-    <form id="left" method="post" action="process/process_admin.php">
+    <form id="left" method="post" action="process/process_futures.php">
         <h3>Futures</h3>    
         <input id="id_futures" type="hidden" name="id_futures" value=""/>
         <label for="futures_name">Futures Name and Number of Decimal Places</label><br>
@@ -15,7 +15,7 @@
         <label for="fk_tr_program">Assign to Trading Strategy</label><br>
         <select id="fk_tr_program" name="futures_prog"><?php foreach ($prog as $k=>$program){echo "<option value='".$program->id_tr_program."'>".$program->tr_program_name."</option>"; }?></select><br>        
     </form>
-    <form id="right" method="post" action="process/process_admin.php">
+    <form id="right" method="post" action="process/process_program.php">
         <h3>Program</h3>     
         <input id="id_program" type="hidden" name="id_program" value=""/>
         <label for="program_name">Program Name</label><br>

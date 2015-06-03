@@ -1,10 +1,4 @@
-<?php
-use utils\Session;
-require '../config.php';
-$login_token=md5(uniqid(rand(),true));
-Session::set('login_token', $login_token);
-$error = Session::get('err');
-?>
+<?php include"../services/login.php";?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -27,7 +21,7 @@ $error = Session::get('err');
         <div id="wrapper">            
             <div id="main">
                 <div id="login">  
-                    <form method="post" action="process/process_login.php">
+                    <form method="post" action="loginprocess">
                         <input type="hidden" name="login_token" value="<?php echo $login_token ?>"/>
                         <div id="top">
                             <h2>Please Log In</h2>
