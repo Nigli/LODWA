@@ -560,7 +560,7 @@
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE PROGRAM NAME-->                                                                             Energy Long Short
+<!--TABLE STRATEGY NAME-->                                                                             Energy Long Short
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>

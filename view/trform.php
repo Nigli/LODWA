@@ -4,7 +4,7 @@
         <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
         <div id="top">
             <h2>New Trade Rec</h2>    
-            <span id="rightspan"><?php include "process/program_name.php" ?></span><br>
+            <span id="rightspan"><?php include "process/strategy_name.php" ?></span><br>
         </div>
         <div id="left">
             <!--***-->
@@ -46,7 +46,7 @@
             </select>
             <select id="tr_form_year" name="year">
                 <?php
-                for ($i = 0; $i < 5; $i++) {
+                for ($i = 0; $i < 10; $i++) {
                     $year=date('Y')+$i; ?>
                     <option value='<?php echo $year ?>'><?php echo $year ?></option>
                 <?php                
@@ -113,7 +113,7 @@
                 <td data-title='Year' class="td_hidden"><?php echo $tr->year ?></td>              
                 <td data-title='Number of Contracts' class="td_hidden"><?php echo $tr->num_contr ?></td>
                 <td data-title='Duration' class="td_hidden"><?php echo $tr->duration ?></td>
-                <td data-title='Program name' class="td_hidden"><?php echo $tr->tr_program_name ?></td>
+                <td data-title='Strategy name' class="td_hidden"><?php echo $tr->strategy_name ?></td>
             </tr>
         <?php        
         }

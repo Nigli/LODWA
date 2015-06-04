@@ -47,7 +47,7 @@ h2 {
 #bottom-left button{
     margin-right: 5px;
 }
-#tr_form, #tr_list, #receiver_list_form,#receiver_list,#program_list_form, #futures_list, #program_list, #profile, #login {
+#tr_form, #tr_list, #receiver_list_form,#receiver_list,#strategy_list_form, #futures_list, #strategy_list, #profile, #login {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
@@ -176,12 +176,12 @@ h2 {
 #tr_form_year,#tr_form_duration {  
     width: 22%;
 }
-/******FUTURES & PROGRAMS*******/
-#program_list_form #left {
+/******FUTURES & STRATEGIES*******/
+#strategy_list_form #left {
     border-right: 1px solid rgba(50, 50, 50, 0.2);
     padding-right: 55px;
 }
-#program_list_form #right input, #program_list_form #left input, #futures_desc {
+#strategy_list_form #right input, #strategy_list_form #left input, #futures_desc {
     margin: 10px 0px 30px 5px;
     padding: 4px;
     padding-left: 9px;
@@ -195,7 +195,7 @@ h2 {
     max-height:300px; 
     min-height:100px;
 }
-#program_list_form #right input {
+#strategy_list_form #right input {
     width: 92%;  
     height: 26px;
 }
@@ -207,7 +207,7 @@ h2 {
     width: 18%;
     height: 26px;
 }
-#program_list_form #left select {
+#strategy_list_form #left select {
     height: 36px;
     margin: 10px 0px 30px 5px;
     font-size: 16px;    
@@ -243,7 +243,7 @@ h2 {
    display: none;
 }
 /******BUTTONS*******/
-#tr_form button, #profile button, #login button, #receiver_list_form button, #program_list_form button {
+#tr_form button, #profile button, #login button, #receiver_list_form button, #strategy_list_form button {
     margin-top: 15px;
     font-family: 'PT Sans', sans-serif;        
     color: #ffffff;
@@ -257,7 +257,7 @@ h2 {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
-#tr_form button:hover, #profile button:hover, #login button:hover, #receiver_list_form button:hover, #program_list_form button:hover {
+#tr_form button:hover, #profile button:hover, #login button:hover, #receiver_list_form button:hover, #strategy_list_form button:hover {
     color: #1B3664;
     background-color: #eee;
     border: 1px solid #1B3664;
@@ -404,7 +404,7 @@ table tbody tr::after {
     }*/
 
     /******TR FORM RESP*******/
-    #tr_list,#tr_form,#receiver_list_form,#program_list,#profile, #login{
+    #tr_list,#tr_form,#receiver_list_form,#strategy_list,#profile, #login{
         width: 310px;
     }
     #left,#right {
@@ -412,7 +412,7 @@ table tbody tr::after {
     }
     #right {
         float:none;
-    }#tr_form_program {
+    }#tr_form_strategy {
         float: none;
         display: block;
         clear: both;

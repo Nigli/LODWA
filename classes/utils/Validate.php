@@ -30,7 +30,7 @@ class Validate {
             'fk_tr_type'    => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => 1)),
             'fk_future'     => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => 1)),
             'month'         => FILTER_SANITIZE_STRING,
-            'year'          => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => date('Y'), 'max_range' => date('Y')+5)),
+            'year'          => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => date('Y'), 'max_range' => date('Y')+10)),
             'entry_choice'  => FILTER_SANITIZE_STRING,
             'duration'      => FILTER_SANITIZE_STRING,
             'num_contr'     => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => 1)),
@@ -74,7 +74,7 @@ class Validate {
         $valid = $form;
         if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
                 return $valid;
-        }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_futures'])&&$valid['id_program']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {
+        }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_futures'])&&$valid['id_strategy']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {
                 return $valid;
         }else {
             echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG

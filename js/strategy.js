@@ -4,8 +4,8 @@ $(function(){
                 futures_description:$(this).find("[data-title='Futures Description']").html(),
                 id_futures:$(this).find("[data-title='Id Futures']").html(),
                 futures_dec:$(this).find("[data-title='Futures Decimal Places']").html(),
-                futures_prog:$(this).find("[data-title='Futures Program Name']").html(),
-                fk_tr_program:$(this).find("[data-title='Futures Program Id']").html()
+                futures_prog:$(this).find("[data-title='Futures Strategy Name']").html(),
+                fk_strategy:$(this).find("[data-title='Futures Strategy Id']").html()
                 };
         $.each($rec, function(key, value){
             $("#"+key).val(value);
@@ -24,17 +24,17 @@ $(function(){
         $("#update-left").hide();
         $("#delete-left").hide();
         $("#new-left").show();
-        $("#id_program").val("");
+        $("#id_strategy").val("");
         $("#futures_desc").html("");
     });
-    $("#program_list tbody tr").on("click", function () {
-        $rec = {program_name:$(this).find("[data-title='Program Name']").html(),                
-                id_program:$(this).find("[data-title='Id Program']").html()
+    $("#strategy_list tbody tr").on("click", function () {
+        $rec = {strategy_name:$(this).find("[data-title='Strategy Name']").html(),                
+                id_strategy:$(this).find("[data-title='Id Strategy']").html()
                 };
         $.each($rec, function(key, value){
             $("#"+key).val(value);
         });
-        $("#program_list tbody tr").removeClass("activetr");
+        $("#strategy_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);        
         $("#update-right").show();

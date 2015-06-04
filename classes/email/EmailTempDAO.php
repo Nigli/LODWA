@@ -1,7 +1,7 @@
 <?php
 namespace email;
 use PDO,utils\Conn;
-class EmailTemp {
+class EmailTempDAO {
     public static function GetEmailTemp(){
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_email,disclosure FROM email_temp WHERE id_email=1");

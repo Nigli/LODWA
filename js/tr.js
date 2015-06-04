@@ -9,11 +9,11 @@ $(function(){
                     tr_form_duration:$(this).find("[data-title='Duration']").html(),
                     tr_form_month:$(this).find("[data-title='Month']").html(),
                     tr_form_year:$(this).find("[data-title='Year']").html(),
-                    rightspan:$(this).find("[data-title='Program name']").html()
+                    rightspan:$(this).find("[data-title='Strategy name']").html()
                 };
         $.each($tr_form, function(key, value){
             $("#"+key).val(value);
-            $("#rightspan").html("Selected program: "+$tr_form.rightspan);
+            $("#rightspan").html("Selected strategy: "+$tr_form.rightspan);
         });
         $("tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
@@ -21,6 +21,6 @@ $(function(){
     });
     $('#tr_form_future').on('change', function() {
         var value = $(this).val();
-        $('#rightspan').load('process/program_name.php?f='+value);
+        $('#rightspan').load('process/strategy_name.php?f='+value);
     });
 });

@@ -506,17 +506,6 @@
                                                                                 </h1>
                                                                             </td>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 1px;padding-right: 18px;padding-bottom: 1px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <h3 style="display: block;font-family: Helvetica;font-style: normal;font-weight: normal;line-height: 125%;letter-spacing: 1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:16px;">
-                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BLOCK ORDER-->                                                                           Total Quantity for Block Order is: [BLOCK_ORDER]
-                                                                                        </span>                                                                                            
-                                                                                    </span>
-                                                                                </h3>
-                                                                            </td>
-                                                                        </tr>
                                                                     </tbody>
                                                                 </table>
                                                             </td>
@@ -553,7 +542,7 @@
                                                                                         </td>
                                                                                         </tr>
                                                                                 </table>
-                                                                                <table border="0" cellpadding="0" cellspacing="0" style="margin-top: 9px;border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
+                                                                                <table border="0" cellpadding="0" cellspacing="0" style="margin-top: 9px;border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color:#666666" width="551">
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -587,7 +576,7 @@
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE PROGRAM NAME-->                                                                          [PROGRAM]
+<!--TABLE STRATEGY NAME-->                                                                          [STRATEGY]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
@@ -673,6 +662,7 @@
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
+<!--TABLE BLOCK BREAKDOWN-->                                                        [BLOCK_BREAKDOWN]
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>

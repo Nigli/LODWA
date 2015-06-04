@@ -1,5 +1,5 @@
 <div id="receiver_list">  
-    <h2>Receivers List</h2>
+    <h2>Subscribers List</h2>
     <table>
         <thead>
             <tr>

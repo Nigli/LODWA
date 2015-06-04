@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
         <title></title>
 
         <!--[if gte mso 6]>
@@ -10,392 +10,383 @@
             table.ShareContent {width:100% !important;}
         </style>
         <![endif]-->
-    <style type="text/css">
-		#outlook a{
-			padding:0;
-		}
-		.ReadMsgBody{
-			width:100%;
-		}
-		.ExternalClass{
-			width:100%;
-		}
-		body{
-			margin:0;
-			padding:0;
-		}
-		a{
-			word-wrap:break-word !important;
-		}
-		img{
-			border:0;
-			height:auto !important;
-			line-height:100%;
-			outline:none;
-			text-decoration:none;
-		}
-		table,td{
-			border-collapse:collapse;
-			mso-table-lspace:0pt;
-			mso-table-rspace:0pt;
-		}
-		#bodyTable,#bodyCell{
-			height:100% !important;
-			margin:0;
-			padding:0;
-			width:100% !important;
-		}
-		#bodyCell{
-			padding:20px;
-		}
-		.Image{
-			vertical-align:bottom;
-		}
-		.TextContent img{
-			height:auto !important;
-		}
-		body,#bodyTable{
-			background-color:#dee0e2;
-		}
-		#bodyCell{
-			border-top:0;
-		}
-		#templateContainer{
-			border:0;
-		}
-		h1{
-			color:#666666 !important;
-			display:block;
-			font-family:Helvetica;
-			font-size:40px;
-			font-style:normal;
-			font-weight:bold;
-			line-height:125%;
-			letter-spacing:-1px;
-			margin:0;
-			text-align:left;
-		}
-		h2{
-			color:#404040 !important;
-			display:block;
-			font-family:Helvetica;
-			font-size:26px;
-			font-style:normal;
-			font-weight:bold;
-			line-height:125%;
-			letter-spacing:-.75px;
-			margin:0;
-                        border-bottom: 1px solid #cccccc;
-		}
-		h3{
-			color:#606060 !important;
-			display:block;
-			font-family:Helvetica;
-			font-size:18px;
-			font-style:normal;
-			font-weight:bold;
-			line-height:125%;
-			letter-spacing:-.5px;
-			margin:0;
-			text-align:left;
-		}
-		h4{
-			color:#808080 !important;
-			display:block;
-			font-family:Helvetica;
-			font-size:16px;
-			font-style:normal;
-			font-weight:bold;
-			line-height:125%;
-			letter-spacing:normal;
-			margin:0;
-			text-align:left;
-		}
-		h1 a,h2 a,h3 a,h4 a{
-			color:#6DC6DD;
-			font-weight:bold;
-			text-decoration:none;
-		}
-		#templatePreheader{
-			background-color:#ffffff;
-			border-top:0;
-			border-bottom:2px solid #F2F2F2;
-		}
-		.preheaderContainer .TextContent,.preheaderContainer .TextContent p{
-			color:#606060;
-			font-family:Helvetica;
-			font-size:11px;
-			line-height:125%;
-			text-align:left;
-		}
-		.preheaderContainer .TextContent a{
-			color:#606060;
-			font-weight:normal;
-			text-decoration:underline;
-		}
-		#templateHeader{
-			background-color:#ffffff;
-			border-top:0;
-			border-bottom:0;
-		}
-		.headerContainer .TextContent,.headerContainer .TextContent p{
-			color:#606060;
-			font-family:Helvetica;
-			font-size:15px;
-			line-height:150%;
-			text-align:left;
-		}
-		.headerContainer .TextContent a{
-			color:#505050;
-			font-weight:normal;
-			text-decoration:underline;
-		}
-		#templateBody{
-			background-color:#ffffff;
-			border-top:3px solid #DEE0E2;
-			border-bottom:3px solid #DEE0E2;
-		}
-		.bodyContainer .TextContent,.bodyContainer .TextContent p{
-			color:#606060;
-			font-family:Helvetica;
-			font-size:15px;
-			line-height:150%;
-			text-align:left;
-		}
-		.bodyContainer .TextContent a{
-			color:#505050;
-			font-weight:normal;
-			text-decoration:underline;
-		}
-		#templateFooter{
-			background-color:#cccccc;
-			border-top:0;
-			border-bottom:0;
-		}
-		.footerContainer .TextContent,.footerContainer .TextContent p{
-			color:#606060;
-			font-family:Helvetica;
-			font-size:11px;
-			line-height:125%;
-			text-align:left;
-		}
-		.footerContainer .TextContent a{
-			color:#606060;
-			font-weight:normal;
-			text-decoration:underline;
-		}
-	@media only screen and (max-width: 480px){
-		body,table,td,p,a,li,blockquote{
-			-webkit-text-size-adjust:none !important;
-		}
+        <style type="text/css">
+            body{
+                    margin:0;
+                    padding:0;
+            }
+            a{
+                    word-wrap:break-word !important;
+            }
+            img{
+                    border:0;
+                    height:auto !important;
+                    line-height:100%;
+                    outline:none;
+                    text-decoration:none;
+            }
+            table,td{
+                    border-collapse:collapse;
+                    mso-table-lspace:0pt;
+                    mso-table-rspace:0pt;
+            }
+            #bodyTable,#bodyCell{
+                    height:100% !important;
+                    margin:0;
+                    padding:0;
+                    width:100% !important;
+            }
+            #bodyCell{
+                    padding:20px;
+            }
+            .Image{
+                    vertical-align:bottom;
+            }
+            .TextContent img{
+                    height:auto !important;
+            }
+            body,#bodyTable{
+                    background-color:#dee0e2;
+            }
+            #bodyCell{
+                    border-top:0;
+            }
+            #templateContainer{
+                    border:0;
+            }
+            h1{
+                    color:#666666 !important;
+                    display:block;
+                    font-family:Helvetica;
+                    font-size:26px;
+                    font-style:normal;
+                    font-weight:bold;
+                    line-height:125%;
+                    letter-spacing:-1px;
+                    margin:0;
+                    text-align:left;
+            }
+            h2{
+                    color:#404040 !important;
+                    display:block;
+                    font-family:Helvetica;
+                    font-size:26px;
+                    font-style:normal;
+                    font-weight:bold;
+                    line-height:125%;
+                    letter-spacing:-.75px;
+                    margin:0;
+            }
+            h3{
+                    color:#606060 !important;
+                    display:block;
+                    font-family:Helvetica;
+                    font-size:18px;
+                    font-style:normal;
+                    font-weight:bold;
+                    line-height:125%;
+                    letter-spacing:-.5px;
+                    margin:0;
+                    text-align:left;
+            }
+            h4{
+                    color:#808080 !important;
+                    display:block;
+                    font-family:Helvetica;
+                    font-size:16px;
+                    font-style:normal;
+                    font-weight:bold;
+                    line-height:125%;
+                    letter-spacing:normal;
+                    margin:0;
+                    text-align:left;
+            }
+            h1 a,h2 a,h3 a,h4 a{
+                    color:#6DC6DD;
+                    font-weight:bold;
+                    text-decoration:none;
+            }
+            #templatePreheader{
+                    background-color:#ffffff;
+                    border-top:0;
+                    border-bottom:2px solid #F2F2F2;
+            }
+            .preheaderContainer .TextContent,.preheaderContainer .TextContent p{
+                    color:#606060;
+                    font-family:Helvetica;
+                    font-size:11px;
+                    line-height:125%;
+                    text-align:left;
+            }
+            .preheaderContainer .TextContent a{
+                    color:#606060;
+                    font-weight:normal;
+                    text-decoration:underline;
+            }
+            #templateHeader{
+                    background-color:#ffffff;
+                    border-top:0;
+                    border-bottom:0;
+            }
+            .headerContainer .TextContent,.headerContainer .TextContent p{
+                    color:#606060;
+                    font-family:Helvetica;
+                    font-size:15px;
+                    line-height:150%;
+                    text-align:left;
+            }
+            .headerContainer .TextContent a{
+                    color:#505050;
+                    font-weight:normal;
+                    text-decoration:underline;
+            }
+            #templateBody{
+                    background-color:#ffffff;
+                    border-top:3px solid #DEE0E2;
+                    border-bottom:3px solid #DEE0E2;
+            }
+            .bodyContainer .TextContent,.bodyContainer .TextContent p{
+                    color:#606060;
+                    font-family:Helvetica;
+                    font-size:15px;
+                    line-height:150%;
+                    text-align:left;
+            }
+            .bodyContainer .TextContent a{
+                    color:#505050;
+                    font-weight:normal;
+                    text-decoration:underline;
+            }
+            #templateFooter{
+                    background-color:#cccccc;
+                    border-top:0;
+                    border-bottom:0;
+            }
+            .footerContainer .TextContent,.footerContainer .TextContent p{
+                    color:#606060;
+                    font-family:Helvetica;
+                    font-size:11px;
+                    line-height:125%;
+                    text-align:left;
+            }
+            .footerContainer .TextContent a{
+                    color:#606060;
+                    font-weight:normal;
+                    text-decoration:underline;
+            }
+            @media only screen and (max-width: 480px){
+                    body,table,td,p,a,li,blockquote{
+                            -webkit-text-size-adjust:none !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		body{
-			width:100% !important;
-			min-width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    body{
+                            width:100% !important;
+                            min-width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[id=bodyCell]{
-			padding:10px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[id=bodyCell]{
+                            padding:10px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=TextContentContainer]{
-			width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=TextContentContainer]{
+                            width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=BoxedTextContentContainer]{
-			width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=BoxedTextContentContainer]{
+                            width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=mcpreview-image-uploader]{
-			width:100% !important;
-			display:none !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=mcpreview-image-uploader]{
+                            width:100% !important;
+                            display:none !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		img[class=Image]{
-			width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    img[class=Image]{
+                            width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=ImageGroupContentContainer]{
-			width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=ImageGroupContentContainer]{
+                            width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageGroupContent]{
-			padding:9px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageGroupContent]{
+                            padding:9px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageGroupBlockInner]{
-			padding-bottom:0 !important;
-			padding-top:0 !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageGroupBlockInner]{
+                            padding-bottom:0 !important;
+                            padding-top:0 !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		tbody[class=ImageGroupBlockOuter]{
-			padding-bottom:9px !important;
-			padding-top:9px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    tbody[class=ImageGroupBlockOuter]{
+                            padding-bottom:9px !important;
+                            padding-top:9px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=CaptionTopContent],table[class=CaptionBottomContent]{
-			width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=CaptionTopContent],table[class=CaptionBottomContent]{
+                            width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=CaptionLeftTextContentContainer],table[class=CaptionRightTextContentContainer],table[class=CaptionLeftImageContentContainer],table[class=CaptionRightImageContentContainer],table[class=ImageCardLeftTextContentContainer],table[class=ImageCardRightTextContentContainer]{
-			width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=CaptionLeftTextContentContainer],table[class=CaptionRightTextContentContainer],table[class=CaptionLeftImageContentContainer],table[class=CaptionRightImageContentContainer],table[class=ImageCardLeftTextContentContainer],table[class=ImageCardRightTextContentContainer]{
+                            width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
-			padding-right:18px !important;
-			padding-left:18px !important;
-			padding-bottom:0 !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
+                            padding-right:18px !important;
+                            padding-left:18px !important;
+                            padding-bottom:0 !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageCardBottomImageContent]{
-			padding-bottom:9px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageCardBottomImageContent]{
+                            padding-bottom:9px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageCardTopImageContent]{
-			padding-top:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageCardTopImageContent]{
+                            padding-top:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
-			padding-right:18px !important;
-			padding-left:18px !important;
-			padding-bottom:0 !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
+                            padding-right:18px !important;
+                            padding-left:18px !important;
+                            padding-bottom:0 !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageCardBottomImageContent]{
-			padding-bottom:9px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageCardBottomImageContent]{
+                            padding-bottom:9px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=ImageCardTopImageContent]{
-			padding-top:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=ImageCardTopImageContent]{
+                            padding-top:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=CaptionLeftContentOuter] td[class=TextContent],table[class=CaptionRightContentOuter] td[class=TextContent]{
-			padding-top:9px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=CaptionLeftContentOuter] td[class=TextContent],table[class=CaptionRightContentOuter] td[class=TextContent]{
+                            padding-top:9px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=CaptionBlockInner] table[class=CaptionTopContent]:last-child td[class=TextContent]{
-			padding-top:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=CaptionBlockInner] table[class=CaptionTopContent]:last-child td[class=TextContent]{
+                            padding-top:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=BoxedTextContentColumn]{
-			padding-left:18px !important;
-			padding-right:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=BoxedTextContentColumn]{
+                            padding-left:18px !important;
+                            padding-right:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[id=templateContainer],table[id=templatePreheader],table[id=templateHeader],table[id=templateBody],table[id=templateFooter]{
-			max-width:600px !important;
-			width:100% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[id=templateContainer],table[id=templatePreheader],table[id=templateHeader],table[id=templateBody],table[id=templateFooter]{
+                            max-width:600px !important;
+                            width:100% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		h1{
-			font-size:24px !important;
-			line-height:125% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    h1{
+                            font-size:24px !important;
+                            line-height:125% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		h2{
-			font-size:20px !important;
-			line-height:125% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    h2{
+                            font-size:20px !important;
+                            line-height:125% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		h3{
-			font-size:18px !important;
-			line-height:125% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    h3{
+                            font-size:18px !important;
+                            line-height:125% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		h4{
-			font-size:16px !important;
-			line-height:125% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    h4{
+                            font-size:16px !important;
+                            line-height:125% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[class=BoxedTextContentContainer] td[class=TextContent]{
-			font-size:18px !important;
-			line-height:125% !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[class=BoxedTextContentContainer] td[class=TextContent]{
+                            font-size:18px !important;
+                            line-height:125% !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		table[id=templatePreheader]{
-			display:block !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    table[id=templatePreheader]{
+                            display:block !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=preheaderContainer] td[class=TextContent]{
-			font-size:14px !important;
-			line-height:115% !important;
-			padding-right:18px !important;
-			padding-left:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=preheaderContainer] td[class=TextContent]{
+                            font-size:14px !important;
+                            line-height:115% !important;
+                            padding-right:18px !important;
+                            padding-left:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=headerContainer] td[class=TextContent]{
-			font-size:18px !important;
-			line-height:125% !important;
-			padding-right:18px !important;
-			padding-left:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=headerContainer] td[class=TextContent]{
+                            font-size:18px !important;
+                            line-height:125% !important;
+                            padding-right:18px !important;
+                            padding-left:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=bodyContainer] td[class=TextContent]{
-			font-size:18px !important;
-			line-height:125% !important;
-			padding-right:18px !important;
-			padding-left:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=bodyContainer] td[class=TextContent]{
+                            font-size:18px !important;
+                            line-height:125% !important;
+                            padding-right:18px !important;
+                            padding-left:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=footerContainer] td[class=TextContent]{
-			font-size:14px !important;
-			line-height:115% !important;
-			padding-right:18px !important;
-			padding-left:18px !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=footerContainer] td[class=TextContent]{
+                            font-size:14px !important;
+                            line-height:115% !important;
+                            padding-right:18px !important;
+                            padding-left:18px !important;
+                    }
 
-}	@media only screen and (max-width: 480px){
-		td[class=footerContainer] a[class=utilityLink]{
-			display:block !important;
-		}
+            }	@media only screen and (max-width: 480px){
+                    td[class=footerContainer] a[class=utilityLink]{
+                            display:block !important;
+                    }
 
-}		.bodyContainer .TextContent{
-			color:#666666;
-		}
-		.headerContainer .TextContent{
-			color:#000000;
-		}
-		.bodyContainer .TextContent a,.bodyContainer .TextContent a .yshortcuts{
-			color:#eb4102;
-		}
-		.footerContainer .TextContent{
-			font-size:9px;
-			line-height:110%;
-			text-align:left;
-		}
-</style>
+                }		
+            .bodyContainer .TextContent{
+                    color:#666666;
+            }
+            .headerContainer .TextContent{
+                    color:#000000;
+            }
+            .bodyContainer .TextContent a,.bodyContainer .TextContent a .yshortcuts{
+                    color:#eb4102;
+            }
+            .footerContainer .TextContent{
+                    font-size:9px;
+                    line-height:110%;
+                    text-align:left;
+            }
+        </style>
     </head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="margin: 0;padding: 0;background-color: #dee0e2;">
         <center>
@@ -494,20 +485,20 @@
                                                                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:22px;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;line-height: 150%;text-align: left;">
+                                                                                <h2 style="display: block;font-family: Helvetica;font-style: normal;font-weight: bold;line-height: 100%;letter-spacing: 0px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                    <span style="font-size:20px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--BODY TITLE TRADE TYPE-->                                                            [TRADE_TYPE]:
                                                                                         </span>                                                                                            
                                                                                     </span>
-                                                                                </h1>
+                                                                                </h2>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <h1 style="display: block;font-family: Helvetica;font-size: 40px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:22px;">
+                                                                            <td valign="top" class="TextContent" style="padding-top: 9px; padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;line-height: 150%;text-align: left;">
+                                                                                <h1 style="display: block;font-family: Helvetica;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 1px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                    <span style="font-size:26px;">
                                                                                         <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--BODY TITLE-->                                                                           [TITLE]
                                                                                         </span>                                                                                            
@@ -521,7 +512,7 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="margin-top: 25px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                     <tbody class="TextBlockOuter">
                                                         <tr>
                                                             <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -530,99 +521,99 @@
                                                                         <tr>
                                                                             <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                                                                                 <table border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
-                                                                                    <tr>
+                                                                                    <tr style="border-bottom: 2px solid #cccccc;">
                                                                                         <td style="width: 368px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <h2 style="border-bottom: 1px solid #cccccc; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                                <span style="font-size:18px;">
+                                                                                            <h3 style="display: block;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;text-align: left;color: #666666 !important;">
+                                                                                                <span style="font-size:22px;">
                                                                                                     <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                         Trade Details
                                                                                                     </span>
                                                                                                 </span>
-                                                                                            </h2>
+                                                                                            </h3>
                                                                                         </td>
                                                                                         <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <h2 style="border-bottom: 1px solid #cccccc; text-align: right; display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;color: #666666 !important;">
-                                                                                                <span style="font-size:18px;">
+                                                                                            <h3 style="text-align: right; display: block;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;color: #666666 !important;">
+                                                                                                <span style="font-size:22px;">
                                                                                                     <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                         [TRADE_TYPE]
                                                                                                     </span>
                                                                                                 </span>
-                                                                                            </h2>
+                                                                                            </h3>
                                                                                         </td>
                                                                                         </tr>
                                                                                 </table>
-                                                                                <table border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
+                                                                                <table border="0" cellpadding="0" cellspacing="0" style="margin-top: 9px;border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color:#666666" width="551">
                                                                                     <tbody>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Date
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE DATE-->                                                                                   [DATE]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Time (CST, Chicago)
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE TIME-->                                                                                   [TIME]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
-                                                                                        <tr>
+                                                                                        <tr style="border-bottom: 1px solid #cccccc;">
                                                                                             <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Strategy
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE PROGRAM NAME-->                                                                          [PROGRAM]
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE STRATEGY NAME-->                                                                          [STRATEGY]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Month
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE MONTH NAME-->                                                                             [MONTH]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
-                                                                                        <tr>
+                                                                                        <tr style="border-bottom: 1px solid #cccccc;">
                                                                                             <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Futures Contract
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE FUTURES CONTRACT-->                                                                       [FUTURE]
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE CHOICE-->                                                                                 <strong>
                                                                                                     [ENTRY_CHOICE] (Entry)
                                                                                                     </strong>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE CHOICE PRICE-->                                                                           <strong>
                                                                                                     [ENTRY_PRICE]
                                                                                                     </strong>
@@ -631,12 +622,12 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     [OP_ENTRY_CHOICE] Stop Loss
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE STOP LOSS PRICE-->                                                                        <strong>
                                                                                                     [STOP_LOSS]
                                                                                                     </strong>
@@ -645,12 +636,12 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     [OP_ENTRY_CHOICE] Profit Target
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE TARGET PRICE-->                                                                           <strong>
                                                                                                     [PRICE_TARGET]
                                                                                                     </strong>
@@ -659,12 +650,12 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Duration of orders
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:14px;"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE TRADE DURATION-->                                                                        [DURATION]
                                                                                                 </span></span>
                                                                                             </td>

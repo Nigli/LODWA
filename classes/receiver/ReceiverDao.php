@@ -34,11 +34,22 @@ class ReceiverDao {
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT SUM(num_subs * :num_contr) as total_subs "
                 . "FROM subscriptions "
-                . "WHERE fk_tr_program = :tr_prog LIMIT 1");
+                . "WHERE fk_strategy = :tr_prog LIMIT 1");
         $res->bindParam(':num_contr',$num_contr);
         $res->bindParam(':tr_prog',$tr_prog);
         $res->execute();
         $receivers = $res->fetchColumn();
+        return $receivers;//!!!have to check if exists
+    }
+    public static function GetSubscribers($tr_prog){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT first_name, last_name, num_subs "
+                . "FROM receivers "
+                . "LEFT JOIN subscriptions ON fk_id_client=id_receiver "
+                . "WHERE fk_strategy = :tr_prog");
+        $res->bindParam(':tr_prog',$tr_prog);
+        $res->execute();
+        $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists
     }
     public static function GetTypes(){

@@ -12,8 +12,8 @@ class Receiver {
     public $date_inactive;
     public $na_number;
     public $broker_account;
-    public $any_account;
     public $recipient;
+    public $num_subs;
     
     public function __construct(){        
         $this->recipient=$this->email.", ".$this->first_name." ".$this->last_name;

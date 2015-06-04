@@ -1,8 +1,8 @@
 <?php
-namespace program;
-class Program {
-    public $id_tr_program;
-    public $tr_program_name;
+namespace strategy;
+class Strategy {
+    public $id_strategy;
+    public $strategy_name;
     public $futures_name;
     
 public function __construct() {
