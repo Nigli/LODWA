@@ -4,7 +4,7 @@ use PDO,utils\Conn;
 class ReceiverDao {    
     public static function GetActiveReceivers(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,receiver_type,first_name,last_name,email,active,date_added,na_number,broker_account "
+        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,receiver_type,first_name,last_name,email,active,date_added,hash_email,na_number,broker_account "
                 . "FROM receivers "
                 . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
                 . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
@@ -12,17 +12,43 @@ class ReceiverDao {
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists
+    }            
+    public static function GetReceiverById($id){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,receiver_type,first_name,last_name,email,active,hash_email,date_added,na_number,broker_account "
+                . "FROM receivers "
+                . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
+                . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
+                . "WHERE id_receiver = :id_receiver "
+                . "LIMIT 1");        
+        $res->bindParam(':id_receiver',$id);
+        $res->execute();
+        $receivers = $res->fetchObject("receiver\Receiver");
+        return $receivers;//!!!have to check if exists
+    }
+    public static function GetReceiverByHash($hash_email){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,receiver_type,first_name,last_name,email,active,hash_email,date_added,na_number,broker_account "
+                . "FROM receivers "
+                . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
+                . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
+                . "WHERE hash_email = :hash_email "
+                . "LIMIT 1");
+        $res->bindParam(':hash_email',$hash_email);
+        $res->execute();
+        $receivers = $res->fetchObject("receiver\Receiver");
+        return $receivers;//!!!have to check if exists
     }
     public static function GetInactiveReceivers(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added FROM receivers WHERE active = 0");
+        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added,hash_email FROM receivers WHERE active = 0");
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists
     }
     public static function GetClientsReceivers(){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added,na_number,broker_account "
+        $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added,hash_email,na_number,broker_account "
                 . "FROM receivers "
                 . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
                 . "WHERE (fk_receiver_type=1 OR fk_receiver_type=2) AND active = 1");
@@ -63,17 +89,18 @@ class ReceiverDao {
         $db= Conn::GetConnection();            
         try{
             $rec = $db->prepare("INSERT INTO receivers "
-                . "(id_receiver,fk_receiver_type,first_name,last_name,email,date_added) "
-                . "VALUES('',:fk_receiver_type,:first_name,:last_name,:email,now())");
+                . "(id_receiver,fk_receiver_type,first_name,last_name,email,date_added,hash_email) "
+                . "VALUES('',:fk_receiver_type,:first_name,:last_name,:email,now(),md5(:email))");
             $rec->bindParam(':fk_receiver_type',$receiver['type']);
             $rec->bindParam(':first_name',$receiver['first_name']);
             $rec->bindParam(':last_name',$receiver['last_name']);
             $rec->bindParam(':email',$receiver['email']);
             $rec->execute();
+            var_dump($receiver);
         }catch(PDOException $e){
             echo "error". $e->getMessage();
         }
-         try{   
+         try{
             $lastid =  $db->lastInsertId();
             $cli = $db->prepare("INSERT INTO clients "
                 . "(id_client,fk_id_receiver,na_number,broker_account) "
@@ -116,7 +143,7 @@ class ReceiverDao {
                 . "SET active=0, "
                 . "date_inactive=now() "
                 . "WHERE id_receiver=:id");
-        $res->bindParam(':id',$receiver['id_receiver']);
+        $res->bindParam(':id',$receiver);
         $res->execute();
-    }    
+    }
 }

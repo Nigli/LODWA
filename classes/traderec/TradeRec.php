@@ -33,8 +33,6 @@ class TradeRec {
         $this->id_strategy = $future->fk_strategy;
         $this->strategy_name = $future->strategy_name;
         $this->description = $future->description;
-        $this->date = date("j F Y");
-        $this->time = date("G:i");
         $this->op_entry_choice=($this->entry_choice=="BUY")?"SELL":"BUY";
         $this->tr_type_name=TradeRecDAO::GetTradeRecType($this->fk_tr_type);
     }    

@@ -1,4 +1,4 @@
-<script src="js/broker.js" type="text/javascript"></script>
+<script src="js/profile.js" type="text/javascript"></script>
 <form id="profile" method="post"  action="process/process_broker.php">
     <div id="top">
         <h2>Broker Information</h2>

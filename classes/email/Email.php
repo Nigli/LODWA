@@ -1,6 +1,6 @@
 <?php
 namespace email;
-use sender\SenderInfo,sender\SenderInfoDAO,broker\Broker,broker\BrokerDAO,receiver\ReceiverDao,email\EmailTempDAO;
+use sender\SenderInfo,sender\SenderInfoDAO,broker\Broker,broker\BrokerDAO,receiver\ReceiverDao,email\EmailTempDAO,utils\Render;
 
 class Email{
     public $tr_type_name;
@@ -37,6 +37,8 @@ class Email{
     public $broker_name;
     public $broker_email;
     
+    public $id_receiver;
+    public $hash_email;
     public $recipients=array();
     public $disclosure;
     
@@ -56,25 +58,18 @@ class Email{
             $this->$k = $v;
         }
         foreach (ReceiverDao::GetClientsReceivers() as $k=>$v){
+            $this->hash_email = $v->hash_email;
+            $this->id_receiver = $v->id_receiver;
             $this->recipients[]=$v->recipient;
         }
         $this->num_tot_contr=ReceiverDao::GetClientsSubs($tr->fk_future, $tr->num_contr);
         $this->subscribers=ReceiverDao::GetSubscribers($this->id_strategy);
-        $this->disclosure=EmailTempDAO::GetEmailTemp()->disclosure;        
+        $this->disclosure=Email::nl2p(EmailTempDAO::GetEmailTemp()->disclosure);
+        $temps = Render::ViewTemp($this);
+        $this->broker_temp=$temps[0];
+        $this->client_temp=$temps[1];
     }
-    public static function TempView($email){
-        ob_start();
-        include '../view/block_breakdown.php';
-        $block_breakdown = ob_get_clean();
-        
-        $elements_in = array($email->title,$email->tr_type_name,$email->date,$email->time,$email->strategy_name,$email->month,$email->futures_name,$email->entry_choice,$email->op_entry_choice,$email->duration,$email->entry_price,$email->price_target,$email->stop_loss,$email->description,$email->disclosure,$email->sender_email,$email->company_website,$email->company_name,$email->sender_address,$block_breakdown);
-        $elements_out = array('[TITLE]','[TRADE_TYPE]','[DATE]','[TIME]','[STRATEGY]','[MONTH]','[FUTURE]','[ENTRY_CHOICE]','[OP_ENTRY_CHOICE]','[DURATION]','[ENTRY_PRICE]','[PRICE_TARGET]','[STOP_LOSS]','[DESCRIPTION]','[DISCLOSURE]','[SENDER_EMAIL]','[COMPANY_WEBSITE]','[COMPANY_NAME]','[ADDRESS]','[BLOCK_BREAKDOWN]');
-        
-        $broker_temp_view = file_get_contents('../emailtemplates/broker_temp.php');
-        $broker_temp = str_replace($elements_out, $elements_in, $broker_temp_view);
-        
-        $client_temp_view = file_get_contents('../emailtemplates/client_temp.php');
-        $client_temp = str_replace($elements_out, $elements_in, $client_temp_view);
-        return $temps=array($broker_temp,$client_temp);
+    public static function nl2p($text){
+         return "<p>" . str_replace("\n", "</p><p>", $text) . "</p>";
     }
 }

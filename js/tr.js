@@ -23,4 +23,19 @@ $(function(){
         var value = $(this).val();
         $('#rightspan').load('process/strategy_name.php?f='+value);
     });
+    
+    $("button").on("click", function (){
+        var entry_choice = $("#tr_form_entry_choice").val();
+        var price_target = $("#tr_form_price_target").val();
+        var stop_loss = $("#tr_form_stop_loss").val();
+        if(entry_choice === "BUY"){
+            if(price_target < stop_loss){
+                alert("Stop Loss price is higher then Price Target! Your entry choice is BUY!");
+            }
+        }else {
+            if(stop_loss < price_target) {
+                alert("Price Target is higher then Stop Loss price! Your entry choice is SELL!");
+            }
+        }
+    });
 });

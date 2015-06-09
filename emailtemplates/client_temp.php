@@ -768,7 +768,7 @@
                         <table border="0" cellpadding="0" cellspacing="0" id="canspamBar">
                             <tr>
                                 <td align="center" valign="top" style="color:#606060; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:150%; padding-right:20px; padding-bottom:5px; padding-left:20px; text-align:center;"><br />
-                                    <a href="*|ABOUT_LIST|*" target="_blank" style="color:#404040 !important;"><em>why did I get this?</em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="*|UNSUB|*" style="color:#404040 !important;">unsubscribe from this list</a>
+                                    <a href="http://localhost/LODWA/unsub/[SUBS_ID]" target="_blank" style="color:#404040 !important;"><em>why did I get this?</em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost/LODWA/unsub/[SUBS_ID]" target="_blank" style="color:#404040 !important;">unsubscribe from this list</a>
                                     <br />
                                     This email was sent from <a href="mailto:[SENDER_EMAIL]" target="_blank" style="color:#404040 !important;">[SENDER_EMAIL]</a>
                                     <br />

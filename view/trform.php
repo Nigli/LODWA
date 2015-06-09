@@ -58,11 +58,11 @@
         <!--PRICES INPUT-->
         <div id="right">
             <label for="tr_form_entry_price">Entry Price</label>
-            <input id="tr_form_entry_price" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"><br> 
-            <label for="tr_form_price_target">Price Target</label>
-            <input id="tr_form_price_target" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
+            <input id="tr_form_entry_price" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
             <label for="tr_form_stop_loss">Stop Loss</label>
-            <input id="tr_form_stop_loss" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/>
+            <input id="tr_form_stop_loss" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/><br>
+            <label for="tr_form_price_target">Price Target</label>
+            <input id="tr_form_price_target" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/>
         </div>
         <!--***-->
         <!--BUTTONS-->

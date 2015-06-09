@@ -47,7 +47,7 @@ h2 {
 #bottom-left button{
     margin-right: 5px;
 }
-#tr_form, #tr_list, #receiver_list_form,#receiver_list,#strategy_list_form, #futures_list, #strategy_list, #profile, #login {
+#tr_form, #tr_list, #receiver_list_form, #receiver_list, #emailtemp, #strategy_list_form, #futures_list, #strategy_list, #profile, #login, #unsub {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
@@ -239,11 +239,11 @@ h2 {
     font-family: "PT Sans",sans-serif;
     font-size: 16px;
 }
-.update,.reset,.delete {
+.update,.reset,.delete,.cancel {
    display: none;
 }
 /******BUTTONS*******/
-#tr_form button, #profile button, #login button, #receiver_list_form button, #strategy_list_form button {
+#tr_form button, #profile button, #login button, #unsub button, #receiver_list_form button, #emailtemp button, #strategy_list_form button {
     margin-top: 15px;
     font-family: 'PT Sans', sans-serif;        
     color: #ffffff;
@@ -257,7 +257,7 @@ h2 {
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
-#tr_form button:hover, #profile button:hover, #login button:hover, #receiver_list_form button:hover, #strategy_list_form button:hover {
+#tr_form button:hover, #profile button:hover, #login button:hover, #unsub button:hover,#emailtemp button:hover, #receiver_list_form button:hover, #strategy_list_form button:hover {
     color: #1B3664;
     background-color: #eee;
     border: 1px solid #1B3664;
@@ -313,6 +313,13 @@ table tbody tr:hover {
 }
 .edit td{
     cursor: default;
+}
+/******EMAIL TEMPS*******/
+#emailtemp textarea{
+    width: 740px;
+    height: 400px;
+    resize: none;
+    background-color: inherit;
 }
 /******HOVER EFFECTS*******/
 #header-nav a::before,
@@ -404,7 +411,7 @@ table tbody tr::after {
     }*/
 
     /******TR FORM RESP*******/
-    #tr_list,#tr_form,#receiver_list_form,#strategy_list,#profile, #login{
+    #tr_list,#tr_form,#receiver_list_form,#strategy_list,#profile, #login, #unsub{
         width: 310px;
     }
     #left,#right {

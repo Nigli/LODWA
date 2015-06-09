@@ -1,12 +1,12 @@
 $(function(){
     $("#change").on("click",function(){
-        $("#profile input").removeAttr("readonly").removeClass("readonly");
+        $("#emailtemp td textarea").removeAttr("disabled").removeClass("readonly");
         $(this).hide();
         $("#update").show();
         $("#cancel").show();
     });        
     $("#cancel").on("click",function(){
-        $("#profile input").attr("readonly","readonly").addClass("readonly");
+        $("#emailtemp td textarea").attr("disabled", "disabled").addClass("readonly");
         $(this).hide();
         $("#update").hide();
         $("#change").show();        

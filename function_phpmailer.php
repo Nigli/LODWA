@@ -13,15 +13,15 @@ function phpmailer($email){
     $mail->Port = $email->sender_port;                      // TCP port to connect to
     
     $mail->From = $email->sender_email;
-    $mail->FromName = $email->sender_from;
-    $mail->addReplyTo($email->sender_email, $email->sender_from);    
+    $mail->FromName = $email->sender_name;
+    $mail->addReplyTo($email->sender_email, $email->sender_name);    
     $mail->isHTML(true);                                    // Set email format to HTML
     $mail->Subject = $email->title;
     
     $mailclient = clone $mail;
     
     //mail to broker
-    $mail->addAddress($email->broker_email, $email->broker_to); 
+    $mail->addAddress($email->broker_email, $email->broker_name); 
     $mail->Body    = $email->broker_temp;
     $plain = $mail->html2text($mail->Body);
     $mail->AltBody = $plain;

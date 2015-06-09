@@ -1,6 +1,9 @@
 <?php
 require 'config.php';
-use receiver\ReceiverDao,traderec\TradeRecDAO;
+use receiver\ReceiverDao;
 
-                var_dump(TradeRecDAO::GetLast5TradeRecs());
+$rec=ReceiverDao::GetActiveReceivers();
 
+foreach ($rec as $k=>$v){
+    echo md5($v->email)."<br>";
+}
