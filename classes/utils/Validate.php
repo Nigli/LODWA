@@ -75,7 +75,7 @@ class Validate {
         $valid = $form;
         if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
                 return $valid;
-        }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_futures'])&&$valid['id_strategy']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {
+        }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_strategy'])&&$valid['id_strategy']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {
                 return $valid;
         }else {
             echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG

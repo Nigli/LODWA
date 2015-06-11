@@ -1,8 +1,8 @@
 <?php
 require '../config.php';
 use receiver\ReceiverDao,utils\Validate;
-$valid = Validate::admin($_POST);
 
+$valid = Validate::admin($_POST);
 if($valid['receiver-submit']==="update"){
     ReceiverDao::UpdateReceiver($valid);
 }elseif($valid['receiver-submit']==="unsubscribe"){
@@ -10,3 +10,4 @@ if($valid['receiver-submit']==="update"){
 }else{
     ReceiverDao::NewReceiver($valid);
 }
+redirect_to("receiverlist");

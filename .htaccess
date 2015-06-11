@@ -8,6 +8,13 @@ RewriteRule ^emailtemp index.php?p=emailtemp [NC]
 RewriteRule ^profile$ index.php?p=profile [NC]
 RewriteRule ^broker$ index.php?p=broker [NC]
 RewriteRule ^processtr$ process/process_tr.php [NC]
+RewriteRule ^processrec$ process/process_receiver.php [NC]
+RewriteRule ^processfut$ process/process_futures.php [NC]
+RewriteRule ^processstrat$ process/process_strategy.php [NC]
+RewriteRule ^processbrok$ process/process_broker.php [NC]
+RewriteRule ^processprof$ process/process_profile.php [NC]
+RewriteRule ^processemtemp$ process/process_emailtemp.php [NC]
+
 RewriteRule ^unsub/(.+) unsub.php?id=$1 [QSA]
 RewriteRule ^unsub/$ unsub.php
 RewriteRule ^unsubprocess$ process/process_unsub.php [NC]
@@ -16,3 +23,5 @@ RewriteRule ^loginprocess$ process/process_login.php [NC]
 RewriteRule ^logout$ process/process_logout.php [NC]
 
 #RewriteRule ^DROP$ index.php [F] [NC]
+Options -Indexes
+

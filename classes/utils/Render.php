@@ -48,18 +48,18 @@ class Render{
             ob_start();
             require "initialize_view/unsub.php";
             if($subscriber->fk_receiver_type=='1'){                
-                include "view/unsub_prime.php";
+                include "view/unsub/unsub_prime.php";
             }else{         
-                include "view/unsub_form.php";
+                include "view/unsub/unsub_form.php";
             }
             $content = ob_get_clean();
         }else {            
             ob_start();
             require "initialize_view/unsub.php";
-            include "view/unsub_confirm.html";
+            include "view/unsub/unsub_confirm.html";
             $content = ob_get_clean();
         }
-        $layout=file_get_contents("view/layout_unsub.html");
+        $layout=file_get_contents("view/unsub/layout_unsub.html");
         echo str_replace('[CONTENT]', $content, $layout);
     }    
     public static function ViewTemp($email){

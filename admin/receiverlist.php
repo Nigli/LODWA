@@ -1,5 +1,20 @@
 <script src="js/receiver.js" type="text/javascript"></script>
-<form id="receiver_list_form" class="edit" method="post" action="process/process_receiver.php">
+<div id="notice">
+    <div id="top">
+        <div id="notice-title">
+            <h4></h4>
+        </div>
+    </div>
+    <span id="notice-span"></span>
+    <div id="bottom">
+        <div id="bottom-left">            
+            <button id="notice-close" type="button" name="close">Close</button>
+            <button id="notice-cancel" type="button" name="cancel">Cancel</button>
+            <button id="notice-confirm" type="submit" name="receiver-submit" form="receiver_list_form">Confirm</button>
+        </div>
+    </div>
+</div>
+<form id="receiver_list_form" class="edit" method="post" action="processrec">
     <h2>Edit or add New</h2>
     <span id="rightspan">To edit receiver click on the table row</span><br>
     <table>
@@ -26,9 +41,15 @@
     <div id="bottom">
         <div id="bottom-left">
             <button id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
-            <button id="delete" class="delete" type="submit" name="receiver-submit" value="unsubscribe">Unsubscribe</button>
-            <button id="update" class="update" type="submit" name="receiver-submit" value="update">Update</button>
-            <button id="new" type="submit" name="receiver-submit" value="new">New</button>
+            <button id="delete" class="delete" type="button" name="receiver-submit" value="unsubscribe" onclick="getVal(this)">Unsubscribe</button>
+            <button id="update" class="update" type="button" name="receiver-submit" value="update" onclick="getVal(this)">Update</button>
+            <button id="new" type="button" name="receiver-submit" value="new" onclick="getVal(this)">New</button>
         </div>
     </div>
 </form>
+<script>           
+    function getVal(obj) {
+        document.getElementById("notice-confirm").value = obj.value;
+        rec_action = obj.value;
+    }
+</script>

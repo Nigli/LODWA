@@ -1,5 +1,5 @@
 <script src="js/emailtemp.js" type="text/javascript"></script>
-<form id="emailtemp" method="post"  action="process/process_emailtemp.php">
+<form id="emailtemp" method="post"  action="processemtemp">
     <div id="top">
         <h2>Email Disclosure</h2>
     </div>

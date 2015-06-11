@@ -70,6 +70,7 @@ class Email{
         $this->client_temp=$temps[1];
     }
     public static function nl2p($text){
-         return "<p>" . str_replace("\n", "</p><p>", $text) . "</p>";
+        $uptext= strtoupper($text);
+        return "<p>" . str_replace("\n", "</p><p>", $uptext) . "</p>";
     }
 }

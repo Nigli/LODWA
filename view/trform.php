@@ -1,82 +1,95 @@
 <script src="js/tr.js" type="text/javascript"></script>
-<div id="tr_form">
-    <form method="post" action="processtr">
-        <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
-        <div id="top">
-            <h2>New Trade Rec</h2>    
-            <span id="rightspan"><?php include "process/strategy_name.php" ?></span><br>
+<div id="notice">
+    <div id="top">
+        <div id="notice-title">
+            <h4></h4>
         </div>
-        <div id="left">
-            <!--***-->
-            <!--ENTRY CHOICE SELECT-->
-            <label for="tr_form_entry_choice">Entry Choice and duration</label><br>
-            <select id="tr_form_entry_choice" name="entry_choice">
-                <option value="BUY">BUY</option>
-                <option value="SELL">SELL</option>
-            </select>
-            <select id="tr_form_duration" name="duration">
-                <option value="DAY">DAY</option>
-                <option value="GTC">GTC</option>
-            </select><br>
-            <!--***-->
-            <!--FUTURE CONTRACT SELECT-->
-            <label for="tr_form_future">Contract and number of contracts</label>
-            <select id='tr_form_future' name='fk_future'>
-                <?php
-                foreach ($futuresContr as $key => $value) { 
-                ?>
-                    <option value='<?php echo $value->id_futures ?>' ><?php echo $value->futures_name ?></option>
-                <?php                
-                }
-                ?>
-            </select>
-            <input id="tr_form_num_contr" name="num_contr" type="number" value="" required="" min="1"/><br>
-            <!--***-->
-            <!--MONTH AND YEAR SELECT-->
-            <label for="tr_form_month">Month and Year</label><br>
-            <select id="tr_form_month" name="month">
-                <?php                 
-                $mon = cal_info(0)['months'];
-                for($i=1;$i<=count($mon);$i++){
-               ?>
-                    <option value='<?php echo $mon[$i] ?>'><?php echo $mon[$i] ?></option>
-                <?php                
-                }
-                ?>
-            </select>
-            <select id="tr_form_year" name="year">
-                <?php
-                for ($i = 0; $i < 10; $i++) {
-                    $year=date('Y')+$i; ?>
-                    <option value='<?php echo $year ?>'><?php echo $year ?></option>
-                <?php                
-                }
-                ?>
-            </select>
+    </div>
+    <span id="notice-span"></span>
+    <div id="bottom">
+        <div id="bottom-left">            
+            <button id="notice-close" type="button" name="close">Close</button>
+            <button id="notice-cancel" type="button" name="cancel">Cancel</button>
+            <button id="notice-confirm" type="submit" name="fk_tr_type" form="tr_form">Confirm</button>
         </div>
-        <!--***-->
-        <!--PRICES INPUT-->
-        <div id="right">
-            <label for="tr_form_entry_price">Entry Price</label>
-            <input id="tr_form_entry_price" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
-            <label for="tr_form_stop_loss">Stop Loss</label>
-            <input id="tr_form_stop_loss" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/><br>
-            <label for="tr_form_price_target">Price Target</label>
-            <input id="tr_form_price_target" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/>
-        </div>
-        <!--***-->
-        <!--BUTTONS-->
-        <div id="bottom">
-            <div id="bottom-right">                
-                <button id="tr_form_submit" type="submit" value="1" name="fk_tr_type">Send</button>
-            </div>
-            <div id="bottom-left">
-                <button id="tr_form_cxl" type="submit" value="3" name="fk_tr_type">STR CXL</button>
-                <button id="tr_form_rpl" type="submit" value="2" name="fk_tr_type">CXL and RPL</button>
-            </div>            
-        </div>
-    </form>
+    </div>
 </div>
+<form id="tr_form" method="post" action="processtr">
+    <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
+    <div id="top">
+        <h2>New Trade Rec</h2>    
+        <span id="rightspan"><?php include "process/strategy_name.php" ?></span><br>
+    </div>
+    <div id="left">
+        <!--***-->
+        <!--ENTRY CHOICE SELECT-->
+        <label for="tr_form_entry_choice">Entry Choice and duration</label><br>
+        <select id="tr_form_entry_choice" name="entry_choice">
+            <option value="BUY">BUY</option>
+            <option value="SELL">SELL</option>
+        </select>
+        <select id="tr_form_duration" name="duration">
+            <option value="DAY">DAY</option>
+            <option value="GTC">GTC</option>
+        </select><br>
+        <!--***-->
+        <!--FUTURE CONTRACT SELECT-->
+        <label for="tr_form_future">Contract and number of contracts</label>
+        <select id='tr_form_future' name='fk_future'>
+            <?php
+            foreach ($futuresContr as $key => $value) { 
+            ?>
+                <option value='<?php echo $value->id_futures ?>' ><?php echo $value->futures_name ?></option>
+            <?php                
+            }
+            ?>
+        </select>
+        <input id="tr_form_num_contr" name="num_contr" type="number" value="" required="" min="1"/><br>
+        <!--***-->
+        <!--MONTH AND YEAR SELECT-->
+        <label for="tr_form_month">Month and Year</label><br>
+        <select id="tr_form_month" name="month">
+            <?php                 
+            $mon = cal_info(0)['months'];
+            for($i=1;$i<=count($mon);$i++){
+           ?>
+                <option value='<?php echo $mon[$i] ?>'><?php echo $mon[$i] ?></option>
+            <?php                
+            }
+            ?>
+        </select>
+        <select id="tr_form_year" name="year">
+            <?php
+            for ($i = 0; $i < 10; $i++) {
+                $year=date('Y')+$i; ?>
+                <option value='<?php echo $year ?>'><?php echo $year ?></option>
+            <?php                
+            }
+            ?>
+        </select>
+    </div>
+    <!--***-->
+    <!--PRICES INPUT-->
+    <div id="right">
+        <label for="tr_form_entry_price">Entry Price</label>
+        <input id="tr_form_entry_price" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
+        <label for="tr_form_stop_loss">Stop Loss</label>
+        <input id="tr_form_stop_loss" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/><br>
+        <label for="tr_form_price_target">Price Target</label>
+        <input id="tr_form_price_target" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/>
+    </div>
+    <!--***-->
+    <!--BUTTONS-->
+    <div id="bottom">
+        <div id="bottom-right">                
+            <button id="tr_form_submit" type="button" value="1" name="fk_tr_type" onclick="getVal(this)">Trade</button>
+        </div>
+        <div id="bottom-left">
+            <button id="tr_form_cxl" type="button" value="3" name="fk_tr_type" onclick="getVal(this)">STR CXL</button>
+            <button id="tr_form_rpl" type="button" value="2" name="fk_tr_type" onclick='getVal(this)'>CXL and RPL</button>
+        </div>            
+    </div>
+</form>
 <!--***-->
 <!--LAST 5 TR TABLE-->
 <div id="tr_list">
@@ -120,7 +133,11 @@
         ?>
     </table>    
 </div>
-<script>
+<script>       
+    function getVal(obj) {
+        document.getElementById("notice-confirm").value = obj.value;
+        tr_type = obj.innerHTML;
+    }
     $("#tr_form_future").val("<?php echo $lastTR->fk_future ?>");
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");

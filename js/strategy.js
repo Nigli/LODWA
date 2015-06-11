@@ -49,4 +49,27 @@ $(function(){
         $("#new-right").show();
         $("#id_futures").val("");
     });
+    
+    $("#delete-left, #update-left, #new-left").on("click", function (){
+        $(".shade").show();
+        $("#notice").show();
+        $("#notice-title h4").html("Confirm Futures "+action);
+        $("#notice-confirm-futures").show(); 
+        $("#notice-cancel").show();        
+        $("#notice-close").hide(); 
+        $("#notice-confirm-strategy").hide(); 
+    });
+    $("#delete-right, #update-right, #new-right").on("click", function (){
+        $(".shade").show();
+        $("#notice").show();
+        $("#notice-title h4").html("Confirm Strategy "+action);
+        $("#notice-confirm-strategy").show(); 
+        $("#notice-cancel").show();        
+        $("#notice-close").hide(); 
+        $("#notice-confirm-futures").hide(); 
+    });
+    $("#notice-close, #notice-cancel").on("click", function (){
+        $(".shade").hide();
+        $("#notice").hide();
+    });
 });

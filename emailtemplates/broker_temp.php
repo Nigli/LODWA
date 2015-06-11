@@ -656,7 +656,9 @@
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE TRADE DURATION-->                                                                        [DURATION]
+                                                                                                    <strong>
+<!--TABLE TRADE DURATION-->                                                                         [DURATION]
+                                                                                                    </strong>
                                                                                                 </span></span>
                                                                                             </td>
                                                                                         </tr>

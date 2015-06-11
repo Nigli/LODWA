@@ -14,6 +14,5 @@ if(Validate::checkPassHash($valid['pass'], $user->user_pass)){
         redirect_to("strategylist");
     }
 }else {
-    //redirect_to("login");
     Session::set("err", "loginerror");
 }

@@ -1,4 +1,4 @@
-$(function(){
+$(function(){ 
     $("tbody tr").on("click", function () {
         $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
                     tr_form_entry_choice:$(this).find("[data-title='Entry Choice']").html(),
@@ -23,19 +23,41 @@ $(function(){
         var value = $(this).val();
         $('#rightspan').load('process/strategy_name.php?f='+value);
     });
-    
-    $("button").on("click", function (){
+    $("#tr_form button").on("click", function (){
+        var future = $("#tr_form_future option:selected" ).text();
+        var month = $("#tr_form_month").val();
+        var year = $("#tr_form_year").val();
         var entry_choice = $("#tr_form_entry_choice").val();
+        var entry_price = $("#tr_form_entry_price").val();
         var price_target = $("#tr_form_price_target").val();
         var stop_loss = $("#tr_form_stop_loss").val();
+        $(".shade").show();
+        $("#notice").show();
+        $("#notice-title h4").html("Confirm "+tr_type);
+        $("#notice-span").html(""+entry_choice+" "+future+" "+month+" "+year+"<br> At: "+entry_price+" Price target: "+price_target+" Stop Loss "+stop_loss+"");
+        $("#notice-confirm").show(); 
+        $("#notice-cancel").show();        
+        $("#notice-close").hide(); 
         if(entry_choice === "BUY"){
             if(price_target < stop_loss){
-                alert("Stop Loss price is higher then Price Target! Your entry choice is BUY!");
+                $("#notice-title h4").html("Notice!");
+                $("#notice-span").html("Stop Loss price is higher then Price Target! Your entry choice is BUY!");
+                $("#notice-close").show();                
+                $("#notice-confirm").hide();
+                $("#notice-cancel").hide();
             }
         }else {
             if(stop_loss < price_target) {
-                alert("Price Target is higher then Stop Loss price! Your entry choice is SELL!");
+                $("#notice-title h4").html("Notice!");
+                $("#notice-span").html("Price Target is higher then Stop Loss price! Your entry choice is SELL!");
+                $("#notice-close").show();                
+                $("#notice-confirm").hide();
+                $("#notice-cancel").hide();
             }
         }
+    });
+    $("#notice-close, #notice-cancel").on("click", function (){
+        $(".shade").hide();
+        $("#notice").hide();
     });
 });

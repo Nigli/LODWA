@@ -26,12 +26,24 @@ $(function(){
         $("#delete").show();
         $("#reset").show();
         $("#new").hide();
-    });    
+    });
     $("#reset").on("click",function(){
         $(this).hide();
         $("#update").hide();
         $("#delete").hide();
         $("#new").show();
         $("#id_receiver").val("");
+    });    
+    $("#delete, #update, #new").on("click", function (){
+        $(".shade").show();
+        $("#notice").show();
+        $("#notice-title h4").html("Confirm "+rec_action);
+        $("#notice-confirm").show(); 
+        $("#notice-cancel").show();        
+        $("#notice-close").hide(); 
+    });
+    $("#notice-close, #notice-cancel").on("click", function (){
+        $(".shade").hide();
+        $("#notice").hide();
     });
 });
