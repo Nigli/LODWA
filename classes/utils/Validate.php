@@ -1,10 +1,9 @@
 <?php
 namespace utils;
-use user\UserDAO;
 
 class Validate {
     static function filter(&$value){        
-        $value = str_replace("-","",$value);
+        $value = str_replace("--","",$value);
         $value = str_replace("=","",$value);
         $value = htmlspecialchars($value);
         $value = stripslashes($value);

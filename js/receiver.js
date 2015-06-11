@@ -1,14 +1,14 @@
 $(function(){
     $("#receiver_list tbody tr").on("click", function () {
-        $rec = {type:$(this).find("[data-title='Receiver Type']").html(),
-                type_id:$(this).find("[data-title='Receiver Type Id']").html(),
-                first_name:$(this).find("[data-title='First Name']").html(),
-                last_name:$(this).find("[data-title='Last Name']").html(),
-                email:$(this).find("[data-title='Email']").html(),
-                date_added:$(this).find("[data-title='Date Added']").html(),
-                na_number:$(this).find("[data-title='NA Number']").html(),
-                broker_acc:$(this).find("[data-title='Broker Account']").html(),
-                id_receiver:$(this).find("[data-title='Receiver Id']").html()
+        $rec = {type:$(this).find("[data-title='Receiver Type']").text(),
+                type_id:$(this).find("[data-title='Receiver Type Id']").text(),
+                first_name:$(this).find("[data-title='First Name']").text(),
+                last_name:$(this).find("[data-title='Last Name']").text(),
+                email:$(this).find("[data-title='Email']").text(),
+                date_added:$(this).find("[data-title='Date Added']").text(),
+                na_number:$(this).find("[data-title='NA Number']").text(),
+                broker_acc:$(this).find("[data-title='Broker Account']").text(),
+                id_receiver:$(this).find("[data-title='Receiver Id']").text()
                 };
         $.each($rec, function(key, value){
             $("#"+key).val(value);
@@ -33,6 +33,7 @@ $(function(){
         $("#delete").hide();
         $("#new").show();
         $("#id_receiver").val("");
+        $("#receiver_list tbody tr").removeClass("activetr");
     });    
     $("#delete, #update, #new").on("click", function (){
         $(".shade").show();

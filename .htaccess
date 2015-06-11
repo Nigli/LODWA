@@ -1,10 +1,10 @@
 RewriteEngine On
 
 RewriteRule ^trade$ index.php?p=trform [NC]
-RewriteRule ^trlist$ index.php?p=trlist [NC]
+RewriteRule ^trlist/([0-9]*)$ index.php?p=trlist&page=$1 [NC]
 RewriteRule ^strategylist$ index.php?p=strategylist [NC]
-RewriteRule ^receiverlist$ index.php?p=receiverlist [NC]
-RewriteRule ^emailtemp index.php?p=emailtemp [NC]
+RewriteRule ^receiverlist/([0-9]*)$ index.php?p=receiverlist&page=$1 [NC]
+RewriteRule ^emailtemp$ index.php?p=emailtemp [NC]
 RewriteRule ^profile$ index.php?p=profile [NC]
 RewriteRule ^broker$ index.php?p=broker [NC]
 RewriteRule ^processtr$ process/process_tr.php [NC]

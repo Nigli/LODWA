@@ -54,7 +54,12 @@ $(function(){
                 $("#notice-confirm").hide();
                 $("#notice-cancel").hide();
             }
-        }
+        }    
+    });
+    $("#notice-confirm").on("click", function (){
+        $(".shade").show();        
+        $("#notice").hide();
+        $("#spinner").addClass("spinner");
     });
     $("#notice-close, #notice-cancel").on("click", function (){
         $(".shade").hide();

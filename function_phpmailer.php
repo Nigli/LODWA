@@ -3,7 +3,7 @@ use phpmailer\PHPMailer;
 function phpmailer($email){
     $mail=new PHPMailer();
     $mail->isSMTP();                                        //*
-    $mail->SMTPDebug  = 2;                                  //*
+    //$mail->SMTPDebug  = 2;                                  //*
     $mail->Host = $email->sender_host; 
     //$mail->Host = "relay-hosting.secureserver.net";         // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication*

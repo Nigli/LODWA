@@ -265,7 +265,6 @@ button {
     background-color: #1B3664;
     width: 110px;
     padding: 7px;
-    border: 0px;
     cursor: pointer;
     border: none;	
     -webkit-transition: all 0.3s;
@@ -348,6 +347,43 @@ table tbody tr:hover {
 }
 #notice-close,#notice-cancel,#notice-confirm {
     display: none;
+}
+/******PAGINATE*******/
+#paginate {
+    margin: 40px auto;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+.element{
+    margin: 5px;
+    background-color: #1B3664;
+    display: inline-block;
+}
+.element a, .element span{
+    text-align: center;
+    width: 30px;
+    color: #eee;
+    display: block;
+    vertical-align: central;
+    padding: 5px;
+    text-decoration: none;	
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;    
+    border: 1px solid #1B3664;
+}
+.disabled {
+    background-color: #58585A;
+    pointer-events: none;
+}
+.element a:hover, .active a {
+    color: #1B3664;
+    background-color: #eee;
+    border: 1px solid #1B3664;
+}
+.active a {    
+    pointer-events: none;
 }
 /******HOVER EFFECTS*******/
 #header-nav a::before,

@@ -31,4 +31,7 @@
         }
         ?>
     </table>
+    <?php
+        echo $pagin->createLinks($links);
+    ?>
 </div>

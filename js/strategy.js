@@ -1,11 +1,11 @@
 $(function(){
     $("#futures_list tbody tr").on("click", function () {
-        $rec = {futures_name:$(this).find("[data-title='Futures Name']").html(),
-                futures_description:$(this).find("[data-title='Futures Description']").html(),
-                id_futures:$(this).find("[data-title='Id Futures']").html(),
-                futures_dec:$(this).find("[data-title='Futures Decimal Places']").html(),
-                futures_prog:$(this).find("[data-title='Futures Strategy Name']").html(),
-                fk_strategy:$(this).find("[data-title='Futures Strategy Id']").html()
+        $rec = {futures_name:$(this).find("[data-title='Futures Name']").text(),
+                futures_description:$(this).find("[data-title='Futures Description']").text(),
+                id_futures:$(this).find("[data-title='Id Futures']").text(),
+                futures_dec:$(this).find("[data-title='Futures Decimal Places']").text(),
+                futures_prog:$(this).find("[data-title='Futures Strategy Name']").text(),
+                fk_strategy:$(this).find("[data-title='Futures Strategy Id']").text()
                 };
         $.each($rec, function(key, value){
             $("#"+key).val(value);
@@ -25,11 +25,12 @@ $(function(){
         $("#delete-left").hide();
         $("#new-left").show();
         $("#id_strategy").val("");
-        $("#futures_desc").html("");
+        $("#futures_desc").html("");                
+        $("#futures_list tbody tr").removeClass("activetr");
     });
     $("#strategy_list tbody tr").on("click", function () {
-        $rec = {strategy_name:$(this).find("[data-title='Strategy Name']").html(),                
-                id_strategy:$(this).find("[data-title='Id Strategy']").html()
+        $rec = {strategy_name:$(this).find("[data-title='Strategy Name']").text(),                
+                id_strategy:$(this).find("[data-title='Id Strategy']").text()
                 };
         $.each($rec, function(key, value){
             $("#"+key).val(value);
@@ -48,6 +49,7 @@ $(function(){
         $("#delete-right").hide();
         $("#new-right").show();
         $("#id_futures").val("");
+        $("#futures_list tbody tr").removeClass("activetr");
     });
     
     $("#delete-left, #update-left, #new-left").on("click", function (){

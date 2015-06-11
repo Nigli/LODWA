@@ -2,7 +2,7 @@
 namespace traderec;
 use PDO,utils\Conn;
 class TradeRecDAO {
-    public static function GetTradeRecs(){
+    public static function GetTradeRecs($pagin){
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,id_strategy,strategy_name,description,entry_choice,duration, "
                 . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
@@ -10,7 +10,11 @@ class TradeRecDAO {
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
                 . "LEFT JOIN strategy ON fk_strategy=id_strategy "
-                . "ORDER BY id_tr DESC");
+                . "ORDER BY id_tr DESC "
+                . "LIMIT :limit "
+                . "OFFSET :offset");
+        $res->bindParam(':limit',$pagin->limit, PDO::PARAM_INT);
+        $res->bindParam(':offset',$pagin->offset, PDO::PARAM_INT); 
         $res->execute();
         $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
         return $tr;//!!!have to check if array exists
@@ -53,5 +57,12 @@ class TradeRecDAO {
         $res->bindParam(':price_target',$tr->price_target);
         $res->bindParam(':stop_loss',$tr->stop_loss);
         $res->execute();
+    }     
+    public static function CountTrades(){
+        $db= Conn::GetConnection();
+        $res = $db->prepare("SELECT COUNT(*) FROM trade_rec");
+        $res->execute();
+        $receivers = $res->fetchColumn();
+        return $receivers;//!!!have to check if exists
     }
 }
