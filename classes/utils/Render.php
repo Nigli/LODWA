@@ -1,20 +1,23 @@
 <?php
 namespace utils;
-use utils\Session;
+use utils\Session,user\User;
 class Render{
     public static function View($get){
         $user = Session::get('user_status');
+        $access = isset($get['p'])?User::pageAccess($user, $get['p']):"";
         if($user=="1"){
-            Render::ViewUser($get);
+            Render::ViewUser($get,$access);
         }elseif ($user=="3") {
-            Render::ViewAdmin($get);
+            Render::ViewAdmin($get,$access);
+        }elseif($user=="8"){
+             Render::ViewSuperAdmin($access);
         }
         else{
             redirect_to("login");
         }
     }
-    public static function ViewAdmin($get){        
-        if(isset($get['p'])) {
+    public static function ViewAdmin($get, $access){
+        if(isset($get['p'])&& $access) {
             ob_start();
             require "initialize_view/{$get['p']}.php";
             include "view/{$get['p']}.php";
@@ -28,8 +31,25 @@ class Render{
         $layout=file_get_contents("view/layout_admin.html");
         echo str_replace('[CONTENT]', $content, $layout);
     }
-    public static function ViewUser($get){        
-        if(isset($get['p'])) {
+    public static function ViewSuperAdmin($access){
+        if($access){
+            ob_start();
+            require "initialize_view/superadmin.php";
+            include "view/superadmin.php";
+            $content = ob_get_clean();         
+            $layout=file_get_contents("view/layout_superadmin.html");
+            echo str_replace('[CONTENT]', $content, $layout);
+        }else{
+            ob_start();
+            require "initialize_view/superadmin.php";
+            include "view/superadmin.php";
+            $content = ob_get_clean();         
+            $layout=file_get_contents("view/layout_superadmin.html");
+            echo str_replace('[CONTENT]', $content, $layout);
+        }
+    }
+    public static function ViewUser($get,$access){        
+        if(isset($get['p'])&& $access) {
             ob_start();
             require "initialize_view/{$get['p']}.php";
             include "view/{$get['p']}.php";

@@ -24,7 +24,7 @@ $(function(){
         $("#update-left").hide();
         $("#delete-left").hide();
         $("#new-left").show();
-        $("#id_strategy").val("");
+        $("#id_futures").val("");
         $("#futures_desc").html("");                
         $("#futures_list tbody tr").removeClass("activetr");
     });
@@ -48,11 +48,21 @@ $(function(){
         $("#update-right").hide();
         $("#delete-right").hide();
         $("#new-right").show();
-        $("#id_futures").val("");
-        $("#futures_list tbody tr").removeClass("activetr");
+        $("#id_strategy").val("");
+        $("#strategy_list tbody tr").removeClass("activetr");
     });
     
     $("#delete-left, #update-left, #new-left").on("click", function (){
+        var empty = false;
+        $("#left input[type='text'], #left input[type='number'], textarea").each(function(){
+            if($(this).val()===""){
+                this.focus();
+                empty = true;
+            }
+        });
+        if(empty){
+           return false;
+        };    
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h4").html("Confirm Futures "+action);
@@ -62,6 +72,16 @@ $(function(){
         $("#notice-confirm-strategy").hide(); 
     });
     $("#delete-right, #update-right, #new-right").on("click", function (){
+        var empty = false;
+        $("#right input[type='text']").each(function(){
+            if($(this).val()===""){
+                this.focus();
+                empty = true;
+            }
+        });
+        if(empty){
+           return false;
+        };    
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h4").html("Confirm Strategy "+action);

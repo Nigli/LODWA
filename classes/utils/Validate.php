@@ -80,6 +80,20 @@ class Validate {
             echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
         }
     }
+    
+    static function user($form) {  
+        array_filter($form, array('self', 'filter'));
+        $email = filter_var($form['email'], FILTER_VALIDATE_EMAIL);            
+        $form['email'] = $email;
+        $valid = $form;
+        if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
+                return $valid;
+        }elseif(isset($valid['id_user'])&&$valid['id_user']=='') {
+                return $valid;
+        }else {
+            echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+        }
+    }
     static function unsub($form) {  
         array_filter($form, array('self', 'filter'));
         $valid = $form;

@@ -62,13 +62,24 @@ h2 {
 #bottom-left button{
     margin-right: 5px;
 }
-#tr_form, #tr_list, #receiver_list_form, #receiver_list, #emailtemp, #strategy_list_form, #futures_list, #strategy_list, #profile, #login, #unsub, #notice {
+#tr_form, #tr_list, #tr_list_5, #receiver_list_form, #receiver_list, #emailtemp, #strategy_list_form, #futures_list, #strategy_list, #profile, #login, #unsub,#user_list,#user_list_form, #notice {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
     -webkit-box-shadow: 1px 1px 1px 1px rgba(50, 50, 50, 0.2);
     -moz-box-shadow:    1px 1px 1px 1px rgba(50, 50, 50, 0.2);
     box-shadow:         1px 1px 1px 1px rgba(50, 50, 50, 0.2);
+}
+#tr_list, #receiver_list, #user_list {
+    height: 440px;
+}
+#tr_list_5 {
+    height: 320px;
+}
+#tr_list table, #tr_list_5 table, #receiver_list table{
+    height: 270px;
+    display: block;
+    overflow: hidden;
 }
 .visible {
     display: block;
@@ -296,6 +307,7 @@ table th {
 }
 table tbody tr {    
     border-bottom: 1px solid #eee;
+    height: 43px;
 }
 table td {
     vertical-align: top;
@@ -307,7 +319,7 @@ table .td_hidden {
 table tbody tr:hover {
     cursor: pointer;
 }
-.activetr {
+.activetr, .activetr a {
     background-color: #1B3664;
     color: #ffffff;
     border-bottom-color: #1B3664;
@@ -316,11 +328,20 @@ table tbody tr:hover {
     width: 150px;
 }
 /******RECEIVERS LIST*******/
-#receiver_list_form input{
-    width: 100%;
+[data-title='Receiver Type']{
+    width: 115px;
 }
-#receiver_list_form select {
+[data-title='Date Added']{
+    width: 90px;
+}
+#receiver_list_form input, #user_list_form input{
+    width: 100%;    
     height: 25px;
+    padding-left: 4px;
+}
+#receiver_list_form select, #user_list_form select  {
+    height: 31px;    
+    padding-left: 4px;
 }
 #receiver_list_form  #email {
     width: 200px;
@@ -353,7 +374,6 @@ table tbody tr:hover {
     margin: 40px auto;
     text-align: center;
     width: 100%;
-    height: 100%;
 }
 .element{
     margin: 5px;
@@ -475,7 +495,7 @@ table tbody tr::after {
     }*/
 
     /******TR FORM RESP*******/
-    #tr_list,#tr_form,#receiver_list_form,#strategy_list,#profile, #login, #unsub{
+    #tr_list,#tr_list_5,#tr_form,#receiver_list_form,#strategy_list,#profile, #login, #unsub{
         width: 310px;
     }
     #left,#right {

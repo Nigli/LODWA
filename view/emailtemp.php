@@ -5,7 +5,7 @@
     </div>
     <table>
         <tr>
-            <td><textarea name="disclosure" class="readonly" disabled=""><?php echo $emailtemp->disclosure ?></textarea></td>
+            <td><textarea name="disclosure" class="readonly" disabled="" required=""><?php echo $emailtemp->disclosure ?></textarea></td>
         </tr>
     </table>
     <div id="bottom">

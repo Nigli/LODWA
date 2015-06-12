@@ -23,7 +23,21 @@ $(function(){
         var value = $(this).val();
         $('#rightspan').load('process/strategy_name.php?f='+value);
     });
+        
+        
+            
+    
     $("#tr_form button").on("click", function (){
+        var empty = false;
+        $("input[type='number']").each(function(){
+            if($(this).val()===""){
+                this.focus();
+                empty = true;
+            }
+        });
+        if(empty){
+           return false;
+        }
         var future = $("#tr_form_future option:selected" ).text();
         var month = $("#tr_form_month").val();
         var year = $("#tr_form_year").val();

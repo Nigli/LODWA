@@ -4,6 +4,7 @@ RewriteRule ^trade$ index.php?p=trform [NC]
 RewriteRule ^trlist/([0-9]*)$ index.php?p=trlist&page=$1 [NC]
 RewriteRule ^strategylist$ index.php?p=strategylist [NC]
 RewriteRule ^receiverlist/([0-9]*)$ index.php?p=receiverlist&page=$1 [NC]
+RewriteRule ^superadmin/([0-9]*)$ index.php?p=superadmin&page=$1 [NC]
 RewriteRule ^emailtemp$ index.php?p=emailtemp [NC]
 RewriteRule ^profile$ index.php?p=profile [NC]
 RewriteRule ^broker$ index.php?p=broker [NC]
@@ -14,6 +15,7 @@ RewriteRule ^processstrat$ process/process_strategy.php [NC]
 RewriteRule ^processbrok$ process/process_broker.php [NC]
 RewriteRule ^processprof$ process/process_profile.php [NC]
 RewriteRule ^processemtemp$ process/process_emailtemp.php [NC]
+RewriteRule ^processuser$ process/process_user.php [NC]
 
 RewriteRule ^unsub/(.+) unsub.php?id=$1 [QSA]
 RewriteRule ^unsub/$ unsub.php
@@ -21,6 +23,12 @@ RewriteRule ^unsubprocess$ process/process_unsub.php [NC]
 RewriteRule ^login$ view/login.php [NC]
 RewriteRule ^loginprocess$ process/process_login.php [NC]
 RewriteRule ^logout$ process/process_logout.php [NC]
+
+RewriteCond %{HTTP_HOST} ^localhost\.com [NC] 
+RewriteRule ^(.*)$ http://www.localhost.com/$1 [L,R=301]
+
+#RewriteCond %{HTTP_HOST} ^srlevel\.com [NC] 
+#RewriteRule ^(.*)$ http://www.srlevel.com/$1 [L,R=301]
 
 #RewriteRule ^DROP$ index.php [F] [NC]
 Options -Indexes

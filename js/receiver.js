@@ -34,8 +34,18 @@ $(function(){
         $("#new").show();
         $("#id_receiver").val("");
         $("#receiver_list tbody tr").removeClass("activetr");
-    });    
+    });
     $("#delete, #update, #new").on("click", function (){
+        var empty = false;
+        $("input[type='email'], input[type='text']").each(function(){
+            if($(this).val()===""){
+                this.focus();
+                empty = true;
+            }
+        });
+        if(empty){
+           return false;
+        };          
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h4").html("Confirm "+rec_action);

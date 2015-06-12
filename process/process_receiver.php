@@ -10,4 +10,4 @@ if($valid['receiver-submit']==="update"){
 }else{
     ReceiverDao::NewReceiver($valid);
 }
-redirect_to("receiverlist");
+redirect_to("receiverlist/1");

@@ -93,7 +93,7 @@
 </form>
 <!--***-->
 <!--LAST 5 TR TABLE-->
-<div id="tr_list">
+<div id="tr_list_5">
     <h2>Last 5 Trade Recommendations</h2>    
     <table>
         <thead>
