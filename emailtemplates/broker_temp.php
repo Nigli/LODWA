@@ -174,6 +174,9 @@
                     font-weight:normal;
                     text-decoration:underline;
             }
+            .cxl_rpl {
+                color: red;
+            }
             @media only screen and (max-width: 480px){
                     body,table,td,p,a,li,blockquote{
                             -webkit-text-size-adjust:none !important;
@@ -534,7 +537,7 @@
                                                                                         <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                             <h3 style="text-align: right; display: block;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;color: #666666 !important;">
                                                                                                 <span style="font-size:22px;">
-                                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    <span class="[COLOR_TRADE_TITLE]" style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                         [TRADE_TYPE]
                                                                                                     </span>
                                                                                                 </span>
@@ -627,7 +630,7 @@
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span class="[COLOR_STOP_LOSS]" style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE STOP LOSS PRICE-->                                                                        <strong>
                                                                                                     [STOP_LOSS]
                                                                                                     </strong>
@@ -641,7 +644,7 @@
                                                                                                 </span></span>
                                                                                             </td>
                                                                                             <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                <span class="[COLOR_TARGET]" style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE TARGET PRICE-->                                                                           <strong>
                                                                                                     [PRICE_TARGET]
                                                                                                     </strong>

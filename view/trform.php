@@ -73,21 +73,25 @@
     <!--PRICES INPUT-->
     <div id="right">
         <label for="tr_form_entry_price">Entry Price</label>
-        <input id="tr_form_entry_price" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
-        <label for="tr_form_stop_loss">Stop Loss</label>
-        <input id="tr_form_stop_loss" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/><br>
-        <label for="tr_form_price_target">Price Target</label>
-        <input id="tr_form_price_target" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/>
+        <input id="tr_form_entry_price" class="prices" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
+        <label for="tr_form_stop_loss">Stop Loss</label><br>
+        <input type="checkbox" name="rpl_price" value="stop_loss" class="checkbox_rep"/>
+        <input id="tr_form_stop_loss" class="prices" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/><br>
+        <label for="tr_form_price_target">Price Target</label><br>
+        <input type="checkbox" name="rpl_price" value="price_target"  class="checkbox_rep"/>
+        <input id="tr_form_price_target" class="prices" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/>
     </div>
     <!--***-->
     <!--BUTTONS-->
     <div id="bottom">
         <div id="bottom-right">                
-            <button id="tr_form_submit" type="button" value="1" name="fk_tr_type" onclick="getVal(this)">Trade</button>
+            <button id="tr_form_submit" type="button" value="1" name="fk_tr_type" onclick="getVal(this)">New Trade</button>
         </div>
         <div id="bottom-left">
-            <button id="tr_form_cxl" type="button" value="3" name="fk_tr_type" onclick="getVal(this)">STR CXL</button>
-            <button id="tr_form_rpl" type="button" value="2" name="fk_tr_type" onclick='getVal(this)'>CXL and RPL</button>
+            <button id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
+            <button id="tr_form_cxl" type="button" value="2" name="fk_tr_type" onclick="getVal(this)">STR CXL</button>
+            <button id="tr_form_rpl" type="button" value="cxl_rpl" name="fk_tr_type" onclick="getVal(this)">CXL and RPL</button>
+            <button id="tr_form_cancel" type="button">Cancel Trade</button>
         </div>            
     </div>
 </form>
@@ -138,7 +142,7 @@
     function getVal(obj) {
         document.getElementById("notice-confirm").value = obj.value;
         tr_type = obj.innerHTML;
-    }
+    };      
     $("#tr_form_future").val("<?php echo $lastTR->fk_future ?>");
     $("#tr_form_month").val("<?php echo $lastTR->month ?>");
     $("#tr_form_year").val("<?php echo $lastTR->year ?>");

@@ -3,7 +3,9 @@ namespace email;
 use sender\SenderInfo,sender\SenderInfoDAO,broker\Broker,broker\BrokerDAO,receiver\ReceiverDao,email\EmailTempDAO,utils\Render;
 
 class Email{
+    public $fk_tr_type;
     public $tr_type_name;
+    public $rpl_price;
     public $title;
     public $date;
     public $time;
@@ -48,6 +50,9 @@ class Email{
     public function __construct($tr) {
         foreach($tr as $k=>$v){
             $this->$k = $v;
+        }
+        if(isset($tr->rpl_price)){
+            $this->rpl_price=$tr->rpl_price;
         }
         $sender_info=new SenderInfo(SenderInfoDAO::GetSenderInfo());
         foreach($sender_info as $k=>$v){

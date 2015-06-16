@@ -4,9 +4,11 @@ require '../config.php';
 use traderec\TradeRec,traderec\TradeRecDAO,utils\Validate,email\Email;
 
 $valid = Validate::tr($_POST);
+var_dump($_POST);
 $tr = new TradeRec($valid);
 $email = new Email($tr);
+echo $email->broker_temp;
 //phpmailer($email);
-$insert=TradeRecDAO::InsertTradeRec($tr);
-sleep(5);
-redirect_to("trade");
+//$insert=TradeRecDAO::InsertTradeRec($tr);
+//sleep(5);
+//redirect_to("trade");

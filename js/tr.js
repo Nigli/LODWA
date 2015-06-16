@@ -1,4 +1,4 @@
-$(function(){ 
+$(function(){
     $("tbody tr").on("click", function () {
         $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
                     tr_form_entry_choice:$(this).find("[data-title='Entry Choice']").html(),
@@ -23,12 +23,30 @@ $(function(){
         var value = $(this).val();
         $('#rightspan').load('process/strategy_name.php?f='+value);
     });
-        
-        
-            
-    
-    $("#tr_form button").on("click", function (){
+    $("#tr_form_cancel").on("click",function(){
+        $("#tr_form_cancel, #tr_form_submit").hide();
+        $("#tr_form_cxl, #tr_form_rpl, .checkbox_rep, #reset").show();        
+        $("#tr_form_stop_loss, #tr_form_price_target").removeClass("prices");
+        $("#tr_form_stop_loss, #tr_form_price_target").addClass("replace");        
+    });
+    $("#reset").on("click",function(){
+        $(this).hide();
+        $("#tr_form_cancel, #tr_form_submit").show();
+        $("#tr_form_cxl, #tr_form_rpl, .checkbox_rep ").hide();
+        $("#tr_form_stop_loss, #tr_form_price_target").addClass("prices");        
+        $("tbody tr").removeClass("activetr");
+    });
+    $(".checkbox_rep").on("change", function(){
+        $(this).next("input").toggleClass("replace_selected");
+    });
+    $("#tr_form_cxl, #tr_form_rpl, #tr_form_submit").on("click", function (){        
         var empty = false;
+        if($(this).val() === "cxl_rpl"){
+            if($('input:checked').length === 0){
+                $('.checkbox_rep').addClass('checkbox_require');
+                empty = true;
+            };
+        };
         $("input[type='number']").each(function(){
             if($(this).val()===""){
                 this.focus();
@@ -69,6 +87,9 @@ $(function(){
                 $("#notice-cancel").hide();
             }
         }    
+    });    
+    $('.checkbox_rep').on("click",function (){
+        $('.checkbox_rep').removeClass('checkbox_require');
     });
     $("#notice-confirm").on("click", function (){
         $(".shade").show();        

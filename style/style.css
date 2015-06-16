@@ -175,9 +175,26 @@ h2 {
     font-size: 16px;
     line-height: 18px;
 }
-#tr_form #right input {
-    width: 92%;  
+#tr_form #right input{
     height: 26px;
+}
+#tr_form #right .replace {
+    width: 83%;
+}
+#tr_form #right .replace_selected {
+    color: #eb4102;
+    font-weight: bold;
+}
+#tr_form #right .prices{
+    width: 92%;
+}
+#tr_form #right .checkbox_rep {
+    margin: 6px;
+    padding: 0px;
+    vertical-align: middle;    
+}
+#tr_form #right .checkbox_require {
+    outline: 1px solid #F00;
 }
 #tr_form #left select {
     height: 36px;
@@ -265,7 +282,7 @@ h2 {
     font-family: "PT Sans",sans-serif;
     font-size: 16px;
 }
-.update,.reset,.delete,.cancel {
+.update,.reset,.delete,.cancel, #tr_form_cxl, #tr_form_rpl, .checkbox_rep {
    display: none;
 }
 /******BUTTONS*******/

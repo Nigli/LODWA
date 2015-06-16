@@ -4,6 +4,7 @@ use futures\FuturesContractDAO,traderec\TradeRecDAO;
 class TradeRec {
     public $id_tr;
     public $fk_tr_type;
+    public $rpl_price;
     public $tr_type_name;
     public $fk_future;
     public $futures_name;
@@ -26,6 +27,11 @@ class TradeRec {
     public function __construct($array=array()) {
         foreach($array as $k=>$v){
             $this->$k = $v;
+        }
+        if($this->rpl_price == "stop_loss"){
+            $this->fk_tr_type = "4";
+        }elseif ($this->rpl_price == "price_target") {
+            $this->fk_tr_type = "3";
         }
         $future = FuturesContractDAO::GetFuturesById($this->fk_future);
         $this->title=$this->entry_choice." ".$future->futures_name." ".$this->month." ".$this->year;      
