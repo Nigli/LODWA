@@ -48,7 +48,7 @@ $(function(){
         };          
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h4").html("Confirm "+rec_action);
+        $("#notice-title h3").html("Confirm "+rec_action);
         $("#notice-confirm").show(); 
         $("#notice-cancel").show();        
         $("#notice-close").hide(); 

@@ -534,7 +534,7 @@
                                                                                                 </span>
                                                                                             </h3>
                                                                                         </td>
-                                                                                        <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                        <td style="width: 700px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                             <h3 style="text-align: right; display: block;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;color: #666666 !important;">
                                                                                                 <span style="font-size:22px;">
                                                                                                     <span class="[COLOR_TRADE_TITLE]" style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">

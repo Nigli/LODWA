@@ -14,16 +14,16 @@ $(function(){
         $("#futures_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);        
-        $("#update-left").show();
-            $("#delete-left").show();
-            $("#reset-left").show();
-            $("#new-left").hide();
+        $("#update-right").show();
+            $("#delete-right").show();
+            $("#reset-right").show();
+            $("#new-right").hide();
         });    
-    $("#reset-left").on("click",function(){
+    $("#reset-right").on("click",function(){
         $(this).hide();
-        $("#update-left").hide();
-        $("#delete-left").hide();
-        $("#new-left").show();
+        $("#update-right").hide();
+        $("#delete-right").hide();
+        $("#new-right").show();
         $("#id_futures").val("");
         $("#futures_desc").html("");                
         $("#futures_list tbody tr").removeClass("activetr");
@@ -38,23 +38,23 @@ $(function(){
         $("#strategy_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);        
-        $("#update-right").show();
-            $("#delete-right").show();
-            $("#reset-right").show();
-            $("#new-right").hide();
+        $("#update-left").show();
+            $("#delete-left").show();
+            $("#reset-left").show();
+            $("#new-left").hide();
         });    
-    $("#reset-right").on("click",function(){
+    $("#reset-left").on("click",function(){
         $(this).hide();
-        $("#update-right").hide();
-        $("#delete-right").hide();
-        $("#new-right").show();
+        $("#update-left").hide();
+        $("#delete-left").hide();
+        $("#new-left").show();
         $("#id_strategy").val("");
         $("#strategy_list tbody tr").removeClass("activetr");
     });
     
-    $("#delete-left, #update-left, #new-left").on("click", function (){
+    $("#delete-right, #update-right, #new-right").on("click", function (){
         var empty = false;
-        $("#left input[type='text'], #left input[type='number'], textarea").each(function(){
+        $("#right input[type='text'], #right input[type='number'], textarea").each(function(){
             if($(this).val()===""){
                 this.focus();
                 empty = true;
@@ -65,15 +65,15 @@ $(function(){
         };    
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h4").html("Confirm Futures "+action);
+        $("#notice-title h3").html("Confirm Futures "+action);
         $("#notice-confirm-futures").show(); 
         $("#notice-cancel").show();        
         $("#notice-close").hide(); 
         $("#notice-confirm-strategy").hide(); 
     });
-    $("#delete-right, #update-right, #new-right").on("click", function (){
+    $("#delete-left, #update-left, #new-left").on("click", function (){
         var empty = false;
-        $("#right input[type='text']").each(function(){
+        $("#left input[type='text']").each(function(){
             if($(this).val()===""){
                 this.focus();
                 empty = true;
@@ -84,7 +84,7 @@ $(function(){
         };    
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h4").html("Confirm Strategy "+action);
+        $("#notice-title h3").html("Confirm Strategy "+action);
         $("#notice-confirm-strategy").show(); 
         $("#notice-cancel").show();        
         $("#notice-close").hide(); 

@@ -35,6 +35,7 @@ $(function(){
         $("#tr_form_cxl, #tr_form_rpl, .checkbox_rep ").hide();
         $("#tr_form_stop_loss, #tr_form_price_target").addClass("prices");        
         $("tbody tr").removeClass("activetr");
+        $("input").removeClass("replace_selected");
     });
     $(".checkbox_rep").on("change", function(){
         $(this).next("input").toggleClass("replace_selected");
@@ -65,8 +66,11 @@ $(function(){
         var stop_loss = $("#tr_form_stop_loss").val();
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h4").html("Confirm "+tr_type);
-        $("#notice-span").html(""+entry_choice+" "+future+" "+month+" "+year+"<br> At: "+entry_price+" Price target: "+price_target+" Stop Loss "+stop_loss+"");
+        $("#notice-title h3").html("Confirm "+tr_type);
+        $("#notice-span").html("<strong>"+entry_choice+"</strong> "+future+" "+month+" "+year+"<br>");        
+        $("#notice-entry-price").html("<strong>"+entry_choice+" (Entry):</strong> "+entry_price+"<br>");
+        $("#notice-stop-loss").html("<strong>Stop Loss: </strong>"+stop_loss+"<br>");
+        $("#notice-price-target").html("<strong>Price target: </strong>"+price_target);        
         $("#notice-confirm").show(); 
         $("#notice-cancel").show();        
         $("#notice-close").hide(); 

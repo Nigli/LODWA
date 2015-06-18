@@ -3,10 +3,13 @@
 <div id="notice">
     <div id="top">
         <div id="notice-title">
-            <h4></h4>
+            <h3></h3>
         </div>
     </div>
     <span id="notice-span"></span>
+    <span id="notice-entry-price"></span>
+    <span id="notice-stop-loss"></span>
+    <span id="notice-price-target"></span>
     <div id="bottom">
         <div id="bottom-left">            
             <button id="notice-close" type="button" name="close">Close</button>

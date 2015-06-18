@@ -2,7 +2,7 @@
 <div id="notice">
     <div id="top">
         <div id="notice-title">
-            <h4></h4>
+            <h3></h3>
         </div>
     </div>
     <span id="notice-span"></span>
@@ -30,10 +30,10 @@
         </thead>
         <tr>
             <td><select id="type_id" name="type"><?php foreach ($type as $k=>$v){echo "<option value='".$v['id_receiver_type']."'>".$v['receiver_type']."</option>"; }?></select></td>
-            <td><input id="first_name" name="first_name" type="text" value="" required=""/></td>
-            <td><input id="last_name" name="last_name" type="text" value="" required=""/></td>
-            <td><input id="email" name="email" type="email" value="" required=""/></td>
-            <td><input id="na_number" name="na_number" type="text" value="" required=""/></td>
+            <td><input id="first_name" name="first_name" type="text" value="" required="" placeholder="First Name"/></td>
+            <td><input id="last_name" name="last_name" type="text" value="" required="" placeholder="Last Name"/></td>
+            <td><input id="email" name="email" type="email" value="" required="" placeholder="Email"/></td>
+            <td><input id="na_number" name="na_number" type="text" value="" required="" placeholder="NA Number"/></td>
             <td><select id="broker_acc" name="broker_acc"><option value="1">Yes</option><option value="0">No</option></select></td>
         </tr>
     </table>

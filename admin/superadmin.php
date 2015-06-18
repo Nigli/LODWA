@@ -2,7 +2,7 @@
 <div id="notice">
     <div id="top">
         <div id="notice-title">
-            <h4></h4>
+            <h3></h3>
         </div>
     </div>
     <span id="notice-span"></span>

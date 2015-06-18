@@ -55,13 +55,6 @@ h2 {
 #bottom-left {    
     float: left;
 }
-#bottom-right button,#bottom-left button{    
-    font-size: 16px;
-    height: 40px;
-}
-#bottom-left button{
-    margin-right: 5px;
-}
 #tr_form, #tr_list, #tr_list_5, #receiver_list_form, #receiver_list, #emailtemp, #strategy_list_form, #futures_list, #strategy_list, #profile, #login, #unsub,#user_list,#user_list_form, #notice {
     margin:60px auto 0px auto;    
     padding: 15px;
@@ -90,6 +83,9 @@ h2 {
 .clear {    
     clear: both;
     overflow: hidden;
+}
+.icon_active {    
+    color: #1B3664;
 }
 /***** HEADER *****/
 #header-outer {
@@ -162,6 +158,10 @@ h2 {
     color: #1B3664;
     cursor:pointer;
 }
+
+#header-inner .respons{
+    display: none;
+}
 .settings i {
     margin-bottom: 12px;
     font-size: 26px;
@@ -220,9 +220,9 @@ h2 {
     width: 22%;
 }
 /******FUTURES & STRATEGIES*******/
-#strategy_list_form #left {
-    border-right: 1px solid rgba(50, 50, 50, 0.2);
-    padding-right: 55px;
+#strategy_list_form #right {
+    border-left: 1px solid rgba(50, 50, 50, 0.2);
+    padding-left: 50px;
 }
 #strategy_list_form #right input, #strategy_list_form #left input, #futures_desc {
     margin: 10px 0px 30px 5px;
@@ -231,6 +231,9 @@ h2 {
     font-size: 16px;
     line-height: 18px;
 }
+.strategy_form, .futures_form {
+    height: 500px;
+}
 #futures_desc {
     width: 93%;
     font-size: 12px;
@@ -238,19 +241,19 @@ h2 {
     max-height:300px; 
     min-height:100px;
 }
-#strategy_list_form #right input {
+#strategy_list_form  input {
     width: 92%;  
     height: 26px;
 }
 #futures_name {
-    width: 68%;  
+    width: 67%;  
     height: 26px;
 }
 #futures_dec{
-    width: 18%;
+    width: 17%;
     height: 26px;
 }
-#strategy_list_form #left select {
+#strategy_list_form #right select {
     height: 36px;
     margin: 10px 0px 30px 5px;
     font-size: 16px;    
@@ -286,7 +289,9 @@ h2 {
    display: none;
 }
 /******BUTTONS*******/
-button {
+button {  
+    font-size: 16px;
+    height: 40px;
     margin-top: 15px;
     font-family: 'PT Sans', sans-serif;        
     color: #ffffff;
@@ -383,6 +388,11 @@ table tbody tr:hover {
     z-index: 2;
     display: none;
 }
+#notice-span {
+    margin-bottom: 10px;
+    display: block;
+    font-size: 18px;
+}
 #notice-close,#notice-cancel,#notice-confirm {
     display: none;
 }
@@ -474,27 +484,54 @@ table tbody tr::after {
 .edit tr:before, .edit tr:after {
     content: '';
 }
+
 /******RESPONSIVE*******/
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 480px) {
     #main,#wrapper {
         width: 340px;
-    }
-    
+        padding-top: 45px;
+    }    
     /******NAV RESP*******/
-    #header-inner {
-        width: 340px;
+    #header-outer {
+        height: 40px;
+        width: 100%;        
+        position:fixed;        
+        z-index: 5;
     }
-    #header-nav {
+    #header-inner {
+        top:50px;
+    }
+    #header-inner, #header-nav {
+        width: 100%; 
+        position:fixed;
+    }
+    #header-nav {      
+        position: fixed;
+        z-index: 5;
         display: none;
-   }
-/*  #header-nav ul li {
+        top: 91px;
+        background: #ffffff;
+        -webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.5);
+        -moz-box-shadow:    0px 2px 2px 0px rgba(50, 50, 50, 0.5);
+        box-shadow:         0px 2px 2px 0px rgba(50, 50, 50, 0.5);
+    }
+    #header-nav a {
+        height: 30px;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    #header-nav ul li ul li:last-child a{
+        border-bottom: none;
+    }
+    #header-nav ul li {
         display: block;
         float: none;
+        padding: 0px;
     }
     #header-nav ul li ul {
         visibility: visible;
-        opacity: 1;
-        background: none;
+        opacity: 1;        
+        background: #ffffff;        
         -webkit-box-shadow: none;
         -moz-box-shadow:    none;
         box-shadow:         none;
@@ -503,34 +540,85 @@ table tbody tr::after {
         display: block;
         float: none;
     }
+    #header-inner .respons {
+        display: block;
+        float: right;
+        margin-right: 10px;
+        font-size: 32px;
+    }
     .settings i{
         display: none;
     }
+    .settings ul {
+        width: 100%;
+        position: relative;
+    }
     .settings{
         padding: 0px;
-        margin: 0px;
-    }*/
+        margin: 0px;        
+    }
+   /******NOTIFICATION RESP*******/
+   #notice {
+       width: 300px;
+       top: auto;
+       left: auto;
+   }
+   /******PAGINATION RESP*******/
+    .element:nth-child(n+2):not(:nth-last-child(-n+1)):not(.active) {
+        display: none;
+    }
+    #profile input, #broker input {
+        width: 100%;
+    }
 
     /******TR FORM RESP*******/
-    #tr_list,#tr_list_5,#tr_form,#receiver_list_form,#strategy_list,#profile, #login, #unsub{
+    #tr_list,#tr_list_5,#tr_form,#receiver_list_form,#strategy_list_form, #strategy_list,#profile, #login, #unsub, #futures_list, #receiver_list, #emailtemp {
         width: 310px;
+    }    
+    #tr_list_5, #tr_list_5 table, #tr_list, #tr_list table, #receiver_list, #receiver_list table {
+        height: 100%;
+    }
+    #rightspan{
+        float: left;
+        margin-bottom: 20px;
     }
     #left,#right {
         width: 100%;
+        overflow: visible;
     }
     #right {
         float:none;
-    }#tr_form_strategy {
-        float: none;
-        display: block;
-        clear: both;
     }
-    #bottom-right {    
-        float: none;
+    #tr_form #left, #strategy_list_form #left {
+        border-bottom: 1px solid #eee;
+        margin-bottom: 10px;
+    }
+    #bottom-right {
         height: 45px;
-        margin-bottom: 15px;
+    }  
+    button {
+        width: 100px;
+        font-size: 14px;
+    }        
+    #tr_form_cancel, #tr_form_submit{
+        width: 110px;
     }
-    
+    #emailtemp textarea, #receiver_list_form #email {
+        width: 100%;
+    }
+    #strategy_list_form #right {
+        border: none;
+        padding-left: 0px; 
+    }
+    .strategy_form, .futures_form {
+        height: 100%;
+    }
+    #strategy_list_form button {
+        margin-bottom: 10px;
+    }
+    #login input {
+        height: 26px;
+    }
     /******HOVER RESP*******/
     #header-nav a::before,
     #header-nav a::after,
@@ -540,10 +628,10 @@ table tbody tr::after {
     }
     
     /******TABLES RESP*******/
-    table,
-    tbody {
+    table, table tbody {
         display: block;
         width: 100%;
+        height: 100%;
     }
     thead { display: none; }
     table tr,
@@ -554,11 +642,12 @@ table tbody tr::after {
         text-align: left;
         white-space: normal;
     }
-    table tr {
+    table tbody tr {
         border-bottom: 1px solid #eee;
         padding-bottom: 11px;
         margin-bottom: 11px;
         clear: both;
+        height: 100%;
     }
     table th[data-title]:before,
     table td[data-title]:before {
@@ -577,5 +666,8 @@ table tbody tr::after {
     }
     table td:first-child:before { 
         content: ''; 
+    }    
+    [data-title="Futures Name"], [data-title="Date"], [data-title='Date Added'] {
+        width: 100%;
     }
 }

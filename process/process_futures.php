@@ -3,6 +3,8 @@ require '../config.php';
 use futures\FuturesContractDAO,utils\Validate;
 
 $valid = Validate::admin($_POST);
+var_dump($_POST);
+var_dump($valid);
 if($valid['futures-submit']==="update"){
     FuturesContractDAO::UpdateFutures($valid);    
 }elseif($valid['futures-submit']==="delete"){
@@ -10,4 +12,4 @@ if($valid['futures-submit']==="update"){
 }else{
     FuturesContractDAO::NewFutures($valid);
 }
-redirect_to("strategylist");
+//redirect_to("strategylist");

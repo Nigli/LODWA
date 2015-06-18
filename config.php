@@ -10,5 +10,7 @@
 //referer constants
     define("TR_REFERER", "http://localhost/LODWA/trade");
     define("LOG_REFERER", "http://localhost/LODWA/login");
+//    define("TR_REFERER", "http://192.168.0.101/LODWA/trade");
+//    define("LOG_REFERER", "http://192.168.0.101/LODWA/login");
 //    define("LOG_REFERER", "http://www.srlevel.com/login");
 //    define("TR_REFERER", "http://www.srlevel.com/trade");
