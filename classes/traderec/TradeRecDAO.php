@@ -2,7 +2,7 @@
 namespace traderec;
 use PDO,utils\Conn;
 class TradeRecDAO {
-    public static function GetTradeRecs($pagin){
+    public static function GetTradeRecs($pagin,$filter){
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,id_strategy,strategy_name,description,entry_choice,duration, "
                 . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
@@ -10,11 +10,15 @@ class TradeRecDAO {
                 . "FROM trade_rec "
                 . "LEFT JOIN futures_cont ON fk_future=id_futures "
                 . "LEFT JOIN strategy ON fk_strategy=id_strategy "
+                . "WHERE fk_future= IF(:filter_future = 0, fk_future, :filter_future) AND "
+                . "entry_choice= IF(:filter_entry_choice = 'ALL', entry_choice, :filter_entry_choice) "
                 . "ORDER BY id_tr DESC "
                 . "LIMIT :limit "
                 . "OFFSET :offset");
         $res->bindParam(':limit',$pagin->limit, PDO::PARAM_INT);
-        $res->bindParam(':offset',$pagin->offset, PDO::PARAM_INT); 
+        $res->bindParam(':offset',$pagin->offset, PDO::PARAM_INT);
+        $res->bindParam(':filter_future',$filter['fk_future'], PDO::PARAM_INT);        
+        $res->bindParam(':filter_entry_choice',$filter['entry_choice'], PDO::PARAM_STR);
         $res->execute();
         $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
         return $tr;//!!!have to check if array exists
@@ -40,7 +44,7 @@ class TradeRecDAO {
         $res->execute();
         $tr_type = $res->fetchColumn();;
         return $tr_type;
-    }
+    }    
     public static function InsertTradeRec($tr){
         $db= Conn::GetConnection();
         $res = $db->prepare("INSERT INTO trade_rec "
@@ -58,9 +62,13 @@ class TradeRecDAO {
         $res->bindParam(':stop_loss',$tr->stop_loss);
         $res->execute();
     }     
-    public static function CountTrades(){
+    public static function CountTrades($filter){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT COUNT(*) FROM trade_rec");
+        $res = $db->prepare("SELECT COUNT(*) FROM trade_rec "
+                . "WHERE fk_future= IF(:filter_future = 0, fk_future, :filter_future) AND "
+                . "entry_choice= IF(:filter_entry_choice = 'ALL', entry_choice, :filter_entry_choice)");
+        $res->bindParam(':filter_future',$filter['fk_future'], PDO::PARAM_INT);        
+        $res->bindParam(':filter_entry_choice',$filter['entry_choice'],PDO::PARAM_STR);
         $res->execute();
         $receivers = $res->fetchColumn();
         return $receivers;//!!!have to check if exists

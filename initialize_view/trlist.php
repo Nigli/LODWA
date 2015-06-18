@@ -1,8 +1,9 @@
 <?php
-use traderec\TradeRecDAO,utils\Pagination;
+use traderec\TradeRecDAO,utils\Pagination,futures\FuturesContractDAO;
 
-$count = TradeRecDAO::CountTrades();
 $links = isset($_GET)?$_GET:"1";
+$count = TradeRecDAO::CountTrades($links);
 $pagin = new Pagination($links,$count);
-$lasttrs = TradeRecDAO::GetTradeRecs($pagin);
+$lasttrs = TradeRecDAO::GetTradeRecs($pagin,$links);
 $listnumb = $pagin->offset;
+$futuresContr = FuturesContractDAO::GetFutures();

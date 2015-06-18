@@ -2,17 +2,19 @@
 namespace receiver;
 use PDO,utils\Conn;
 class ReceiverDao {    
-    public static function GetActiveReceivers($pagin){
+    public static function GetActiveReceivers($pagin,$filter){
         $db= Conn::GetConnection();
         $res = $db->prepare("SELECT id_receiver,fk_receiver_type,receiver_type,first_name,last_name,email,active,date_added,hash_email,na_number,broker_account "
                 . "FROM receivers "
                 . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
                 . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
-                . "WHERE active = 1 "
+                . "WHERE active = 1 AND "
+                . "fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
                 . "LIMIT :limit "
                 . "OFFSET :offset");
         $res->bindParam(':limit',$pagin->limit, PDO::PARAM_INT);
         $res->bindParam(':offset',$pagin->offset, PDO::PARAM_INT); 
+        $res->bindParam(':type',$filter['type'], PDO::PARAM_INT);
         $res->execute();
         $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
         return $receivers;//!!!have to check if exists
@@ -89,9 +91,11 @@ class ReceiverDao {
         $receivers = $res->fetchAll(PDO::FETCH_ASSOC);
         return $receivers;//!!!have to check if exists
     } 
-    public static function CountReceivers(){
+    public static function CountReceivers($filter){
         $db= Conn::GetConnection();
-        $res = $db->prepare("SELECT COUNT(*) FROM receivers");
+        $res = $db->prepare("SELECT COUNT(*) FROM receivers "
+                . "WHERE fk_receiver_type = if(:type= 0,fk_receiver_type, :type)");        
+        $res->bindParam(':type',$filter['type'], PDO::PARAM_INT);
         $res->execute();
         $receivers = $res->fetchColumn();
         return $receivers;//!!!have to check if exists

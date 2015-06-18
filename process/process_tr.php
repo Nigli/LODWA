@@ -9,6 +9,6 @@ $email = new Email($tr);
 echo $email->broker_temp;
 echo $email->client_temp;
 //phpmailer($email);
-//$insert=TradeRecDAO::InsertTradeRec($tr);
+$insert=TradeRecDAO::InsertTradeRec($tr);
 //sleep(5);
 //redirect_to("trade");

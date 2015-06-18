@@ -1,9 +1,9 @@
 RewriteEngine On
 
 RewriteRule ^trade$ index.php?p=trform [NC]
-RewriteRule ^trlist/([0-9]*)$ index.php?p=trlist&page=$1 [NC]
+RewriteRule ^trlist/([0-9]*)/([a-zA-Z]*)/([0-9]*)$ index.php?p=trlist&page=$1&entry_choice=$2&fk_future=$3 [NC,QSA]
 RewriteRule ^strategylist$ index.php?p=strategylist [NC]
-RewriteRule ^receiverlist/([0-9]*)$ index.php?p=receiverlist&page=$1 [NC]
+RewriteRule ^receiverlist/([0-9]*)/([0-9]*)$ index.php?p=receiverlist&page=$1&type=$2 [NC,QSA]
 RewriteRule ^superadmin/([0-9]*)$ index.php?p=superadmin&page=$1 [NC]
 RewriteRule ^emailtemp$ index.php?p=emailtemp [NC]
 RewriteRule ^profile$ index.php?p=profile [NC]

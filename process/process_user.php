@@ -7,13 +7,10 @@ $hash = User::createPass($valid['password'], $valid['password_conf']);
 if($valid['user-submit']==="update"){    
     $valid['hash']= $hash;    
     UserDAO::UpdateUser($valid);
-    var_dump($valid);
 }elseif($valid['user-submit']==="remove"){
-    UserDAO::RemoveUser($valid);    
-    var_dump($valid);
+    UserDAO::RemoveUser($valid);
 }else{      
     $valid['hash']= $hash;
-    UserDAO::NewUser($valid);    
-    var_dump($valid);
+    UserDAO::NewUser($valid); 
 }
-//redirect_to("superadmin/1");
+redirect_to("superadmin/1");

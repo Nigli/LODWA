@@ -1,19 +1,3 @@
-<script src="js/receiver.js" type="text/javascript"></script>
-<div id="notice">
-    <div id="top">
-        <div id="notice-title">
-            <h3></h3>
-        </div>
-    </div>
-    <span id="notice-span"></span>
-    <div id="bottom">
-        <div id="bottom-left">            
-            <button id="notice-close" type="button" name="close">Close</button>
-            <button id="notice-cancel" type="button" name="cancel">Cancel</button>
-            <button id="notice-confirm" type="submit" name="receiver-submit" form="receiver_list_form">Confirm</button>
-        </div>
-    </div>
-</div>
 <form id="receiver_list_form" class="edit" method="post" action="processrec">
     <h2>Edit or add New</h2>
     <span id="rightspan">To edit receiver click on the table row</span><br>

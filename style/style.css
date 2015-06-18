@@ -166,7 +166,6 @@ h2 {
     margin-bottom: 12px;
     font-size: 26px;
 }
-
 /***** TR FORM *****/
 #tr_form #right input, #tr_form #left input {
     margin: 10px 0px 30px 5px;
@@ -378,7 +377,7 @@ table tbody tr:hover {
     resize: none;
     background-color: inherit;
 }
-/******CONFIRM NOTICE*******/
+/******NOTIFICATION*******/
 #notice{
     width: 450px;
     position: fixed;
@@ -395,6 +394,20 @@ table tbody tr:hover {
 }
 #notice-close,#notice-cancel,#notice-confirm {
     display: none;
+}
+#filterspan {
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#notice select {
+    margin: 5px 0px 10px 0px;    
+    font-size: 16px;   
+    height: 31px;
+    width: 150px;
+    padding-left: 4px;
 }
 /******PAGINATE*******/
 #paginate {
@@ -484,7 +497,9 @@ table tbody tr::after {
 .edit tr:before, .edit tr:after {
     content: '';
 }
-
+#filterspan:hover {
+    color: #1B3664;
+}
 /******RESPONSIVE*******/
 @media screen and (max-width: 480px) {
     #main,#wrapper {

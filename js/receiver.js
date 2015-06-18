@@ -55,6 +55,27 @@ $(function(){
     });
     $("#notice-close, #notice-cancel").on("click", function (){
         $(".shade").hide();
+        $("#notice").hide();        
+    });    
+    $("#filterspan").on("click", function(){        
+        $(".shade").show();
+        $("#notice").show();        
+        $("#receiver_list_filter").show();
+        $("#notice-title h3").html("Filter");
+        $("#notice-reset").show();
+        $("#notice-confirm").hide();
+        $("#notice-confirm-filter").show();  
+        $("#notice-cancel").show();
+    });
+    $("#notice-cancel").on("click", function(){        
+        $(".shade").hide();
         $("#notice").hide();
+        $("#receiver_list_filter").hide();
+        $("#notice-confirm").hide(); 
+        $("#notice-cancel").hide();
+    });
+    $("#notice-reset").on("click",function(){
+        $(this).hide();
+        $("#receiver_list_type").val("0");
     });
 });
