@@ -1,4 +1,5 @@
 <script src="js/superadmin.js" type="text/javascript"></script>
+<div id="spinner"></div>
 <div id="notice">
     <div id="top">
         <div id="notice-title">

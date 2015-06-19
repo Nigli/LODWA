@@ -50,7 +50,8 @@ class Validate {
                 //echo "POLJE JE EMPTY ILI FALSE ILI MESEC ILI ENTRY CHOICE NE VALJA<BR>";//ERROR LOG
             //}
         }else {
-            echo "NEMA REFERERA ILI LOS TOKEN";//ERROR LOG
+            //echo "NEMA REFERERA ILI LOS TOKEN";//ERROR LOG
+            return false;
         }
     }
     static function login($form) {
@@ -62,10 +63,12 @@ class Validate {
             if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
                 return $valid;
             }else {
-                echo "POLJE JE EMPTY ILI FALSE<BR>";//ERROR LOG
+                //echo "POLJE JE EMPTY ILI FALSE<BR>";//ERROR LOG
+                return FALSE;
             }
         }else {
-            echo "NEMA REFERERA ILI LOS TOKEN";//ERROR LOG
+            //echo "NEMA REFERERA ILI LOS TOKEN";//ERROR LOG
+            return FALSE;
         }
     }
     static function admin($form) {  
@@ -76,11 +79,12 @@ class Validate {
         }
         $valid = $form;
         if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
-                return $valid;
+            return $valid;
         }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_strategy'])&&$valid['id_strategy']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {
-                return $valid;
+            return $valid;
         }else {
             echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            //return FALSE;
         }
     }
     
@@ -94,7 +98,8 @@ class Validate {
         }elseif(isset($valid['id_user'])&&$valid['id_user']=='') {
                 return $valid;
         }else {
-            echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            return FALSE;
         }
     }
     static function unsub($form) {  
@@ -103,7 +108,8 @@ class Validate {
         if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
                 return $valid;
         }else {
-            echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            return FALSE;
         }
     }
     static function emailtemp($form) {
@@ -112,7 +118,8 @@ class Validate {
         if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
                 return $valid;
         }else {
-            echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            return FALSE;
         }
     }
 }

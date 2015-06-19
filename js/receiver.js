@@ -45,17 +45,21 @@ $(function(){
         });
         if(empty){
            return false;
-        };          
+        };
+               
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Confirm "+rec_action);
         $("#notice-confirm").show(); 
         $("#notice-cancel").show();        
+        $("#notice-confirm-filter").hide();  
         $("#notice-close").hide(); 
     });
     $("#notice-close, #notice-cancel").on("click", function (){
         $(".shade").hide();
         $("#notice").hide();        
+        $("#notice-reset").hide();
+        $("#notice-span").html("");
     });    
     $("#filterspan").on("click", function(){        
         $(".shade").show();
@@ -78,4 +82,31 @@ $(function(){
         $(this).hide();
         $("#receiver_list_type").val("0");
     });
+    $("#notice-confirm").on("click", function (){
+        $(".shade").show();        
+        $("#notice").hide();
+        $("#spinner").addClass("spinner");
+    });
+    $("input").on("keypress",function(e){
+        if(e.which === 13){
+            event.preventDefault();
+        }
+    });
+    if($("#receiver_note").val()==="sent"){
+        $(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Sucess!");
+        $("#notice-span").html("Subscriber has been sucessfully changed/added.");
+        $("#notice-close").show();
+        $("#notice-confirm-filter").hide();  
+        $("#notice-confirm").hide();
+    } else if ($("#receiver_note").val()==="notsent") {
+	$(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Unsucess!");
+        $("#notice-span").html("Subscriber has NOT been sucessfully changed/added. Please try again later.");
+        $("#notice-close").show();
+        $("#notice-confirm-filter").hide();  
+        $("#notice-confirm").hide();
+    }
 });

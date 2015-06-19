@@ -11,7 +11,7 @@ class EmailTempDAO {
             $res->execute();
             $email_temp = $res->fetchObject(get_class());
             return $email_temp;//!!!have to check if exists        
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -22,8 +22,9 @@ class EmailTempDAO {
                 . "SET disclosure=:disclosure "
                 . "WHERE id_email=1");        
             $res->bindParam(':disclosure',$email['disclosure']);
-            $res->execute();        
-        }catch(PDOException $e){
+            $res->execute();
+            return TRUE;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }

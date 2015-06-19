@@ -12,8 +12,8 @@ class StrategyDAO {
                     . "GROUP BY strategy_name");
             $res->execute();
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "strategy\Strategy");
-            return $tr;//!!!have to check if array exists
-        }catch(PDOException $e){
+            return $tr;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -25,7 +25,8 @@ class StrategyDAO {
                 . "VALUES ('',:strategy_name)");
             $res->bindParam(':strategy_name',$strategy['strategy_name']);
             $res->execute();
-        }catch(PDOException $e){
+            return TRUE;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -38,7 +39,8 @@ class StrategyDAO {
             $res->bindParam(':id_strategy',$strategy['id_strategy']);
             $res->bindParam(':strategy_name',$strategy['strategy_name']);
             $res->execute();
-        }catch(PDOException $e){
+            return TRUE;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -50,7 +52,8 @@ class StrategyDAO {
                 . "WHERE id_strategy=:id_strategy");
             $res->bindParam(':id_strategy',$strategy['id_strategy']);
             $res->execute();
-        }catch(PDOException $e){
+            return TRUE;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }

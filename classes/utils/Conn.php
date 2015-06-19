@@ -1,6 +1,6 @@
 <?php
 namespace utils;
-use PDO;
+use PDO,utils\Session;
 class Conn{
     /* srlevel.com on levantcap hosting*/
 //    const DBUSER = "lodwa";
@@ -30,10 +30,11 @@ class Conn{
     public static function GetConnection(){
         if(!self::$conn){
             try{
-                self::$conn=new PDO("mysql:dbhost=".self::DBHOST.";dbname=".self::DB.";charset=UTF8",self::DBUSER,self::DBPASS);         
+                self::$conn=new PDO("mysql:dbhost=".self::DBHOST.";dbname=".self::DB.";charset=UTF8",self::DBUSER,self::DBPASS);
             }
-            catch (PDOException $e){
-                echo 'Connection failed: ' . $e->getMessage();
+            catch (\PDOException $e){
+                Session::set("err", "dberror");
+                die();
             }
        }
        return self::$conn;

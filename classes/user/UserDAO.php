@@ -12,7 +12,7 @@ class UserDAO {
             $res->execute();
             $users = $res->fetchAll(PDO::FETCH_CLASS, "user\User");;
         return $users;//!!!have to check if array exists
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -26,7 +26,7 @@ class UserDAO {
             $res->execute();
             $user = $res->fetchObject("user\User");;
         return $user;//!!!have to check if array exists
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     } 
@@ -37,7 +37,7 @@ class UserDAO {
             $res->execute();
             $users = $res->fetchColumn();
         return $users;//!!!have to check if exists
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }    
@@ -48,7 +48,7 @@ class UserDAO {
             $res->execute();
             $receivers = $res->fetchAll(PDO::FETCH_ASSOC);
         return $receivers;//!!!have to check if exists
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -62,7 +62,7 @@ class UserDAO {
             $res->bindParam(':user_pass',$user['hash']);
             $res->bindParam(':user_status',$user['status']);
             $res->execute();
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -79,7 +79,7 @@ class UserDAO {
             $res->bindParam(':user_pass',$user['hash']);
             $res->bindParam(':user_status',$user['status']);
             $res->execute();
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -91,7 +91,7 @@ class UserDAO {
                     . "WHERE user_id=:user_id");
             $res->bindParam(':user_id',$user['id_user']);
             $res->execute();
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }

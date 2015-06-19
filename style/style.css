@@ -574,8 +574,8 @@ table tbody tr::after {
     }
    /******NOTIFICATION RESP*******/
    #notice {
-       width: 300px;
-       top: auto;
+       width: 310px;
+       top: 10%;
        left: auto;
    }
    /******PAGINATION RESP*******/

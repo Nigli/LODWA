@@ -1,4 +1,5 @@
 <script src="js/strategy.js" type="text/javascript"></script>
+<div id="spinner"></div>
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -22,6 +23,7 @@
     </div>
     <form id="left" method="post" action="processstrat">
         <div class="strategy_form">
+            <input id="strategy_note" type="hidden" value="<?php echo $notice_strategy ?>"/>
             <h3>Strategy</h3>
             <input id="id_strategy" type="hidden" name="id_strategy" value=""/>
             <label for="strategy_name">Strategy Name</label><br>
@@ -37,6 +39,7 @@
     <form id="right" method="post" action="processfut">
         <div class="futures_form">
             <h3>Futures</h3>    
+            <input id="future_note" type="hidden" value="<?php echo $notice_future ?>"/>
             <input id="id_futures" type="hidden" name="id_futures" value=""/>
             <label for="futures_name">Futures Name and Number of Decimal Places</label><br>
             <input id="futures_name" name="futures_name" type="text" value="" required=""/>        

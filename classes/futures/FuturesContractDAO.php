@@ -11,8 +11,8 @@ class FuturesContractDAO {
                 . "WHERE futures_cont.status = 1");
             $res->execute();
             $futures = $res->fetchAll(PDO::FETCH_CLASS, "futures\FuturesContract");
-            return $futures;//!!!have to check if array exists
-        }catch(PDOException $e){
+            return $futures;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -26,8 +26,8 @@ class FuturesContractDAO {
             $res->bindParam(':futures_id',$futures_id);
             $res->execute();
             $futures = $res->fetchObject("futures\FuturesContract");;
-            return $futures;//!!!have to check if array exists
-        }catch(PDOException $e){
+            return $futures;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -37,8 +37,8 @@ class FuturesContractDAO {
             $res = $db->prepare("SELECT  id_futures, futures_name FROM futures_cont");
             $res->execute();
             $futures = $res->fetchAll(PDO::FETCH_ASSOC);
-            return $futures;//!!!have to check if array exists
-        }catch(PDOException $e){
+            return $futures;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -53,7 +53,8 @@ class FuturesContractDAO {
             $res->bindParam(':description',$future['futures_desc']);
             $res->bindParam(':dec_places',$future['futures_dec']);
             $res->execute();
-        }catch(PDOException $e){
+            return true;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -72,7 +73,8 @@ class FuturesContractDAO {
             $res->bindParam(':description',$future['futures_desc']);
             $res->bindParam(':dec_places',$future['futures_dec']);
             $res->execute();
-        }catch(PDOException $e){
+            return true;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
@@ -84,7 +86,8 @@ class FuturesContractDAO {
                 . "WHERE id_futures=:id_futures");
             $res->bindParam(':id_futures',$future['id_futures']);
             $res->execute();
-        }catch(PDOException $e){
+            return true;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }

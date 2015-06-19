@@ -1,7 +1,8 @@
 <?php
 require '../config.php';
-use broker\BrokerDAO,utils\Validate;
+use broker\BrokerDAO,utils\Validate,utils\Session;
 
 $valid = Validate::admin($_POST);
-BrokerDAO::EditBrokerInfo($valid);
+$broker= $valid?BrokerDAO::EditBrokerInfo($valid):FALSE;
+$broker?Session::set("broker", "sent"):Session::set("broker", "notsent");
 redirect_to("broker");

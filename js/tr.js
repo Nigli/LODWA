@@ -76,7 +76,7 @@ $(function(){
         $("#notice-close").hide(); 
         if(entry_choice === "BUY"){
             if(price_target < stop_loss){
-                $("#notice-title h4").html("Notice!");
+                $("#notice-title h3").html("Notice!");
                 $("#notice-span").html("Stop Loss price is higher then Price Target! Your entry choice is BUY!");
                 $("#notice-close").show();                
                 $("#notice-confirm").hide();
@@ -84,7 +84,7 @@ $(function(){
             }
         }else {
             if(stop_loss < price_target) {
-                $("#notice-title h4").html("Notice!");
+                $("#notice-title h3").html("Notice!");
                 $("#notice-span").html("Price Target is higher then Stop Loss price! Your entry choice is SELL!");
                 $("#notice-close").show();                
                 $("#notice-confirm").hide();
@@ -104,4 +104,22 @@ $(function(){
         $(".shade").hide();
         $("#notice").hide();
     });
+    $("input").on("keypress",function(e){
+        if(e.which === 13){
+            event.preventDefault();
+        }
+    });
+    if($("#tr_note").val()==="sent"){
+        $(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Sucessfull TR!");
+        $("#notice-span").html("TR has been sucessfully sent.");
+        $("#notice-close").show();
+    } else if ($("#tr_note").val()==="notsent") {
+	$(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Unsucessfull TR!");
+        $("#notice-span").html("TR has NOT been sucessfully sent. Please try again later.");
+        $("#notice-close").show();
+    }
 });

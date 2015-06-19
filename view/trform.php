@@ -20,6 +20,7 @@
 </div>
 <form id="tr_form" method="post" action="processtr">
     <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
+    <input id="tr_note" type="hidden" value="<?php echo $notice ?>"/>
     <div id="top">
         <h2>New Trade Rec</h2>    
         <span id="rightspan"><?php include "process/strategy_name.php" ?></span><br>

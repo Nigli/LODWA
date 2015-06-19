@@ -94,4 +94,48 @@ $(function(){
         $(".shade").hide();
         $("#notice").hide();
     });
+    $("#notice-confirm-strategy, #notice-confirm-futures").on("click", function (){
+        $(".shade").show();        
+        $("#notice").hide();
+        $("#spinner").addClass("spinner");
+    });        
+    $("input").on("keypress",function(e){
+        if(e.which === 13){
+            event.preventDefault();
+        }
+    });
+    if($("#future_note").val()==="sent"){
+        $(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Sucess!");
+        $("#notice-span").html("Future Contract has been sucessfully changed/added.");
+        $("#notice-close").show();        
+        $("#notice-confirm-futures").hide(); 
+        $("#notice-confirm-strategy").hide(); 
+    } else if ($("#future_note").val()==="notsent") {
+	$(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Unsucess!");
+        $("#notice-span").html("Future Contract has NOT been sucessfully changed/added. Please try again later.");
+        $("#notice-close").show();
+        $("#notice-confirm-futures").hide(); 
+        $("#notice-confirm-strategy").hide(); 
+    }
+    if($("#strategy_note").val()==="sent"){
+        $(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Sucess!");
+        $("#notice-span").html("Strategy name has been sucessfully changed/added.");
+        $("#notice-close").show();        
+        $("#notice-confirm-futures").hide(); 
+        $("#notice-confirm-strategy").hide(); 
+    } else if ($("#strategy_note").val()==="notsent") {
+	$(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Unsucess!");
+        $("#notice-span").html("Strategy name has NOT been sucessfully changed/added. Please try again later.");
+        $("#notice-close").show();
+        $("#notice-confirm-futures").hide(); 
+        $("#notice-confirm-strategy").hide(); 
+    }
 });

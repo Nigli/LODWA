@@ -1,5 +1,5 @@
 <form method="post" action="../unsubprocess">
-    <input type="hidden" name="unsub_id" value="<?php echo $subscriber->id_receiver ?>"/>
+    <input type="hidden" name="id_receiver" value="<?php echo $subscriber->id_receiver ?>"/>
     <div id="top">
         <h2>Subscription Information</h2>                            
     </div>

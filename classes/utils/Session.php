@@ -14,6 +14,10 @@ class Session {
         self::start(); 
         return isset($_SESSION[$k])?$_SESSION[$k]:$d;
     }
+    static function unsets($k){
+        self::start(); 
+        unset ($_SESSION[$k]);
+    }
     static function destroy(){
         self::start();
         session_destroy();

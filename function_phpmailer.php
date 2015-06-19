@@ -46,4 +46,7 @@ function phpmailer($email){
     } else {
         echo 'Message has been sent to clients';
     }
+    if($mailclient->send() && $mail->send()){
+        return true;
+    }
 }

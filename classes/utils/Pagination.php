@@ -45,6 +45,7 @@ class Pagination {
             $html   .= "<div class='element disabled'><span>...</span></div>";
             $html   .= "<div class='element'><a href='".$links['p']."/" . $last . "/".$var."'>" . $last . "</a></div>";
         }
+        
         $class = ( $this->page == $last ) ? "disabled" : "";
         $html .= "<div class='element " . $class . "'><a href='".$links['p']."/" . ( $this->page + 1 ) . "/".$var."'>&raquo;</a></div>";
         $html .= "</div>";

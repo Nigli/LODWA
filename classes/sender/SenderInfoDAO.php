@@ -9,7 +9,7 @@ class SenderInfoDAO {
             $res->execute();
             $sender_info = $res->fetch(PDO::FETCH_ASSOC);       
             return $sender_info;
-        }catch(PDOException $e){
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }    
@@ -30,7 +30,8 @@ class SenderInfoDAO {
             $res->bindParam(':sender_email',$sender['email']);
             $res->bindParam(':sender_address',$sender['address']);
             $res->execute();
-        }catch(PDOException $e){
+            return TRUE;
+        }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
     }
