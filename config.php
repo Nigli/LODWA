@@ -14,3 +14,6 @@
 //    define("LOG_REFERER", "http://192.168.0.101/LODWA/login");
 //    define("LOG_REFERER", "http://www.srlevel.com/login");
 //    define("TR_REFERER", "http://www.srlevel.com/trade");
+//    
+//time constants
+    define ("CHICAGO_TIME", "America/Chicago");

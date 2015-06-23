@@ -14,7 +14,7 @@
         <div id="header-outer">
             <div id="header-inner">
                 <div id="logo">
-                    <a href=""><img src="images/index.png" alt=""/></a>
+                    <img src="images/index.png" alt=""/>
                 </div>                
             </div>
         </div>

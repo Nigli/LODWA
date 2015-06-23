@@ -7,6 +7,7 @@ class Email{
     public $tr_type_name;
     public $rpl_price;
     public $title;
+    public $date_time;
     public $date;
     public $time;
     public $id_strategy;
@@ -50,7 +51,12 @@ class Email{
     public function __construct($tr) {
         foreach($tr as $k=>$v){
             $this->$k = $v;
-        }
+        }        
+        date_default_timezone_set(CHICAGO_TIME);
+        $date_time = new \DateTime();
+        $this->date_time = $date_time->format("Y-m-d H:i:s");
+        $this->date = $date_time->format("d M Y");
+        $this->time = $date_time->format("H:i");
         if(isset($tr->rpl_price)){
             $this->rpl_price=$tr->rpl_price;
         }

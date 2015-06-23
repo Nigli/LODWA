@@ -95,16 +95,16 @@ $(function(){
     if($("#receiver_note").val()==="sent"){
         $(".shade").show();        
         $("#notice").show();
-        $("#notice-title h3").html("Sucess!");
-        $("#notice-span").html("Subscriber has been sucessfully changed/added.");
+        $("#notice-title h3").html("Success!");
+        $("#notice-span").html("Subscriber has been successfully changed/added.");
         $("#notice-close").show();
         $("#notice-confirm-filter").hide();  
         $("#notice-confirm").hide();
     } else if ($("#receiver_note").val()==="notsent") {
 	$(".shade").show();        
         $("#notice").show();
-        $("#notice-title h3").html("Unsucess!");
-        $("#notice-span").html("Subscriber has NOT been sucessfully changed/added. Please try again later.");
+        $("#notice-title h3").html("Unsuccess!");
+        $("#notice-span").html("Subscriber has NOT been successfully changed/added. Please try again later.");
         $("#notice-close").show();
         $("#notice-confirm-filter").hide();  
         $("#notice-confirm").hide();

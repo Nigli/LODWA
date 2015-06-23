@@ -25,12 +25,12 @@ function phpmailer($email){
     $mail->Body    = $email->broker_temp;
     $plain = $mail->html2text($mail->Body);
     $mail->AltBody = $plain;
-    if(!$mail->send()) {
-        echo 'Message could not be sent to broker.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        echo 'Message has been sent to broker';
-    }
+//    if(!$mail->send()) {
+//        echo 'Message could not be sent to broker.';
+//        echo 'Mailer Error: ' . $mail->ErrorInfo;
+//    } else {
+//        //echo 'Message has been sent to broker';
+//    }
         
     //mail to clients
     foreach($email->recipients as $recipient){
@@ -40,13 +40,15 @@ function phpmailer($email){
     $mailclient->Body    = $email->client_temp;
     $plainclients = $mailclient->html2text($mailclient->Body);
     $mailclient->AltBody = $plainclients;
-    if(!$mailclient->send()) {
-        echo 'Message could not be sent to clients.';
-        echo 'Mailer Error: ' . $mailclient->ErrorInfo;
-    } else {
-        echo 'Message has been sent to clients';
-    }
+//    if(!$mailclient->send()) {
+//        echo 'Message could not be sent to clients.';
+//        echo 'Mailer Error: ' . $mailclient->ErrorInfo;
+//    } else {
+//        //echo 'Message has been sent to clients';
+//    }
     if($mailclient->send() && $mail->send()){
         return true;
+    }else {
+        return false;
     }
 }

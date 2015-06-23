@@ -501,7 +501,7 @@ table tbody tr::after {
     color: #1B3664;
 }
 /******RESPONSIVE*******/
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 800px) {
     #main,#wrapper {
         width: 340px;
         padding-top: 45px;

@@ -34,7 +34,6 @@ class Conn{
             }
             catch (\PDOException $e){
                 Session::set("err", "dberror");
-                die();
             }
        }
        return self::$conn;

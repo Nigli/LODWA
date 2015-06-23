@@ -112,14 +112,14 @@ $(function(){
     if($("#tr_note").val()==="sent"){
         $(".shade").show();        
         $("#notice").show();
-        $("#notice-title h3").html("Sucessfull TR!");
-        $("#notice-span").html("TR has been sucessfully sent.");
+        $("#notice-title h3").html("Successfull TR!");
+        $("#notice-span").html("TR has been successfully sent.");
         $("#notice-close").show();
     } else if ($("#tr_note").val()==="notsent") {
 	$(".shade").show();        
         $("#notice").show();
-        $("#notice-title h3").html("Unsucessfull TR!");
-        $("#notice-span").html("TR has NOT been sucessfully sent. Please try again later.");
+        $("#notice-title h3").html("Unsuccessfull TR!");
+        $("#notice-span").html("TR has NOT been successfully sent. Please try again later.");
         $("#notice-close").show();
     }
 });

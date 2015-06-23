@@ -1,6 +1,6 @@
 <?php
 namespace utils;
-
+use user\UserDAO;
 class Validate {
     static function filter(&$value){        
         $value = str_replace("--","",$value);
@@ -24,6 +24,11 @@ class Validate {
         if (password_verify($pass, $hash)) {
             return TRUE;
         }
+    }
+    static function checkUser($valid){
+        $user = UserDAO::GetUserByEmail($valid['email']);
+        $pass = Validate::checkPassHash($valid['pass'], $user->user_pass);
+        return $pass?$user:FALSE;
     }
     static function tr($form) {
 //        $args = array(            
@@ -58,8 +63,7 @@ class Validate {
         if(Validate::checkToken($form,"login_token")&&Validate::checkReferer(LOG_REFERER)){////IF THERE IS A TOKEN AND A REFERER
             array_filter($form, array('self', 'filter'));
             $email = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
-            $pass = strlen($form['pass'])>=4?$form['pass']:NULL;
-            $valid = array('email'=>$email,'pass'=>$pass);
+            $valid = array('email'=>$email,'pass'=>$form['pass']);
             if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
                 return $valid;
             }else {
@@ -78,13 +82,13 @@ class Validate {
             $form['email'] = $email;
         }
         $valid = $form;
-        if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
+        if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE           
             return $valid;
-        }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_strategy'])&&$valid['id_strategy']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {
+        }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_strategy'])&&$valid['id_strategy']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {          
             return $valid;
         }else {
-            echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
-            //return FALSE;
+            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
+            return FALSE;
         }
     }
     

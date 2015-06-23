@@ -11,7 +11,7 @@ $(function(){
         $("#update").hide();
         $("#change").show();        
     });   
-    ("#update").on("click",function(){        
+    $("#update").on("click",function(){        
         $("#spinner").addClass("spinner");
     });  
     $("input").on("keypress",function(e){
@@ -22,14 +22,14 @@ $(function(){
     if($("#profile_note").val()==="sent"){
         $(".shade").show();        
         $("#notice").show();
-        $("#notice-title h3").html("Sucess!");
-        $("#notice-span").html("Sender Info has been sucessfully changed.");
+        $("#notice-title h3").html("Success!");
+        $("#notice-span").html("Sender Info has been successfully changed.");
         $("#notice-close").show();
     } else if ($("#profile_note").val()==="notsent") {
 	$(".shade").show();        
         $("#notice").show();
-        $("#notice-title h3").html("Unsucess!");
-        $("#notice-span").html("Sender Info has NOT been sucessfully changed. Please try again later.");
+        $("#notice-title h3").html("Unsuccess!");
+        $("#notice-span").html("Sender Info has NOT been successfully changed. Please try again later.");
         $("#notice-close").show();
     }
     $("#notice-close").on("click", function (){
