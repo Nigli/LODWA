@@ -89,11 +89,11 @@ class Render{
         if($email->fk_tr_type != 1){
             $color_title = 'color:red';
             if($email->rpl_price == "stop_loss"){
-                $color_stop_loss = 'color:red;';
+                $color_stop_loss = 'color:red';
                 $color_price_target = '';
             }elseif($email->rpl_price == "price_target") {
                 $color_stop_loss = '';
-                $color_price_target = 'color:red;';                
+                $color_price_target = 'color:red';                
             }else {
                 $color_stop_loss = '';
                 $color_price_target = '';

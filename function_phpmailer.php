@@ -2,6 +2,7 @@
 use phpmailer\PHPMailer;
 function phpmailer($email){
     $mail=new PHPMailer();
+    $mail->CharSet = 'UTF-8';
     $mail->isSMTP();                                        //*
     //$mail->SMTPDebug  = 2;                                  //*
     $mail->Host = $email->sender_host; 

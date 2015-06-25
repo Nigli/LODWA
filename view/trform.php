@@ -77,13 +77,13 @@
     <!--PRICES INPUT-->
     <div id="right">
         <label for="tr_form_entry_price">Entry Price</label>
-        <input id="tr_form_entry_price" class="prices" name="entry_price" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/><br> 
+        <input id="tr_form_entry_price" class="prices" name="entry_price" type="number" value="" required="" step="0.01" title="Enter number in a format xxxx.xx"/><br> 
         <label for="tr_form_stop_loss">Stop Loss</label><br>
-        <input type="checkbox" name="rpl_price" value="stop_loss" class="checkbox_rep"/>
-        <input id="tr_form_stop_loss" class="prices" name="stop_loss" type="number" value='' required="" step="any" title="Enter number in a format xxxx.xx"/><br>
+        <input type="radio" name="rpl_price" value="stop_loss" class="radio_rep"/>
+        <input id="tr_form_stop_loss" class="prices" name="stop_loss" type="number" value='' required="" step="0.01" title="Enter number in a format xxxx.xx"/><br>
         <label for="tr_form_price_target">Price Target</label><br>
-        <input type="checkbox" name="rpl_price" value="price_target"  class="checkbox_rep"/>
-        <input id="tr_form_price_target" class="prices" name="price_target" type="number" value="" required="" step="any" title="Enter number in a format xxxx.xx"/>
+        <input type="radio" name="rpl_price" value="price_target"  class="radio_rep"/>
+        <input id="tr_form_price_target" class="prices" name="price_target" type="number" value="" required="" step="0.01" title="Enter number in a format xxxx.xx"/>
     </div>
     <!--***-->
     <!--BUTTONS-->

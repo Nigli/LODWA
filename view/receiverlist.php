@@ -34,6 +34,7 @@
 <div id="receiver_list">  
     <h2>Subscribers List</h2>
     <span id="filterspan">Filter</span>
+    <span id="filter_notice"></span>
     <table>
         <thead>
             <tr>

@@ -12,423 +12,140 @@
         <![endif]-->
         <style type="text/css">
             body{
-                    margin:0;
-                    padding:0;
+                margin:0;
+                padding:0;
+                background-color:#dee0e2;
             }
             a{
-                    word-wrap:break-word !important;
+                word-wrap:break-word !important;
             }
             img{
-                    border:0;
-                    height:auto !important;
-                    line-height:100%;
-                    outline:none;
-                    text-decoration:none;
+                border:0;
+                height:auto !important;
+                line-height:100%;
+                outline:none;
+                text-decoration:none;
             }
             table,td{
-                    border-collapse:collapse;
-                    mso-table-lspace:0pt;
-                    mso-table-rspace:0pt;
+                border-collapse:collapse;
+                mso-table-lspace:0pt;
+                mso-table-rspace:0pt;
             }
-            #bodyTable,#bodyCell{
-                    height:100% !important;
-                    margin:0;
-                    padding:0;
-                    width:100% !important;
-            }
-            #bodyCell{
-                    padding:20px;
-            }
-            .Image{
-                    vertical-align:bottom;
-            }
-            .TextContent img{
-                    height:auto !important;
-            }
-            body,#bodyTable{
-                    background-color:#dee0e2;
-            }
-            #bodyCell{
-                    border-top:0;
-            }
-            #templateContainer{
-                    border:0;
+            h1,h2,h3,h4 {
+                line-height:125%;
             }
             h1{
-                    color:#666666 !important;
-                    display:block;
-                    font-family:Helvetica;
-                    font-size:26px;
-                    font-style:normal;
-                    font-weight:bold;
-                    line-height:125%;
-                    letter-spacing:-1px;
-                    margin:0;
-                    text-align:left;
+                color:#666666;
+                display:block;
+                font-family:Helvetica;
+                font-size:24px;
+                font-style:normal;
+                font-weight:bold;
+                letter-spacing:-1px;
+                margin:0;
+                text-align:left;
             }
             h2{
-                    color:#404040 !important;
-                    display:block;
-                    font-family:Helvetica;
-                    font-size:26px;
-                    font-style:normal;
-                    font-weight:bold;
-                    line-height:125%;
-                    letter-spacing:-.75px;
-                    margin:0;
+                color:#666666;
+                display:block;
+                font-family:Helvetica;
+                font-size:20px;
+                font-style:normal;
+                font-weight:bold;
+                letter-spacing:-.75px;
+                margin:0;
             }
             h3{
-                    color:#606060 !important;
-                    display:block;
-                    font-family:Helvetica;
-                    font-size:18px;
-                    font-style:normal;
-                    font-weight:bold;
-                    line-height:125%;
-                    letter-spacing:-.5px;
-                    margin:0;
-                    text-align:left;
+                color:#606060;
+                display:block;
+                font-family:Helvetica;
+                font-size:18px;
+                font-style:normal;
+                font-weight:bold;
+                letter-spacing:-.5px;
+                margin:0;
+                text-align:left;
             }
             h4{
-                    color:#808080 !important;
-                    display:block;
-                    font-family:Helvetica;
-                    font-size:16px;
-                    font-style:normal;
-                    font-weight:bold;
-                    line-height:125%;
-                    letter-spacing:normal;
-                    margin:0;
-                    text-align:left;
+                color:#808080;
+                display:block;
+                font-family:Helvetica;
+                font-size:16px;
+                font-style:normal;
+                font-weight:bold;
+                letter-spacing:normal;
+                margin:0;
+                text-align:left;
             }
             h1 a,h2 a,h3 a,h4 a{
-                    color:#6DC6DD;
-                    font-weight:bold;
-                    text-decoration:none;
+                color:#6DC6DD;
+                font-weight:bold;
+                text-decoration:none;
             }
-            #templatePreheader{
-                    background-color:#ffffff;
-                    border-top:0;
-                    border-bottom:2px solid #F2F2F2;
-            }
-            .preheaderContainer .TextContent,.preheaderContainer .TextContent p{
-                    color:#606060;
-                    font-family:Helvetica;
-                    font-size:11px;
-                    line-height:125%;
-                    text-align:left;
-            }
-            .preheaderContainer .TextContent a{
-                    color:#606060;
-                    font-weight:normal;
-                    text-decoration:underline;
-            }
-            #templateHeader{
-                    background-color:#ffffff;
-                    border-top:0;
-                    border-bottom:0;
-            }
-            .headerContainer .TextContent,.headerContainer .TextContent p{
-                    color:#606060;
-                    font-family:Helvetica;
-                    font-size:15px;
-                    line-height:150%;
-                    text-align:left;
-            }
-            .headerContainer .TextContent a{
-                    color:#505050;
-                    font-weight:normal;
-                    text-decoration:underline;
-            }
-            #templateBody{
-                    background-color:#ffffff;
-                    border-top:3px solid #DEE0E2;
-                    border-bottom:3px solid #DEE0E2;
-            }
-            .bodyContainer .TextContent,.bodyContainer .TextContent p{
-                    color:#606060;
-                    font-family:Helvetica;
-                    font-size:15px;
-                    line-height:150%;
-                    text-align:left;
-            }
-            .bodyContainer .TextContent a{
-                    color:#505050;
-                    font-weight:normal;
-                    text-decoration:underline;
-            }
-            #templateFooter{
-                    background-color:#cccccc;
-                    border-top:0;
-                    border-bottom:0;
-            }
-            .footerContainer .TextContent,.footerContainer .TextContent p{
-                    color:#606060;
-                    font-family:Helvetica;
-                    font-size:11px;
-                    line-height:125%;
-                    text-align:left;
-            }
-            .footerContainer .TextContent a{
-                    color:#606060;
-                    font-weight:normal;
-                    text-decoration:underline;
-            }
-            .cxl_rpl {
-                color: red;
-            }
-            @media only screen and (max-width: 480px){
-                    body,table,td,p,a,li,blockquote{
-                            -webkit-text-size-adjust:none !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    body{
-                            width:100% !important;
-                            min-width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[id=bodyCell]{
-                            padding:10px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=TextContentContainer]{
-                            width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=BoxedTextContentContainer]{
-                            width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=mcpreview-image-uploader]{
-                            width:100% !important;
-                            display:none !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    img[class=Image]{
-                            width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=ImageGroupContentContainer]{
-                            width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageGroupContent]{
-                            padding:9px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageGroupBlockInner]{
-                            padding-bottom:0 !important;
-                            padding-top:0 !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    tbody[class=ImageGroupBlockOuter]{
-                            padding-bottom:9px !important;
-                            padding-top:9px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=CaptionTopContent],table[class=CaptionBottomContent]{
-                            width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=CaptionLeftTextContentContainer],table[class=CaptionRightTextContentContainer],table[class=CaptionLeftImageContentContainer],table[class=CaptionRightImageContentContainer],table[class=ImageCardLeftTextContentContainer],table[class=ImageCardRightTextContentContainer]{
-                            width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
-                            padding-right:18px !important;
-                            padding-left:18px !important;
-                            padding-bottom:0 !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageCardBottomImageContent]{
-                            padding-bottom:9px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageCardTopImageContent]{
-                            padding-top:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageCardLeftImageContent],td[class=ImageCardRightImageContent]{
-                            padding-right:18px !important;
-                            padding-left:18px !important;
-                            padding-bottom:0 !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageCardBottomImageContent]{
-                            padding-bottom:9px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=ImageCardTopImageContent]{
-                            padding-top:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=CaptionLeftContentOuter] td[class=TextContent],table[class=CaptionRightContentOuter] td[class=TextContent]{
-                            padding-top:9px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=CaptionBlockInner] table[class=CaptionTopContent]:last-child td[class=TextContent]{
-                            padding-top:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=BoxedTextContentColumn]{
-                            padding-left:18px !important;
-                            padding-right:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[id=templateContainer],table[id=templatePreheader],table[id=templateHeader],table[id=templateBody],table[id=templateFooter]{
-                            max-width:600px !important;
-                            width:100% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    h1{
-                            font-size:24px !important;
-                            line-height:125% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    h2{
-                            font-size:20px !important;
-                            line-height:125% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    h3{
-                            font-size:18px !important;
-                            line-height:125% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    h4{
-                            font-size:16px !important;
-                            line-height:125% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[class=BoxedTextContentContainer] td[class=TextContent]{
-                            font-size:18px !important;
-                            line-height:125% !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    table[id=templatePreheader]{
-                            display:block !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=preheaderContainer] td[class=TextContent]{
-                            font-size:14px !important;
-                            line-height:115% !important;
-                            padding-right:18px !important;
-                            padding-left:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=headerContainer] td[class=TextContent]{
-                            font-size:18px !important;
-                            line-height:125% !important;
-                            padding-right:18px !important;
-                            padding-left:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=bodyContainer] td[class=TextContent]{
-                            font-size:18px !important;
-                            line-height:125% !important;
-                            padding-right:18px !important;
-                            padding-left:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=footerContainer] td[class=TextContent]{
-                            font-size:14px !important;
-                            line-height:115% !important;
-                            padding-right:18px !important;
-                            padding-left:18px !important;
-                    }
-
-            }	@media only screen and (max-width: 480px){
-                    td[class=footerContainer] a[class=utilityLink]{
-                            display:block !important;
-                    }
-
-                }		
-            .bodyContainer .TextContent{
-                    color:#666666;
-            }
-            .headerContainer .TextContent{
-                    color:#000000;
-            }
-            .bodyContainer .TextContent a,.bodyContainer .TextContent a .yshortcuts{
-                    color:#eb4102;
-            }
-            .footerContainer .TextContent{
-                    font-size:9px;
-                    line-height:110%;
-                    text-align:left;
+            @media only screen and (max-device-width: 320px){
+                body,table,td,p,a,li,span,h1,h2,h3,h4 {
+                    -webkit-text-size-adjust:none !important;
+                }
+                body{
+                    width:100% !important;
+                    min-width:100% !important;
+                }
+                h1{
+                    font-size:20px !important;
+                }
+                h2{
+                    font-size:18px !important;
+                }
+                h3{
+                    font-size:16px !important;
+                }
+                h4{
+                    font-size:14px !important;
+                }
+                #main{
+                    width: 100%;
+                }
+                #tr_details tbody tr td span{
+                    font-size: 14px !important;
+                }
             }
         </style>
     </head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="margin: 0;padding: 0;background-color: #dee0e2;">
         <center>
-            <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 0;background-color: #dee0e2;height: 100% !important;width: 100% !important;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 0;background-color: #dee0e2;height: 100% !important;width: 100% !important;">
                 <tr>
-                    <td align="center" valign="top" id="bodyCell" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 20px;border-top: 0;height: 100% !important;width: 100% !important;">
-                        <!-- BEGIN TEMPLATE // -->
-                        <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border: 0;">
+                    <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;margin: 0;padding: 20px;border-top: 0;height: 100% !important;width: 100% !important;">                        
+                        <table id="main" border="0" cellpadding="0" cellspacing="0" width="600px" tyle="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border: 0;">
                             <tr>
                                 <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                     <!-- BEGIN PREHEADER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templatePreheader" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 2px solid #F2F2F2;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 2px solid #F2F2F2;">
                                         <tr>
-                                            <td valign="top" class="preheaderContainer" style="padding-top: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="TextBlockOuter">
+                                            <td valign="top" style="padding-top: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody>
                                                         <tr>
-                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="366" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="66%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">                                                                            
-                                                                                <span style="font-family:arial,helvetica neue,helvetica,sans-serif;">
-<!--PREHEADER LEFT-->                                                               <span style="font-size: 11px;">Trade Recommendation</span>                                                                                    
+                                                                            <td valign="top" style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;line-height: 125%;text-align: left;">                                                                            
+                                                                                <span style="font-family:arial,helvetica neue,helvetica,sans-serif;font-size: 11px;">
+<!--PREHEADER LEFT-->                                                               Trade Recommendation                                                                                 
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
-                                                                <table align="right" border="0" cellpadding="0" cellspacing="0" width="197" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="right" border="0" cellpadding="0" cellspacing="0" width="33%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
+                                                                            <td valign="top" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: right;">
-                                                                                    <span style="font-size:11px;">
-                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;font-size:11px;">
 <!--PREHEADER RIGHT-->                                                                      <a href="http://www.northernadvisors.com" target="_blank" style="color: #606060;font-weight: normal;text-decoration: underline;word-wrap: break-word !important;">Please visit our web site</a>
-                                                                                        </span>
-                                                                                    </span><!-- *|END:IF|* -->
+                                                                                    </span>
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
@@ -447,19 +164,19 @@
                             <tr>
                                 <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                     <!-- BEGIN HEADER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateHeader" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 0;">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 0;border-bottom: 0;">
                                         <tr>
-                                            <td valign="top" class="headerContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="ImageBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="ImageBlockOuter">
+                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody>
                                                         <tr>
-                                                            <td valign="top" style="padding-top: 30px; padding-right: 0px; padding-bottom: 20px;padding-left: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" class="ImageBlockInner">
-                                                                <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="ImageContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="padding-top: 30px; padding-right: 0px; padding-bottom: 20px;padding-left: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td class="ImageContent" valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                <a href="http://northernadvisors.com/" title="" class="" target="_self" style="word-wrap: break-word !important;">
-<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://gallery.mailchimp.com/266e1d2de1370b67c9c21eb60/images/Northern_Advisors_Logo.jpg" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;" class="Image"/>
+                                                                            <td valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                <a href="http://northernadvisors.com/" title="" target="_self" style="word-wrap: break-word !important;">
+<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://www.srlevel.com/images/index.png" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;"/>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -477,35 +194,27 @@
                             </tr>
                             <tr>
                                 <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                    <!-- BEGIN BODY // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 3px solid #DEE0E2;border-bottom: 3px solid #DEE0E2;">
+                                    <!-- BEGIN CONTAINER // -->
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #ffffff;border-top: 3px solid #DEE0E2;border-bottom: 3px solid #DEE0E2;">
                                         <tr>
-                                            <td valign="top" class="bodyContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="TextBlockOuter">
+                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody>
                                                         <tr>
-                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;line-height: 150%;text-align: left;">
-                                                                                <h2 style="display: block;font-family: Helvetica;font-style: normal;font-weight: bold;line-height: 100%;letter-spacing: 0px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:20px;">
-                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BODY TITLE TRADE TYPE-->                                                            [TRADE_TYPE]:
-                                                                                        </span>                                                                                            
-                                                                                    </span>
+                                                                            <td valign="top" style="padding-top: 25px;padding-right: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;line-height: 150%;text-align: left;">
+                                                                                <h2 style="display: block;font-family: Helvetica;font-style: normal;font-weight: bold;font-size:20px;line-height: 100%;letter-spacing: 0px;margin: 0;text-align: left;color: #666666 !important;">                                                                                    
+<!--BODY TITLE TRADE TYPE-->                                                        [TRADE_TYPE]:                                                                                        
                                                                                 </h2>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 9px; padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;line-height: 150%;text-align: left;">
-                                                                                <h1 style="display: block;font-family: Helvetica;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                    <span style="font-size:26px;">
-                                                                                        <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--BODY TITLE-->                                                                           [TITLE]
-                                                                                        </span>                                                                                            
-                                                                                    </span>
+                                                                            <td valign="top" style="padding-top: 9px; padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;line-height: 150%;text-align: left;">
+                                                                                <h1 style="display: block;font-family: Helvetica;font-style: normal;font-weight: bold;font-size:24px;line-height: 125%;letter-spacing: 1px;margin: 0;text-align: left;color: #666666 !important;">                                                                                    
+<!--BODY TITLE-->                                                                   [TITLE]
                                                                                 </h1>
                                                                             </td>
                                                                         </tr>
@@ -515,154 +224,146 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="margin-top: 25px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="TextBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 25px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody>
                                                         <tr>
-                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 25px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <table border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;" width="551">
+                                                                            <td valign="top" style="padding-top: 25px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;line-height: 150%;text-align: left;">
+                                                                                <table border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #cccccc;width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                     <tr style="border-bottom: 2px solid #cccccc;">
-                                                                                        <td style="width: 368px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <h3 style="display: block;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                                <span style="font-size:22px;">
-                                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                                        Trade Details
-                                                                                                    </span>
-                                                                                                </span>
-                                                                                            </h3>
+                                                                                        <td style="width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <h2 style="display: block;font-family: Helvetica;font-size: 20px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;text-align: left;color: #666666 !important;">                                                                                                
+                                                                                                Trade Details
+                                                                                            </h2>
                                                                                         </td>
-                                                                                        <td style="width: 700px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                            <h3 style="text-align: right; display: block;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;color: #666666 !important;">
-                                                                                                <span style="font-size:22px;">
-                                                                                                    <span style="[COLOR_TRADE_TITLE];font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                                        [TRADE_TYPE]
-                                                                                                    </span>
-                                                                                                </span>
-                                                                                            </h3>
+                                                                                        <td style="width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                            <h2 style="[COLOR_TRADE_TITLE];text-align: right; display: block;font-family: Helvetica;font-size: 20px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;">
+                                                                                                [TRADE_TYPE]
+                                                                                            </h2>
                                                                                         </td>
                                                                                         </tr>
                                                                                 </table>
-                                                                                <table border="0" cellpadding="0" cellspacing="0" style="margin-top: 9px;border-bottom: 1px solid #cccccc;width: 551px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color:#666666" width="551">
+                                                                                <table id="tr_details" border="0" cellpadding="0" cellspacing="0" style="margin-top: 9px;border-bottom: 1px solid #cccccc;width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color:#666666">
                                                                                     <tbody>
                                                                                         <tr>
-                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Date
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE DATE-->                                                                                   [DATE]
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Time (CST, Chicago)
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-<!--TABLE TIME-->                                                                                   [TIME]
-                                                                                                </span></span>
+                                                                                            <td style="width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    [TIME]
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr style="border-bottom: 1px solid #cccccc;">
-                                                                                            <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="padding-bottom: 10px;width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Strategy
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE STRATEGY NAME-->                                                                          [STRATEGY]
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="padding-top: 10px;width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Month
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE MONTH NAME-->                                                                             [MONTH]
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr style="border-bottom: 1px solid #cccccc;">
-                                                                                            <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Futures Contract
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE FUTURES CONTRACT-->                                                                       [FUTURE]
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="padding-top: 10px;width: 40%;height: 35px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE CHOICE-->                                                                                 <strong>
                                                                                                     [ENTRY_CHOICE] (Entry)
                                                                                                     </strong>
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="padding-top: 10px;width: 60%;height: 35px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE CHOICE PRICE-->                                                                           <strong>
                                                                                                     [ENTRY_PRICE]
                                                                                                     </strong>
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 40%;height: 35px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     [OP_ENTRY_CHOICE] Stop Loss
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="[COLOR_STOP_LOSS];font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 60%;height: 35px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="[COLOR_STOP_LOSS];font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE STOP LOSS PRICE-->                                                                        <strong>
                                                                                                     [STOP_LOSS]
                                                                                                     </strong>
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td style="padding-bottom: 10px;width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="padding-bottom: 10px;width: 40%;height: 35px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     [OP_ENTRY_CHOICE] Profit Target
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="padding-bottom: 10px;width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="[COLOR_TARGET];font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="padding-bottom: 10px;width: 60%;height: 35px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="[COLOR_TARGET];font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
 <!--TABLE TARGET PRICE-->                                                                           <strong>
                                                                                                     [PRICE_TARGET]
                                                                                                     </strong>
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
-                                                                                            <td style="width: 183px;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Duration of orders
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
-                                                                                            <td style="width: 368px;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                                                <span style="font-size:18px;line-height: 150%"><span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                            <td style="width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     <strong>
 <!--TABLE TRADE DURATION-->                                                                         [DURATION]
                                                                                                     </strong>
-                                                                                                </span></span>
+                                                                                                </span>
                                                                                             </td>
                                                                                         </tr>
                                                                                     </tbody>
@@ -676,19 +377,17 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="TextBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody>
                                                         <tr>
-                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <span style="font-size:12px;">
-                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">                                                                                       
+                                                                            <td valign="top" style="padding-top: 18px;padding-right: 18px;padding-bottom: 18px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;line-height: 150%;text-align: left;">
+                                                                                <span style="font-size:12px;font-family: arial, 'helvetica neue', helvetica, sans-serif;">                                                                                       
 <!--TR DETAILS DESCRIPTION -->                                                          *The Entry order is a limit or better. The Stop Loss and Profit Target orders are OCO&#39;s (one cancels the other). All orders are placed on a not held basis.
-                                                                                    </span>
-                                                                                </span><br>
+                                                                                </span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -697,24 +396,20 @@
                                                         </tr>
                                                     </tbody>
                                                 </table>
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="TextBlockOuter">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody">
                                                         <tr>
-                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 36px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
-                                                                                <span style="font-size:14px;">
-                                                                                    <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">
-                                                                                        <h2 style="display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -1px;margin: 0;text-align: left;color: #666666 !important;">
-                                                                                            <span style="font-size:18px;">
-                                                                                                <span style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">Description</span>
-                                                                                            </span>
-                                                                                        </h2>
-<!--CONTRACT DESCRIPTION-->                                                             [DESCRIPTION]                      
-                                                                                        </span>
-                                                                                </span><br>
+                                                                            <td valign="top" style="padding-top: 18px;padding-right: 18px;padding-bottom: 36px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #666666;line-height: 150%;text-align: left;">                                                                                
+                                                                                <h3 style="display: block;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: 0px;margin: 0;text-align: left;color: #666666 !important;">                                
+                                                                                    Description
+                                                                                </h3>
+                                                                                <span style="font-size:12px;font-family: arial, 'helvetica neue', helvetica, sans-serif;">  
+<!--CONTRACT DESCRIPTION-->                                                         [DESCRIPTION]
+                                                                                </span>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -726,23 +421,23 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <!-- // END BODY -->
+                                    <!-- // END CONTAINER -->
                                 </td>
                             </tr>
                             <tr>
                                 <td align="center" valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                    <!-- BEGIN FOOTER // -->
-                                    <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateFooter" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;background-color: #cccccc;border-top: 0;border-bottom: 0;">
+                                    <!-- BEGIN DISCLOSURE // -->
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;border-top: 0;border-bottom: 0;">
                                         <tr>
-                                            <td valign="top" class="footerContainer" style="padding-bottom: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="TextBlock" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                    <tbody class="TextBlockOuter">
+                                            <td valign="top" style="padding-bottom: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                    <tbody>
                                                         <tr>
-                                                            <td valign="top" class="TextBlockInner" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="600" class="TextContentContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                            <td valign="top" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table id="disclosure" align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td valign="top" class="TextContent" style="padding-top: 18px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
+                                                                            <td valign="top" style="padding-top: 18px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;background-color: #F2F2F2;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                                                                                 <div style="text-align: justify;">
 <!--DISCLOSURE FOOTER-->                                                            [DISCLOSURE]
                                                                                 </div>
@@ -757,21 +452,20 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <!-- // END FOOTER -->
+                                    <!-- // END DISCLOSURE -->
                                 </td>
                             </tr>
                         </table>
-                        <!-- // END TEMPLATE -->
                     </td>
                 </tr>
             </table>
         </center>
         <center>
             <br />
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" id="canspamBarWrapper" style="background-color:#FFFFFF; border-top:1px solid #E5E5E5;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FFFFFF; border-top:1px solid #E5E5E5;">
                 <tr>
                     <td align="center" valign="top" style="padding-top:20px; padding-bottom:20px;">
-                        <table border="0" cellpadding="0" cellspacing="0" id="canspamBar">
+                        <table border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td align="center" valign="top" style="color:#606060; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:150%; padding-right:20px; padding-bottom:5px; padding-left:20px; text-align:center;"><br /><br />
                                     This email was sent from <a href="mailto:[SENDER_EMAIL]" target="_blank" style="color:#404040 !important;">[SENDER_EMAIL]</a>
@@ -786,11 +480,5 @@
                 </tr>
             </table>
         </center>
-        <style type="text/css">
-            @media only screen and (max-width: 480px){
-                table[id="canspamBar"] td{font-size:14px !important;}
-                table[id="canspamBar"] td a{display:block !important; margin-top:10px !important;}
-            }
-        </style>
     </body>
 </html>

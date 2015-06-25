@@ -71,6 +71,21 @@ $(function(){
         $("#notice-confirm-filter").show();  
         $("#notice-cancel").show();
     });
+    function getUrlVars(){
+	var vars = [], hash;
+	var hashes = window.location.href.split('/');
+	for(var i = 0; i < hashes.length; i++)
+	{
+            hash = hashes[i].split(',');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+	}
+	return vars[6];
+    }
+    var page = getUrlVars();
+    if(page!=0){
+        $("#filter_notice").html("Filter is active");
+    }
     $("#notice-cancel").on("click", function(){        
         $(".shade").hide();
         $("#notice").hide();

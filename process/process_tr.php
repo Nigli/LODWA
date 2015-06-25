@@ -6,8 +6,11 @@ use traderec\TradeRec,traderec\TradeRecDAO,utils\Validate,email\Email,utils\Sess
 $valid = Validate::tr($_POST);
 $tr = $valid?new TradeRec($valid):false;
 $email = $tr?new Email($tr):false;
-$sent = $email?phpmailer($email):false;
+//$sent = $email?phpmailer($email):false;
+var_dump($valid);
+var_dump($tr);
+var_dump($email);
 echo $email->broker_temp;
 //$insert=($sent)?TradeRecDAO::InsertTradeRec($email):false;
-$insert?Session::set("tr", "sent"):Session::set("tr", "notsent");
+//$insert?Session::set("tr", "sent"):Session::set("tr", "notsent");
 //redirect_to("trade");

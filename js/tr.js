@@ -25,26 +25,34 @@ $(function(){
     });
     $("#tr_form_cancel").on("click",function(){
         $("#tr_form_cancel, #tr_form_submit").hide();
-        $("#tr_form_cxl, #tr_form_rpl, .checkbox_rep, #reset").show();        
+        $("#tr_form_cxl, #tr_form_rpl, .radio_rep, #reset").show();        
         $("#tr_form_stop_loss, #tr_form_price_target").removeClass("prices");
-        $("#tr_form_stop_loss, #tr_form_price_target").addClass("replace");        
+        $("#tr_form_stop_loss, #tr_form_price_target").addClass("replace");
+        $("select, input[type=number]").css('pointer-events','none');
     });
     $("#reset").on("click",function(){
         $(this).hide();
         $("#tr_form_cancel, #tr_form_submit").show();
-        $("#tr_form_cxl, #tr_form_rpl, .checkbox_rep ").hide();
+        $("#tr_form_cxl, #tr_form_rpl, .radio_rep ").hide();
         $("#tr_form_stop_loss, #tr_form_price_target").addClass("prices");        
         $("tbody tr").removeClass("activetr");
         $("input").removeClass("replace_selected");
+        $("select, input[type=number]").css('pointer-events','auto');
     });
-    $(".checkbox_rep").on("change", function(){
-        $(this).next("input").toggleClass("replace_selected");
+    $("input:radio[name='rpl_price']").on("change",function(){
+        if ($(this).is(':checked') && $(this).val() == 'stop_loss') {
+            $("#tr_form_stop_loss").addClass("replace_selected");
+            $("#tr_form_price_target").removeClass("replace_selected");
+        }else {
+            $("#tr_form_price_target").addClass("replace_selected");
+            $("#tr_form_stop_loss").removeClass("replace_selected");
+        }
     });
     $("#tr_form_cxl, #tr_form_rpl, #tr_form_submit").on("click", function (){        
         var empty = false;
         if($(this).val() === "cxl_rpl"){
             if($('input:checked').length === 0){
-                $('.checkbox_rep').addClass('checkbox_require');
+                $('.radio_rep').addClass('radio_require');
                 empty = true;
             };
         };
@@ -92,8 +100,8 @@ $(function(){
             }
         }    
     });    
-    $('.checkbox_rep').on("click",function (){
-        $('.checkbox_rep').removeClass('checkbox_require');
+    $('.radio_rep').on("click",function (){
+        $('.radio_rep').removeClass('radio_require');
     });
     $("#notice-confirm").on("click", function (){
         $(".shade").show();        
