@@ -5,10 +5,9 @@ class Validate {
     static function filter(&$value){        
         $value = str_replace("--","",$value);
         $value = str_replace("=","",$value);
-        $value = htmlspecialchars($value);
-        $value = stripslashes($value);
-        $value = trim($value);
         $value = strip_tags($value);
+        $value = htmlspecialchars($value, ENT_QUOTES);
+        $value = trim($value);
     }
     static function checkToken($form,$field) {
         if(isset($form[$field])&&$form[$field]===Session::get($field)){
@@ -82,14 +81,7 @@ class Validate {
             $form['email'] = $email;
         }
         $valid = $form;
-        if(!in_array(NULL || FALSE,$valid)){//CHECK IF $VALID FIELD NOT EMPTY OR FALSE           
-            return $valid;
-        }elseif(isset($valid['id_futures'])&&$valid['id_futures']=='' || isset($valid['id_strategy'])&&$valid['id_strategy']=='' || isset($valid['broker_acc'])&&$valid['broker_acc']=='0'|| isset($valid['id_receiver'])&&$valid['id_receiver']=='') {          
-            return $valid;
-        }else {
-            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
-            return FALSE;
-        }
+        return $valid;
     }
     
     static function user($form) {  

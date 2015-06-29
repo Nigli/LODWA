@@ -2,20 +2,23 @@
 namespace receiver;
 use PDO,utils\Conn;
 class ReceiverDao {    
-    public static function GetActiveReceivers($pagin,$filter){
+    public static function GetReceivers($pagin,$filter){
         $db= Conn::GetConnection();
         try{
             $res = $db->prepare("SELECT id_receiver,fk_receiver_type,receiver_type,first_name,last_name,email,active,date_added,hash_email,na_number,broker_account "
                     . "FROM receivers "
                     . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
                     . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
-                    . "WHERE active = 1 AND "
-                    . "fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
+                    . "WHERE active = if(:active= 'ALL',active, :active) "
+                    . "AND fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
+                    . "AND broker_account= if(:broker_account= 'ALL',broker_account, :broker_account) "
                     . "LIMIT :limit "
                     . "OFFSET :offset");
             $res->bindParam(':limit',$pagin->limit, PDO::PARAM_INT);
             $res->bindParam(':offset',$pagin->offset, PDO::PARAM_INT); 
             $res->bindParam(':type',$filter['type'], PDO::PARAM_INT);
+            $res->bindParam(':broker_account',$filter['ba'], PDO::PARAM_STR);
+            $res->bindParam(':active',$filter['active'], PDO::PARAM_STR);
             $res->execute();
             $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
             return $receivers;//!!!have to check if exists
@@ -57,17 +60,6 @@ class ReceiverDao {
             echo "error". $e->getMessage();
         }
     }
-    public static function GetInactiveReceivers(){
-        $db= Conn::GetConnection();
-        try{
-            $res = $db->prepare("SELECT id_receiver,fk_receiver_type,first_name,last_name,email,active,date_added,hash_email FROM receivers WHERE active = 0");
-            $res->execute();
-            $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
-            return $receivers;//!!!have to check if exists
-        }catch(\PDOException $e){
-            echo "error". $e->getMessage();
-        }
-    }
     public static function GetClientsReceivers(){
         $db= Conn::GetConnection();
         try{
@@ -97,7 +89,7 @@ class ReceiverDao {
             echo "error". $e->getMessage();
         }
     }
-    public static function GetSubscribers($tr_prog){
+    public static function GetSubscribersByStrategy($tr_prog){
         $db= Conn::GetConnection();
         try{
             $res = $db->prepare("SELECT first_name, last_name, num_subs "
@@ -127,8 +119,13 @@ class ReceiverDao {
         $db= Conn::GetConnection();
         try{
             $res = $db->prepare("SELECT COUNT(*) FROM receivers "
-                    . "WHERE fk_receiver_type = if(:type= 0,fk_receiver_type, :type)");        
+                    . "LEFT JOIN clients ON id_receiver=fk_id_receiver "
+                    . "WHERE fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
+                    . "AND broker_account= if(:broker_account = 'ALL',broker_account, :broker_account) "
+                    . "AND active = if(:active= 'ALL',active, :active)");        
             $res->bindParam(':type',$filter['type'], PDO::PARAM_INT);
+            $res->bindParam(':broker_account',$filter['ba'], PDO::PARAM_STR);
+            $res->bindParam(':active',$filter['active'], PDO::PARAM_STR);
             $res->execute();
             $receivers = $res->fetchColumn();
             return $receivers;//!!!have to check if exists
@@ -175,13 +172,13 @@ class ReceiverDao {
                     . "na_number=:na_number, "
                     . "broker_account=:broker_account "
                 . "WHERE id_receiver=:id_receiver");
-            $res->bindParam(':id_receiver',$receiver['id_receiver']);
-            $res->bindParam(':fk_receiver_type',$receiver['type']);
-            $res->bindParam(':first_name',$receiver['first_name']);
-            $res->bindParam(':last_name',$receiver['last_name']);
-            $res->bindParam(':email',$receiver['email']);
-            $res->bindParam(':na_number',$receiver['na_number']);
-            $res->bindParam(':broker_account',$receiver['broker_acc']);
+            $res->bindParam(':id_receiver',$receiver['id_receiver'], PDO::PARAM_INT);
+            $res->bindParam(':fk_receiver_type',$receiver['type'], PDO::PARAM_INT);
+            $res->bindParam(':first_name',$receiver['first_name'], PDO::PARAM_STR);
+            $res->bindParam(':last_name',$receiver['last_name'], PDO::PARAM_STR);
+            $res->bindParam(':email',$receiver['email'], PDO::PARAM_STR);
+            $res->bindParam(':na_number',$receiver['na_number'], PDO::PARAM_STR);
+            $res->bindParam(':broker_account',$receiver['broker_acc'], PDO::PARAM_INT);
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
@@ -192,10 +189,11 @@ class ReceiverDao {
         $db= Conn::GetConnection();               
         try{
             $res = $db->prepare("UPDATE receivers "
-                    . "SET active=0, "
+                    . "SET active = if(:active=1, 0, 1), "
                     . "date_inactive=now() "
                     . "WHERE id_receiver=:id");
-            $res->bindParam(':id',$receiver['id_receiver']);
+            $res->bindParam(':id',$receiver['id_receiver'], PDO::PARAM_INT);
+            $res->bindParam(':active',$receiver['active'], PDO::PARAM_INT);
             $res->execute();  
             return TRUE;      
         }catch(\PDOException $e){

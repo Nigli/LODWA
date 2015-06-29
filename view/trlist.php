@@ -1,3 +1,4 @@
+<script src="js/trlist.js" type="text/javascript"></script>
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -35,11 +36,11 @@
 <div id="tr_list">
     <h2>Trade Recommendations</h2> 
     <span id="filterspan">Filter</span>   
+    <span id="filter_notice"></span>
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th>#</th>
+                <th colspan="2">#</th>
                 <th>Contract</th>
                 <th>Entry Choice</th>
                 <th>Entry Price</th>
@@ -77,24 +78,6 @@
     ?>
 </div>
 <script>
-    $("#filterspan").on("click", function(){        
-        $(".shade").show();
-        $("#notice").show();    
-        $("#notice-reset").show(); 
-        $("#notice-confirm").show(); 
-        $("#notice-cancel").show();
-    });
-    $("#notice-cancel").on("click", function(){        
-        $(".shade").hide();
-        $("#notice").hide();
-        $("#notice-confirm").hide(); 
-        $("#notice-cancel").hide();
-    });
-    $("#notice-reset").on("click",function(){
-        $(this).hide();
-        $("#list_form_entry_choice").val("ALL");
-        $("#list_form_future").val("0");
-    });
     $("#list_form_entry_choice").val("<?php echo $links['entry_choice'] ?>");
     $("#list_form_future").val("<?php echo $links['fk_future'] ?>");
 </script>

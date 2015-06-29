@@ -10,6 +10,12 @@
     <form id="receiver_list_filter" method="get" class="hidden">
         <input id="receiver_note" type="hidden" value="<?php echo $notice ?>"/>
         <input type="hidden" value="1" name="page"/>
+        <label for="receiver_list_active">Subscribed or Not</label><br>
+        <select id="receiver_list_active" name="active">
+            <option value="ALL">ALL</option>
+            <option value="1">Subscribed</option>
+            <option value="0">Not Subscribed</option>
+        </select><br>
         <label for="receiver_list_type">By Subscriber Type</label><br>
         <select id="receiver_list_type" name="type">
             <option value="0">ALL</option>
@@ -19,7 +25,13 @@
             <?php
             }
             ?>
-        </select>
+        </select><br>
+        <label for="receiver_list_ba">By Broker Account</label><br>
+        <select id="receiver_list_ba" name="ba">
+            <option value="ALL">ALL</option>
+            <option value="1">With Account</option>
+            <option value="0">Without Account</option>
+        </select><br>
     </form>
     <div id="bottom">
         <div id="bottom-left">
@@ -38,8 +50,7 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th>Type</th>
+                <th colspan="2">Type</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
@@ -62,6 +73,7 @@
                     <td data-title='BA'><?php echo $receiver->broker_account?"<i class='fa fa-check'></i>":"<i class='fa fa-times'></i>"?></td>                
                     <td data-title='Broker Account' class="td_hidden"><?php echo $receiver->broker_account?></td>                
                     <td data-title='Receiver Id' class="td_hidden"><?php echo $receiver->id_receiver ?></td>
+                    <td data-title='Active' class="td_hidden"><?php echo $receiver->active ?></td>
                     <td data-title='Receiver Type Id' class="td_hidden"><?php echo $receiver->fk_receiver_type ?></td>
                 </tr>
             <?php
@@ -79,4 +91,6 @@
 </div>
 <script>
     $("#receiver_list_type").val("<?php echo $links['type'] ?>");
+    $("#receiver_list_active").val("<?php echo $links['active'] ?>");
+    $("#receiver_list_ba").val("<?php echo $links['ba'] ?>");
 </script>

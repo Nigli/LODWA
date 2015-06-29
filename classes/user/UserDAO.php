@@ -62,6 +62,7 @@ class UserDAO {
             $res->bindParam(':user_pass',$user['hash']);
             $res->bindParam(':user_status',$user['status']);
             $res->execute();
+            return true;
         }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
@@ -79,6 +80,7 @@ class UserDAO {
             $res->bindParam(':user_pass',$user['hash']);
             $res->bindParam(':user_status',$user['status']);
             $res->execute();
+            return true;
         }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }
@@ -91,6 +93,7 @@ class UserDAO {
                     . "WHERE user_id=:user_id");
             $res->bindParam(':user_id',$user['id_user']);
             $res->execute();
+            return true;
         }catch(\PDOException $e){
             echo "error". $e->getMessage();
         }

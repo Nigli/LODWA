@@ -19,12 +19,13 @@ class Pagination {
         $this->end = min(($this->offset + $this->limit), $this->total);
     }
     public function createLinks($links) {
+        $filters[] = "";
         foreach ($links as $link =>$value){
             if($link !="p" && $link !="page"){
-                $filters[]=$value;
-            }            
-        }
-        $filters = implode("/", $filters);
+                $filters[] = $link."=".$value;
+            }
+        }        
+        $filters = implode("&", $filters);
         if($this->page >0 && $this->page <= $this->pages){
             $start = ($this->page-1)*5;
             $end = $start + 5;
@@ -35,12 +36,12 @@ class Pagination {
         $adjacents = 2;
         $html = "<div id='paginate'>";
         if($this->page == 1){
-            $html .= "<div class='element disabled'><a href='".$links['p']."/" .  $this->page . "/".$filters."'>&laquo;</a></div>"; 
+            $html .= "<div class='element disabled'><a href='".$links['p']."?page=" .  $this->page . "".$filters."'>&laquo;</a></div>"; 
         } else {
-            $html .= "<div class='element'><a href='".$links['p']."/" .  ($this->page-1) . "/".$filters."'>&laquo;</a></div>"; 
+            $html .= "<div class='element'><a href='".$links['p']."?page=" .  ($this->page-1) . "".$filters."'>&laquo;</a></div>"; 
         }
         if($this->page > $adjacents+2){        
-            $html   .= "<div class='element'><a href='".$links['p']."/1/".$filters."'>1</a></div>";    
+            $html   .= "<div class='element'><a href='".$links['p']."?page=1".$filters."'>1</a></div>";    
             $html   .= "<div class='element disabled'><span>...</span></div>";
         }
         $pagemin = ($this->page > $adjacents) ? ($this->page - $adjacents) : 1;
@@ -48,21 +49,21 @@ class Pagination {
         for ($i = $pagemin; $i <= $pagemax; $i++) {
             $class  = ( $this->page == $i ) ? "active" : "";
             if ($i == $this->page) {
-                $html   .= "<div class='element " . $class . "'><a href='".$links['p']."/" . $i . "/".$filters."'>" . $i . "</a></div>";
+                $html   .= "<div class='element " . $class . "'><a href='".$links['p']."?page=" . $i . "".$filters."'>" . $i . "</a></div>";
             } elseif ($i == 1) {
-                $html   .= "<div class='element" . $class . "'><a href='".$links['p']."/1/".$filters."'>1</a></div>";
+                $html   .= "<div class='element" . $class . "'><a href='".$links['p']."?page=1".$filters."'>1</a></div>";
             } else {
-               $html   .= "<div class='element " . $class . "'><a href='".$links['p']."/" . $i . "/".$filters."'>" . $i . "</a></div>";
+               $html   .= "<div class='element " . $class . "'><a href='".$links['p']."?page=" . $i . "".$filters."'>" . $i . "</a></div>";
             }
         }
         if ($this->page < ($this->pages - $adjacents-1)) {
             $html   .= "<div class='element disabled'><span>...</span></div>";
-            $html   .= "<div class='element " . $class . "'><a href='".$links['p']."/" . $this->pages . "/".$filters."'>" . $this->pages . "</a></div>";
+            $html   .= "<div class='element " . $class . "'><a href='".$links['p']."?page=" . $this->pages . "".$filters."'>" . $this->pages . "</a></div>";
         }
         if ($this->page < $this->pages) {
-            $html .= "<div class='element'><a href='".$links['p']."/" . ( $this->page + 1 ) . "/".$filters."'>&raquo;</a></div>";
+            $html .= "<div class='element'><a href='".$links['p']."?page=" . ( $this->page + 1 ) . "".$filters."'>&raquo;</a></div>";
         } else {
-            $html .= "<div class='element disabled'><a href='".$links['p']."/" . ( $this->page + 1 ) . "/".$filters."'>&raquo;</a></div>";
+            $html .= "<div class='element disabled'><a href='".$links['p']."?page=" . ( $this->page + 1 ) . "".$filters."'>&raquo;</a></div>";
         }
         $html.= "";
         return $html;

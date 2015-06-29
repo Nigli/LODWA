@@ -4,8 +4,7 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th>Status</th>
+                <th colspan="2">Status</th>
                 <th>Email</th>
             </tr>
         </thead>

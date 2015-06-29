@@ -3,8 +3,7 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th>#</th>
+                <th colspan="2">#</th>
                 <th>Strategy Name</th>
                 <th>Futures Contracts</th>
             </tr>
@@ -41,8 +40,7 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th>#</th>
+                <th colspan="2">#</th>
                 <th>Futures Name</th>
                 <th>Futures Description</th>
             </tr>

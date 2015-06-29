@@ -74,7 +74,7 @@ class Email{
             $this->recipients[]=$v->recipient;
         }
         $this->num_tot_contr=ReceiverDao::GetClientsSubs($tr->fk_future, $tr->num_contr);
-        $this->subscribers=ReceiverDao::GetSubscribers($this->id_strategy);
+        $this->subscribers=ReceiverDao::GetSubscribersByStrategy($this->id_strategy);
         $this->disclosure=Email::nl2p(EmailTempDAO::GetEmailTemp()->disclosure);
         $temps = Render::ViewTemp($this);
         $this->broker_temp=$temps[0];

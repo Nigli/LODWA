@@ -12,6 +12,9 @@ class User {
             $hash = password_hash($pass, PASSWORD_BCRYPT);
             return $hash;
         }
+        else {
+            return false;
+        }
     }
     public static function  pageAccess($use, $get){
         $superadmin = array("superadmin");

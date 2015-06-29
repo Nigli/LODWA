@@ -1,4 +1,19 @@
 $(function(){
+    function getUrlVars(){
+	var vars = [], hash;
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	for(var i = 0; i < hashes.length; i++)
+	{
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+	}       
+        return vars; 
+    }
+    function getUrlVar(name){
+        return getUrlVars()[name];
+    }  
+    var default_url = "http://localhost/LODWA/receiverlist";
     $("#receiver_list tbody tr").on("click", function () {
         $rec = {type:$(this).find("[data-title='Receiver Type']").text(),
                 type_id:$(this).find("[data-title='Receiver Type Id']").text(),
@@ -8,7 +23,8 @@ $(function(){
                 date_added:$(this).find("[data-title='Date Added']").text(),
                 na_number:$(this).find("[data-title='NA Number']").text(),
                 broker_acc:$(this).find("[data-title='Broker Account']").text(),
-                id_receiver:$(this).find("[data-title='Receiver Id']").text()
+                id_receiver:$(this).find("[data-title='Receiver Id']").text(),
+                active:$(this).find("[data-title='Active']").text()
                 };
         $.each($rec, function(key, value){
             $("#"+key).val(value);
@@ -21,21 +37,27 @@ $(function(){
         $("#receiver_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);
-
         $("#update").show();
-        $("#delete").show();
+        if($("#active").val()== 1) {            
+            $("#unsubs").show();
+            $("#subs").hide();
+        }else {                 
+            $("#unsubs").hide();
+            $("#subs").show();
+        }
         $("#reset").show();
         $("#new").hide();
     });
     $("#reset").on("click",function(){
         $(this).hide();
-        $("#update").hide();
-        $("#delete").hide();
+        $("#update").hide();        
+        $("#subs").hide();
+        $("#unsubs").hide();
         $("#new").show();
         $("#id_receiver").val("");
         $("#receiver_list tbody tr").removeClass("activetr");
     });
-    $("#delete, #update, #new").on("click", function (){
+    $("#unsubs, #subs, #update, #new").on("click", function (){
         var empty = false;
         $("input[type='email'], input[type='text']").each(function(){
             if($(this).val()===""){
@@ -45,8 +67,7 @@ $(function(){
         });
         if(empty){
            return false;
-        };
-               
+        };               
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Confirm "+rec_action);
@@ -66,26 +87,20 @@ $(function(){
         $("#notice").show();        
         $("#receiver_list_filter").show();
         $("#notice-title h3").html("Filter");
-        $("#notice-reset").show();
+        if(getUrlVar("type")!= "0" || getUrlVar("ba")!= "ALL" || getUrlVar("active")!= "ALL"){
+            $("#notice-reset").show();
+        }
         $("#notice-confirm").hide();
         $("#notice-confirm-filter").show();  
         $("#notice-cancel").show();
-    });
-    function getUrlVars(){
-	var vars = [], hash;
-	var hashes = window.location.href.split('/');
-	for(var i = 0; i < hashes.length; i++)
-	{
-            hash = hashes[i].split(',');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-	}
-	return vars[6];
-    }
-    var page = getUrlVars();
-    if(page!=0){
+        $("#notice-close").hide();
+    });  
+    if(getUrlVars()!= default_url && (getUrlVar("type")!= 0 || getUrlVar("ba")!= "ALL" || getUrlVar("active")!= "ALL")){
         $("#filter_notice").html("Filter is active");
     }
+    $("#receiver_list_type, #receiver_list_active, #receiver_list_ba").on("change",function(){
+        $("#notice-reset").show();
+    });
     $("#notice-cancel").on("click", function(){        
         $(".shade").hide();
         $("#notice").hide();
@@ -96,6 +111,8 @@ $(function(){
     $("#notice-reset").on("click",function(){
         $(this).hide();
         $("#receiver_list_type").val("0");
+        $("#receiver_list_active").val("ALL");
+        $("#receiver_list_ba").val("ALL");
     });
     $("#notice-confirm").on("click", function (){
         $(".shade").show();        

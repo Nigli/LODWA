@@ -106,8 +106,7 @@
     <table>
         <thead>
             <tr>
-                <th></th>
-                <th>#</th>
+                <th colspan="2">#</th>
                 <th>Contract</th>
                 <th>Entry Choice</th>
                 <th>Entry Price</th>

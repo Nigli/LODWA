@@ -1,5 +1,8 @@
 <?php
-use user\UserDAO,utils\Pagination;
+use user\UserDAO,utils\Pagination,utils\Session;
+
+$notice = Session::get('admin');
+Session::unsets('admin');
 
 $count = UserDao::CountUsers();
 $links = isset($_GET)?$_GET:"";

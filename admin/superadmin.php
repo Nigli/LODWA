@@ -17,7 +17,8 @@
 </div>
 <form id="user_list_form" class="edit" method="post" action="processuser">
     <h2>Edit or add New</h2>
-    <span id="rightspan">To edit user click on the table row</span><br>
+    <span id="rightspan">To edit user click on the table row</span><br>    
+    <input id="admin_note" type="hidden" value="<?php echo $notice ?>"/>
     <table>
         <thead>
             <tr>

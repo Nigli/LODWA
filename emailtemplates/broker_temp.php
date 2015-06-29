@@ -244,7 +244,7 @@
                                                                                                 [TRADE_TYPE]
                                                                                             </h2>
                                                                                         </td>
-                                                                                        </tr>
+                                                                                    </tr>
                                                                                 </table>
                                                                                 <table id="tr_details" border="0" cellpadding="0" cellspacing="0" style="margin-top: 9px;border-bottom: 1px solid #cccccc;width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color:#666666">
                                                                                     <tbody>

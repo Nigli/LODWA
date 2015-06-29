@@ -23,13 +23,13 @@ $(function(){
         $(".shade").show();        
         $("#notice").show();
         $("#notice-title h3").html("Success!");
-        $("#notice-span").html("Sender Info has been successfully changed.");
+        $("#notice-span").html("Profile Info has been successfully changed.");
         $("#notice-close").show();
     } else if ($("#profile_note").val()==="notsent") {
 	$(".shade").show();        
         $("#notice").show();
         $("#notice-title h3").html("Unsuccess!");
-        $("#notice-span").html("Sender Info has NOT been successfully changed. Please try again later.");
+        $("#notice-span").html("Profile Info has NOT been successfully changed. Please try again later.");
         $("#notice-close").show();
     }
     $("#notice-close").on("click", function (){

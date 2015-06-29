@@ -22,10 +22,12 @@
         </tr>
     </table>
     <input id="id_receiver" type="hidden" name="id_receiver" value=""/>    
+    <input id="active" name="active" type="hidden" value=""/>
     <div id="bottom">
         <div id="bottom-left">
             <button id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
-            <button id="delete" class="delete" type="button" name="receiver-submit" value="unsubscribe" onclick="getVal(this)">Unsubscribe</button>
+            <button id="subs" class="delete" type="button" name="receiver-submit" value="subscribe" onclick="getVal(this)">Subscribe</button>
+            <button id="unsubs" class="delete" type="button" name="receiver-submit" value="subscribe" onclick="getVal(this)">Unsubscribe</button>
             <button id="update" class="update" type="button" name="receiver-submit" value="update" onclick="getVal(this)">Update</button>
             <button id="new" type="button" name="receiver-submit" value="new" onclick="getVal(this)">New</button>
         </div>

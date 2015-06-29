@@ -11,7 +11,6 @@ $(function(){
         $("#user_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);
-
         $("#update").show();
         $("#delete").show();
         $("#reset").show();
@@ -25,12 +24,17 @@ $(function(){
         $("#id_user").val("");
         $("#user_list_form tbody tr").removeClass("activetr");
     });    
-    $("#delete, #update, #new").on("click", function (){        
-        $("input[type='number']").each(function(){
+    $("#delete, #update, #new").on("click", function (){    
+        var empty = false;    
+        $("input[type='number'], input[type='password']").each(function(){
             if($(this).val()===""){
-                event.preventDefault();
+                this.focus();
+                empty = true;
             }
         });
+        if(empty){
+           return false;
+        };
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Confirm "+rec_action);
@@ -41,5 +45,19 @@ $(function(){
     $("#notice-close, #notice-cancel").on("click", function (){
         $(".shade").hide();
         $("#notice").hide();
+        $("#notice-span").html("");
     });
+    if($("#admin_note").val()==="sent"){
+        $(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Success!");
+        $("#notice-span").html("User Info has been successfully changed.");
+        $("#notice-close").show();
+    } else if ($("#admin_note").val()==="notsent") {
+	$(".shade").show();
+        $("#notice").show();
+        $("#notice-title h3").html("Unsuccess!");
+        $("#notice-span").html("User Info has NOT been successfully changed. Please try again later.");
+        $("#notice-close").show();
+    }
 });

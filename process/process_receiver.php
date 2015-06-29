@@ -7,9 +7,10 @@ if($valid){
     if($valid['receiver-submit']==="update"){
         $sent = ReceiverDao::UpdateReceiver($valid);
         $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
-    }elseif($valid['receiver-submit']==="unsubscribe"){
+    }elseif($valid['receiver-submit']==="subscribe"){
         $sent = ReceiverDao::UnsubscribeReceiver($valid);
         $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
+        var_dump($valid);
     }else{
         $sent = ReceiverDao::NewReceiver($valid);
         $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
@@ -17,4 +18,4 @@ if($valid){
 }else {
     Session::set("receiver", "notsent");
 }
-redirect_to("receiverlist/1/0");
+redirect_to("receiverlist");

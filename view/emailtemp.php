@@ -16,7 +16,7 @@
 <form id="emailtemp" method="post"  action="processemtemp">
     <input id="emailtemp_note" type="hidden" value="<?php echo $notice ?>"/>
     <div id="top">
-        <h2>Email Disclosure</h2>
+        <h2>Email Disclaimer</h2>
     </div>
     <table>
         <tr>

@@ -193,7 +193,9 @@ h2 {
     vertical-align: middle;    
 }
 #tr_form #right .radio_require {
-    outline: 1px solid #F00;
+    box-shadow: 0 0 3px 2px #F00;
+    -webkit-box-shadow: 0 0 3px 2px #F00;
+    border: none;
 }
 #tr_form #left select {
     height: 36px;
@@ -499,7 +501,7 @@ table tbody tr::after {
     padding: 10px;
     margin-left: -5px;
 }
-.edit tr:before, .edit tr:after {
+.edit tr::before, .edit tr::after {
     content: '';
 }
 #filterspan:hover {
@@ -516,21 +518,20 @@ table tbody tr::after {
         height: 40px;
         width: 100%;        
         position:fixed;        
-        z-index: 5;
+        z-index: 5;     
     }
     #header-inner {
-        top:50px;
+        top:50px;   
     }
     #header-inner, #header-nav {
         width: 100%; 
-        position:fixed;
     }
-    #header-nav {      
+    #header-nav {    
         position: fixed;
         z-index: 5;
         display: none;
         top: 91px;
-        background: #ffffff;
+        background: #ffffff;    
         -webkit-box-shadow: 0px 2px 2px 0px rgba(50, 50, 50, 0.5);
         -moz-box-shadow:    0px 2px 2px 0px rgba(50, 50, 50, 0.5);
         box-shadow:         0px 2px 2px 0px rgba(50, 50, 50, 0.5);
@@ -583,6 +584,14 @@ table tbody tr::after {
        top: 10%;
        left: auto;
    }
+   /******FILTER RESP*******/
+   #filterspan, #filter_notice {
+       clear: both;
+       display: block;
+       width: 100%;
+       float: none;
+       margin: 0px 0px 15px 0px;
+   }   
    /******PAGINATION RESP*******/
     .element:nth-child(n+2):not(:nth-last-child(-n+1)):not(.active) {
         display: none;
@@ -590,7 +599,6 @@ table tbody tr::after {
     #profile input, #broker input {
         width: 100%;
     }
-
     /******TR FORM RESP*******/
     #tr_list,#tr_list_5,#tr_form,#receiver_list_form,#strategy_list_form, #strategy_list,#profile, #login, #unsub, #futures_list, #receiver_list, #emailtemp {
         width: 310px;

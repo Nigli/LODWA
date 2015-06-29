@@ -35,7 +35,7 @@
                 line-height:125%;
             }
             h1{
-                color:#666666 !important;
+                color:#666666;
                 display:block;
                 font-family:Helvetica;
                 font-size:24px;
@@ -46,7 +46,7 @@
                 text-align:left;
             }
             h2{
-                color:#404040 !important;
+                color:#404040;
                 display:block;
                 font-family:Helvetica;
                 font-size:20px;
@@ -56,7 +56,7 @@
                 margin:0;
             }
             h3{
-                color:#606060 !important;
+                color:#606060;
                 display:block;
                 font-family:Helvetica;
                 font-size:18px;
@@ -67,7 +67,7 @@
                 text-align:left;
             }
             h4{
-                color:#808080 !important;
+                color:#808080;
                 display:block;
                 font-family:Helvetica;
                 font-size:16px;

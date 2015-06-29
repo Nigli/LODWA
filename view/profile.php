@@ -16,7 +16,7 @@
 <form id="profile" method="post" action="processprof">
     <input id="profile_note" type="hidden" value="<?php echo $notice ?>"/>
     <div id="top">
-        <h2>Company Information</h2>
+        <h2>Profile Information</h2>
     </div>
     <div id="left">
         <?php 

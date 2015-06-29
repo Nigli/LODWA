@@ -41,11 +41,11 @@ $(function(){
     });
     $("input:radio[name='rpl_price']").on("change",function(){
         if ($(this).is(':checked') && $(this).val() == 'stop_loss') {
-            $("#tr_form_stop_loss").addClass("replace_selected");
-            $("#tr_form_price_target").removeClass("replace_selected");
+            $("#tr_form_stop_loss").addClass("replace_selected").css('pointer-events','auto');
+            $("#tr_form_price_target").removeClass("replace_selected").css('pointer-events','none');
         }else {
-            $("#tr_form_price_target").addClass("replace_selected");
-            $("#tr_form_stop_loss").removeClass("replace_selected");
+            $("#tr_form_price_target").addClass("replace_selected").css('pointer-events','auto');
+            $("#tr_form_stop_loss").removeClass("replace_selected").css('pointer-events','none');
         }
     });
     $("#tr_form_cxl, #tr_form_rpl, #tr_form_submit").on("click", function (){        
@@ -113,8 +113,8 @@ $(function(){
         $("#notice").hide();
     });
     $("input").on("keypress",function(e){
-        if(e.which === 13){
-            event.preventDefault();
+        if(e.which === 13){                
+            event.preventDefault(); 
         }
     });
     if($("#tr_note").val()==="sent"){
