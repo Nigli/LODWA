@@ -2,8 +2,9 @@
 namespace user;
 use PDO,utils\Conn;
 class UserDAO {
-    public static function GetUsers(){
-        $db= Conn::GetConnection();            
+    public static function getUsers(){
+        $db= Conn::getConnection();     
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);              
         try{
             $res = $db->prepare("SELECT user_id,user_email, user_pass, user_status, status_name FROM users "
                     . "LEFT JOIN user_status ON user_status=status "
@@ -11,13 +12,15 @@ class UserDAO {
                     . "ORDER BY user_status");
             $res->execute();
             $users = $res->fetchAll(PDO::FETCH_CLASS, "user\User");;
-        return $users;//!!!have to check if array exists
+            return $users;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function GetUserByEmail($user_email){
-        $db= Conn::GetConnection();            
+    public static function getUserByEmail($user_email){/**GET 1 USER BY EMAIL - RETURNS OBJECT**/ 
+        $db= Conn::getConnection();     
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try{
             $res = $db->prepare("SELECT user_id,user_email, user_pass, user_status, status_name FROM users "
                     . "LEFT JOIN user_status ON user_status=status "
@@ -25,35 +28,41 @@ class UserDAO {
             $res->bindParam(':user_email',$user_email);
             $res->execute();
             $user = $res->fetchObject("user\User");;
-        return $user;//!!!have to check if array exists
+            return $user;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     } 
-    public static function CountUsers(){
-        $db= Conn::GetConnection();            
+    public static function countUsers(){
+        $db= Conn::getConnection();       
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);            
         try{
             $res = $db->prepare("SELECT COUNT(*) FROM users");
             $res->execute();
             $users = $res->fetchColumn();
-        return $users;//!!!have to check if exists
+            return $users;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }    
-    public static function GetStatus(){
-        $db= Conn::GetConnection();            
+    public static function getStatus(){
+        $db= Conn::getConnection();         
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);          
         try{
             $res = $db->prepare("SELECT status,status_name FROM user_status");
             $res->execute();
             $receivers = $res->fetchAll(PDO::FETCH_ASSOC);
-        return $receivers;//!!!have to check if exists
+            return $receivers;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function NewUser($user){
-        $db= Conn::GetConnection();            
+    public static function newUser($user){
+        $db= Conn::getConnection();            
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);       
         try{
             $res = $db->prepare("INSERT INTO users "
                 . "(user_id,user_email,user_pass,user_status) "
@@ -64,11 +73,13 @@ class UserDAO {
             $res->execute();
             return true;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function UpdateUser($user){
-        $db= Conn::GetConnection();            
+    public static function updateUser($user){
+        $db= Conn::getConnection();           
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
         try{
             $res = $db->prepare("UPDATE users "
                 . "SET user_email=:user_email, "
@@ -82,11 +93,13 @@ class UserDAO {
             $res->execute();
             return true;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function RemoveUser($user){
-        $db= Conn::GetConnection();            
+    public static function removeUser($user){
+        $db= Conn::getConnection();            
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);       
         try{
             $res = $db->prepare("UPDATE users "
                     . "SET active=0 "
@@ -95,7 +108,8 @@ class UserDAO {
             $res->execute();
             return true;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
 }

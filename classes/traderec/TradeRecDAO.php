@@ -2,8 +2,9 @@
 namespace traderec;
 use PDO,utils\Conn;
 class TradeRecDAO {
-    public static function GetTradeRecs($pagin,$filter){
-        $db= Conn::GetConnection();       
+    public static function getTradeRecs($pagin,$filter){/**GET ALL TR FILTERED - RETURN ARRAY OF OBJECTS**/
+        $db= Conn::getConnection();       
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,id_strategy,strategy_name,description,entry_choice,duration, "
                     . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
@@ -24,11 +25,13 @@ class TradeRecDAO {
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
             return $tr;//!!!have to check if array exists
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function GetLast5TradeRecs(){
-        $db= Conn::GetConnection();       
+    public static function getLast5TradeRecs(){/**GET LAST 5 TRs - RETURNS ARRAY OF OBJECTS**/
+        $db= Conn::getConnection();       
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,futures_name,month,year,num_contr,id_strategy,strategy_name,description,entry_choice,duration, "
                     . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
@@ -41,11 +44,13 @@ class TradeRecDAO {
             $tr=$res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
             return $tr;        
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function GetTradeRecType($id_type){
-        $db= Conn::GetConnection();       
+    public static function getTradeRecType($id_type){/**GET TR TYPE NAME BY ID - RETURNS COLUMN**/
+        $db= Conn::getConnection();       
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT tr_type FROM trade_types "
                     . "WHERE id_tr_type=:id_tr_type LIMIT 1");
@@ -54,11 +59,13 @@ class TradeRecDAO {
             $tr_type = $res->fetchColumn();;
             return $tr_type;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }    
-    public static function InsertTradeRec($tr){
-        $db= Conn::GetConnection();       
+    public static function insertTradeRec($tr){/**INSERT NEW TR FROM EMAIL OBJECT - RETURNS TRUE**/
+        $db= Conn::getConnection();       
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("INSERT INTO trade_rec "
                     . "(id_tr,fk_tr_type,fk_future,month,year,num_contr,entry_choice,duration,entry_price,price_target,stop_loss,date_time) "
@@ -75,13 +82,15 @@ class TradeRecDAO {
             $res->bindParam(':stop_loss',$tr->stop_loss);
             $res->bindParam(':date_time',$tr->date_time);
             $res->execute();
-            return true;
+            return TRUE;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }     
-    public static function CountTrades($filter){
-        $db= Conn::GetConnection();       
+    public static function countTrades($filter){/**GET TOTAL NUMBER OF FILTERED TR - RETURNS COLUMN**/
+        $db= Conn::getConnection();       
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT COUNT(*) FROM trade_rec "
                     . "WHERE fk_future= IF(:filter_future = 0, fk_future, :filter_future) AND "
@@ -92,7 +101,8 @@ class TradeRecDAO {
             $receivers = $res->fetchColumn();
             return $receivers;//!!!have to check if exists
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
 }

@@ -4,13 +4,9 @@ require '../config.php';
 use traderec\TradeRec,traderec\TradeRecDAO,utils\Validate,email\Email,utils\Session;
 
 $valid = Validate::tr($_POST);
-$tr = $valid?new TradeRec($valid):false;
-$email = $tr?new Email($tr):false;
-//$sent = $email?phpmailer($email):false;
-//var_dump($valid);
-//var_dump($tr);
-var_dump($email);
-echo $email->broker_temp;
-//$insert=($sent)?TradeRecDAO::InsertTradeRec($email):false;
-//$insert?Session::set("tr", "sent"):Session::set("tr", "notsent");
-//redirect_to("trade");
+$tr = $valid?new TradeRec($valid):false;/**IF IS VALID IS OK CREATE NEW TR OBJECT**/
+$email = $tr?new Email($tr):false;/**IF TR IS OK CREATE NEW EMAIL OBJECT**/
+$sent = $email?phpmailer($email):false;/**IF EMAIL OBJECT CREATED SEND EMAIL WITH phpmailer() function**/
+$insert=($sent)?TradeRecDAO::insertTradeRec($email):false;
+$insert?Session::set("tr", "sent"):Session::set("tr", "notsent");
+redirect_to("trade");

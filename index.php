@@ -1,4 +1,4 @@
 <?php
 require 'config.php';
 use utils\Render;
-Render::View($_GET);
+Render::view($_GET);

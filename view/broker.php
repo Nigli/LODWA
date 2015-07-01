@@ -1,5 +1,6 @@
 <script src="js/broker.js" type="text/javascript"></script>
 <div id="spinner"></div>
+<!--NOTICE POPUP-->
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -13,6 +14,7 @@
         </div>
     </div>
 </div>
+<!--NOTICE POPUP-->
 <form id="profile" method="post"  action="processbrok">    
     <input id="broker_note" type="hidden" value="<?php echo $notice ?>"/>
     <div id="top">
@@ -35,6 +37,7 @@
     </div>
     <?php  
         }else {
+            
             ?>
             <span>There is no Broker info in database</span>
             </div>

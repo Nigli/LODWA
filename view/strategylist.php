@@ -28,6 +28,7 @@
             <?php
             }
         }else {
+            
         ?>
             <tr><td>No Futures Contracts in Database</td></tr>
         <?php
@@ -62,6 +63,7 @@
             <?php
             }
         }else {
+            
         ?>
             <tr><td>No Trading Strategies in Database</td></tr>
         <?php

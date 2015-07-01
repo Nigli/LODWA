@@ -1,6 +1,6 @@
 <?php
 namespace email;
-use sender\SenderInfo,sender\SenderInfoDAO,broker\Broker,broker\BrokerDAO,receiver\ReceiverDao,email\EmailTempDAO,utils\Render;
+use sender\SenderInfoDAO,broker\BrokerDAO,receiver\ReceiverDao,email\EmailTempDAO,utils\Render;
 
 class Email{
     public $fk_tr_type;
@@ -22,8 +22,6 @@ class Email{
     public $stop_loss;
     public $description;
     public $num_contr;
-    public $num_tot_contr;
-    public $subscribers=array();
     
     public $id_sender;
     public $company_name;
@@ -49,38 +47,34 @@ class Email{
     public $client_temp;
     
     public function __construct($tr) {
-        foreach($tr as $k=>$v){
+        foreach($tr as $k=>$v){/**PUT ARRAY IN CONSTRUCT(TR array)**/
             $this->$k = $v;
-        }        
-        date_default_timezone_set(CHICAGO_TIME);
-        $date_time = new \DateTime();
+        }    
+        
+        date_default_timezone_set(CHICAGO_TIME);/**SETTING TIME ZONE TO BE CHICAGO(constant from config file)**/
+        $date_time = new \DateTime();/**CREATE NEW DATETIME OBJECT AND FORMAT IT FOR DB**/
         $this->date_time = $date_time->format("Y-m-d H:i:s");
         $this->date = $date_time->format("d M Y");
         $this->time = $date_time->format("H:i");
-        if(isset($tr->rpl_price)){
-            $this->rpl_price=$tr->rpl_price;
-        }
-        $sender_info=new SenderInfo(SenderInfoDAO::GetSenderInfo());
-        foreach($sender_info as $k=>$v){
+                
+        foreach(SenderInfoDAO::getSenderInfo() as $k=>$v){/**CREATES SENDER INFO OBJECT**/
             $this->$k = $v;
         }
-        $broker_info = new Broker(BrokerDAO::GetBrokerInfo());
-        foreach($broker_info as $k=>$v){
+        foreach(BrokerDAO::getBrokerInfo() as $k=>$v){/**CREATES BROKER INFO OBJECT**/
             $this->$k = $v;
         }
-        foreach (ReceiverDao::GetClientsReceivers() as $k=>$v){
+        foreach(ReceiverDao::getReceiversByStrat($this->id_strategy) as $k=>$v){/**CREATES ARRAY OF CLIENT OBJECTS**/
             $this->hash_email = $v->hash_email;
             $this->id_receiver = $v->id_receiver;
             $this->recipients[]=$v->recipient;
         }
-        $this->num_tot_contr=ReceiverDao::GetClientsSubs($tr->fk_future, $tr->num_contr);
-        $this->subscribers=ReceiverDao::GetSubscribersByStrategy($this->id_strategy);
-        $this->disclosure=Email::nl2p(EmailTempDAO::GetEmailTemp()->disclosure);
-        $temps = Render::ViewTemp($this);
+        
+        $this->disclosure=Email::nl2p(EmailTempDAO::getEmailTemp()->disclosure);/**CREATES OBJECT AND APPLY nl2p function on DISCLOSURE PROPERTY**/
+        $temps = Render::viewTemp($this);
         $this->broker_temp=$temps[0];
         $this->client_temp=$temps[1];
     }
-    public static function nl2p($text){
+    private static function nl2p($text){/**SET ALL LETTERS UPPER AND REPLACE \n WITH <p> TAGS**/
         $uptext= strtoupper($text);
         return "<p>" . str_replace("\n", "</p><p>", $uptext) . "</p>";
     }

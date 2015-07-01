@@ -10,8 +10,8 @@ class SenderInfo {
     public $sender_pass;
     public $sender_port;    
     public $sender_address;
-    public function __construct($sender_info) {
-        foreach($sender_info as $k=>$v){
+    public function __construct($array=array()) {
+        foreach($array as $k=>$v){
             $this->$k = $v;
         }     
     }

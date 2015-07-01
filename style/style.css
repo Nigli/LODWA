@@ -347,16 +347,16 @@ table tbody tr:hover {
     color: #ffffff;
     border-bottom-color: #1B3664;
 }
-[data-title='Futures Name'],[data-title='Date']{
+/*[data-title='Futures Name'],[data-title='Date']{
     width: 150px;
-}
+}*/
 /******RECEIVERS LIST*******/
-[data-title='Receiver Type']{
+/*[data-title='Receiver Type']{
     width: 115px;
-}
-[data-title='Date Added']{
+}*/
+/*[data-title='Date Added']{
     width: 90px;
-}
+}*/
 #receiver_list_form input, #user_list_form input{
     width: 100%;    
     height: 25px;

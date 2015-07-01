@@ -7,14 +7,14 @@ $hash = User::createPass($valid['password'], $valid['password_conf']);
 if($valid && $hash){
     if($valid['user-submit']==="update"){    
         $valid['hash']= $hash;    
-        $user=UserDAO::UpdateUser($valid);
+        $user=UserDAO::updateUser($valid);
         $user?Session::set("admin", "sent"):Session::set("admin", "notsent");
     }elseif($valid['user-submit']==="remove"){
-        $user=UserDAO::RemoveUser($valid);
+        $user=UserDAO::removeUser($valid);
         $user?Session::set("admin", "sent"):Session::set("admin", "notsent");
     }else{      
         $valid['hash']= $hash;
-        $user=UserDAO::NewUser($valid); 
+        $user=UserDAO::newUser($valid); 
         $user?Session::set("admin", "sent"):Session::set("admin", "notsent");
     }
 }else {

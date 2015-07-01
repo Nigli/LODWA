@@ -1,9 +1,8 @@
 <?php
-use sender\SenderInfoDAO,sender\SenderInfo,utils\Session;
+use sender\SenderInfoDAO,utils\Session;
 
-$user = Session::get('user_status');
-$notice = Session::get('profile');
+$user = Session::get('user_status');/**GETS USER STATUS**/
+$notice = Session::get('profile');/**GETS NOTICE(creates notice var to use it in notification popup) FROM SESSION WITH INFO PROFILE SUCCESS**/
 Session::unsets('profile');
 
-$sender_info = SenderInfoDAO::GetSenderInfo();
-$sender = $sender_info?new SenderInfo($sender_info):false;
+$sender = SenderInfoDAO::getSenderInfo();/**GET SENDER INFO OBJECT**/

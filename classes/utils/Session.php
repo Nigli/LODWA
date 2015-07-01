@@ -3,7 +3,7 @@ namespace utils;
 class Session {
     static function start(){
         if(!isset($_SESSION)){
-                session_start();
+            session_start();
         }
     }
     static function set($k,$v){

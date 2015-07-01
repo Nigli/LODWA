@@ -1,5 +1,6 @@
 <script src="js/emailtemp.js" type="text/javascript"></script>
 <div id="spinner"></div>
+<!--NOTICE POPUP-->
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -13,6 +14,7 @@
         </div>
     </div>
 </div>
+<!--END NOTICE POPUP-->
 <form id="emailtemp" method="post"  action="processemtemp">
     <input id="emailtemp_note" type="hidden" value="<?php echo $notice ?>"/>
     <div id="top">
@@ -35,6 +37,7 @@
     </div>
             <?php
             }else {
+                
             ?>
             <td>There is no email template in database</td>
             <?php

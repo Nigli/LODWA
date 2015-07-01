@@ -46,7 +46,7 @@
                 text-align:left;
             }
             h2{
-                color:#404040;
+                color:#666666;
                 display:block;
                 font-family:Helvetica;
                 font-size:20px;
@@ -286,6 +286,18 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td style="padding-top: 10px;width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+                                                                                                    Number of Contracts
+                                                                                                </span>
+                                                                                            </td>
+                                                                                            <td style="padding-top: 10px;width: 60%;height: 23px;text-align: right;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                                                <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
+<!--TABLE NUMBER OF CONTRACTS-->                                                                    [CONTRACTS]
+                                                                                                </span>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="width: 40%;height: 23px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                                 <span style="font-size:18px;line-height: 150%;font-family: arial, 'helvetica neue', helvetica, sans-serif;">
                                                                                                     Month
                                                                                                 </span>

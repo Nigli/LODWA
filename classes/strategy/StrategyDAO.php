@@ -2,8 +2,9 @@
 namespace strategy;
 use PDO,utils\Conn;
 class StrategyDAO {
-    public static function GetStrategies(){
-        $db= Conn::GetConnection();
+    public static function getStrategies(){/**GET ACTIVE STRATEGIES WITH FUTURES NAMES - RETURNS ARRAY OF OBJECTS**/
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT id_strategy, strategy_name, GROUP_CONCAT(futures_name ORDER BY futures_name ASC SEPARATOR ',') AS futures_name "
                     . "FROM strategy "
@@ -14,11 +15,13 @@ class StrategyDAO {
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "strategy\Strategy");
             return $tr;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function Newstrategy($strategy){
-        $db= Conn::GetConnection();            
+    public static function newStrategy($strategy){
+        $db= Conn::getConnection();        
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);        
         try{
             $res = $db->prepare("INSERT INTO strategy "
                 . "(id_strategy,strategy_name) "
@@ -27,11 +30,13 @@ class StrategyDAO {
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function Updatestrategy($strategy){
-        $db= Conn::GetConnection();            
+    public static function updateStrategy($strategy){
+        $db= Conn::getConnection();       
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);         
         try{
             $res = $db->prepare("UPDATE strategy "
                 . "SET strategy_name=:strategy_name "
@@ -41,11 +46,13 @@ class StrategyDAO {
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function RemoveStrategy($strategy){
-        $db= Conn::GetConnection();            
+    public static function removeStrategy($strategy){
+        $db= Conn::getConnection();           
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);     
         try{
             $res = $db->prepare("UPDATE strategy "
                 . "SET status=0 "
@@ -54,7 +61,8 @@ class StrategyDAO {
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
 }

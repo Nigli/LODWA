@@ -2,20 +2,22 @@
 namespace broker;
 use PDO,utils\Conn;
 class BrokerDAO {    
-    public static function GetBrokerInfo(){       
-        $db= Conn::GetConnection();
+    public static function getBrokerInfo(){/**GET ALL BROKER INFO - RETURNS OBJECT**/       
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT * FROM broker_info");
             $res->execute();
-            $broker_info = $res->fetch(PDO::FETCH_ASSOC);       
+            $broker_info = $res->fetchObject("broker\Broker");       
             return $broker_info;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
-            die();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }    
     }
-    public static function EditBrokerInfo($broker){
-        $db= Conn::GetConnection();            
+    public static function editBrokerInfo($broker){
+        $db= Conn::getConnection();            
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("UPDATE broker_info "
                 . "SET broker_company=:broker_company, "
@@ -29,8 +31,8 @@ class BrokerDAO {
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
-            die();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
 }

@@ -1,5 +1,6 @@
 <script src="js/tr.js" type="text/javascript"></script>
 <div id="spinner"></div>
+<!--NOTICE POPUP-->
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -18,6 +19,7 @@
         </div>
     </div>
 </div>
+<!--END NOTICE POPUP-->
 <form id="tr_form" method="post" action="processtr">
     <input type="hidden" name="tr_token" value="<?php echo $tr_token ?>"/>
     <input id="tr_note" type="hidden" value="<?php echo $notice ?>"/>
@@ -26,7 +28,6 @@
         <span id="rightspan"><?php include "process/strategy_name.php" ?></span><br>
     </div>
     <div id="left">
-        <!--***-->
         <!--ENTRY CHOICE SELECT-->
         <label for="tr_form_entry_choice">Entry Choice and duration</label><br>
         <select id="tr_form_entry_choice" name="entry_choice">
@@ -37,20 +38,20 @@
             <option value="DAY">DAY</option>
             <option value="GTC">GTC</option>
         </select><br>
-        <!--***-->
+        <!--END ENTRY CHOICE SELECT-->
         <!--FUTURE CONTRACT SELECT-->
         <label for="tr_form_future">Contract and number of contracts</label>
         <select id='tr_form_future' name='fk_future'>
             <?php
             foreach ($futuresContr as $key => $value) { 
             ?>
-                <option value='<?php echo $value->id_futures ?>' ><?php echo $value->futures_name ?></option>
+                <option value='<?php echo $value->id_futures ?>'><?php echo $value->futures_name ?></option>
             <?php                
             }
             ?>
         </select>
         <input id="tr_form_num_contr" name="num_contr" type="number" value="" required="" min="1"/><br>
-        <!--***-->
+        <!--END FUTURE CONTRACT SELECT-->
         <!--MONTH AND YEAR SELECT-->
         <label for="tr_form_month">Month and Year</label><br>
         <select id="tr_form_month" name="month">
@@ -72,6 +73,7 @@
             }
             ?>
         </select>
+        <!--END MONTH AND YEAR SELECT-->
     </div>
     <!--***-->
     <!--PRICES INPUT-->
@@ -85,7 +87,7 @@
         <input type="radio" name="rpl_price" value="price_target"  class="radio_rep"/>
         <input id="tr_form_price_target" class="prices" name="price_target" type="number" value="" required="" step="0.01" title="Enter number in a format xxxx.xx"/>
     </div>
-    <!--***-->
+    <!--END PRICES INPUT-->
     <!--BUTTONS-->
     <div id="bottom">
         <div id="bottom-right">                
@@ -94,7 +96,7 @@
         <div id="bottom-left">
             <button id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
             <button id="tr_form_cxl" type="button" value="2" name="fk_tr_type" onclick="getVal(this)">STR CXL</button>
-            <button id="tr_form_rpl" type="button" value="cxl_rpl" name="fk_tr_type" onclick="getVal(this)">CXL and RPL</button>
+            <button id="tr_form_rpl" type="button" value="5" name="fk_tr_type" onclick="getVal(this)">CXL and RPL</button>
             <button id="tr_form_cancel" type="button">Cancel Trade</button>
         </div>            
     </div>
@@ -140,7 +142,7 @@
         }
         ?>
     </table>    
-</div>
+</div><!--END LAST 5 TR TABLE-->
 <script>       
     function getVal(obj) {
         document.getElementById("notice-confirm").value = obj.value;

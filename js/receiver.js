@@ -87,7 +87,7 @@ $(function(){
         $("#notice").show();        
         $("#receiver_list_filter").show();
         $("#notice-title h3").html("Filter");
-        if(getUrlVar("type")!= "0" || getUrlVar("ba")!= "ALL" || getUrlVar("active")!= "ALL"){
+        if(getUrlVar("type")!= "0" || getUrlVar("strategy")!= "0" || getUrlVar("ba")!= "ALL" || getUrlVar("active")!= "1"){
             $("#notice-reset").show();
         }
         $("#notice-confirm").hide();
@@ -95,10 +95,10 @@ $(function(){
         $("#notice-cancel").show();
         $("#notice-close").hide();
     });  
-    if(getUrlVars()!= default_url && (getUrlVar("type")!= 0 || getUrlVar("ba")!= "ALL" || getUrlVar("active")!= "ALL")){
+    if(getUrlVars()!= default_url && (getUrlVar("type")!= 0 || getUrlVar("strategy")!= "0" || getUrlVar("ba")!= "ALL" || getUrlVar("active")!= "1")){
         $("#filter_notice").html("Filter is active");
     }
-    $("#receiver_list_type, #receiver_list_active, #receiver_list_ba").on("change",function(){
+    $("#receiver_list_type, #receiver_list_active, #receiver_list_strat, #receiver_list_ba").on("change",function(){
         $("#notice-reset").show();
     });
     $("#notice-cancel").on("click", function(){        
@@ -111,7 +111,8 @@ $(function(){
     $("#notice-reset").on("click",function(){
         $(this).hide();
         $("#receiver_list_type").val("0");
-        $("#receiver_list_active").val("ALL");
+        $("#receiver_list_active").val("1");
+        $("#receiver_list_strat").val("0");
         $("#receiver_list_ba").val("ALL");
     });
     $("#notice-confirm").on("click", function (){

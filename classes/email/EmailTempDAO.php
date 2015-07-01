@@ -2,8 +2,9 @@
 namespace email;
 use PDO,utils\Conn;
 class EmailTempDAO {
-    public static function GetEmailTemp(){
-        $db= Conn::GetConnection();
+    public static function getEmailTemp(){/**GET EMAIL TEMPLATE DISCLOSURE - RETURN OBJECT**/
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT id_email,disclosure "
                 . "FROM email_temp "
@@ -12,11 +13,13 @@ class EmailTempDAO {
             $email_temp = $res->fetchObject(get_class());
             return $email_temp;//!!!have to check if exists        
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function UpdateEmailTemp($email){
-        $db= Conn::GetConnection();
+    public static function updateEmailTemp($email){
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("UPDATE email_temp "
                 . "SET disclosure=:disclosure "
@@ -25,7 +28,8 @@ class EmailTempDAO {
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
 }

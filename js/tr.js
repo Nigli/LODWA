@@ -83,7 +83,7 @@ $(function(){
         $("#notice-cancel").show();        
         $("#notice-close").hide(); 
         if(entry_choice === "BUY"){
-            if(price_target < stop_loss){
+            if(price_target <= stop_loss){
                 $("#notice-title h3").html("Notice!");
                 $("#notice-span").html("Stop Loss price is higher then Price Target! Your entry choice is BUY!");
                 $("#notice-close").show();                
@@ -91,7 +91,7 @@ $(function(){
                 $("#notice-cancel").hide();
             }
         }else {
-            if(stop_loss < price_target) {
+            if(stop_loss <= price_target) {
                 $("#notice-title h3").html("Notice!");
                 $("#notice-span").html("Price Target is higher then Stop Loss price! Your entry choice is SELL!");
                 $("#notice-close").show();                

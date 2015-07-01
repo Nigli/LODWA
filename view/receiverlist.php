@@ -1,5 +1,6 @@
 <script src="js/receiver.js" type="text/javascript"></script>
 <div id="spinner"></div>
+<!--NOTICE POPUP-->
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -7,15 +8,10 @@
         </div>
     </div>
     <span id="notice-span"></span>
+    <!--FILTER OPTIONS-->
     <form id="receiver_list_filter" method="get" class="hidden">
         <input id="receiver_note" type="hidden" value="<?php echo $notice ?>"/>
         <input type="hidden" value="1" name="page"/>
-        <label for="receiver_list_active">Subscribed or Not</label><br>
-        <select id="receiver_list_active" name="active">
-            <option value="ALL">ALL</option>
-            <option value="1">Subscribed</option>
-            <option value="0">Not Subscribed</option>
-        </select><br>
         <label for="receiver_list_type">By Subscriber Type</label><br>
         <select id="receiver_list_type" name="type">
             <option value="0">ALL</option>
@@ -26,13 +22,29 @@
             }
             ?>
         </select><br>
+        <label for="receiver_list_strat">By Subscribed Strategy</label><br>
+        <select id="receiver_list_strat" name="strategy">
+            <option value="0">ALL</option>
+            <?php foreach ($strategies as $k=>$v){
+            ?>           
+            <option value="<?php echo $v->id_strategy ?>"><?php echo $v->strategy_name ?></option>
+            <?php
+            }
+            ?>
+        </select><br>
         <label for="receiver_list_ba">By Broker Account</label><br>
         <select id="receiver_list_ba" name="ba">
             <option value="ALL">ALL</option>
             <option value="1">With Account</option>
             <option value="0">Without Account</option>
         </select><br>
+        <label for="receiver_list_active">Show recently Unubscribed</label><br>
+        <select id="receiver_list_active" name="active">
+            <option value="0">Yes</option>
+            <option value="1">No</option>
+        </select><br>
     </form>
+    <!--END FILTER OPTIONS-->
     <div id="bottom">
         <div id="bottom-left">
             <button id="notice-reset" class="reset" type="reset" value="reset">Reset</button>            
@@ -43,6 +55,7 @@
         </div>
     </div>
 </div>
+<!--END NOTICE POPUP-->
 <div id="receiver_list">  
     <h2>Subscribers List</h2>
     <span id="filterspan">Filter</span>
@@ -79,6 +92,7 @@
             <?php
             }
         }else{
+            
         ?>
             <tr><td>No Subscribers in Database</td></tr>
         <?php
@@ -92,5 +106,6 @@
 <script>
     $("#receiver_list_type").val("<?php echo $links['type'] ?>");
     $("#receiver_list_active").val("<?php echo $links['active'] ?>");
+    $("#receiver_list_strat").val("<?php echo $links['strategy'] ?>");
     $("#receiver_list_ba").val("<?php echo $links['ba'] ?>");
 </script>

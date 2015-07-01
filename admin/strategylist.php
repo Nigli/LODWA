@@ -1,5 +1,6 @@
 <script src="js/strategy.js" type="text/javascript"></script>
 <div id="spinner"></div>
+<!--NOTICE POPUP-->
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -16,11 +17,13 @@
         </div>
     </div>
 </div>
+<!--END NOTICE POPUP-->
 <div id="strategy_list_form" class="edit">
     <div id="top">
         <h2>Edit or add New</h2>
         <span id="rightspan">To edit future or strategy click on the table row</span><br>
     </div>
+    <!--STRATEGY FORM-->
     <form id="left" method="post" action="processstrat">
         <div class="strategy_form">
             <input id="strategy_note" type="hidden" value="<?php echo $notice_strategy ?>"/>
@@ -36,6 +39,8 @@
             <button form="left" id="new-left" type="button"  value="new" onclick="getValStrat(this)">New</button>
         </div>
     </form>
+    <!--END STRATEGY FORM-->
+    <!--FUTURES FORM-->
     <form id="right" method="post" action="processfut">
         <div class="futures_form">
             <h3>Futures</h3>    
@@ -56,16 +61,15 @@
             <button form="right" id="new-right" type="button" value="new" onclick="getValFutur(this)">New</button>
         </div>
     </form>    
-    <div id="bottom">        
-        
+    <!--END FORM-->
+    <div id="bottom">                
     </div>
 </div>
 <script>         
     function getValStrat(obj) {
         document.getElementById("notice-confirm-strategy").value = obj.value;
         action = obj.value;
-    }
-             
+    }             
     function getValFutur(obj) {
         document.getElementById("notice-confirm-futures").value = obj.value;
         action = obj.value;

@@ -4,8 +4,8 @@ use user\UserDAO,utils\Pagination,utils\Session;
 $notice = Session::get('admin');
 Session::unsets('admin');
 
-$count = UserDao::CountUsers();
+$count = UserDao::countUsers();
 $links = isset($_GET)?$_GET:"";
 $pagin = new Pagination($links,$count);
-$users = UserDAO::GetUsers();
-$status = UserDAO::GetStatus();
+$users = UserDAO::getUsers();
+$status = UserDAO::getStatus();

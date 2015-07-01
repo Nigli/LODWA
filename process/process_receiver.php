@@ -3,16 +3,15 @@ require '../config.php';
 use receiver\ReceiverDao,utils\Validate,utils\Session;
 
 $valid = Validate::admin($_POST);
-if($valid){
+if($valid){/**CHECKS IF VALID IS OK, THEN BASED ON SUBMIT BUTTON VALUE CALLING DAO**/
     if($valid['receiver-submit']==="update"){
-        $sent = ReceiverDao::UpdateReceiver($valid);
+        $sent = ReceiverDao::updateReceiver($valid);
         $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
     }elseif($valid['receiver-submit']==="subscribe"){
-        $sent = ReceiverDao::UnsubscribeReceiver($valid);
+        $sent = ReceiverDao::unsubscribeReceiver($valid);
         $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
-        var_dump($valid);
     }else{
-        $sent = ReceiverDao::NewReceiver($valid);
+        $sent = ReceiverDao::newReceiver($valid);
         $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
     }
 }else {

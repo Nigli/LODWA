@@ -2,8 +2,9 @@
 namespace futures;
 use PDO,utils\Conn;
 class FuturesContractDAO {
-    public static function GetFutures(){
-        $db= Conn::GetConnection();
+    public static function getFutures(){/**GET ALL FUTURES - RETURNS ARRAY WITH OBJECTS**/
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT id_futures,fk_strategy,futures_name,description,dec_places,strategy_name,futures_cont.status "
                 . "FROM futures_cont "
@@ -13,11 +14,13 @@ class FuturesContractDAO {
             $futures = $res->fetchAll(PDO::FETCH_CLASS, "futures\FuturesContract");
             return $futures;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function GetFuturesById($futures_id){
-        $db= Conn::GetConnection();
+    public static function getFuturesById($futures_id){/**GET 1 FUTURES BY ID - RETURNS OBJECT**/
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT id_futures,fk_strategy,futures_name,description,dec_places,strategy_name "
                 . "FROM futures_cont "
@@ -28,22 +31,26 @@ class FuturesContractDAO {
             $futures = $res->fetchObject("futures\FuturesContract");;
             return $futures;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function GetFuturesNames(){
-        $db= Conn::GetConnection();
+    public static function getFuturesNames(){
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
             $res = $db->prepare("SELECT  id_futures, futures_name FROM futures_cont");
             $res->execute();
             $futures = $res->fetchAll(PDO::FETCH_ASSOC);
             return $futures;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function NewFutures($future){
-        $db= Conn::GetConnection();            
+    public static function newFutures($future){
+        $db= Conn::getConnection();     
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
         try{
             $res = $db->prepare("INSERT INTO futures_cont "
                 . "(id_futures,futures_name,fk_strategy,description,dec_places) "
@@ -55,11 +62,13 @@ class FuturesContractDAO {
             $res->execute();
             return true;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function UpdateFutures($future){
-        $db= Conn::GetConnection();            
+    public static function updateFutures($future){
+        $db= Conn::getConnection();         
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);       
         try{
             $res = $db->prepare("UPDATE futures_cont "
                 . "SET futures_name=:futures_name, "
@@ -75,11 +84,13 @@ class FuturesContractDAO {
             $res->execute();
             return true;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
-    public static function RemoveFutures($future){
-        $db= Conn::GetConnection();            
+    public static function removeFutures($future){
+        $db= Conn::getConnection();      
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);          
         try{
             $res = $db->prepare("UPDATE futures_cont "
                 . "SET status=0 "
@@ -88,7 +99,8 @@ class FuturesContractDAO {
             $res->execute();
             return true;
         }catch(\PDOException $e){
-            echo "error". $e->getMessage();
+            return FALSE;
+            //echo "error". $e->getMessage();
         }
     }
 }

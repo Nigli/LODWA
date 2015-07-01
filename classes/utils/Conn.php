@@ -27,7 +27,7 @@ class Conn{
     const DB = "lodwp";
    
     public static $conn;
-    public static function GetConnection(){
+    public static function getConnection(){
         if(!self::$conn){
             try{
                 self::$conn=new PDO("mysql:dbhost=".self::DBHOST.";dbname=".self::DB.";charset=UTF8",self::DBUSER,self::DBPASS);

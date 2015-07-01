@@ -1,4 +1,5 @@
 <script src="js/trlist.js" type="text/javascript"></script>
+<!--NOTICE POPUP-->
 <div id="notice">
     <div id="top">
         <div id="notice-title">
@@ -17,12 +18,18 @@
         <label for="list_form_future">By Future Contract</label><br>
         <select id="list_form_future" name='fk_future'>
             <option value="0">ALL</option>
-            <?php 
-            foreach ($futuresContr as $key => $value){
-            ?>
-            <option value='<?php echo $value->id_futures ?>' ><?php echo $value->futures_name ?></option>
             <?php
-            } ?>
+            if($futuresContr){
+                foreach ($futuresContr as $key => $value){
+                ?>
+                <option value='<?php echo $value->id_futures ?>' ><?php echo $value->futures_name ?></option>
+                <?php
+                }
+            }
+            else{
+                //Session:set("err","trlisterror");
+            }
+            ?>
         </select>
     </form>
     <div id="bottom">
@@ -33,6 +40,8 @@
         </div>
     </div>
 </div>
+<!--END NOTICE POPUP-->
+<!--TR LIST-->
 <div id="tr_list">
     <h2>Trade Recommendations</h2> 
     <span id="filterspan">Filter</span>   
@@ -67,16 +76,24 @@
             <?php        
             }
         }else{
+            
         ?>
+            <!--IF NOTHING IN DB-->
             <tr><td>No Trade Recommendations in Database</td></tr>
         <?php
         }
         ?>        
     </table>
     <?php 
+        /**PAGINATION**/
+    if($pagin){
         echo $pagin->createLinks($links);
+    }else{
+        //Session:set("err","trlisterror");
+    }    
     ?>
 </div>
+<!--END TR LIST-->
 <script>
     $("#list_form_entry_choice").val("<?php echo $links['entry_choice'] ?>");
     $("#list_form_future").val("<?php echo $links['fk_future'] ?>");
