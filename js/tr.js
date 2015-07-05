@@ -1,4 +1,5 @@
 $(function(){
+    //izmeni novom super duper funkcijom iz receiver.js
     $("tbody tr").on("click", function () {
         $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
                     tr_form_entry_choice:$(this).find("[data-title='Entry Choice']").html(),
@@ -19,38 +20,45 @@ $(function(){
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);
     });
+    //functionf for selecting future strategy, populating right span
     $('#tr_form_future').on('change', function() {
         var value = $(this).val();
-        $('#rightspan').load('process/strategy_name.php?f='+value);
+        $('#rightspan').load('process/strategy_name.php?f='+value);        
     });
+    //when canceling tr, button submit is hidden, showing cxl, rpl, reset and radio button, 
+    //shorter price input and other elements are disabled to change (css pointer event - none)
     $("#tr_form_cancel").on("click",function(){
         $("#tr_form_cancel, #tr_form_submit").hide();
         $("#tr_form_cxl, #tr_form_rpl, .radio_rep, #reset").show();        
         $("#tr_form_stop_loss, #tr_form_price_target").removeClass("prices");
         $("#tr_form_stop_loss, #tr_form_price_target").addClass("replace");
+        //input number pointer none because radio button is input type
         $("select, input[type=number]").css('pointer-events','none');
     });
+    //on reset removing reset, cxl, rpl and radio buttons, showing cancel new buttons
+    //adding prices class to normalize input prices, removing cancel and replace color from prices, pointer events back to normal
     $("#reset").on("click",function(){
         $(this).hide();
         $("#tr_form_cancel, #tr_form_submit").show();
         $("#tr_form_cxl, #tr_form_rpl, .radio_rep ").hide();
         $("#tr_form_stop_loss, #tr_form_price_target").addClass("prices");        
         $("tbody tr").removeClass("activetr");
-        $("input").removeClass("replace_selected");
+        $("input").removeClass("mark_as_red");
+        $('.radio_rep').removeClass('radio_require');
         $("select, input[type=number]").css('pointer-events','auto');
     });
     $("input:radio[name='rpl_price']").on("change",function(){
         if ($(this).is(':checked') && $(this).val() == 'stop_loss') {
-            $("#tr_form_stop_loss").addClass("replace_selected").css('pointer-events','auto');
-            $("#tr_form_price_target").removeClass("replace_selected").css('pointer-events','none');
+            $("#tr_form_stop_loss").addClass("mark_as_red").css('pointer-events','auto');
+            $("#tr_form_price_target").removeClass("mark_as_red").css('pointer-events','none');
         }else {
-            $("#tr_form_price_target").addClass("replace_selected").css('pointer-events','auto');
-            $("#tr_form_stop_loss").removeClass("replace_selected").css('pointer-events','none');
+            $("#tr_form_price_target").addClass("mark_as_red").css('pointer-events','auto');
+            $("#tr_form_stop_loss").removeClass("mark_as_red").css('pointer-events','none');
         }
     });
     $("#tr_form_cxl, #tr_form_rpl, #tr_form_submit").on("click", function (){        
         var empty = false;
-        if($(this).val() === "cxl_rpl"){
+        if($(this).attr('id') === "tr_form_rpl"){
             if($('input:checked').length === 0){
                 $('.radio_rep').addClass('radio_require');
                 empty = true;
@@ -62,6 +70,19 @@ $(function(){
                 empty = true;
             }
         });
+        if($("#tr_form_future").val()===null || $("#strategy_id").val()==0){
+            $(".shade").show();
+            $("#notice").show(); 
+            $("#notice-title h3").html("Notice");
+            $("#notice-span").html("Selected Future Contract is not in a Strategy list");     
+            $("#notice-close").show();      
+            $("#notice-entry-price").html("");
+            $("#notice-stop-loss").html("");
+            $("#notice-price-target").html("");  
+            $("#notice-confirm").hide(); 
+            $("#notice-cancel").hide();   
+            empty = true;
+        }
         if(empty){
            return false;
         }
@@ -114,7 +135,7 @@ $(function(){
     });
     $("input").on("keypress",function(e){
         if(e.which === 13){                
-            event.preventDefault(); 
+            e.preventDefault(); 
         }
     });
     if($("#tr_note").val()==="sent"){
@@ -130,4 +151,7 @@ $(function(){
         $("#notice-span").html("TR has NOT been successfully sent. Please try again later.");
         $("#notice-close").show();
     }
+    $("#to_bottom").on("click", function(){   
+        $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+    });
 });

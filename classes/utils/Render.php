@@ -9,7 +9,7 @@ class Render {
 
     public static function view($get) {
         $user = Session::get('user_status');
-        $page_to_go =$get['p'];
+        $page_to_go =isset($get['p'])?$get['p']:"";
         $access = isset($page_to_go) ? User::pageAccess($user, $page_to_go) : false;
   
         if ($user == "1") {

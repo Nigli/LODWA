@@ -17,7 +17,7 @@
             <option value="0">ALL</option>
             <?php foreach ($type as $k=>$v){
             ?>           
-            <option value="<?php echo $v['id_receiver_type'] ?>"><?php echo $v['receiver_type'] ?></option>
+            <option value="<?php echo $v['id_receiver_type'] ?>"><?php echo $v['receiver_type_name'] ?></option>
             <?php
             }
             ?>
@@ -34,7 +34,7 @@
         </select><br>
         <label for="receiver_list_ba">By Broker Account</label><br>
         <select id="receiver_list_ba" name="ba">
-            <option value="ALL">ALL</option>
+            <option value="0">ALL</option>
             <option value="1">With Account</option>
             <option value="0">Without Account</option>
         </select><br>
@@ -50,7 +50,7 @@
             <button id="notice-reset" class="reset" type="reset" value="reset">Reset</button>            
             <button id="notice-close" type="button" name="close">Close</button>
             <button id="notice-cancel" type="button" name="cancel">Cancel</button>
-            <button id="notice-confirm-filter" type="submit" form="receiver_list_filter">Confirm</button>
+            <button id="notice-confirm-filter" type="submit" form="receiver_list_filter">Filter</button>
             <button id="notice-confirm" type="submit" name="receiver-submit" form="receiver_list_form">Confirm</button>
         </div>
     </div>
@@ -77,17 +77,27 @@
             foreach ($rec as $k=>$receiver) {
             ?>
                 <tr>
-                    <td data-title='Receiver Type'><?php echo $receiver->receiver_type ?></td>
-                    <td data-title='First Name'><?php echo $receiver->first_name ?></td>
-                    <td data-title='Last Name'><?php echo $receiver->last_name ?></td>
-                    <td data-title='Email'><?php echo $receiver->email ?></td>
-                    <td data-title='Date Added'><?php echo date("d M Y", strtotime($receiver->date_added))?></td>
-                    <td data-title='NA Number'><?php echo $receiver->na_number ?></td>
-                    <td data-title='BA'><?php echo $receiver->broker_account?"<i class='fa fa-check'></i>":"<i class='fa fa-times'></i>"?></td>                
-                    <td data-title='Broker Account' class="td_hidden"><?php echo $receiver->broker_account?></td>                
-                    <td data-title='Receiver Id' class="td_hidden"><?php echo $receiver->id_receiver ?></td>
-                    <td data-title='Active' class="td_hidden"><?php echo $receiver->active ?></td>
-                    <td data-title='Receiver Type Id' class="td_hidden"><?php echo $receiver->fk_receiver_type ?></td>
+                    <td data-title='Receiver Type' data-index="type"><?php echo $receiver->receiver_type_name ?></td>
+                    <td data-title='First Name' data-index="first_name"><?php echo $receiver->first_name ?></td>
+                    <td data-title='Last Name' data-index="last_name"><?php echo $receiver->last_name ?></td>
+                    <td data-title='Email' data-index="email"><?php echo $receiver->email ?></td>
+                    <td data-title='Date Added' data-index="date_added"><?php echo date("d M Y", strtotime($receiver->date_added))?></td>
+                    <td data-title='NA Number' data-index="na_number"><?php echo $receiver->na_number ?></td>
+                    <td data-title='BA'><?php echo $receiver->broker_acc?"<i class='fa fa-check'></i>":"<i class='fa fa-times'></i>"?></td>                
+                    <td data-index="broker_acc" class="td_hidden"><?php echo $receiver->broker_acc?></td>                
+                    <td data-index="id_receiver" class="td_hidden"><?php echo $receiver->id_receiver ?></td>
+                    <td data-index="active" class="td_hidden"><?php echo $receiver->active ?></td>
+                    <td data-index="receiver_type_id" class="td_hidden"><?php echo $receiver->fk_receiver_type ?></td>
+                    <?php 
+                    if($receiver->subs_info){
+                        foreach ($receiver->subs_info as $subs_info) {
+                                    ?>
+                                        <td data-index="strategy_type<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['fk_strategy'] ?></td>
+                                        <td data-index="strategy_subs<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['num_subs'] ?></td>
+                        <?php
+                    }
+                }
+                    ?>
                 </tr>
             <?php
             }

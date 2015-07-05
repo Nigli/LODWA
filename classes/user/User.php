@@ -18,8 +18,8 @@ class User {
     }
     public static function  pageAccess($use, $page_to_go){
         $superadmin_pages = array("superadmin");
-        $admin_pages = array ("strategylist","receiverlist","emailtemp","profile","broker");
-        $user_pages =  array ("trade","trlist","strategylist","receiverlist","profile","broker");
+        $admin_pages = array ("strategylist","futureslist","receiverlist","emailtemp","profile","broker");
+        $user_pages =  array ("trade","trlist","strategylist","futureslist","receiverlist","profile","broker");
         if($use==1){
             return in_array($page_to_go, $user_pages);
         }elseif($use==3){

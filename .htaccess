@@ -3,6 +3,7 @@ RewriteEngine On
 RewriteRule ^trade$ index.php?p=trform [NC]
 RewriteRule ^trlist$ index.php?p=trlist [NC,QSA]
 RewriteRule ^strategylist$ index.php?p=strategylist [NC]
+RewriteRule ^futureslist$ index.php?p=futureslist [NC]
 RewriteRule ^receiverlist$ index.php?p=receiverlist [NC,QSA]
 RewriteRule ^superadmin/([0-9]*)$ index.php?p=superadmin&page=$1 [NC]
 RewriteRule ^emailtemp$ index.php?p=emailtemp [NC]
@@ -30,6 +31,5 @@ RewriteRule ^(.*)$ http://www.localhost.com/$1 [L,R=301]
 #RewriteCond %{HTTP_HOST} ^srlevel\.com [NC] 
 #RewriteRule ^(.*)$ http://www.srlevel.com/$1 [L,R=301]
 
-#RewriteRule ^DROP$ index.php [F] [NC]
 Options -Indexes
 

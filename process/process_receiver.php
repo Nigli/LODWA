@@ -1,20 +1,50 @@
 <?php
+
 require '../config.php';
-use receiver\ReceiverDao,utils\Validate,utils\Session;
+
+use receiver\ReceiverDao,
+    receiver\Receiver,
+    utils\Validate,
+    utils\Session;
 
 $valid = Validate::admin($_POST);
-if($valid){/**CHECKS IF VALID IS OK, THEN BASED ON SUBMIT BUTTON VALUE CALLING DAO**/
-    if($valid['receiver-submit']==="update"){
-        $sent = ReceiverDao::updateReceiver($valid);
-        $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
-    }elseif($valid['receiver-submit']==="subscribe"){
-        $sent = ReceiverDao::unsubscribeReceiver($valid);
-        $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
-    }else{
-        $sent = ReceiverDao::newReceiver($valid);
-        $sent?Session::set("receiver", "sent"):Session::set("receiver", "notsent");
+if ($valid) {/* * CHECKS IF VALID IS OK, THEN BASED ON SUBMIT BUTTON VALUE CALLING DAO* */
+    $receiver = new Receiver($valid);
+    if ($valid['receiver-submit'] === "update") {
+        $update = ReceiverDao::updateReceiver($receiver);
+        $remove_subs = ReceiverDao::removeSubscriptionBySubscriber($receiver->id_receiver);
+        $has_sub = false;
+        foreach ($receiver->subs_info as $strategy_id => $num_subscriptions) {
+            if ($num_subscriptions != 0) {
+                $subs = ReceiverDao::insertSubscription($receiver->id_receiver, $strategy_id, $num_subscriptions);
+                $has_sub = true;
+                $update && $remove_subs && $subs ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+            }
+        }
+        if (!$has_sub) {
+            $unsub = ReceiverDao::unsubscribeReceiver($valid);
+            $update && $remove_subs && $unsub ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+        }
+    } elseif ($valid['receiver-submit'] === "subscribe") {
+        $unsub = ReceiverDao::unsubscribeReceiver($valid);
+        $remove_subs = ReceiverDao::removeSubscriptionBySubscriber($receiver->id_receiver);
+        $remove_subs && $unsub ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+    } else {
+        $new = ReceiverDao::newReceiver($receiver);
+        $has_sub = false;
+        foreach ($receiver->subs_info as $strategy_id => $num_subscriptions) {
+            if ($num_subscriptions != 0) {
+                $subs = ReceiverDao::insertSubscription($new, $strategy_id, $num_subscriptions);
+                $has_sub = true;
+                $new && $remove_subs && $subs ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+            }
+        }
+        if (!$has_sub) {
+            $unsub = ReceiverDao::unsubscribeReceiver($valid);
+            $new && $remove_subs && $unsub ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+        }
     }
-}else {
-    Session::set("receiver", "notsent");
+} else {
+    Session::set("receiver", "notupdate");
 }
 redirect_to("receiverlist");

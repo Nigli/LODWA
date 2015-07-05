@@ -2,14 +2,30 @@
 namespace futures;
 use PDO,utils\Conn;
 class FuturesContractDAO {
-    public static function getFutures(){/**GET ALL FUTURES - RETURNS ARRAY WITH OBJECTS**/
+    public static function getActiveFutures(){/**GET ACTIVE FUTURES - RETURNS ARRAY WITH OBJECTS**/
         $db= Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
-            $res = $db->prepare("SELECT id_futures,fk_strategy,futures_name,description,dec_places,strategy_name,futures_cont.status "
-                . "FROM futures_cont "
-                . "LEFT JOIN strategy ON id_strategy=fk_strategy "
-                . "WHERE futures_cont.status = 1");
+            $res = $db->prepare("SELECT * FROM futures_cont "
+                    . "WHERE status=1");
+            $res->execute();
+            $futures = $res->fetchAll(PDO::FETCH_CLASS, "futures\FuturesContract");
+            return $futures;
+        }catch(\PDOException $e){
+            return FALSE;
+            //echo "error". $e->getMessage();
+        }
+    }
+    
+    public static function getFuturesByStrategy($strategy_id){/**GET ALL FUTURES BY ID - RETURNS ARRAY**/
+        $db= Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
+        try{
+            $res = $db->prepare("SELECT * FROM futures_cont, strat_futures "
+                    . "WHERE id_futures=fk_futures "
+                    . "AND fk_strategy=:strategy_id "
+                    . "AND futures_cont.status = 1");
+            $res->bindParam(':strategy_id',$strategy_id);
             $res->execute();
             $futures = $res->fetchAll(PDO::FETCH_CLASS, "futures\FuturesContract");
             return $futures;
@@ -22,9 +38,7 @@ class FuturesContractDAO {
         $db= Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
         try{
-            $res = $db->prepare("SELECT id_futures,fk_strategy,futures_name,description,dec_places,strategy_name "
-                . "FROM futures_cont "
-                . "LEFT JOIN strategy ON id_strategy=fk_strategy "
+            $res = $db->prepare("SELECT * FROM futures_cont "
                 . "WHERE id_futures=:futures_id LIMIT 1");
             $res->bindParam(':futures_id',$futures_id);
             $res->execute();
@@ -53,10 +67,9 @@ class FuturesContractDAO {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
         try{
             $res = $db->prepare("INSERT INTO futures_cont "
-                . "(id_futures,futures_name,fk_strategy,description,dec_places) "
-                . "VALUES ('',:futures_name,:fk_strategy,:description,:dec_places)");
+                . "(id_futures,futures_name,description,dec_places) "
+                . "VALUES ('',:futures_name,:description,:dec_places)");
             $res->bindParam(':futures_name',$future['futures_name']);
-            $res->bindParam(':fk_strategy',$future['futures_prog']);
             $res->bindParam(':description',$future['futures_desc']);
             $res->bindParam(':dec_places',$future['futures_dec']);
             $res->execute();
@@ -72,18 +85,30 @@ class FuturesContractDAO {
         try{
             $res = $db->prepare("UPDATE futures_cont "
                 . "SET futures_name=:futures_name, "
-                . "fk_strategy=:fk_strategy, "
                 . "description=:description, "
                 . "dec_places=:dec_places "
                 . "WHERE id_futures=:id_futures");
             $res->bindParam(':id_futures',$future['id_futures']);
             $res->bindParam(':futures_name',$future['futures_name']);
-            $res->bindParam(':fk_strategy',$future['futures_prog']);
             $res->bindParam(':description',$future['futures_desc']);
             $res->bindParam(':dec_places',$future['futures_dec']);
             $res->execute();
             return true;
         }catch(\PDOException $e){
+            return FALSE;
+            //echo "error". $e->getMessage();
+        }
+    }
+    public static function deleteStrategyFuture($future){
+       $db = Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $res = $db->prepare("DELETE FROM strat_futures "
+                    . "WHERE fk_futures=:id_futures");
+            $res->bindParam(':id_futures', $future['id_futures']);
+            $res->execute();
+            return TRUE;
+        } catch (\PDOException $e) {
             return FALSE;
             //echo "error". $e->getMessage();
         }

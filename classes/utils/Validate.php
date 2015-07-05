@@ -3,11 +3,22 @@ namespace utils;
 use user\UserDAO;
 class Validate {
     static function filter(&$value){
-        $value = trim($value); 
-        $value = str_replace("--","",$value);
-        $value = str_replace("=","",$value);
-        $value = strip_tags($value);
-        $value = htmlspecialchars($value, ENT_QUOTES);
+        if(is_array($value)){
+            foreach($value as $v){               
+                $val = trim($v); 
+                $val = str_replace("--","",$v);
+                $val = str_replace("=","",$v);
+                $val = strip_tags($v);
+                $val = htmlspecialchars($v, ENT_QUOTES);
+                return $val;
+            }
+        }else {
+            $value = trim($value); 
+            $value = str_replace("--","",$value);
+            $value = str_replace("=","",$value);
+            $value = strip_tags($value);
+            $value = htmlspecialchars($value, ENT_QUOTES);
+        }
     }
     private static function checkToken($form,$field) {
         if(isset($form[$field])&&$form[$field]===Session::get($field)){/**COMPARES TOKEN THAT COMES FROM FORM WITH TOKEN FORM SESSION**/
@@ -34,6 +45,8 @@ class Validate {
                 return TRUE;
             }
         }
+        
+        return FALSE;
     }
     static function checkUser($valid){
         $user = UserDAO::getUserByEmail($valid['email']);/**GET USER OBJECT BY EMAIL**/

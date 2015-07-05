@@ -26,13 +26,6 @@ class Pagination {
             }
         }        
         $filters = implode("&", $filters);
-        if($this->page >0 && $this->page <= $this->pages){
-            $start = ($this->page-1)*5;
-            $end = $start + 5;
-        }else {
-            $start = 0;
-            $end = 5;
-        }
         $adjacents = 2;
         $html = "<div id='paginate'>";
         if($this->page == 1){
@@ -48,13 +41,7 @@ class Pagination {
         $pagemax = ($this->page < ($this->pages - $adjacents)) ? ($this->page + $adjacents) : $this->pages;
         for ($i = $pagemin; $i <= $pagemax; $i++) {
             $class  = ( $this->page == $i ) ? "active" : "";
-            if ($i == $this->page) {
-                $html   .= "<div class='element " . $class . "'><a href='".$links['p']."?page=" . $i . "".$filters."'>" . $i . "</a></div>";
-            } elseif ($i == 1) {
-                $html   .= "<div class='element" . $class . "'><a href='".$links['p']."?page=1".$filters."'>1</a></div>";
-            } else {
-               $html   .= "<div class='element " . $class . "'><a href='".$links['p']."?page=" . $i . "".$filters."'>" . $i . "</a></div>";
-            }
+            $html   .= "<div class='element " . $class . "'><a href='".$links['p']."?page=" . $i . "".$filters."'>" . $i . "</a></div>";//            
         }
         if ($this->page < ($this->pages - $adjacents-1)) {
             $html   .= "<div class='element disabled'><span>...</span></div>";

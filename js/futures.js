@@ -1,5 +1,5 @@
 $(function () {
-    $("#strategy_list tbody tr").on("click", function () {
+    $("#futures_list tbody tr").on("click", function () {
         $("input").prop('checked', false);
         var td = $(this).children();
         var rec = {};
@@ -8,10 +8,9 @@ $(function () {
         });
         $.each(rec, function (key, value) {
             $("#" + key).val(value);
-            $("#" + key).prop('checked', true);
+            $("#futures_desc").html(rec.futures_description);
         });
-        
-        $("#strategy_list tbody tr").removeClass("activetr");
+        $("#futures_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({scrollTop: 0}, 600);
         $("#update").show();
@@ -24,13 +23,14 @@ $(function () {
         $("#update").hide();
         $("#delete").hide();
         $("#new").show();
-        $("#id_strategy").val("");
-        $("#strategy_list tbody tr").removeClass("activetr");
+        $("#id_futures").val("");
+        $("#futures_desc").html("");
+        $("#futures_list tbody tr").removeClass("activetr");
     });
 
     $("#delete, #update, #new").on("click", function () {
         var empty = false;
-        $("#left input[type='text']").each(function () {
+        $("input[type='text'], input[type='number'], textarea").each(function () {
             if ($(this).val() === "") {
                 this.focus();
                 empty = true;
@@ -42,10 +42,11 @@ $(function () {
         ;
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h3").html("Confirm Strategy " + action);
+        $("#notice-title h3").html("Confirm Futures " + action);
         $("#notice-confirm").show();
         $("#notice-cancel").show();
         $("#notice-close").hide();
+        $("#notice-confirm-strategy").hide();
     });
     $("#notice-close, #notice-cancel").on("click", function () {
         $(".shade").hide();
@@ -58,21 +59,21 @@ $(function () {
     });
     $("input").on("keypress", function (e) {
         if (e.which === 13) {
-            e.preventDefault();
+            event.preventDefault();
         }
     });
-    if ($("#strategy_note").val() === "update") {
+    if ($("#future_note").val() === "sent") {
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Success!");
-        $("#notice-span").html("Strategy name has been successfully changed/added.");
+        $("#notice-span").html("Future Contract has been successfully changed/added.");
         $("#notice-close").show();
         $("#notice-confirm").hide();
-    } else if ($("#strategy_note").val() === "notupdate") {
+    } else if ($("#future_note").val() === "notsent") {
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Unsuccess!");
-        $("#notice-span").html("Strategy name has NOT been successfully changed/added. Please try again later.");
+        $("#notice-span").html("Future Contract has NOT been successfully changed/added. Please try again later.");
         $("#notice-close").show();
         $("#notice-confirm").hide();
     }

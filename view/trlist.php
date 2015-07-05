@@ -11,7 +11,7 @@
         <input type="hidden" value="1" name="page"/>
         <label for="list_form_entry_choice">By Entry Choice</label><br>
         <select id="list_form_entry_choice" name="entry_choice">
-            <option value="ALL">ALL</option>
+            <option value="0">ALL</option>
             <option>BUY</option>
             <option>SELL</option>
         </select><br>
@@ -36,7 +36,7 @@
         <div id="bottom-left">
             <button id="notice-reset" class="reset" type="reset" value="reset">Reset</button>
             <button id="notice-cancel" type="button" name="cancel">Cancel</button>
-            <button id="notice-confirm" type="submit" form="tr_list_filter">Confirm</button>
+            <button id="notice-confirm" type="submit" form="tr_list_filter">Filter</button>
         </div>
     </div>
 </div>

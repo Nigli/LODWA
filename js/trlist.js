@@ -17,7 +17,7 @@ $(function(){
     $("#filterspan").on("click", function(){        
         $(".shade").show();
         $("#notice").show();    
-        if(getUrlVar("entry_choice")!= "ALL" || getUrlVar("fk_future")!= 0){
+        if(getUrlVar("entry_choice")!= "0" || getUrlVar("fk_future")!= 0){
             $("#notice-reset").show(); 
         }
         $("#notice-confirm").show(); 
@@ -29,7 +29,7 @@ $(function(){
         $("#notice-confirm").hide(); 
         $("#notice-cancel").hide();
     });
-    if(getUrlVars()!= default_url && (getUrlVar("entry_choice")!= "ALL" || getUrlVar("fk_future")!= 0)){
+    if(getUrlVars()!= default_url && (getUrlVar("entry_choice")!= "0" || getUrlVar("fk_future")!= 0)){
         $("#filter_notice").html("Filter is active");
     }
     $("#list_form_future, #list_form_entry_choice").on("change",function(){
@@ -39,7 +39,7 @@ $(function(){
     });
     $("#notice-reset").on("click",function(){
         $(this).hide();
-        $("#list_form_entry_choice").val("ALL");
+        $("#list_form_entry_choice").val("0");
         $("#list_form_future").val("0");
     });
 });

@@ -100,6 +100,7 @@
             <button id="tr_form_cancel" type="button">Cancel Trade</button>
         </div>            
     </div>
+    <span id="to_bottom"><i class="fa fa-chevron-down"></i></span>
 </form>
 <!--***-->
 <!--LAST 5 TR TABLE-->
@@ -132,6 +133,7 @@
                 <td data-title='Date'><?php echo $tr->date ?></td>
                 <td data-title='Time'><?php echo $tr->time ?></td>
                 <td data-title='Id Futures' class="td_hidden"><?php echo $tr->fk_future ?></td>
+                <td data-title='Id Strategy' class="td_hidden"><?php echo $tr->fk_strategy ?></td>
                 <td data-title='Month' class="td_hidden"><?php echo $tr->month ?></td>
                 <td data-title='Year' class="td_hidden"><?php echo $tr->year ?></td>              
                 <td data-title='Number of Contracts' class="td_hidden"><?php echo $tr->num_contr ?></td>

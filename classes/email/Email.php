@@ -47,7 +47,7 @@ class Email{
     public $client_temp;
     
     public function __construct($tr) {
-        foreach($tr as $k=>$v){/**PUT ARRAY IN CONSTRUCT(TR array)**/
+        foreach($tr as $k=>$v){/**PUT OBJECT IN CONSTRUCT(TR OBJECT)**/
             $this->$k = $v;
         }    
         
