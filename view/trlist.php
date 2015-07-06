@@ -19,10 +19,10 @@
         <select id="list_form_future" name='fk_future'>
             <option value="0">ALL</option>
             <?php
-            if($futuresContr){
-                foreach ($futuresContr as $key => $value){
+            if($this->futures){
+                foreach ($this->futures as $key => $future){
                 ?>
-                <option value='<?php echo $value->id_futures ?>' ><?php echo $value->futures_name ?></option>
+                <option value='<?php echo $future->id_futures ?>' ><?php echo $future->futures_name ?></option>
                 <?php
                 }
             }
@@ -60,11 +60,11 @@
             </tr>
         </thead>
         <?php
-        if($lasttrs){
-            foreach ($lasttrs as $k=>$tr){
-                $listnumb++;?>
+        if($this->lastTR){
+            foreach ($this->lastTR as $k=>$tr){
+                $this->listnumb++;?>
                 <tr>
-                    <td data-title=''><?php echo $listnumb ?></td>
+                    <td data-title=''><?php echo $this->listnumb ?></td>
                     <td data-title='Futures Name'><?php echo $tr->futures_name ?></td>
                     <td data-title='Entry Choice'><?php echo $tr->entry_choice ?></td>
                     <td data-title='Entry Price'><?php echo $tr->entry_price ?></td>
@@ -86,8 +86,8 @@
     </table>
     <?php 
         /**PAGINATION**/
-    if($pagin){
-        echo $pagin->createLinks($links);
+    if($this->pagin){
+        echo $this->pagin->createLinks($this->links);
     }else{
         //Session:set("err","trlisterror");
     }    
@@ -95,6 +95,6 @@
 </div>
 <!--END TR LIST-->
 <script>
-    $("#list_form_entry_choice").val("<?php echo $links['entry_choice'] ?>");
-    $("#list_form_future").val("<?php echo $links['fk_future'] ?>");
+    $("#list_form_entry_choice").val("<?php echo $this->links['entry_choice'] ?>");
+    $("#list_form_future").val("<?php echo $this->links['fk_future'] ?>");
 </script>

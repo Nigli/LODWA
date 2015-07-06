@@ -16,16 +16,16 @@
 </div>
 <!--END NOTICE POPUP-->
 <form id="emailtemp" method="post"  action="processemtemp">
-    <input id="emailtemp_note" type="hidden" value="<?php echo $notice ?>"/>
+    <input id="emailtemp_note" type="hidden" value="<?php echo $this->notice ?>"/>
     <div id="top">
         <h2>Email Disclaimer</h2>
     </div>
     <table>
         <tr>
             <?php 
-            if($emailtemp){
+            if($this->emailtemp){
             ?>            
-            <td><textarea name="disclosure" class="readonly" disabled="" required=""><?php echo $emailtemp->disclosure ?></textarea></td>                
+            <td><textarea name="disclosure" class="readonly" disabled="" required=""><?php echo $this->emailtemp->disclosure ?></textarea></td>                
         </tr>
     </table>
     <div id="bottom">

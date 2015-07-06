@@ -197,7 +197,7 @@ h2 {
 #tr_form #right .replace {
     width: 83%;
 }
-#tr_form #right .mark_as_red {
+#tr_form #right .mark_red {
     color: #eb4102;
     font-weight: bold;
 }
@@ -214,10 +214,10 @@ h2 {
     -webkit-box-shadow: 0 0 3px 2px #F00;
     border: none;
 }
-#tr_form_future, #tr_form_month, #tr_form_entry_choice {
+#fk_future, #month, #entry_choice {
     width: 70%;
 }
-#tr_form_num_contr {
+#num_contr {
     width: 18%;
     margin-left: 5px;
     padding: 4px 4px 4px 8px; 
@@ -225,7 +225,7 @@ h2 {
     font-size: 16px;
     line-height: 18px
 }
-#tr_form_year,#tr_form_duration {  
+#year,#duration {  
     width: 22%;
 }
 /******RECEIVER LIST FORM*******/
@@ -455,6 +455,7 @@ table tbody tr:hover {
     height: 31px;
     width: 150px;
     padding-left: 4px;
+    display: block;
 }
 /******PAGINATE*******/
 #paginate {

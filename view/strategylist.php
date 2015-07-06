@@ -9,12 +9,11 @@
             </tr>
         </thead>
         <?php
-        if($strategies){
-            $listnumb =0;
-            foreach ($strategies as $k=>$strategy){
-                $listnumb++;?>
+        if($this->strategies){
+            foreach ($this->strategies as $k=>$strategy){
+                $this->index_numb++;?>
                 <tr>
-                    <td data-title=''><?php echo $listnumb ?></td>
+                    <td data-title=''><?php echo $this->index_numb ?></td>
                     <td data-title='Strategy Name' data-index="strategy_name"><?php echo $strategy->strategy_name ?></td>
                     <td data-title='Futures Contracts'>
                         <?php

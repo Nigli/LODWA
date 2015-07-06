@@ -1,27 +1,21 @@
 $(function(){
-    //izmeni novom super duper funkcijom iz receiver.js
     $("tbody tr").on("click", function () {
-        $tr_form = {tr_form_future:$(this).find("[data-title='Id Futures']").html(),
-                    tr_form_entry_choice:$(this).find("[data-title='Entry Choice']").html(),
-                    tr_form_entry_price:$(this).find("[data-title='Entry Price']").html(),
-                    tr_form_price_target:$(this).find("[data-title='Price Target']").html(),
-                    tr_form_stop_loss:$(this).find("[data-title='Stop Loss']").html(),
-                    tr_form_num_contr:$(this).find("[data-title='Number of Contracts']").html(),
-                    tr_form_duration:$(this).find("[data-title='Duration']").html(),
-                    tr_form_month:$(this).find("[data-title='Month']").html(),
-                    tr_form_year:$(this).find("[data-title='Year']").html(),
-                    rightspan:$(this).find("[data-title='Strategy name']").html()
-                };
-        $.each($tr_form, function(key, value){
-            $("#"+key).val(value);
-            $("#rightspan").html("Selected strategy: "+$tr_form.rightspan);
+        var td = $(this).children();
+        var rec = {};
+        $.each(td, function (count) {
+            rec[td.eq(count).data("index")] = td.eq(count).text();
+        });
+        $.each(rec, function (key, value) {
+            $("#" + key).val(value);
+            $("#rightspan").html("Selected strategy: "+rec['strategy_name']+"<input type='hidden' id='strategy_id' name='fk_strategy' value='"+rec['fk_strategy']+"'/>");
+                //alert(rec["strategy_name"]);
         });
         $("tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);
     });
     //functionf for selecting future strategy, populating right span
-    $('#tr_form_future').on('change', function() {
+    $('#fk_future').on('change', function() {
         var value = $(this).val();
         $('#rightspan').load('process/strategy_name.php?f='+value);        
     });
@@ -30,8 +24,8 @@ $(function(){
     $("#tr_form_cancel").on("click",function(){
         $("#tr_form_cancel, #tr_form_submit").hide();
         $("#tr_form_cxl, #tr_form_rpl, .radio_rep, #reset").show();        
-        $("#tr_form_stop_loss, #tr_form_price_target").removeClass("prices");
-        $("#tr_form_stop_loss, #tr_form_price_target").addClass("replace");
+        $("#stop_loss, #price_target").removeClass("prices");
+        $("#stop_loss, #price_target").addClass("replace");
         //input number pointer none because radio button is input type
         $("select, input[type=number]").css('pointer-events','none');
     });
@@ -41,19 +35,19 @@ $(function(){
         $(this).hide();
         $("#tr_form_cancel, #tr_form_submit").show();
         $("#tr_form_cxl, #tr_form_rpl, .radio_rep ").hide();
-        $("#tr_form_stop_loss, #tr_form_price_target").addClass("prices");        
+        $("#stop_loss, #price_target").addClass("prices");        
         $("tbody tr").removeClass("activetr");
-        $("input").removeClass("mark_as_red");
+        $("input").removeClass("mark_red");
         $('.radio_rep').removeClass('radio_require');
         $("select, input[type=number]").css('pointer-events','auto');
     });
     $("input:radio[name='rpl_price']").on("change",function(){
         if ($(this).is(':checked') && $(this).val() == 'stop_loss') {
-            $("#tr_form_stop_loss").addClass("mark_as_red").css('pointer-events','auto');
-            $("#tr_form_price_target").removeClass("mark_as_red").css('pointer-events','none');
+            $("#stop_loss").addClass("mark_red").css('pointer-events','auto');
+            $("#price_target").removeClass("mark_red").css('pointer-events','none');
         }else {
-            $("#tr_form_price_target").addClass("mark_as_red").css('pointer-events','auto');
-            $("#tr_form_stop_loss").removeClass("mark_as_red").css('pointer-events','none');
+            $("#price_target").addClass("mark_red").css('pointer-events','auto');
+            $("#stop_loss").removeClass("mark_red").css('pointer-events','none');
         }
     });
     $("#tr_form_cxl, #tr_form_rpl, #tr_form_submit").on("click", function (){        
@@ -86,13 +80,13 @@ $(function(){
         if(empty){
            return false;
         }
-        var future = $("#tr_form_future option:selected" ).text();
-        var month = $("#tr_form_month").val();
-        var year = $("#tr_form_year").val();
-        var entry_choice = $("#tr_form_entry_choice").val();
-        var entry_price = $("#tr_form_entry_price").val();
-        var price_target = $("#tr_form_price_target").val();
-        var stop_loss = $("#tr_form_stop_loss").val();
+        var future = $("#fk_future option:selected" ).text();
+        var month = $("#month").val();
+        var year = $("#year").val();
+        var entry_choice = $("#entry_choice").val();
+        var entry_price = $("#entry_price").val();
+        var price_target = $("#price_target").val();
+        var stop_loss = $("#stop_loss").val();
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Confirm "+tr_type);

@@ -10,16 +10,16 @@ $valid = Validate::admin($_POST);
 if ($valid) {/* * CHECKS IF VALID IS OK, THEN BASED ON SUBMIT BUTTON VALUE CALLING DAO* */
     if ($valid['futures-submit'] === "update") {
         $update = FuturesContractDAO::updateFutures($valid);
-        $update ? Session::set("future", "update") : Session::set("future", "notupdate");
+        $update ? Session::set("notify", "update") : Session::set("notify", "notupdate");
     } elseif ($valid['futures-submit'] === "delete") {
         $remove_strat_fut = FuturesContractDAO::deleteStrategyFuture($valid);
         $delete = FuturesContractDAO::removeFutures($valid);
-        $delete ? Session::set("future", "update") : Session::set("future", "notupdate");
+        $delete ? Session::set("notify", "update") : Session::set("notify", "notupdate");
     } else {
         $new = FuturesContractDAO::newFutures($valid);
-        $new ? Session::set("future", "update") : Session::set("future", "notupdate");
+        $new ? Session::set("notify", "update") : Session::set("notify", "notupdate");
     }
 } else {
-    Session::set("future", "notupdate");
+    Session::set("notify", "notupdate");
 }
-redirect_to("strategylist");
+redirect_to("futureslist");

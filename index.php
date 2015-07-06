@@ -1,4 +1,7 @@
 <?php
 require 'config.php';
-use utils\Render;
-Render::view($_GET);
+
+
+$string = ucfirst("controller\\".$_GET['p']."Controller");
+$controller = new $string;
+$controller->view();

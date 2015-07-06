@@ -1,3 +1,4 @@
+<script src="js/receiver.js" type="text/javascript"></script>
 <form id="receiver_list_form" method="post" action="processrec">
     <input id="active" name="active" type="hidden" value=""/>
     <div id="top">

@@ -12,7 +12,7 @@ use traderec\TradeRec,
 $valid = Validate::tr($_POST);
 $tr = $valid ? new TradeRec($valid) : false; /* * IF IS VALID IS OK CREATE NEW TR OBJECT* */
 $email = $tr ? new Email($tr) : false; /* * IF TR IS OK CREATE NEW EMAIL OBJECT* */
-$sent = $email ? phpmailer($email) : false; /* * IF EMAIL OBJECT CREATED SEND EMAIL WITH phpmailer() function* */
+$sent = $email ? $email->sendEmail($email) : false; /* * IF EMAIL OBJECT CREATED SEND EMAIL WITH phpmailer() function* */
 $insert = ($sent) ? TradeRecDAO::insertTradeRec($email) : false;
-$insert ? Session::set("tr", "sent") : Session::set("tr", "notsent");
+$insert ? Session::set("notify", "sent") : Session::set("notify", "notsent");
 redirect_to("trade");

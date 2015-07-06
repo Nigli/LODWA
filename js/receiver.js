@@ -26,18 +26,12 @@ $(function () {
             $("#" + key).val(value);
             $("#" + key).prop('checked', true);
         });
-        
+
         $("#receiver_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({scrollTop: 0}, 600);
         $("#update").show();
-        if ($("#active").val() == 1) {
-            $("#unsubs").show();
-            $("#subs").hide();
-        } else {
-            $("#unsubs").hide();
-            $("#subs").show();
-        }
+        $("#unsubs").show();
         $("#reset").show();
         $("#new").hide();
     });
@@ -50,7 +44,7 @@ $(function () {
         $("#id_receiver").val("");
         $("#receiver_list tbody tr").removeClass("activetr");
     });
-    $("#unsubs, #subs, #update, #new").on("click", function () {
+    $("#unsubs, #update, #new").on("click", function () {
         var empty = false;
         $("input[type='email'], #left input[type='text']").each(function () {
             if ($(this).val() === "") {
@@ -58,14 +52,16 @@ $(function () {
                 empty = true;
             }
         });
-        $('input:checked').each(function (){
-            if($(this).length >= 1){
-                if($(this).nextAll("input[type='number']").val()== 0){    
+        $('input:checked').each(function () {
+            if ($(this).length >= 1) {
+                if ($(this).nextAll("input[type='number']").val() == 0) {
                     $(this).nextAll("input[type='number']").focus();
                     empty = true;
-                };              
-            };
-        });        
+                }
+                ;
+            }
+            ;
+        });
         if (empty) {
             return false;
         }
@@ -84,20 +80,32 @@ $(function () {
         $("#notice-reset").hide();
         $("#notice-span").html("");
     });
+    $("input[type='checkbox']").on("change", function () {
+        if ($(this).not(':checked')) {
+            $(this).nextAll("input[type='number']").val("");
+        }
+        ;
+    });
     $("#filterspan").on("click", function () {
         $(".shade").show();
         $("#notice").show();
         $("#receiver_list_filter").show();
         $("#notice-title h3").html("Filter");
-        if (getUrlVars() != default_url && (getUrlVar("type") != "0" || getUrlVar("strategy") != "0" || getUrlVar("ba") != "0" || getUrlVar("active") != "1")) {
+        if (getUrlVars() != default_url && (getUrlVar("type") != "0" || getUrlVar("strategy") != "0" || getUrlVar("ba") != "ALL" || getUrlVar("active") != "1")) {
             $("#notice-reset").show();
         }
+         if ($("#receiver_list_active").val() == 0) {
+             $("#receiver_list_strat").hide();            
+             $("label[for='receiver_list_strat']").hide();
+             $("#receiver_list_type").hide();
+             $("label[for='receiver_list_type']").hide();
+         }
         $("#notice-confirm").hide();
         $("#notice-confirm-filter").show();
         $("#notice-cancel").show();
         $("#notice-close").hide();
     });
-    if (getUrlVars() != default_url && (getUrlVar("type") != 0 || getUrlVar("strategy") != "0" || getUrlVar("ba") != "0" || getUrlVar("active") != "1")) {
+    if (getUrlVars() != default_url && (getUrlVar("type") != 0 || getUrlVar("strategy") != "0" || getUrlVar("ba") != "ALL" || getUrlVar("active") != "1")) {
         $("#filter_notice").html("Filter is active");
     }
     $("#receiver_list_type, #receiver_list_active, #receiver_list_strat, #receiver_list_ba").on("change", function () {
@@ -115,7 +123,7 @@ $(function () {
         $("#receiver_list_type").val("0");
         $("#receiver_list_active").val("1");
         $("#receiver_list_strat").val("0");
-        $("#receiver_list_ba").val("0");
+        $("#receiver_list_ba").val("ALL");
     });
     $("#notice-confirm").on("click", function () {
         $(".shade").show();

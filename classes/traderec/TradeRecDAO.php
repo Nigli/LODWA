@@ -77,10 +77,11 @@ class TradeRecDAO {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
             $res = $db->prepare("INSERT INTO trade_rec "
-                    . "(id_tr,fk_tr_type,fk_future,month,year,num_contr,entry_choice,duration,entry_price,price_target,stop_loss,date_time) "
-                    . "VALUES ('',:fk_tr_type,:fk_future,:month,:year,:num_contr,:entry_choice,:duration,:entry_price,:price_target,:stop_loss,:date_time)");
+                    . "(id_tr,fk_tr_type,fk_future,fk_strategy,month,year,num_contr,entry_choice,duration,entry_price,price_target,stop_loss,date_time) "
+                    . "VALUES ('',:fk_tr_type,:fk_future,:fk_strategy,:month,:year,:num_contr,:entry_choice,:duration,:entry_price,:price_target,:stop_loss,:date_time)");
             $res->bindParam(':fk_future', $tr->fk_future);
             $res->bindParam(':fk_tr_type', $tr->fk_tr_type);
+            $res->bindParam(':fk_strategy', $tr->fk_strategy);
             $res->bindParam(':month', $tr->month);
             $res->bindParam(':year', $tr->year);
             $res->bindParam(':num_contr', $tr->num_contr);

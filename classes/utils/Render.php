@@ -24,7 +24,7 @@ class Render {
     }
 
     private static function viewAdmin($page_to_go, $access) {
-        if ( $access) {
+        if ($access) {
             ob_start();
             require "initialize_view/{$page_to_go}.php";
             include "view/{$page_to_go}.php";

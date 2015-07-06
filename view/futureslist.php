@@ -9,12 +9,11 @@
             </tr>
         </thead>
         <?php  
-        if($future){
-            $listnumb =0;
-            foreach ($future as $k=>$fut){
-                $listnumb++;?>
+        if($this->future){
+            foreach ($this->future as $k=>$fut){
+                $this->index_numb++;?>
                 <tr>
-                    <td data-title=''><?php echo $listnumb ?></td>
+                    <td data-title=''><?php echo $this->index_numb ?></td>
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $fut->futures_name ?></td>
                     <td data-title='Futures Description' data-index="futures_desc"><?php echo $fut->description ?></td>
                     <td data-index="id_futures" class="td_hidden"><?php echo $fut->id_futures ?></td>

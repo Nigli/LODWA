@@ -18,17 +18,17 @@ if ($valid) {/* * CHECKS IF VALID IS OK, THEN BASED ON SUBMIT BUTTON VALUE CALLI
             if ($num_subscriptions != 0) {
                 $subs = ReceiverDao::insertSubscription($receiver->id_receiver, $strategy_id, $num_subscriptions);
                 $has_sub = true;
-                $update && $remove_subs && $subs ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+                $update && $remove_subs && $subs ? Session::set("notify", "update") : Session::set("notify", "notupdate");
             }
         }
         if (!$has_sub) {
             $unsub = ReceiverDao::unsubscribeReceiver($valid);
-            $update && $remove_subs && $unsub ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+            $update && $remove_subs && $unsub ? Session::set("notify", "update") : Session::set("notify", "notupdate");
         }
     } elseif ($valid['receiver-submit'] === "subscribe") {
         $unsub = ReceiverDao::unsubscribeReceiver($valid);
         $remove_subs = ReceiverDao::removeSubscriptionBySubscriber($receiver->id_receiver);
-        $remove_subs && $unsub ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+        $remove_subs && $unsub ? Session::set("notify", "update") : Session::set("notify", "notupdate");
     } else {
         $new = ReceiverDao::newReceiver($receiver);
         $has_sub = false;
@@ -36,15 +36,15 @@ if ($valid) {/* * CHECKS IF VALID IS OK, THEN BASED ON SUBMIT BUTTON VALUE CALLI
             if ($num_subscriptions != 0) {
                 $subs = ReceiverDao::insertSubscription($new, $strategy_id, $num_subscriptions);
                 $has_sub = true;
-                $new && $remove_subs && $subs ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+                $new && $remove_subs && $subs ? Session::set("notify", "update") : Session::set("notify", "notupdate");
             }
         }
         if (!$has_sub) {
             $unsub = ReceiverDao::unsubscribeReceiver($valid);
-            $new && $remove_subs && $unsub ? Session::set("receiver", "update") : Session::set("receiver", "notupdate");
+            $new && $remove_subs && $unsub ? Session::set("notify", "update") : Session::set("notify", "notupdate");
         }
     }
 } else {
-    Session::set("receiver", "notupdate");
+    Session::set("notify", "notupdate");
 }
 redirect_to("receiverlist");

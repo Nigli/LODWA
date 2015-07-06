@@ -57,6 +57,7 @@ class Validate {
         $args = array(/**CHECKS EACH TR FORM FIELD**/            
             'fk_tr_type'    => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => 1)),
             'fk_future'     => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => 1)),
+            'fk_strategy'     => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => 1)),
             'month'         => FILTER_SANITIZE_STRING,
             'year'          => array('filter'=> FILTER_VALIDATE_INT,    'options'=> array('min_range' => date('Y'), 'max_range' => date('Y')+10)),
             'entry_choice'  => FILTER_SANITIZE_STRING,

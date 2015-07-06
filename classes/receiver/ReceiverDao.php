@@ -16,7 +16,7 @@ class ReceiverDao {
                     . "LEFT JOIN subscriptions ON fk_id_receiver=id_receiver "
                     . "WHERE fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
                     . "AND fk_strategy = if(:strategy= 0,fk_strategy, :strategy) "
-                    . "AND broker_acc= if(:broker_acc= '0',broker_acc, :broker_acc) "
+                    . "AND broker_acc= if(:broker_acc= 'ALL',broker_acc, :broker_acc) "
                     . "GROUP BY id_receiver "
                     . "LIMIT :limit "
                     . "OFFSET :offset");
@@ -42,7 +42,7 @@ class ReceiverDao {
                     . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
                     . "WHERE active = '0' "
                     . "AND fk_receiver_type = if(:type= '0',fk_receiver_type, :type) "
-                    . "AND broker_acc= if(:broker_acc= '0',broker_acc, :broker_acc) "
+                    . "AND broker_acc= if(:broker_acc= 'ALL',broker_acc, :broker_acc) "
                     . "GROUP BY id_receiver "
                     . "LIMIT :limit "
                     . "OFFSET :offset");
@@ -139,7 +139,7 @@ class ReceiverDao {
                     . "WHERE active = :active "
                     . "AND fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
                     . "AND fk_strategy = if(:strategy= 0,fk_strategy, :strategy) "
-                    . "AND broker_acc= if(:broker_acc= '0', broker_acc, :broker_acc)");
+                    . "AND broker_acc= if(:broker_acc= 'ALL', broker_acc, :broker_acc)");
             $res->bindParam(':type', $filter['type'], PDO::PARAM_INT);
             $res->bindParam(':broker_acc', $filter['ba'], PDO::PARAM_STR);
             $res->bindParam(':strategy', $filter['strategy'], PDO::PARAM_INT);
@@ -161,7 +161,7 @@ class ReceiverDao {
                     . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
                     . "WHERE active = 0 "
                     . "AND fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
-                    . "AND broker_acc= if(:broker_acc= '0', broker_acc, :broker_acc)");
+                    . "AND broker_acc= if(:broker_acc= 'ALL', broker_acc, :broker_acc)");
             $res->bindParam(':type', $filter['type'], PDO::PARAM_INT);
             $res->bindParam(':broker_acc', $filter['ba'], PDO::PARAM_STR);
             $res->execute();

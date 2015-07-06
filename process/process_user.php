@@ -8,16 +8,16 @@ if($valid && $hash){
     if($valid['user-submit']==="update"){    
         $valid['hash']= $hash;    
         $user=UserDAO::updateUser($valid);
-        $user?Session::set("admin", "sent"):Session::set("admin", "notsent");
+        $user?Session::set("notify", "sent"):Session::set("notify", "notsent");
     }elseif($valid['user-submit']==="remove"){
         $user=UserDAO::removeUser($valid);
-        $user?Session::set("admin", "sent"):Session::set("admin", "notsent");
+        $user?Session::set("notify", "sent"):Session::set("notify", "notsent");
     }else{      
         $valid['hash']= $hash;
         $user=UserDAO::newUser($valid); 
-        $user?Session::set("admin", "sent"):Session::set("admin", "notsent");
+        $user?Session::set("notify", "sent"):Session::set("notify", "notsent");
     }
 }else {
-    Session::set("admin", "notsent");
+    Session::set("notify", "notsent");
 }
 redirect_to("superadmin/1");

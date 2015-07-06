@@ -10,39 +10,39 @@
     <span id="notice-span"></span>
     <!--FILTER OPTIONS-->
     <form id="receiver_list_filter" method="get" class="hidden">
-        <input id="receiver_note" type="hidden" value="<?php echo $notice ?>"/>
+        <input id="receiver_note" type="hidden" value="<?php echo $this->notice ?>"/>
         <input type="hidden" value="1" name="page"/>
-        <label for="receiver_list_type">By Subscriber Type</label><br>
+        <label for="receiver_list_type">By Subscriber Type</label>
         <select id="receiver_list_type" name="type">
             <option value="0">ALL</option>
-            <?php foreach ($type as $k=>$v){
+            <?php foreach ($this->type as $k=>$v){
             ?>           
             <option value="<?php echo $v['id_receiver_type'] ?>"><?php echo $v['receiver_type_name'] ?></option>
             <?php
             }
             ?>
-        </select><br>
-        <label for="receiver_list_strat">By Subscribed Strategy</label><br>
+        </select>
+        <label for="receiver_list_strat">By Subscribed Strategy</label>
         <select id="receiver_list_strat" name="strategy">
             <option value="0">ALL</option>
-            <?php foreach ($strategies as $k=>$v){
-            ?>           
-            <option value="<?php echo $v->id_strategy ?>"><?php echo $v->strategy_name ?></option>
-            <?php
-            }
+            <?php foreach ($this->strategies as $k=>$v){
+                ?>           
+                <option value="<?php echo $v->id_strategy ?>"><?php echo $v->strategy_name ?></option>
+                <?php
+                }
             ?>
-        </select><br>
+        </select>
         <label for="receiver_list_ba">By Broker Account</label><br>
         <select id="receiver_list_ba" name="ba">
-            <option value="0">ALL</option>
+            <option value="ALL">ALL</option>
             <option value="1">With Account</option>
             <option value="0">Without Account</option>
-        </select><br>
-        <label for="receiver_list_active">Show recently Unubscribed</label><br>
+        </select>
+        <label for="receiver_list_active">Show only Inactive</label><br>
         <select id="receiver_list_active" name="active">
             <option value="0">Yes</option>
             <option value="1">No</option>
-        </select><br>
+        </select>
     </form>
     <!--END FILTER OPTIONS-->
     <div id="bottom">
@@ -73,8 +73,8 @@
             </tr>
         </thead>
         <?php
-        if($rec){
-            foreach ($rec as $k=>$receiver) {
+        if($this->rec){
+            foreach ($this->rec as $k=>$receiver) {
             ?>
                 <tr>
                     <td data-title='Receiver Type' data-index="type"><?php echo $receiver->receiver_type_name ?></td>
@@ -91,9 +91,9 @@
                     <?php 
                     if($receiver->subs_info){
                         foreach ($receiver->subs_info as $subs_info) {
-                                    ?>
-                                        <td data-index="strategy_type<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['fk_strategy'] ?></td>
-                                        <td data-index="strategy_subs<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['num_subs'] ?></td>
+                            ?>
+                                <td data-index="strategy_type<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['fk_strategy'] ?></td>
+                                <td data-index="strategy_subs<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['num_subs'] ?></td>
                         <?php
                     }
                 }
@@ -110,12 +110,12 @@
         ?>
     </table>
     <?php
-        echo $pagin->createLinks($links);
+        echo $this->pagin->createLinks($this->links);
     ?>
 </div>
 <script>
-    $("#receiver_list_type").val("<?php echo $links['type'] ?>");
-    $("#receiver_list_active").val("<?php echo $links['active'] ?>");
-    $("#receiver_list_strat").val("<?php echo $links['strategy'] ?>");
-    $("#receiver_list_ba").val("<?php echo $links['ba'] ?>");
+    $("#receiver_list_type").val("<?php echo $this->links['type'] ?>");
+    $("#receiver_list_active").val("<?php echo $this->links['active'] ?>");
+    $("#receiver_list_strat").val("<?php echo $this->links['strategy'] ?>");
+    $("#receiver_list_ba").val("<?php echo $this->links['ba'] ?>");
 </script>
