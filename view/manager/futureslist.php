@@ -1,4 +1,4 @@
-<script src="js/futures.js" type="text/javascript"></script>
+<script src="inc/js/futures.js" type="text/javascript"></script>
 <div id="spinner"></div>
 <!--NOTICE POPUP-->
 <div id="notice">
@@ -25,7 +25,7 @@
     <!--FUTURES FORM-->
     <form id="futures_form" method="post" action="processfut">
         <div id="left"> 
-            <input id="future_note" type="hidden" value="<?php echo $notice_future ?>"/>
+            <input id="future_note" type="hidden" value="<?php echo $this->notice ?>"/>
             <input id="id_futures" type="hidden" name="id_futures" value=""/>
             <label for="futures_name">Futures Name and Number of Decimal Places</label><br>
             <input id="futures_name" name="futures_name" type="text" value="" required=""/>        
@@ -45,7 +45,7 @@
         </div>
     </form>    
     <!--END FORM-->
-    <span id="to_bottom"><i class="fa fa-chevron-down"></i></span>
+    <span id="to_bottom"><i class="fa fa-arrow-down"></i></span>
 </div>
 <script>         
     function getValFutur(obj) {

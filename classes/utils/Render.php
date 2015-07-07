@@ -7,74 +7,74 @@ use utils\Session,
 
 class Render {
 
-    public static function view($get) {
-        $user = Session::get('user_status');
-        $page_to_go =isset($get['p'])?$get['p']:"";
-        $access = isset($page_to_go) ? User::pageAccess($user, $page_to_go) : false;
-  
-        if ($user == "1") {
-            Render::viewUser($page_to_go, $access);
-        } elseif ($user == "3") {
-            Render::viewAdmin($page_to_go, $access);
-        } elseif ($user == "8") {
-            Render::viewSuperAdmin($access);
-        } else {
-            redirect_to("login");
-        }
-    }
-
-    private static function viewAdmin($page_to_go, $access) {
-        if ($access) {
-            ob_start();
-            require "initialize_view/{$page_to_go}.php";
-            include "view/{$page_to_go}.php";
-            $content = ob_get_clean();
-        } else {
-            // go to default page
-            ob_start();
-            require "initialize_view/strategylist.php";
-            include "view/strategylist.php";
-            $content = ob_get_clean();
-        }
-        $layout = file_get_contents("view/layout_admin.html");
-        echo str_replace('[CONTENT]', $content, $layout);
-    }
-
-    private static function viewSuperAdmin($access) {
-        if ($access) {
-            ob_start();
-            require "initialize_view/superadmin.php";
-            include "view/superadmin.php";
-            $content = ob_get_clean();
-            $layout = file_get_contents("view/layout_superadmin.html");
-            echo str_replace('[CONTENT]', $content, $layout);
-        } else {
-            // go to default page
-            ob_start();
-            require "initialize_view/superadmin.php";
-            include "view/superadmin.php";
-            $content = ob_get_clean();
-            $layout = file_get_contents("view/layout_superadmin.html");
-            echo str_replace('[CONTENT]', $content, $layout);
-        }
-    }
-
-    private static function viewUser($page_to_go, $access) {
-        if ($access) {
-            ob_start();
-            require "initialize_view/{$page_to_go}.php";
-            include "view/{$page_to_go}.php";
-            $content = ob_get_clean();
-        } else {
-            // go to default page
-            ob_start();
-            require "initialize_view/trform.php";
-            include "view/trform.php";
-            $content = ob_get_clean();
-        }
-        $layout = file_get_contents("view/layout.html");
-        echo str_replace('[CONTENT]', $content, $layout);
-    }
+//    public static function view($get) {
+//        $user = Session::get('user_status');
+//        $page_to_go =isset($get['p'])?$get['p']:"";
+//        $access = isset($page_to_go) ? User::pageAccess($user, $page_to_go) : false;
+//  
+//        if ($user == "1") {
+//            Render::viewUser($page_to_go, $access);
+//        } elseif ($user == "3") {
+//            Render::viewAdmin($page_to_go, $access);
+//        } elseif ($user == "8") {
+//            Render::viewSuperAdmin($access);
+//        } else {
+//            redirect_to("login");
+//        }
+//    }
+//
+//    private static function viewAdmin($page_to_go, $access) {
+//        if ($access) {
+//            ob_start();
+//            require "initialize_view/{$page_to_go}.php";
+//            include "view/{$page_to_go}.php";
+//            $content = ob_get_clean();
+//        } else {
+//            // go to default page
+//            ob_start();
+//            require "initialize_view/strategylist.php";
+//            include "view/strategylist.php";
+//            $content = ob_get_clean();
+//        }
+//        $layout = file_get_contents("view/layout_admin.html");
+//        echo str_replace('[CONTENT]', $content, $layout);
+//    }
+//
+//    private static function viewSuperAdmin($access) {
+//        if ($access) {
+//            ob_start();
+//            require "initialize_view/superadmin.php";
+//            include "view/superadmin.php";
+//            $content = ob_get_clean();
+//            $layout = file_get_contents("view/layout_superadmin.html");
+//            echo str_replace('[CONTENT]', $content, $layout);
+//        } else {
+//            // go to default page
+//            ob_start();
+//            require "initialize_view/superadmin.php";
+//            include "view/superadmin.php";
+//            $content = ob_get_clean();
+//            $layout = file_get_contents("view/layout_superadmin.html");
+//            echo str_replace('[CONTENT]', $content, $layout);
+//        }
+//    }
+//
+//    private static function viewUser($page_to_go, $access) {
+//        if ($access) {
+//            ob_start();
+//            require "initialize_view/{$page_to_go}.php";
+//            include "view/{$page_to_go}.php";
+//            $content = ob_get_clean();
+//        } else {
+//            // go to default page
+//            ob_start();
+//            require "initialize_view/trform.php";
+//            include "view/trform.php";
+//            $content = ob_get_clean();
+//        }
+//        $layout = file_get_contents("view/layout.html");
+//        echo str_replace('[CONTENT]', $content, $layout);
+//    }
 
     public static function viewUnsub($get) {
         if (isset($get['id'])) {

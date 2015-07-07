@@ -1,4 +1,4 @@
-<script src="js/emailtemp.js" type="text/javascript"></script>
+<script src="inc/js/emailtemp.js" type="text/javascript"></script>
 <div id="spinner"></div>
 <!--NOTICE POPUP-->
 <div id="notice">

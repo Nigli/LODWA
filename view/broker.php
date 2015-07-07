@@ -1,4 +1,4 @@
-<script src="js/broker.js" type="text/javascript"></script>
+<script src="inc/js/broker.js" type="text/javascript"></script>
 <div id="spinner"></div>
 <!--NOTICE POPUP-->
 <div id="notice">
@@ -33,7 +33,7 @@
         <input class="readonly" name="email" type="text" value="<?php echo $this->broker->broker_email;?>" readonly/><br>
     </div>
     <div id="bottom">
-        <?php $this->user=='3'?include 'admin/broker.html':''; ?>
+        <?php $this->user_status == \utils\Enum::MANAGER?include $this->broker_button:""; ?>
     </div>
     <?php  
         }else {

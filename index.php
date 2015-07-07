@@ -1,7 +1,7 @@
 <?php
+
 require 'config.php';
 
-
-$string = ucfirst("controller\\".$_GET['p']."Controller");
-$controller = new $string;
+$controller_name = isset($_GET['p']) ? ucfirst("controller\\" . $_GET['p'] . "Controller") : "controller\LoginController";
+$controller = new $controller_name;
 $controller->view();

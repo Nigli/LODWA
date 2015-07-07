@@ -1,4 +1,4 @@
-<script src="js/profile.js" type="text/javascript"></script>
+<script src="inc/js/profile.js" type="text/javascript"></script>
 <div id="spinner"></div>
 <!--NOTICE POPUP-->
 <div id="notice">
@@ -37,7 +37,7 @@
             <input class="readonly" name="email" type="email" value="<?php echo $this->sender->sender_email;?>" readonly required=""/><br>                
     </div>
     <div id="bottom">
-        <?php $this->user=='3'?include 'admin/profile.html':''; ?>
+        <?php $this->user_status==\utils\Enum::MANAGER?include $this->profile_buttons :''; ?>
     </div>
     <?php  
         }else {

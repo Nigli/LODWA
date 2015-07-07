@@ -7,6 +7,7 @@ use sender\SenderInfoDAO,
     receiver\ReceiverDao,
     email\EmailTempDAO,
     utils\Render,
+        utils\Enum,
     phpmailer\PHPMailer;
 
 class Email {
@@ -89,13 +90,13 @@ class Email {
         $mail->CharSet = 'UTF-8';
         $mail->isSMTP();                                        //*
         //$mail->SMTPDebug  = 2;                                  //*
-        $mail->Host = $email->sender_host;
+        $mail->Host = Enum::SENDER_HOST;
         //$mail->Host = "relay-hosting.secureserver.net";         // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication*
         $mail->Username = $email->sender_email;                 // SMTP username
-        $mail->Password = $email->sender_pass;                // SMTP password*
+        $mail->Password = Enum::SENDER_PASS;                // SMTP password*
         //$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = $email->sender_port;                      // TCP port to connect to
+        $mail->Port = Enum::SENDER_PORT;                      // TCP port to connect to
 
         $mail->From = $email->sender_email;
         $mail->FromName = $email->sender_name;

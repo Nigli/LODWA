@@ -15,7 +15,8 @@ class TrformController extends MainController {
         parent::__construct();
         $this->futures = FuturesContractDAO::getActiveFutures(); /*         * GETS ARRAY OF FUTURES OBJECTS* */
         $this->last5TR = TradeRecDAO::getLast5TradeRecs(); /*         * GETS ARRAY OF 5 TR OBJECTS* */
-        $this->lastTR = $this->last5TR[0];
+        $this->lastTR = $this->last5TR[0];        
+        $this->setToken("tr_token");
     }
 
 }

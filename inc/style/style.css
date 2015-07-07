@@ -73,7 +73,7 @@ h2 {
     padding-left: 8px;
 }
 #tr_list, #receiver_list, #user_list {
-    height: 440px;
+    height: 520px;
 }
 #tr_list_5 {
     height: 320px;
@@ -200,6 +200,11 @@ h2 {
 #tr_form #right .mark_red {
     color: #eb4102;
     font-weight: bold;
+}
+.disable {
+    pointer-events: none;
+    background-color: #eee;
+    border: 1px solid #AEAEAE;
 }
 #tr_form #right .prices{
     width: 92%;
@@ -437,29 +442,31 @@ table tbody tr:hover {
 #notice-close,#notice-cancel,#notice-confirm {
     display: none;
 }
-#filterspan {
+/*#filterspan {
     float: right;
     font-size: 18px;
     font-weight: bold;
     text-decoration: underline;
     cursor: pointer;
-}
-#filter_notice {    
+    display: none;
+}*/
+
+/*#filter_notice {    
     float: right;
     font-size: 18px;
     margin-right: 25px;
-}
-#notice select {
+}*/
+/*#notice select {
     margin: 5px 0px 10px 0px;    
     font-size: 16px;   
     height: 31px;
     width: 150px;
     padding-left: 4px;
     display: block;
-}
+}*/
 /******PAGINATE*******/
 #paginate {
-    margin: 40px auto;
+    margin: 30px auto;
     text-align: center;
     width: 100%;
 }
@@ -548,6 +555,28 @@ table tbody tr::after {
 #filterspan:hover {
     color: #1B3664;
 }
+#tr_list_filter, #receiver_list_filter{
+    float:left;
+    clear: both;
+    width: 100%;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #AEAEAE;
+}
+.filter {
+    float:left;
+    width: 160px;
+    margin: 4px 10px 0px 0px;
+}
+.filter select{
+    width: 160px;
+}
+#tr_list_filter button, #receiver_list_filter button{
+    height: 30px;
+    font-size: 14px;
+    width: 60px;
+    padding: 0px;
+}
 /******RESPONSIVE*******/
 @media screen and (max-width: 800px) {
     #main,#wrapper {
@@ -626,13 +655,13 @@ table tbody tr::after {
         left: auto;
     }
     /******FILTER RESP*******/
-    #filterspan, #filter_notice {
+/*    #filterspan {
         clear: both;
         display: block;
         width: 100%;
         float: none;
         margin: 0px 0px 15px 0px;
-    }   
+    }   */
     /******PAGINATION RESP*******/
     .element:nth-child(n+2):not(:nth-last-child(-n+1)):not(.active) {
         display: none;

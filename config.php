@@ -9,10 +9,10 @@
     }
 //referer constants
     define("TR_REFERER", "http://localhost/LODWA/trade");
-    define("LOG_REFERER", "http://localhost/LODWA/login");
+    define("LOG_REFERER", "http://localhost/LODWA/");
 //    define("TR_REFERER", "http://192.168.0.101/LODWA/trade");
-//    define("LOG_REFERER", "http://192.168.0.101/LODWA/login");
-//    define("LOG_REFERER", "http://www.srlevel.com/login");
+//    define("LOG_REFERER", "http://192.168.0.101/LODWA/");
+//    define("LOG_REFERER", "http://www.srlevel.com/");
 //    define("TR_REFERER", "http://www.srlevel.com/trade");
 //    
 //time constants

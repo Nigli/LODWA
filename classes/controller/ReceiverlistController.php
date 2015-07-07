@@ -14,6 +14,7 @@ class ReceiverlistController extends MainController {
     public $pagin;
     public $type;
     public $strategies;
+    public $receiver_form;
 
     public function __construct() {
         parent::__construct();
@@ -34,6 +35,7 @@ class ReceiverlistController extends MainController {
         }
         $this->type = ReceiverDao::getTypes();
         $this->strategies = StrategyDao::getActiveStrategies();
+        $this->receiver_form = "view/manager/receiverlist.php";
     }
 
 }

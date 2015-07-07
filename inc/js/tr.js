@@ -27,7 +27,7 @@ $(function(){
         $("#stop_loss, #price_target").removeClass("prices");
         $("#stop_loss, #price_target").addClass("replace");
         //input number pointer none because radio button is input type
-        $("select, input[type=number]").css('pointer-events','none');
+        $("select, input[type=number]").addClass('disable');
     });
     //on reset removing reset, cxl, rpl and radio buttons, showing cancel new buttons
     //adding prices class to normalize input prices, removing cancel and replace color from prices, pointer events back to normal
@@ -39,15 +39,15 @@ $(function(){
         $("tbody tr").removeClass("activetr");
         $("input").removeClass("mark_red");
         $('.radio_rep').removeClass('radio_require');
-        $("select, input[type=number]").css('pointer-events','auto');
+        $("select, input[type=number]").removeClass('disable');
     });
     $("input:radio[name='rpl_price']").on("change",function(){
         if ($(this).is(':checked') && $(this).val() == 'stop_loss') {
-            $("#stop_loss").addClass("mark_red").css('pointer-events','auto');
-            $("#price_target").removeClass("mark_red").css('pointer-events','none');
+            $("#stop_loss").addClass("mark_red").removeClass("disable");
+            $("#price_target").removeClass("mark_red").addClass("disable");
         }else {
-            $("#price_target").addClass("mark_red").css('pointer-events','auto');
-            $("#stop_loss").removeClass("mark_red").css('pointer-events','none');
+            $("#price_target").addClass("mark_red").removeClass("disable");
+            $("#stop_loss").removeClass("mark_red").addClass("disable");
         }
     });
     $("#tr_form_cxl, #tr_form_rpl, #tr_form_submit").on("click", function (){        

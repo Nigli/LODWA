@@ -1,6 +1,5 @@
 <?php
 
-require '../function_phpmailer.php';
 require '../config.php';
 
 use traderec\TradeRec,

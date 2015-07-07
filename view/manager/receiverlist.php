@@ -1,4 +1,3 @@
-<script src="js/receiver.js" type="text/javascript"></script>
 <form id="receiver_list_form" method="post" action="processrec">
     <input id="active" name="active" type="hidden" value=""/>
     <div id="top">
@@ -8,7 +7,7 @@
     <div id="left">
         <label for="receiver_type_id">Type</label><br>
         <select id="receiver_type_id" name="fk_receiver_type">
-            <?php foreach ($type as $k => $v) {
+            <?php foreach ($this->type as $k => $v) {
                 echo "<option value='" . $v['id_receiver_type'] . "'>" . $v['receiver_type_name'] . "</option>";
             } ?>
         </select><br>
@@ -23,8 +22,8 @@
         <label for="subs_type">Strategy (Strategies) and # of Subscriptions *</label><br>
         <div id="subs_form">            
             <?php 
-            if($strategies){
-                foreach ($strategies as $k => $v) {
+            if($this->strategies){
+                foreach ($this->strategies as $k => $v) {
                     ?>
                     <div id='strat_check'>
                         <input id="strategy_type<?php echo $v->id_strategy ?>" type="checkbox" value="<?php echo $v->id_strategy ?>"/><label><?php echo $v->strategy_name ?></label>
@@ -48,14 +47,13 @@
     </div>
     <div id="bottom">
         <div id="bottom-left">
-            <button id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
-            <button id="subs" class="delete" type="button" name="receiver-submit" value="subscribe" onclick="getVal(this)">Subscribe</button>
-            <button id="unsubs" class="delete" type="button" name="receiver-submit" value="subscribe" onclick="getVal(this)">Unsubscribe</button>
-            <button id="update" class="update" type="button" name="receiver-submit" value="update" onclick="getVal(this)">Update</button>
-            <button id="new" type="button" name="receiver-submit" value="new" onclick="getVal(this)">New</button>
+            <button form="receiver_list_form" id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
+            <button form="receiver_list_form" id="unsubs" class="delete" type="button" name="receiver-submit" value="unsubscribe" onclick="getVal(this)">Unsubscribe</button>
+            <button form="receiver_list_form" id="update" class="update" type="button" name="receiver-submit" value="update" onclick="getVal(this)">Update</button>
+            <button form="receiver_list_form" id="new" type="button" name="receiver-submit" value="new" onclick="getVal(this)">New</button>
         </div>
     </div>
-    <span id="to_bottom" title="Go down"><i class="fa fa-chevron-down"></i></span>
+    <span id="to_bottom" title="Go down"><i class="fa fa-arrow-down"></i></span>
 </form>
 <script>
     function getVal(obj) {

@@ -1,19 +1,4 @@
 $(function () {
-    function getUrlVars() {
-        var vars = [], hash;
-        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-        for (var i = 0; i < hashes.length; i++)
-        {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        return vars;
-    }
-    function getUrlVar(name) {
-        return getUrlVars()[name];
-    }
-    var default_url = "http://localhost/LODWA/receiverlist";
     $("#receiver_list tbody tr").on("click", function () {
         $("input").prop('checked', false);
         $("input").val('');
@@ -71,7 +56,6 @@ $(function () {
         $("#notice-title h3").html("Confirm " + rec_action);
         $("#notice-confirm").show();
         $("#notice-cancel").show();
-        $("#notice-confirm-filter").hide();
         $("#notice-close").hide();
     });
     $("#notice-close, #notice-cancel").on("click", function () {
@@ -86,44 +70,27 @@ $(function () {
         }
         ;
     });
-    $("#filterspan").on("click", function () {
-        $(".shade").show();
-        $("#notice").show();
-        $("#receiver_list_filter").show();
-        $("#notice-title h3").html("Filter");
-        if (getUrlVars() != default_url && (getUrlVar("type") != "0" || getUrlVar("strategy") != "0" || getUrlVar("ba") != "ALL" || getUrlVar("active") != "1")) {
-            $("#notice-reset").show();
-        }
-         if ($("#receiver_list_active").val() == 0) {
-             $("#receiver_list_strat").hide();            
-             $("label[for='receiver_list_strat']").hide();
-             $("#receiver_list_type").hide();
-             $("label[for='receiver_list_type']").hide();
-         }
-        $("#notice-confirm").hide();
-        $("#notice-confirm-filter").show();
-        $("#notice-cancel").show();
-        $("#notice-close").hide();
-    });
-    if (getUrlVars() != default_url && (getUrlVar("type") != 0 || getUrlVar("strategy") != "0" || getUrlVar("ba") != "ALL" || getUrlVar("active") != "1")) {
-        $("#filter_notice").html("Filter is active");
+    if ($("#receiver_list_type").val() != 0 || $("#receiver_list_active").val() != 1 || $("#receiver_list_ba").val() != "ALL" || $("#receiver_list_strat").val() != 0) {
+        $("#receiver_list_filter .reset").show();
     }
     $("#receiver_list_type, #receiver_list_active, #receiver_list_strat, #receiver_list_ba").on("change", function () {
-        $("#notice-reset").show();
+        $("#receiver_list_filter .reset").show();
     });
-    $("#notice-cancel").on("click", function () {
-        $(".shade").hide();
-        $("#notice").hide();
-        $("#receiver_list_filter").hide();
-        $("#notice-confirm").hide();
-        $("#notice-cancel").hide();
-    });
-    $("#notice-reset").on("click", function () {
+    if ($("#receiver_list_active").val() != "1") {
+        $("#receiver_list_type, #receiver_list_ba").parent().hide();
+    }
+    $("#receiver_list_filter .reset").on("click", function () {
         $(this).hide();
         $("#receiver_list_type").val("0");
         $("#receiver_list_active").val("1");
         $("#receiver_list_strat").val("0");
         $("#receiver_list_ba").val("ALL");
+    });
+    $("#notice-cancel").on("click", function () {
+        $(".shade").hide();
+        $("#notice").hide();
+        $("#notice-confirm").hide();
+        $("#notice-cancel").hide();
     });
     $("#notice-confirm").on("click", function () {
         $(".shade").show();
@@ -132,7 +99,7 @@ $(function () {
     });
     $("input").on("keypress", function (e) {
         if (e.which === 13) {
-            event.preventDefault();
+            e.preventDefault();
         }
     });
     if ($("#receiver_note").val() === "sent") {
@@ -141,7 +108,6 @@ $(function () {
         $("#notice-title h3").html("Success!");
         $("#notice-span").html("Subscriber has been successfully changed/added.");
         $("#notice-close").show();
-        $("#notice-confirm-filter").hide();
         $("#notice-confirm").hide();
     } else if ($("#receiver_note").val() === "notsent") {
         $(".shade").show();
@@ -149,7 +115,6 @@ $(function () {
         $("#notice-title h3").html("Unsuccess!");
         $("#notice-span").html("Subscriber has NOT been successfully changed/added. Please try again later.");
         $("#notice-close").show();
-        $("#notice-confirm-filter").hide();
         $("#notice-confirm").hide();
     }
     $("#to_bottom").on("click", function () {

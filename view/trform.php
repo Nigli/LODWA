@@ -1,4 +1,4 @@
-<script src="js/tr.js" type="text/javascript"></script>
+<script src="inc/js/tr.js" type="text/javascript"></script>
 <div id="spinner"></div>
 <!--NOTICE POPUP-->
 <div id="notice">
@@ -29,7 +29,7 @@
     </div>
     <div id="left">
         <!--ENTRY CHOICE SELECT-->
-        <label for="entry_choice">Entry Choice and duration</label><br>
+        <label>Entry Choice and duration</label><br>
         <select id="entry_choice" name="entry_choice">
             <option value="BUY">BUY</option>
             <option value="SELL">SELL</option>
@@ -40,7 +40,7 @@
         </select><br>
         <!--END ENTRY CHOICE SELECT-->
         <!--FUTURE CONTRACT SELECT-->
-        <label for="fk_future">Contract and number of contracts</label>
+        <label>Contract and number of contracts</label>
         <select id='fk_future' name='fk_future'>
             <?php
             foreach ($this->futures as $key => $value) { 
@@ -53,7 +53,7 @@
         <input id="num_contr" name="num_contr" type="number" value="" required="" min="1"/><br>
         <!--END FUTURE CONTRACT SELECT-->
         <!--MONTH AND YEAR SELECT-->
-        <label for="month">Month and Year</label><br>
+        <label>Month and Year</label><br>
         <select id="month" name="month">
             <?php                 
             $mon = cal_info(0)['months'];
@@ -78,12 +78,12 @@
     <!--***-->
     <!--PRICES INPUT-->
     <div id="right">
-        <label for="entry_price">Entry Price</label>
+        <label>Entry Price</label>
         <input id="entry_price" class="prices" name="entry_price" type="number" value="" required="" step="0.01" title="Enter number in a format xxxx.xx"/><br> 
-        <label for="stop_loss">Stop Loss</label><br>
+        <label>Stop Loss</label><br>
         <input type="radio" name="rpl_price" value="stop_loss" class="radio_rep"/>
         <input id="stop_loss" class="prices" name="stop_loss" type="number" value='' required="" step="0.01" title="Enter number in a format xxxx.xx"/><br>
-        <label for="price_target">Price Target</label><br>
+        <label>Price Target</label><br>
         <input type="radio" name="rpl_price" value="price_target"  class="radio_rep"/>
         <input id="price_target" class="prices" name="price_target" type="number" value="" required="" step="0.01" title="Enter number in a format xxxx.xx"/>
     </div>
@@ -100,7 +100,7 @@
             <button id="tr_form_cancel" type="button">Cancel Trade</button>
         </div>            
     </div>
-    <span id="to_bottom"><i class="fa fa-chevron-down"></i></span>
+    <span id="to_bottom"><i class="fa fa-arrow-down"></i></span>
 </form>
 <!--***-->
 <!--LAST 5 TR TABLE-->

@@ -20,4 +20,4 @@ if($valid && $hash){
 }else {
     Session::set("notify", "notsent");
 }
-redirect_to("superadmin/1");
+redirect_to("admin/1");

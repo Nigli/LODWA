@@ -1,4 +1,5 @@
-<script src="js/receiver.js" type="text/javascript"></script>
+<?php $this->user_status==\utils\Enum::MANAGER?include $this->receiver_form :''; ?>
+<script src="inc/js/receiver.js" type="text/javascript"></script>
 <div id="spinner"></div>
 <!--NOTICE POPUP-->
 <div id="notice">
@@ -7,59 +8,69 @@
             <h3></h3>
         </div>
     </div>
-    <span id="notice-span"></span>
-    <!--FILTER OPTIONS-->
-    <form id="receiver_list_filter" method="get" class="hidden">
-        <input id="receiver_note" type="hidden" value="<?php echo $this->notice ?>"/>
-        <input type="hidden" value="1" name="page"/>
-        <label for="receiver_list_type">By Subscriber Type</label>
-        <select id="receiver_list_type" name="type">
-            <option value="0">ALL</option>
-            <?php foreach ($this->type as $k=>$v){
-            ?>           
-            <option value="<?php echo $v['id_receiver_type'] ?>"><?php echo $v['receiver_type_name'] ?></option>
-            <?php
-            }
-            ?>
-        </select>
-        <label for="receiver_list_strat">By Subscribed Strategy</label>
-        <select id="receiver_list_strat" name="strategy">
-            <option value="0">ALL</option>
-            <?php foreach ($this->strategies as $k=>$v){
-                ?>           
-                <option value="<?php echo $v->id_strategy ?>"><?php echo $v->strategy_name ?></option>
-                <?php
-                }
-            ?>
-        </select>
-        <label for="receiver_list_ba">By Broker Account</label><br>
-        <select id="receiver_list_ba" name="ba">
-            <option value="ALL">ALL</option>
-            <option value="1">With Account</option>
-            <option value="0">Without Account</option>
-        </select>
-        <label for="receiver_list_active">Show only Inactive</label><br>
-        <select id="receiver_list_active" name="active">
-            <option value="0">Yes</option>
-            <option value="1">No</option>
-        </select>
-    </form>
-    <!--END FILTER OPTIONS-->
+    <span id="notice-span"></span>    
     <div id="bottom">
         <div id="bottom-left">
             <button id="notice-reset" class="reset" type="reset" value="reset">Reset</button>            
             <button id="notice-close" type="button" name="close">Close</button>
             <button id="notice-cancel" type="button" name="cancel">Cancel</button>
-            <button id="notice-confirm-filter" type="submit" form="receiver_list_filter">Filter</button>
             <button id="notice-confirm" type="submit" name="receiver-submit" form="receiver_list_form">Confirm</button>
         </div>
     </div>
 </div>
 <!--END NOTICE POPUP-->
 <div id="receiver_list">  
-    <h2>Subscribers List</h2>
-    <span id="filterspan">Filter</span>
-    <span id="filter_notice"></span>
+    <h2>Subscribers List</h2><!--FILTER OPTIONS-->
+    <form id="receiver_list_filter" method="get">
+        <input id="receiver_note" type="hidden" value="<?php echo $this->notice ?>"/>
+        <input type="hidden" value="1" name="page"/>
+        <div class="filter">
+            <label for="receiver_list_type">By Subscriber Type</label>
+            <select id="receiver_list_type" name="type">
+                <option value="0">ALL</option>
+                <?php foreach ($this->type as $k=>$v){
+                ?>           
+                <option value="<?php echo $v['id_receiver_type'] ?>"><?php echo $v['receiver_type_name'] ?></option>
+                <?php
+                }
+                ?>
+            </select>
+        </div>
+        <div class="filter">
+            <label for="receiver_list_strat">By Strategy</label>
+            <select id="receiver_list_strat" name="strategy">
+                <option value="0">ALL</option>
+                <?php foreach ($this->strategies as $k=>$v){
+                    ?>           
+                    <option value="<?php echo $v->id_strategy ?>"><?php echo $v->strategy_name ?></option>
+                    <?php
+                    }
+                ?>
+            </select>
+        </div>
+        <div class="filter">
+            <label for="receiver_list_ba">By Broker Account</label><br>
+            <select id="receiver_list_ba" name="ba">
+                <option value="ALL">ALL</option>
+                <option value="1">With Account</option>
+                <option value="0">Without Account</option>
+            </select>
+        </div>
+        <div class="filter">
+            <label for="receiver_list_active">Show only Inactive</label><br>
+            <select id="receiver_list_active" name="active">
+                <option value="0">Yes</option>
+                <option value="1">No</option>
+            </select>
+        </div>
+        <div id="bottom">
+            <div id="bottom-left">
+                <button form="receiver_list_filter" class="reset" value="reset">Reset</button>
+                <button form="receiver_list_filter" id="notice-confirm-filter" type="submit" form="receiver_list_filter">OK</button>
+            </div>
+        </div>
+    </form>
+    <!--END FILTER OPTIONS-->
     <table>
         <thead>
             <tr>

@@ -6,10 +6,10 @@ class UserDAO {
         $db= Conn::getConnection();     
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);              
         try{
-            $res = $db->prepare("SELECT user_id,user_email, user_pass, user_status, status_name FROM users "
-                    . "LEFT JOIN user_status ON user_status=status "
+            $res = $db->prepare("SELECT * FROM users "
+                    . "LEFT JOIN user_status ON fk_status=id_status "
                     . "WHERE active = 1 "
-                    . "ORDER BY user_status");
+                    . "ORDER BY status_name");
             $res->execute();
             $users = $res->fetchAll(PDO::FETCH_CLASS, "user\User");;
             return $users;
@@ -22,8 +22,8 @@ class UserDAO {
         $db= Conn::getConnection();     
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try{
-            $res = $db->prepare("SELECT user_id,user_email, user_pass, user_status, status_name FROM users "
-                    . "LEFT JOIN user_status ON user_status=status "
+            $res = $db->prepare("SELECT * FROM users "
+                    . "LEFT JOIN user_status ON fk_status=id_status "
                     . "WHERE user_email=:user_email LIMIT 1");
             $res->bindParam(':user_email',$user_email);
             $res->execute();

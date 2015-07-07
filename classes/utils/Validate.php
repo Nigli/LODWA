@@ -85,7 +85,6 @@ class Validate {
     }
     static function login($form) {
         if(Validate::checkToken($form,"login_token")&&Validate::checkReferer(LOG_REFERER)){/**CHECKS TOKEN AND REFERER**/
-            
             array_filter($form, array('self', 'filter'));/**VALIDATE FIELDS**/
             $email = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
             $valid = array('email'=>$email,'pass'=>$form['pass']);
