@@ -1,25 +1,3 @@
-<script src="inc/js/tr.js" type="text/javascript"></script>
-<div id="spinner"></div>
-<!--NOTICE POPUP-->
-<div id="notice">
-    <div id="top">
-        <div id="notice-title">
-            <h3></h3>
-        </div>
-    </div>
-    <span id="notice-span"></span>
-    <span id="notice-entry-price"></span>
-    <span id="notice-stop-loss"></span>
-    <span id="notice-price-target"></span>
-    <div id="bottom">
-        <div id="bottom-left">            
-            <button id="notice-close" type="button" name="close">Close</button>
-            <button id="notice-cancel" type="button" name="cancel">Cancel</button>
-            <button id="notice-confirm" type="submit" name="fk_tr_type" form="tr_form">Confirm</button>
-        </div>
-    </div>
-</div>
-<!--END NOTICE POPUP-->
 <form id="tr_form" method="post" action="processtr">
     <input type="hidden" name="tr_token" value="<?php echo $this->token ?>"/>
     <input id="tr_note" type="hidden" value="<?php echo $this->notice ?>"/>
@@ -43,10 +21,10 @@
         <label>Contract and number of contracts</label>
         <select id='fk_future' name='fk_future'>
             <?php
-            foreach ($this->futures as $key => $value) { 
-            ?>
+            foreach ($this->futures as $key => $value) {
+                ?>
                 <option value='<?php echo $value->id_futures ?>'><?php echo $value->futures_name ?></option>
-            <?php                
+                <?php
             }
             ?>
         </select>
@@ -55,21 +33,22 @@
         <!--MONTH AND YEAR SELECT-->
         <label>Month and Year</label><br>
         <select id="month" name="month">
-            <?php                 
+            <?php
             $mon = cal_info(0)['months'];
-            for($i=1;$i<=count($mon);$i++){
-           ?>
+            for ($i = 1; $i <= count($mon); $i++) {
+                ?>
                 <option value='<?php echo $mon[$i] ?>'><?php echo $mon[$i] ?></option>
-            <?php                
+                <?php
             }
             ?>
         </select>
         <select id="year" name="year">
             <?php
             for ($i = 0; $i < 10; $i++) {
-                $year=date('Y')+$i; ?>
+                $year = date('Y') + $i;
+                ?>
                 <option value='<?php echo $year ?>'><?php echo $year ?></option>
-            <?php                
+                <?php
             }
             ?>
         </select>
@@ -79,13 +58,13 @@
     <!--PRICES INPUT-->
     <div id="right">
         <label>Entry Price</label>
-        <input id="entry_price" class="prices" name="entry_price" type="number" value="" required="" step="0.01" title="Enter number in a format xxxx.xx"/><br> 
+        <input id="entry_price" class="prices" name="entry_price" type="number" value="" required="" step="any"/><br> 
         <label>Stop Loss</label><br>
         <input type="radio" name="rpl_price" value="stop_loss" class="radio_rep"/>
-        <input id="stop_loss" class="prices" name="stop_loss" type="number" value='' required="" step="0.01" title="Enter number in a format xxxx.xx"/><br>
+        <input id="stop_loss" class="prices" name="stop_loss" type="number" value='' required="" step="any"/><br>
         <label>Price Target</label><br>
         <input type="radio" name="rpl_price" value="price_target"  class="radio_rep"/>
-        <input id="price_target" class="prices" name="price_target" type="number" value="" required="" step="0.01" title="Enter number in a format xxxx.xx"/>
+        <input id="price_target" class="prices" name="price_target" type="number" value="" required="" step="any"/>
     </div>
     <!--END PRICES INPUT-->
     <!--BUTTONS-->
@@ -119,44 +98,51 @@
                 <th>Time</th>
             </tr>
         </thead>
-        <?php        
-        foreach ($this->last5TR as $k=>$tr){
-            $this->index_numb++;
+        <?php
+        if ($this->last5TR) {
+            foreach ($this->last5TR as $k => $tr) {
+                $this->index_numb++;
+                ?>
+                <tr>
+                    <td data-title=''><?php echo $this->index_numb ?></td>
+                    <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>
+                    <td data-title='Entry Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
+                    <td data-title='Entry Price' data-index="entry_price"><?php echo $tr->entry_price ?></td>
+                    <td data-title='Price Target' data-index="price_target"><?php echo $tr->price_target ?></td>
+                    <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>
+                    <td data-title='Date' data-index="date"><?php echo $tr->date ?></td>
+                    <td data-title='Time' data-index="time"><?php echo $tr->time ?></td>
+                    <td data-index="fk_future" class="td_hidden"><?php echo $tr->fk_future ?></td>
+                    <td data-index="fk_strategy" class="td_hidden"><?php echo $tr->fk_strategy ?></td>
+                    <td data-index="month" class="td_hidden"><?php echo $tr->month ?></td>
+                    <td data-index="year" class="td_hidden"><?php echo $tr->year ?></td>              
+                    <td data-index="num_contr" class="td_hidden"><?php echo $tr->num_contr ?></td>
+                    <td data-index="duration" class="td_hidden"><?php echo $tr->duration ?></td>
+                    <td data-index="strategy_name" class="td_hidden"><?php echo $tr->strategy_name ?></td>
+                </tr>
+                <?php
+            }
+        } else {
             ?>
-            <tr>
-                <td data-title=''><?php echo $this->index_numb ?></td>
-                <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>
-                <td data-title='Entry Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
-                <td data-title='Entry Price' data-index="entry_price"><?php echo $tr->entry_price ?></td>
-                <td data-title='Price Target' data-index="price_target"><?php echo $tr->price_target ?></td>
-                <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>
-                <td data-title='Date' data-index="date"><?php echo $tr->date ?></td>
-                <td data-title='Time' data-index="time"><?php echo $tr->time ?></td>
-                <td data-index="fk_future" class="td_hidden"><?php echo $tr->fk_future ?></td>
-                <td data-index="fk_strategy" class="td_hidden"><?php echo $tr->fk_strategy ?></td>
-                <td data-index="month" class="td_hidden"><?php echo $tr->month ?></td>
-                <td data-index="year" class="td_hidden"><?php echo $tr->year ?></td>              
-                <td data-index="num_contr" class="td_hidden"><?php echo $tr->num_contr ?></td>
-                <td data-index="duration" class="td_hidden"><?php echo $tr->duration ?></td>
-                <td data-index="strategy_name" class="td_hidden"><?php echo $tr->strategy_name ?></td>
-            </tr>
-        <?php        
+            <tr><td>No Trade Recommendations in Database</td></tr>
+            <?php
         }
         ?>
     </table>    
 </div><!--END LAST 5 TR TABLE-->
-<script>       
+<script>
     function getVal(obj) {
         document.getElementById("notice-confirm").value = obj.value;
         tr_type = obj.innerHTML;
-    };      
+    }
+    ;
     $("#fk_future").val("<?php echo $this->lastTR->fk_future ?>");
     $("#month").val("<?php echo $this->lastTR->month ?>");
     $("#year").val("<?php echo $this->lastTR->year ?>");
     $("#entry_choice").val("<?php echo $this->lastTR->entry_choice ?>");
     $("#duration").val("<?php echo $this->lastTR->duration ?>");
     $("#entry_price").val("<?php echo $this->lastTR->entry_price ?>");
-    $("#price_target").val("<?php echo $this->lastTR->price_target ?>");    
+    $("#price_target").val("<?php echo $this->lastTR->price_target ?>");
     $("#stop_loss").val("<?php echo $this->lastTR->stop_loss ?>");
     $("#num_contr").val("<?php echo $this->lastTR->num_contr ?>");
 </script>

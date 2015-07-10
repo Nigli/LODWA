@@ -1,12 +1,12 @@
 $(function(){
     $("#user_list tbody tr").on("click", function () {
-        $rec = {status:$(this).find("[data-title='User Status']").text(),
-                status_id:$(this).find("[data-title='Status Id']").text(),
-                email:$(this).find("[data-title='Email']").text(),
-                id_user:$(this).find("[data-title='User Id']").text()             
-                };
-        $.each($rec, function(key, value){
-            $("#"+key).val(value);
+        var td = $(this).children();
+        var rec = {};
+        $.each(td, function (count) {
+            rec[td.eq(count).data("index")] = td.eq(count).text();
+        });
+        $.each(rec, function (key, value) {
+            $("#" + key).val(value);
         });
         $("#user_list tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
@@ -52,12 +52,16 @@ $(function(){
         $("#notice").show();
         $("#notice-title h3").html("Success!");
         $("#notice-span").html("User Info has been successfully changed.");
-        $("#notice-close").show();
+        $("#notice-close").show();        
+        $("#notice-confirm").hide(); 
+        $("#notice-cancel").hide();
     } else if ($("#admin_note").val()==="notsent") {
 	$(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Unsuccess!");
         $("#notice-span").html("User Info has NOT been successfully changed. Please try again later.");
-        $("#notice-close").show();
+        $("#notice-close").show();        
+        $("#notice-confirm").hide(); 
+        $("#notice-cancel").hide();
     }
 });

@@ -24,7 +24,7 @@
                         <input type="hidden" name="login_token" value="<?php echo $this->token ?>"/>
                         <div id="top">
                             <h2>Please Log In</h2>
-                            <?php echo (isset($this->notice)&&$this->notice=='loginerror')?"<span id='rightspan' class='notice'>Your login credentials are not valid</span>":""; ?>
+                            <?php echo (isset($this->notice) && $this->notice == 'loginerror') ? "<span id='rightspan' class='notice'>Your login credentials are not valid</span>" : ""; ?>
                         </div>
                         <div id="left">
                             <label for="email">Email address</label><br>
@@ -40,7 +40,6 @@
                     </form>
                 </div>               
             </div>
-            <footer></footer>
         </div>
     </body>
 </html>

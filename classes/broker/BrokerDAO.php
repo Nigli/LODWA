@@ -11,6 +11,7 @@ class BrokerDAO {
             $broker_info = $res->fetchObject("broker\Broker");       
             return $broker_info;
         }catch(\PDOException $e){
+            Conn::logConnectionErr($e->getMessage());
             return FALSE;
             //echo "error". $e->getMessage();
         }    
@@ -31,8 +32,8 @@ class BrokerDAO {
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
+            Conn::logConnectionErr($e->getMessage());
             return FALSE;
-            //echo "error". $e->getMessage();
         }
     }
 }

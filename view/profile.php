@@ -1,22 +1,5 @@
-<script src="inc/js/profile.js" type="text/javascript"></script>
-<div id="spinner"></div>
-<!--NOTICE POPUP-->
-<div id="notice">
-    <div id="top">
-        <div id="notice-title">
-            <h3></h3>
-        </div>
-    </div>
-    <span id="notice-span"></span>
-    <div id="bottom">
-        <div id="bottom-left">            
-            <button id="notice-close" type="button" name="close">Close</button>
-        </div>
-    </div>
-</div>
-<!--END NOTICE POPUP-->
 <form id="profile" method="post" action="processprof">
-    <input id="profile_note" type="hidden" value="<?php echo $this->notice ?>"/>
+    <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
     <div id="top">
         <h2>Profile Information</h2>
     </div>
@@ -34,19 +17,27 @@
             <p>Sender Name:</p>
             <input class="readonly" name="name" type="text" value="<?php echo $this->sender->sender_name;?>" readonly required=""/><br>
             <p>Sender Email:</p>
-            <input class="readonly" name="email" type="email" value="<?php echo $this->sender->sender_email;?>" readonly required=""/><br>                
+            <input class="readonly" name="email" type="email" value="<?php echo $this->sender->sender_email;?>" readonly required=""/><br>        
+        <?php  
+        }else {            
+            ?>
+            <span>There is no Profile info in database</span>
+            <input type="hidden" name="id_sender" value=""/>
+            <p>Company Name:</p>
+            <input class="readonly" name="company" type="text" value="" readonly required=""/><br>
+            <p>Website:</p>
+            <input class="readonly" name="website" type="text" value="" readonly required=""/><br>
+            <p>Address:</p>
+            <input class="readonly" name="address" type="text" value="" readonly required=""/><br>
+            <p>Sender Name:</p>
+            <input class="readonly" name="name" type="text" value="" readonly required=""/><br>
+            <p>Sender Email:</p>
+            <input class="readonly" name="email" type="email" value="" readonly required=""/><br>    
+        <?php
+        }
+        ?>
     </div>
     <div id="bottom">
         <?php $this->user_status==\utils\Enum::MANAGER?include $this->profile_buttons :''; ?>
     </div>
-    <?php  
-        }else {
-            
-            ?>
-            <span>There is no Profile info in database</span>
-            </div>
-            <div id="bottom"></div>
-            <?php
-        }
-        ?>
 </form>

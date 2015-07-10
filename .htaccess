@@ -9,27 +9,34 @@ RewriteRule ^admin/([0-9]*)$ index.php?p=admin&page=$1 [NC]
 RewriteRule ^emailtemp$ index.php?p=emailtemp [NC]
 RewriteRule ^profile$ index.php?p=profile [NC]
 RewriteRule ^broker$ index.php?p=broker [NC]
-RewriteRule ^processtr$ process/process_tr.php [NC]
-RewriteRule ^processrec$ process/process_receiver.php [NC]
-RewriteRule ^processfut$ process/process_futures.php [NC]
-RewriteRule ^processstrat$ process/process_strategy.php [NC]
-RewriteRule ^processbrok$ process/process_broker.php [NC]
-RewriteRule ^processprof$ process/process_profile.php [NC]
-RewriteRule ^processemtemp$ process/process_emailtemp.php [NC]
-RewriteRule ^processuser$ process/process_user.php [NC]
+RewriteRule ^login$ index.php?p=login.php [NC]
+RewriteRule ^unsub/(.+) index.php?p=unsub&id=$1 [NC]
+RewriteRule ^unsub$ index.php?p=unsub [NC]
 
-RewriteRule ^unsub/(.+) unsub.php?id=$1 [QSA]
-RewriteRule ^unsub/$ unsub.php
-RewriteRule ^unsubprocess$ process/process_unsub.php [NC]
-RewriteRule ^login$ view/login.php [NC]
-RewriteRule ^loginprocess$ process/process_login.php [NC]
-RewriteRule ^logout$ process/process_logout.php [NC]
+RewriteRule ^processtr$ index.php?p=trform&process=process_tr.php [NC]
+RewriteRule ^processrec$ index.php?p=receiverlist&process=process_receiver.php [NC]
+RewriteRule ^processfut$ index.php?p=futureslist&process=process_futures.php [NC]
+RewriteRule ^processstrat$ index.php?p=strategylist&process=process_strategy.php [NC]
+RewriteRule ^processbrok$ index.php?p=broker&process=process_broker.php [NC]
+RewriteRule ^processprof$ index.php?p=profile&process=process_profile.php [NC]
+RewriteRule ^processemtemp$ index.php?p=emailtemp&process=process_emailtemp.php [NC]
+RewriteRule ^processuser$ index.php?p=admin&page=$1&process=process_user.php [NC]
+RewriteRule ^loginprocess$ index.php?p=login&process=process_login.php [NC]
+RewriteRule ^logout$ index.php?p=logout&process=process_logout.php [NC]
+RewriteRule ^unsubprocess$ index.php?p=unsub&process=process_unsub.php [NC]
 
 RewriteCond %{HTTP_HOST} ^localhost\.com [NC] 
-RewriteRule ^(.*)$ http://www.localhost.com/$1 [L,R=301]
+RewriteRule ^(.*)$ https://www.localhost.com/$1 [L,R=301]
 
 #RewriteCond %{HTTP_HOST} ^srlevel\.com [NC] 
 #RewriteRule ^(.*)$ http://www.srlevel.com/$1 [L,R=301]
 
+<Files admin>
+AuthName "Prompt"
+AuthType Basic
+AuthUserFile D:/Nikola/programiranje/php/wamp/www/LODWA/.passwd
+Require valid-user
+</Files>
+ 
 Options -Indexes
 

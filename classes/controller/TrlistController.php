@@ -24,5 +24,6 @@ class TrlistController extends MainController {
         $this->listnumb = $this->pagin->offset;
         $this->futures = FuturesContractDAO::getActiveFutures();
     }
+    
 
 }

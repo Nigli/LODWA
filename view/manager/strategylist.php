@@ -1,22 +1,3 @@
-<script src="inc/js/strategy.js" type="text/javascript"></script>
-<div id="spinner"></div>
-<!--NOTICE POPUP-->
-<div id="notice">
-    <div id="top">
-        <div id="notice-title">
-            <h3></h3>
-        </div>
-    </div>
-    <span id="notice-span"></span>
-    <div id="bottom">
-        <div id="bottom-left">            
-            <button id="notice-close" type="button" name="close">Close</button>
-            <button id="notice-cancel" type="button" name="cancel">Cancel</button>         
-            <button id="notice-confirm" type="submit" name="strategy-submit" form="strategy_form">Confirm</button>
-        </div>
-    </div>
-</div>
-<!--END NOTICE POPUP-->
 <div id="strategy_list_form" class="edit">
     <div id="top">
         <h2>Strategies</h2>
@@ -25,7 +6,8 @@
     <!--STRATEGY FORM-->
     <form id="strategy_form" method="post" action="processstrat">
         <div id="left" class="strategy_form">
-            <input id="strategy_note" type="hidden" value="<?php echo $this->notice ?>"/>
+            <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
+            <input id="manage" type="hidden" value="strategy"/>
             <input id="id_strategy" type="hidden" name="id_strategy" value=""/>
             <label for="strategy_name">Strategy Name</label><br>
             <input id="strategy_name" name="strategy_name" type="text" value="" required=""/>
@@ -44,7 +26,7 @@
                     }
                 }else {
                     ?>
-                        <span>No Trading Future Contracts in database</span>
+                        <span>No Future Contracts in database</span>
                     <?php
                 }
                 ?>

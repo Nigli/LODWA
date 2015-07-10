@@ -1,5 +1,6 @@
-<form id="receiver_list_form" method="post" action="processrec">
+<form id="receiver_form" method="post" action="processrec">
     <input id="active" name="active" type="hidden" value=""/>
+    <input id="manage" type="hidden" value="receiver"/>
     <div id="top">
         <h2>Subscribers</h2>
         <span id="rightspan">To edit subscriber click on the table row</span><br><input id="id_receiver" type="hidden" name="id_receiver" value=""/>           
@@ -47,10 +48,10 @@
     </div>
     <div id="bottom">
         <div id="bottom-left">
-            <button form="receiver_list_form" id="reset" class="reset" type="reset" name="receiver-submit" value="reset">Clear</button>
-            <button form="receiver_list_form" id="unsubs" class="delete" type="button" name="receiver-submit" value="unsubscribe" onclick="getVal(this)">Unsubscribe</button>
-            <button form="receiver_list_form" id="update" class="update" type="button" name="receiver-submit" value="update" onclick="getVal(this)">Update</button>
-            <button form="receiver_list_form" id="new" type="button" name="receiver-submit" value="new" onclick="getVal(this)">New</button>
+            <button form="receiver_form" id="reset" class="reset" type="reset" value="reset">Clear</button>
+            <button form="receiver_form" id="delete" class="delete" type="button" value="unsubscribe" onclick="getVal(this)">Unsubscribe</button>
+            <button form="receiver_form" id="update" class="update" type="button" value="update" onclick="getVal(this)">Update</button>
+            <button form="receiver_form" id="new" type="button" value="new" onclick="getVal(this)">New</button>
         </div>
     </div>
     <span id="to_bottom" title="Go down"><i class="fa fa-arrow-down"></i></span>
@@ -58,6 +59,6 @@
 <script>
     function getVal(obj) {
         document.getElementById("notice-confirm").value = obj.value;
-        rec_action = obj.value;
+        action = obj.value;
     }
 </script>

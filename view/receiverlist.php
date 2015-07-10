@@ -1,37 +1,18 @@
-<?php $this->user_status==\utils\Enum::MANAGER?include $this->receiver_form :''; ?>
-<script src="inc/js/receiver.js" type="text/javascript"></script>
-<div id="spinner"></div>
-<!--NOTICE POPUP-->
-<div id="notice">
-    <div id="top">
-        <div id="notice-title">
-            <h3></h3>
-        </div>
-    </div>
-    <span id="notice-span"></span>    
-    <div id="bottom">
-        <div id="bottom-left">
-            <button id="notice-reset" class="reset" type="reset" value="reset">Reset</button>            
-            <button id="notice-close" type="button" name="close">Close</button>
-            <button id="notice-cancel" type="button" name="cancel">Cancel</button>
-            <button id="notice-confirm" type="submit" name="receiver-submit" form="receiver_list_form">Confirm</button>
-        </div>
-    </div>
-</div>
-<!--END NOTICE POPUP-->
+<?php $this->user_status == \utils\Enum::MANAGER ? include $this->receiver_form : ''; ?>
 <div id="receiver_list">  
-    <h2>Subscribers List</h2><!--FILTER OPTIONS-->
+    <h2>Subscribers List</h2>
+    <!--filter receiver list-->
     <form id="receiver_list_filter" method="get">
-        <input id="receiver_note" type="hidden" value="<?php echo $this->notice ?>"/>
+        <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
         <input type="hidden" value="1" name="page"/>
         <div class="filter">
             <label for="receiver_list_type">By Subscriber Type</label>
             <select id="receiver_list_type" name="type">
                 <option value="0">ALL</option>
-                <?php foreach ($this->type as $k=>$v){
-                ?>           
-                <option value="<?php echo $v['id_receiver_type'] ?>"><?php echo $v['receiver_type_name'] ?></option>
-                <?php
+                <?php foreach ($this->type as $k => $v) {
+                    ?>           
+                    <option value="<?php echo $v['id_receiver_type'] ?>"><?php echo $v['receiver_type_name'] ?></option>
+                    <?php
                 }
                 ?>
             </select>
@@ -40,11 +21,11 @@
             <label for="receiver_list_strat">By Strategy</label>
             <select id="receiver_list_strat" name="strategy">
                 <option value="0">ALL</option>
-                <?php foreach ($this->strategies as $k=>$v){
+                <?php foreach ($this->strategies as $k => $v) {
                     ?>           
                     <option value="<?php echo $v->id_strategy ?>"><?php echo $v->strategy_name ?></option>
                     <?php
-                    }
+                }
                 ?>
             </select>
         </div>
@@ -66,11 +47,12 @@
         <div id="bottom">
             <div id="bottom-left">
                 <button form="receiver_list_filter" class="reset" value="reset">Reset</button>
-                <button form="receiver_list_filter" id="notice-confirm-filter" type="submit" form="receiver_list_filter">OK</button>
+                <button form="receiver_list_filter" id="notice-confirm-filter" type="submit">OK</button>
             </div>
         </div>
     </form>
-    <!--END FILTER OPTIONS-->
+    <!--end filter receiver list-->    
+    <!--receiver list-->
     <table>
         <thead>
             <tr>
@@ -84,45 +66,45 @@
             </tr>
         </thead>
         <?php
-        if($this->rec){
-            foreach ($this->rec as $k=>$receiver) {
-            ?>
+        if ($this->rec) {
+            foreach ($this->rec as $k => $receiver) {
+                ?>
                 <tr>
                     <td data-title='Receiver Type' data-index="type"><?php echo $receiver->receiver_type_name ?></td>
                     <td data-title='First Name' data-index="first_name"><?php echo $receiver->first_name ?></td>
                     <td data-title='Last Name' data-index="last_name"><?php echo $receiver->last_name ?></td>
                     <td data-title='Email' data-index="email"><?php echo $receiver->email ?></td>
-                    <td data-title='Date Added' data-index="date_added"><?php echo date("d M Y", strtotime($receiver->date_added))?></td>
+                    <td data-title='Date Added' data-index="date_added"><?php echo date("d M Y", strtotime($receiver->date_added)) ?></td>
                     <td data-title='NA Number' data-index="na_number"><?php echo $receiver->na_number ?></td>
-                    <td data-title='BA'><?php echo $receiver->broker_acc?"<i class='fa fa-check'></i>":"<i class='fa fa-times'></i>"?></td>                
-                    <td data-index="broker_acc" class="td_hidden"><?php echo $receiver->broker_acc?></td>                
+                    <td data-title='BA'><?php echo $receiver->broker_acc ? "<i class='fa fa-check'></i>" : "<i class='fa fa-times'></i>" ?></td>                
+                    <td data-index="broker_acc" class="td_hidden"><?php echo $receiver->broker_acc ?></td>                
                     <td data-index="id_receiver" class="td_hidden"><?php echo $receiver->id_receiver ?></td>
                     <td data-index="active" class="td_hidden"><?php echo $receiver->active ?></td>
                     <td data-index="receiver_type_id" class="td_hidden"><?php echo $receiver->fk_receiver_type ?></td>
-                    <?php 
-                    if($receiver->subs_info){
+                    <?php
+                    if ($receiver->subs_info) {
                         foreach ($receiver->subs_info as $subs_info) {
                             ?>
-                                <td data-index="strategy_type<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['fk_strategy'] ?></td>
-                                <td data-index="strategy_subs<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['num_subs'] ?></td>
-                        <?php
+                            <td data-index="strategy_type<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['fk_strategy'] ?></td>
+                            <td data-index="strategy_subs<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['num_subs'] ?></td>
+                            <?php
+                        }
                     }
-                }
                     ?>
                 </tr>
-            <?php
+                <?php
             }
-        }else{
-            
-        ?>
+        } else {
+            ?>
             <tr><td>No Subscribers in Database</td></tr>
-        <?php
+            <?php
         }
         ?>
     </table>
     <?php
-        echo $this->pagin->createLinks($this->links);
+    echo $this->pagin->createLinks($this->links);
     ?>
+    <!--end receiver list-->
 </div>
 <script>
     $("#receiver_list_type").val("<?php echo $this->links['type'] ?>");

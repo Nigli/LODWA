@@ -17,8 +17,7 @@ class StrategyDAO {
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "strategy\Strategy");
             return $tr;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -35,8 +34,7 @@ class StrategyDAO {
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "strategy\Strategy");
             return $tr;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -52,8 +50,7 @@ class StrategyDAO {
             $tr = $res->fetchObject("strategy\Strategy");
             return $tr;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -68,8 +65,7 @@ class StrategyDAO {
             $res->execute();
             return $db->lastInsertId();
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -85,8 +81,7 @@ class StrategyDAO {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -100,8 +95,7 @@ class StrategyDAO {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -117,8 +111,7 @@ class StrategyDAO {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -133,8 +126,7 @@ class StrategyDAO {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 

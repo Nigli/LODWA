@@ -13,8 +13,8 @@ class EmailTempDAO {
             $email_temp = $res->fetchObject(get_class());
             return $email_temp;//!!!have to check if exists        
         }catch(\PDOException $e){
+            Conn::logConnectionErr($e->getMessage());
             return FALSE;
-            //echo "error". $e->getMessage();
         }
     }
     public static function updateEmailTemp($email){
@@ -28,8 +28,8 @@ class EmailTempDAO {
             $res->execute();
             return TRUE;
         }catch(\PDOException $e){
+            Conn::logConnectionErr($e->getMessage());
             return FALSE;
-            //echo "error". $e->getMessage();
         }
     }
 }

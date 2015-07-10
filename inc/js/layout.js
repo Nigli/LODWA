@@ -1,5 +1,5 @@
 $(function(){
-    $("tbody tr").on("click", function () {
+    $("#tr_list_5 tbody tr").on("click", function () {
         var td = $(this).children();
         var rec = {};
         $.each(td, function (count) {
@@ -7,10 +7,9 @@ $(function(){
         });
         $.each(rec, function (key, value) {
             $("#" + key).val(value);
-            $("#rightspan").html("Selected strategy: "+rec['strategy_name']+"<input type='hidden' id='strategy_id' name='fk_strategy' value='"+rec['fk_strategy']+"'/>");
-                //alert(rec["strategy_name"]);
+            $('#rightspan').load('process/strategy_name.php?f='+rec['fk_future']);
         });
-        $("tbody tr").removeClass("activetr");
+        $("#tr_list_5 tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);
     });
@@ -68,13 +67,13 @@ $(function(){
             $(".shade").show();
             $("#notice").show(); 
             $("#notice-title h3").html("Notice");
-            $("#notice-span").html("Selected Future Contract is not in a Strategy list");     
+            $("#notice-span").html($("#rightspan").text());     
             $("#notice-close").show();      
             $("#notice-entry-price").html("");
             $("#notice-stop-loss").html("");
             $("#notice-price-target").html("");  
             $("#notice-confirm").hide(); 
-            $("#notice-cancel").hide();   
+            $("#notice-cancel").hide();  
             empty = true;
         }
         if(empty){
@@ -138,14 +137,49 @@ $(function(){
         $("#notice-title h3").html("Successfull TR!");
         $("#notice-span").html("TR has been successfully sent.");
         $("#notice-close").show();
+        $("#notice-cancel").hide();
+        $("#notice-confirm").hide();
     } else if ($("#tr_note").val()==="notsent") {
 	$(".shade").show();        
         $("#notice").show();
         $("#notice-title h3").html("Unsuccessfull TR!");
         $("#notice-span").html("TR has NOT been successfully sent. Please try again later.");
         $("#notice-close").show();
+        $("#notice-cancel").hide();
+        $("#notice-confirm").hide();
     }
     $("#to_bottom").on("click", function(){   
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+    });
+    //filter tr list
+    if($("#filter_entry_choice").val()!=0 || $("#filter_future").val()!=0){
+        $("#tr_list_filter .reset").show();
+    }
+    $("#filter_entry_choice, #filter_future").on("change",function(){
+        if($("#filter_entry_choice").val()!=0 || $("#filter_future").val()!=0){
+            $("#tr_list_filter .reset").show();
+        }
+    });
+    $("#tr_list_filter .reset").on("click", function () {
+        $(this).hide();
+        $("#filter_entry_choice").val("0");
+        $("#filter_future").val("0");
+    });
+    //filter receivers
+    if ($("#receiver_list_type").val() != 0 || $("#receiver_list_active").val() != 1 || $("#receiver_list_ba").val() != "ALL" || $("#receiver_list_strat").val() != 0) {
+        $("#receiver_list_filter .reset").show();
+    }
+    $("#receiver_list_type, #receiver_list_active, #receiver_list_strat, #receiver_list_ba").on("change", function () {
+        $("#receiver_list_filter .reset").show();
+    });
+    if ($("#receiver_list_active").val() != "1") {
+        $("#receiver_list_type, #receiver_list_strat").parent().hide();
+    }
+    $("#receiver_list_filter .reset").on("click", function () {
+        $(this).hide();
+        $("#receiver_list_type").val("0");
+        $("#receiver_list_active").val("1");
+        $("#receiver_list_strat").val("0");
+        $("#receiver_list_ba").val("ALL");
     });
 });

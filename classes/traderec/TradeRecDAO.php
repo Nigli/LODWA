@@ -28,10 +28,9 @@ class TradeRecDAO {
             $res->bindParam(':filter_entry_choice', $filter['entry_choice'], PDO::PARAM_STR);
             $res->execute();
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
-            return $tr; //!!!have to check if array exists
+            return $tr;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -50,8 +49,7 @@ class TradeRecDAO {
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
             return $tr;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -67,8 +65,7 @@ class TradeRecDAO {
             ;
             return $tr_type;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -94,8 +91,7 @@ class TradeRecDAO {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -110,10 +106,9 @@ class TradeRecDAO {
             $res->bindParam(':filter_entry_choice', $filter['entry_choice'], PDO::PARAM_STR);
             $res->execute();
             $receivers = $res->fetchColumn();
-            return $receivers; //!!!have to check if exists
+            return $receivers;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 

@@ -1,7 +1,6 @@
-<script src="inc/js/trlist.js" type="text/javascript"></script>
-<!--TR LIST-->
 <div id="tr_list">
     <h2>Trade Recommendations</h2> 
+    <!--filter tr list-->
     <form id="tr_list_filter" method="get">
         <input type="hidden" value="1" name="page"/>
         <div class="filter">
@@ -17,14 +16,13 @@
             <select id="filter_future" name='fk_future'>
                 <option value="0">ALL</option>
                 <?php
-                if($this->futures){
-                    foreach ($this->futures as $key => $future){
-                    ?>
-                    <option value='<?php echo $future->id_futures ?>' ><?php echo $future->futures_name ?></option>
-                    <?php
+                if ($this->futures) {
+                    foreach ($this->futures as $key => $future) {
+                        ?>
+                        <option value='<?php echo $future->id_futures ?>' ><?php echo $future->futures_name ?></option>
+                        <?php
                     }
-                }
-                else{
+                } else {
                     //Session:set("err","trlisterror");
                 }
                 ?>
@@ -32,11 +30,13 @@
         </div>
         <div id="bottom">
             <div id="bottom-left">
-                <button type="reset" class="reset">Reset</button>
-                <button type="submit">OK</button>
+                <button form="tr_list_filter" class="reset" value="reset">Reset</button>
+                <button form="tr_list_filter" type="submit">OK</button>
             </div>
         </div>
     </form>
+    <!--end filter tr list-->
+    <!--tr list-->
     <table>
         <thead>
             <tr>
@@ -51,9 +51,10 @@
             </tr>
         </thead>
         <?php
-        if($this->lastTR){
-            foreach ($this->lastTR as $k=>$tr){
-                $this->listnumb++;?>
+        if ($this->lastTR) {
+            foreach ($this->lastTR as $k => $tr) {
+                $this->listnumb++;
+                ?>
                 <tr>
                     <td data-title=''><?php echo $this->listnumb ?></td>
                     <td data-title='Futures Name'><?php echo $tr->futures_name ?></td>
@@ -64,27 +65,26 @@
                     <td data-title='Date'><?php echo $tr->date ?></td>
                     <td data-title='Time'><?php echo $tr->time ?></td>
                 </tr>
-            <?php        
+                <?php
             }
-        }else{
-            
-        ?>
+        } else {
+            ?>
             <!--IF NOTHING IN DB-->
             <tr><td>No Trade Recommendations in Database</td></tr>
-        <?php
+            <?php
         }
         ?>        
     </table>
-    <?php 
-        /**PAGINATION**/
-    if($this->pagin){
+    <?php
+    /*     * PAGINATION* */
+    if ($this->pagin) {
         echo $this->pagin->createLinks($this->links);
-    }else{
+    } else {
         //Session:set("err","trlisterror");
-    }    
+    }
     ?>
+    <!--end tr list-->
 </div>
-<!--END TR LIST-->
 <script>
     $("#filter_entry_choice").val("<?php echo $this->links['entry_choice'] ?>");
     $("#filter_future").val("<?php echo $this->links['fk_future'] ?>");

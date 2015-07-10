@@ -17,6 +17,7 @@ class ReceiverDao {
                     . "WHERE fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
                     . "AND fk_strategy = if(:strategy= 0,fk_strategy, :strategy) "
                     . "AND broker_acc= if(:broker_acc= 'ALL',broker_acc, :broker_acc) "
+                    . "AND active = 1 "
                     . "GROUP BY id_receiver "
                     . "LIMIT :limit "
                     . "OFFSET :offset");
@@ -29,8 +30,8 @@ class ReceiverDao {
             $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
             return $receivers;
         } catch (\PDOException $e) {
+            Conn::logConnectionErr($e->getMessage());
             return FALSE;
-            //echo "error". $e->getMessage();
         }
     }
 
@@ -40,7 +41,7 @@ class ReceiverDao {
         try {
             $res = $db->prepare("SELECT * FROM receivers "
                     . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
-                    . "WHERE active = '0' "
+                    . "WHERE active = 0 "
                     . "AND fk_receiver_type = if(:type= '0',fk_receiver_type, :type) "
                     . "AND broker_acc= if(:broker_acc= 'ALL',broker_acc, :broker_acc) "
                     . "GROUP BY id_receiver "
@@ -54,8 +55,7 @@ class ReceiverDao {
             $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
             return $receivers;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -71,10 +71,9 @@ class ReceiverDao {
             $res->bindParam(':id_receiver', $id);
             $res->execute();
             $receivers = $res->fetchObject("receiver\Receiver");
-            return $receivers; //!!!have to check if exists
+            return $receivers;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -90,10 +89,9 @@ class ReceiverDao {
             $res->bindParam(':hash_email', $hash_email);
             $res->execute();
             $receivers = $res->fetchObject("receiver\Receiver");
-            return $receivers; //!!!have to check if exists
+            return $receivers;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -103,15 +101,14 @@ class ReceiverDao {
         try {
             $res = $db->prepare("SELECT * FROM receivers "
                     . "LEFT JOIN subscriptions ON fk_id_receiver=id_receiver "
-                    . "WHERE (fk_receiver_type=1 OR fk_receiver_type=2) "
-                    . "AND active = 1 AND fk_strategy = :strategy_id");
+                    . "WHERE active = 1 "
+                    . "AND fk_strategy = :strategy_id");
             $res->bindParam(':strategy_id', $strategy_id);
             $res->execute();
             $receivers = $res->fetchAll(PDO::FETCH_CLASS, "receiver\Receiver");
-            return $receivers; //!!!have to check if exists
+            return $receivers;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -124,8 +121,7 @@ class ReceiverDao {
             $receivers = $res->fetchAll(PDO::FETCH_ASSOC);
             return $receivers; //!!!have to check if exists
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -136,20 +132,18 @@ class ReceiverDao {
             $res = $db->prepare("SELECT COUNT(DISTINCT id_receiver) FROM receivers "
                     . "LEFT JOIN receiver_type ON fk_receiver_type=id_receiver_type "
                     . "LEFT JOIN subscriptions ON fk_id_receiver=id_receiver "
-                    . "WHERE active = :active "
+                    . "WHERE active = 1 "
                     . "AND fk_receiver_type = if(:type= 0,fk_receiver_type, :type) "
                     . "AND fk_strategy = if(:strategy= 0,fk_strategy, :strategy) "
                     . "AND broker_acc= if(:broker_acc= 'ALL', broker_acc, :broker_acc)");
             $res->bindParam(':type', $filter['type'], PDO::PARAM_INT);
             $res->bindParam(':broker_acc', $filter['ba'], PDO::PARAM_STR);
             $res->bindParam(':strategy', $filter['strategy'], PDO::PARAM_INT);
-            $res->bindParam(':active', $filter['active'], PDO::PARAM_INT);
             $res->execute();
             $receivers = $res->fetchColumn();
             return $receivers;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -168,8 +162,7 @@ class ReceiverDao {
             $receivers = $res->fetchColumn();
             return $receivers;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -189,8 +182,7 @@ class ReceiverDao {
             $rec->execute();
             return $db->lastInsertId();
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -216,8 +208,7 @@ class ReceiverDao {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -231,8 +222,7 @@ class ReceiverDao {
             $res->execute();
             return $res->fetchAll(PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -246,8 +236,7 @@ class ReceiverDao {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -261,8 +250,7 @@ class ReceiverDao {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -279,8 +267,7 @@ class ReceiverDao {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 
@@ -297,8 +284,7 @@ class ReceiverDao {
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {
-            return FALSE;
-            //echo "error". $e->getMessage();
+            Conn::logConnectionErr($e->getMessage());
         }
     }
 

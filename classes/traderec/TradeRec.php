@@ -40,13 +40,22 @@ class TradeRec {
             $this->fk_tr_type = "3";
         }
         $future = FuturesContractDAO::getFuturesById($this->fk_future); /*         * GET FUTURE NAME AND STRATEGY BY ID TO USE IT FOR TR TITLE, STRATEGY NAME, DESCRIPTION...* */
-        $this->title = $this->entry_choice . " " . $future->futures_name . " " . $this->month . " " . $this->year;
-        $this->futures_name = $future->futures_name;
-        $this->description = $future->description;
+        if ($future) {
+            $this->title = $this->entry_choice . " " . $future->futures_name . " " . $this->month . " " . $this->year;
+            $this->futures_name = $future->futures_name;
+            $this->description = $future->description;
+        }
         $strategy = StrategyDAO::getStrategyById($this->fk_strategy);
-        $this->strategy_name = $strategy->strategy_name;
+        $this->strategy_name = $strategy ? $strategy->strategy_name : FALSE;
         $this->op_entry_choice = ($this->entry_choice == "BUY") ? "SELL" : "BUY"; /*         * SET OPOSITE NAME FOR ENTRY CHOICE TO USE IT FOR EMAIL TEMPLATE* */
         $this->tr_type_name = TradeRecDAO::getTradeRecType($this->fk_tr_type); /*         * GET TR TYPE NAME FROM TR TYPE ID* */
     }
-
+    
+    public static function logTRerrors($e) {
+        $time = date("Y-m-d H:i:s");
+        $ip_address = $_SERVER['REMOTE_ADDR'];
+        $log = $time . "|" . $ip_address . "|" . $e. "|"."\n";
+        file_put_contents("log/errors/trerr.txt", $log, FILE_APPEND | LOCK_EX);
+        return FALSE;
+    }
 }

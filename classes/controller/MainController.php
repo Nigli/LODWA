@@ -43,14 +43,17 @@ abstract class MainController {
     }
 
     public function view() {
+        $this->token = md5(uniqid(rand(), true));
+        $this->setToken("login_token");
+        $this->setToken("tr_token");
         ob_start();
         if (!($this->selected_page)) {
             include $this->layout_login;
             $view = ob_get_clean();
         } elseif ($this->access) {
-            
+
             if ($this->user_status == Enum::MANAGER) {
-                
+
                 include "view/{$this->selected_page}.php";
                 $content = ob_get_clean();
                 $view = str_replace('[CONTENT]', $content, $this->layout_manager);
@@ -65,6 +68,9 @@ abstract class MainController {
                 $content = ob_get_clean();
                 $view = str_replace('[CONTENT]', $content, $this->layout_admin);
             }
+        } elseif ($this->selected_page == "unsub") {
+            include $this->layout_unsub;
+            $view = ob_get_clean();
         } else {
             redirect_to("logout");
         }

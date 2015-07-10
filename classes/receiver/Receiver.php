@@ -19,10 +19,11 @@ class Receiver {
     public $recipient;
     public $subs_info;
 
-    public function __construct($array =array()) {
-        foreach($array as $k=>$v){
+    public function __construct($array = array()) {
+        foreach ($array as $k => $v) {
             $this->$k = $v;
-        }           
+        }
         $this->recipient = $this->email . ", " . $this->first_name . " " . $this->last_name;
     }
+
 }

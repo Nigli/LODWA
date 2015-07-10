@@ -1,0 +1,14 @@
+OK|1436523392/user@user.com/::1/
+OK|2015-07-10 12:19:50/admin@admin.com/::1/
+ERROR|2015-07-10 12:21:30/user@user.com/::1/
+ERROR|2015-07-10 12:21:50/sdsdsdsdsd@sdsd.com/::1/
+OK|2015-07-10 12:22:20|admin@admin.com|::1|
+OK|2015-07-10 12:30:00|user@user.com|::1|
+OK|2015-07-10 12:30:10|user@user.com|::1|
+OK|2015-07-10 12:32:12|user@user.com|::1|
+OK|2015-07-10 12:43:30|user@user.com|::1|
+OK|2015-07-10 13:15:36|admin@admin.com|::1|
+OK|2015-07-10 13:29:33|admin@admin.com|::1|
+ERROR|2015-07-10 13:29:59|&#039;|::1|
+ERROR|2015-07-10 14:31:23|admin@admin.com|::1|
+OK|2015-07-10 14:32:22|user@user.com|::1|
