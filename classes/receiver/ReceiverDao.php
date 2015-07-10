@@ -196,7 +196,8 @@ class ReceiverDao {
                     . "last_name=:last_name, "
                     . "email=:email, "
                     . "na_number=:na_number, "
-                    . "broker_acc=:broker_acc "
+                    . "broker_acc=:broker_acc, "
+                    . "active=1 "
                     . "WHERE id_receiver=:id_receiver");
             $res->bindParam(':id_receiver', $receiver->id_receiver, PDO::PARAM_INT);
             $res->bindParam(':fk_receiver_type', $receiver->fk_receiver_type, PDO::PARAM_INT);

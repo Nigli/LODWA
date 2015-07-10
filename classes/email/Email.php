@@ -83,13 +83,11 @@ class Email {
         $receivers = ReceiverDao::getReceiversByStrat($this->fk_strategy);
         if ($receivers) {
             foreach (ReceiverDao::getReceiversByStrat($this->fk_strategy) as $k => $v) {/*             * CREATES ARRAY OF CLIENT OBJECTS* */
-                $this->hash_email = $v->hash_email;
-                $this->id_receiver = $v->id_receiver;
-                $this->recipients[] = $v->recipient;
+                $this->recipients[] = $v->recipient;                
+                $this->hash_email = $v->recipient['hash_email'];
+                $this->id_receiver = $v->recipient['id_receiver'];
             }
         } else {
-            $this->hash_email = null;
-            $this->id_receiver = null;
             $this->recipients[] = null;
         }
         $emailtemp = EmailTempDAO::getEmailTemp();
@@ -133,8 +131,7 @@ class Email {
         //mail to clients
         if (in_array(!null, $this->recipients)) {
             foreach ($this->recipients as $recipient) {
-                $add_and_name = explode(',', $recipient);
-                $mailclient->addBCC($add_and_name[0], $add_and_name[1]);
+                $mailclient->addBCC($recipient['email'], $recipient['first_name']." ".$recipient['last_name']);
             }
         } else {
             $e = "No recipients";

@@ -23,7 +23,13 @@ class Receiver {
         foreach ($array as $k => $v) {
             $this->$k = $v;
         }
-        $this->recipient = $this->email . ", " . $this->first_name . " " . $this->last_name;
+        $this->recipient = array(
+            "id_receiver"   =>  $this->id_receiver,
+            "email"         =>  $this->email,
+            "first_name"    =>  $this->first_name,
+            "last_name"     =>  $this->last_name,
+            "hash_email"    =>  $this->hash_email
+            );
     }
 
 }

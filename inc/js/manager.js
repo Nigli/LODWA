@@ -63,7 +63,8 @@ $(function () {
         $("#notice-confirm").attr("name", manage + "-submit").attr("form", manage + "_form");
         $("#notice-confirm").show();
         $("#notice-cancel").show();
-        $("#notice-close").hide();
+        $("#notice-close").hide();        
+        $("#notice-span").hide();
     });
     $("#notice-close, #notice-cancel").on("click", function () {
         $(".shade").hide();
