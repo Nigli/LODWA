@@ -44,12 +44,8 @@ class Email {
     public $company_website;
     public $broker_name;
     public $broker_email;
-    public $id_receiver;
-    public $hash_email;
     public $recipients = array();
     public $disclosure;
-    public $broker_temp;
-    public $client_temp;
 
     public function __construct($tr) {
         foreach ($tr as $k => $v) {/*         * PUT OBJECT IN CONSTRUCT(TR OBJECT)* */
@@ -80,21 +76,18 @@ class Email {
         } else {
             $this->broker_email = null;
         }
+        
         $receivers = ReceiverDao::getReceiversByStrat($this->fk_strategy);
         if ($receivers) {
             foreach (ReceiverDao::getReceiversByStrat($this->fk_strategy) as $k => $v) {/*             * CREATES ARRAY OF CLIENT OBJECTS* */
-                $this->recipients[] = $v->recipient;                
-                $this->hash_email = $v->recipient['hash_email'];
-                $this->id_receiver = $v->recipient['id_receiver'];
+                $this->recipients[] = $v->recipient;     
             }
         } else {
             $this->recipients[] = null;
         }
         $emailtemp = EmailTempDAO::getEmailTemp();
         $emailtemp ? $this->disclosure = Email::nl2p($emailtemp->disclosure) : null; /*         * CREATES OBJECT AND APPLY nl2p function on DISCLOSURE PROPERTY* */
-        $temps = $this->viewTemp();
-        $this->broker_temp = $temps[0];
-        $this->client_temp = $temps[1];
+        
     }
 
     public function sendEmail() {
@@ -125,27 +118,32 @@ class Email {
             $e = "No broker email or broker name";
             TradeRec::logTRerrors($e);
         }
-        $mail->Body = $this->broker_temp;
+        $mail->Body = $this->broker_temp = $this->viewTemp()[0];
         $plain = $mail->html2text($mail->Body);
         $mail->AltBody = $plain;
         //mail to clients
         if (in_array(!null, $this->recipients)) {
-            foreach ($this->recipients as $recipient) {
-                $mailclient->addBCC($recipient['email'], $recipient['first_name']." ".$recipient['last_name']);
+            foreach ($this->recipients as $recipient) {                
+                $this->hash_email = $recipient['hash_email'];
+                echo $this->hash_email;
+                //$mailclient->addBCC($recipient['email'], $recipient['first_name']." ".$recipient['last_name']);                
+                $mailclient->AddAddress($recipient['email'], $recipient['first_name']." ".$recipient['last_name']);  
+                echo $recipient['email'].",". $recipient['first_name']." ".$recipient['last_name']."<br>";
+                $mailclient->Body = $this->viewTemp()[1];
+                $plainclients = $mailclient->html2text($mailclient->Body);
+                $mailclient->AltBody = $plainclients;
+                //$mailclient->send();
             }
         } else {
             $e = "No recipients";
             TradeRec::logTRerrors($e);
         }
-        $mailclient->Body = $this->client_temp;
-        $plainclients = $mailclient->html2text($mailclient->Body);
-        $mailclient->AltBody = $plainclients;
-        if ($mailclient->send() && $mail->send()) {
-            return TRUE;
-        } else {
-            $e = "Email not sent";
-            TradeRec::logTRerrors($e);
-        }
+//        if ($mail->send()) {
+//            return TRUE;
+//        } else {
+//            $e = "Email not sent";
+//            TradeRec::logTRerrors($e);
+//        }
     }
 
     private function nl2p($text) {/*     * SET ALL LETTERS UPPER AND REPLACE \n WITH <p> TAGS* */
