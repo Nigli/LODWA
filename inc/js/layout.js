@@ -88,7 +88,7 @@ $(function(){
         var stop_loss = $("#stop_loss").val();
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h3").html("Confirm "+tr_type);
+        $("#notice-title h3").html("Confirm "+tr_type);//based on what button is clicked, tr_type is set on the bottom of html page
         $("#notice-span").html("<strong>"+entry_choice+"</strong> "+future+" "+month+" "+year+"<br>");        
         $("#notice-entry-price").html("<strong>"+entry_choice+" (Entry):</strong> "+entry_price+"<br>");
         $("#notice-stop-loss").html("<strong>Stop Loss: </strong>"+stop_loss+"<br>");
@@ -96,6 +96,8 @@ $(function(){
         $("#notice-confirm").show(); 
         $("#notice-cancel").show();        
         $("#notice-close").hide(); 
+        
+        /*checks the side of the trade*/
         if(entry_choice === "BUY"){
             if(price_target <= stop_loss){
                 $("#notice-title h3").html("Notice!");
@@ -117,6 +119,9 @@ $(function(){
     $('.radio_rep').on("click",function (){
         $('.radio_rep').removeClass('radio_require');
     });
+    $("#tr_form_cxl").on("click", function (){
+         $("#price_target, #stop_loss").removeClass("mark_red").addClass("disable");
+    }); 
     $("#notice-confirm").on("click", function (){
         $(".shade").show();        
         $("#notice").hide();
@@ -131,6 +136,8 @@ $(function(){
             e.preventDefault(); 
         }
     });
+    
+    /*checks if note value is set to alert the notice*/
     if($("#tr_note").val()==="sent"){
         $(".shade").show();        
         $("#notice").show();

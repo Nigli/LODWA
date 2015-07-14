@@ -21,7 +21,7 @@ class StrategyDAO {
         }
     }
 
-    public static function getStrategiesByFutureId($id_future) {/*     * * */
+    public static function getStrategiesByFutureId($id_future) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -38,7 +38,7 @@ class StrategyDAO {
         }
     }
 
-    public static function getStrategyById($id_strategy) {/*     * GET STRATEGIES BY ID - RETURNS OBJECT* */
+    public static function getStrategyById($id_strategy) {/*     * GET STRATEGIES BY STRATEGY ID - RETURNS OBJECT* */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -85,7 +85,7 @@ class StrategyDAO {
         }
     }
 
-    public static function deleteStrategyFuture($strategy) {
+    public static function deleteStrategyFuture($strategy) {/* REMOVES STRATEGY FUTURES CONNECTION */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -115,7 +115,7 @@ class StrategyDAO {
         }
     }
 
-    public static function removeStrategy($strategy) {
+    public static function removeStrategy($strategy) {/* UPDATES STRATEGY STATUS TO 0 */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {

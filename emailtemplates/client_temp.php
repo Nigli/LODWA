@@ -176,7 +176,7 @@
                                                                         <tr>
                                                                             <td valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <a href="http://northernadvisors.com/" title="" target="_self" style="word-wrap: break-word !important;">
-<!--CHANGE IMAGE-->                                                                 <img align="left" alt="" src="http://www.srlevel.com/images/index.png" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;"/>
+<!--CHANGE IMAGE-->                                                                 <img align="left" alt="Northern Advisors" src="http://www.srlevel.com/images/index.png" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;"/>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>

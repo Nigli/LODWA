@@ -1,3 +1,4 @@
+<!--profile form -->
 <form id="profile" method="post" action="processprof">
     <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
     <div id="top">
@@ -41,3 +42,4 @@
         <?php $this->user_status==\utils\Enum::MANAGER?include $this->profile_buttons :''; ?>
     </div>
 </form>
+<!--END profile form -->

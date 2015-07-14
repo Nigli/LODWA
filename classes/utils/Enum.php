@@ -16,10 +16,6 @@ class Enum {
     //referer constants
     const TR_REFERER = "http://localhost/LODWA/trade";
     const LOG_REFERER = "http://localhost/LODWA/";
-//    const TR_REFERER = "http://192.168.0.101/LODWA/trade";
-//    const LOG_REFERER = "http://192.168.0.101/LODWA/";
-//    const TR_REFERER = "http://www.srlevel.com/trade";
-//    const LOG_REFERER = "http://www.srlevel.com/";
     
     //time constants
     const CHICAGO_TIME = "America/Chicago";

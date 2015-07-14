@@ -13,7 +13,6 @@ class BrokerDAO {
         }catch(\PDOException $e){
             Conn::logConnectionErr($e->getMessage());
             return FALSE;
-            //echo "error". $e->getMessage();
         }    
     }
     public static function editBrokerInfo($broker){

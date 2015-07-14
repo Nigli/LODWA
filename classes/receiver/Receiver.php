@@ -23,13 +23,13 @@ class Receiver {
         foreach ($array as $k => $v) {
             $this->$k = $v;
         }
-        $this->recipient = array(
-            "id_receiver"   =>  $this->id_receiver,
-            "email"         =>  $this->email,
-            "first_name"    =>  $this->first_name,
-            "last_name"     =>  $this->last_name,
-            "hash_email"    =>  $this->hash_email
-            );
+        $this->recipient = array(/* THIS ARRAY IS USED FOR EMAIL CONSTRUCTOR TO PUT HASH EMAIL ON THE BOTTOM OF THE EMAIL */
+            "id_receiver" => $this->id_receiver,
+            "email" => $this->email,
+            "first_name" => $this->first_name,
+            "last_name" => $this->last_name,
+            "hash_email" => $this->hash_email
+        );
     }
 
 }

@@ -28,11 +28,8 @@ RewriteRule ^unsubprocess$ index.php?p=unsub&process=process_unsub.php [NC]
 RewriteCond %{HTTP_HOST} ^localhost\.com [NC] 
 RewriteRule ^(.*)$ https://www.localhost.com/$1 [L,R=301]
 
-#RewriteCond %{HTTP_HOST} ^srlevel\.com [NC] 
-#RewriteRule ^(.*)$ http://www.srlevel.com/$1 [L,R=301]
-
 <Files admin>
-AuthName "Prompt"
+AuthName "Please enter username and password"
 AuthType Basic
 AuthUserFile D:/Nikola/programiranje/php/wamp/www/LODWA/.passwd
 Require valid-user

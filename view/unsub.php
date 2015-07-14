@@ -21,12 +21,14 @@
         <div id="wrapper">            
             <div id="main">                
                 <div id="unsub">
+                    <!--unsubscribe form-->
                     <form method="post" action="unsubprocess">                        
                         <div id="top">
                             <h2>Subscription Information</h2>                            
                         </div>
                         <?php
                         if ($this->subscriber) {
+                            /*                             * checking if receiver type is client so he can NOT unsubscribe * */
                             if ($this->subscriber->id_receiver_type == 1) {
                                 ?>
                                 <div id="left">
@@ -40,6 +42,8 @@
                                 </div>
                                 <?php
                             } else {
+
+                                /*                                 * if receiver is NOT client he CAN be unsubscribed * */
                                 ?>
                                 <input type="hidden" name="id_receiver" value="<?php echo $this->subscriber->id_receiver ?>"/>
                                 <input type="hidden" name="active" value="<?php echo $this->subscriber->active ?>"/>
@@ -57,6 +61,8 @@
                                 <?php
                             }
                         } else {
+
+                            /*                             * if his unsubscription went ok he is unsubscribed * */
                             ?>   
                             <div id="left">
                                 <p>You have been successfully unsubscribed from our emails.</p>
@@ -65,6 +71,7 @@
                                 <div id="bottom-left"></div>
                             </div>
                         </form>
+                        <!--END unsubscribe form-->
                         <?php
                     }
                     ?>

@@ -11,7 +11,7 @@ class EmailTempDAO {
                 . "WHERE id_email=1");
             $res->execute();
             $email_temp = $res->fetchObject(get_class());
-            return $email_temp;//!!!have to check if exists        
+            return $email_temp;     
         }catch(\PDOException $e){
             Conn::logConnectionErr($e->getMessage());
             return FALSE;

@@ -59,7 +59,7 @@ $(function () {
         ;
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h3").html("Confirm " + action);
+        $("#notice-title h3").html("Confirm " + action);//based on what button is clicked, action is set on the bottom of html page
         $("#notice-confirm").attr("name", manage + "-submit").attr("form", manage + "_form");
         $("#notice-confirm").show();
         $("#notice-cancel").show();
@@ -80,7 +80,8 @@ $(function () {
             e.preventDefault();
         }
     });
-    if ($("#note").val() === "sent") {//note treba promeniti html-u
+    /*checks if note value is set to alert the notice*/
+    if ($("#note").val() === "sent") {
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Success!");
@@ -88,7 +89,7 @@ $(function () {
         $("#notice-close").show();
         $("#notice-cancel").hide();
         $("#notice-confirm").hide();
-    } else if ($("#note").val() === "notsent") {//note treba promeniti u html-u
+    } else if ($("#note").val() === "notsent") {
         $(".shade").show();
         $("#notice").show();
         $("#notice-title h3").html("Unsuccess!");

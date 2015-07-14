@@ -1,3 +1,4 @@
+<!-- broker form -->
 <form id="profile" method="post"  action="processbrok">    
     <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
     <div id="top">
@@ -33,3 +34,4 @@
         <?php $this->user_status == \utils\Enum::MANAGER ? include $this->broker_button : ""; ?>
     </div>
 </form>
+<!--END broker form -->

@@ -79,9 +79,7 @@
     /*     * PAGINATION* */
     if ($this->pagin) {
         echo $this->pagin->createLinks($this->links);
-    } else {
-        //Session:set("err","trlisterror");
-    }
+    } 
     ?>
     <!--end tr list-->
 </div>

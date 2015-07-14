@@ -1,3 +1,4 @@
+<!-- email temp form -->
 <form id="emailtemp" method="post"  action="processemtemp">
     <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
     <div id="top">
@@ -26,3 +27,4 @@
     }
     ?>
 </form>
+<!--END email temp form -->

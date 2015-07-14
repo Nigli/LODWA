@@ -1,3 +1,4 @@
+<!--receiver form-->
 <form id="receiver_form" method="post" action="processrec">
     <input id="active" name="active" type="hidden" value=""/>
     <input id="manage" type="hidden" value="receiver"/>
@@ -8,9 +9,11 @@
     <div id="left">
         <label for="receiver_type_id">Type</label><br>
         <select id="receiver_type_id" name="fk_receiver_type">
-            <?php foreach ($this->type as $k => $v) {
+            <?php
+            foreach ($this->type as $k => $v) {
                 echo "<option value='" . $v['id_receiver_type'] . "'>" . $v['receiver_type_name'] . "</option>";
-            } ?>
+            }
+            ?>
         </select><br>
         <label for="first_name">First Name *</label><br>
         <input id="first_name" name="first_name" type="text" value="" required="" placeholder="First Name"/><br>
@@ -22,8 +25,8 @@
     <div id="right">
         <label for="subs_type">Strategy (Strategies) and # of Subscriptions *</label><br>
         <div id="subs_form">            
-            <?php 
-            if($this->strategies){
+            <?php
+            if ($this->strategies) {
                 foreach ($this->strategies as $k => $v) {
                     ?>
                     <div id='strat_check'>
@@ -32,9 +35,9 @@
                     </div>
                     <?php
                 }
-            }else {
+            } else {
                 ?>
-                    <span>No Trading Strategies in database</span>
+                <span>No Trading Strategies in database</span>
                 <?php
             }
             ?>
@@ -56,6 +59,7 @@
     </div>
     <span id="to_bottom" title="Go down"><i class="fa fa-arrow-down"></i></span>
 </form>
+<!--END receiver form-->
 <script>
     function getVal(obj) {
         document.getElementById("notice-confirm").value = obj.value;

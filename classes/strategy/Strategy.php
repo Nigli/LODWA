@@ -12,7 +12,7 @@ class Strategy {
 
     public function __construct() {
         $futures = FuturesContractDAO::getFuturesByStrategy($this->id_strategy);
-        foreach ($futures as $k => $future) {
+        foreach ($futures as $k => $future) {/**/
             $this->futures_info[$future->id_futures] = $future->futures_name;
         }
     }

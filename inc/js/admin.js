@@ -37,7 +37,7 @@ $(function(){
         };
         $(".shade").show();
         $("#notice").show();
-        $("#notice-title h3").html("Confirm "+rec_action);
+        $("#notice-title h3").html("Confirm "+rec_action);//based on what button is clicked, rec action is set on the bottom of html page
         $("#notice-confirm").show(); 
         $("#notice-cancel").show();        
         $("#notice-close").hide(); 
@@ -47,6 +47,7 @@ $(function(){
         $("#notice").hide();
         $("#notice-span").html("");
     });
+    /*checks if note value is set to alert the notice*/
     if($("#admin_note").val()==="sent"){
         $(".shade").show();        
         $("#notice").show();

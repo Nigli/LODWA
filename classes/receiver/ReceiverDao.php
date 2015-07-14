@@ -7,7 +7,7 @@ use PDO,
 
 class ReceiverDao {
 
-    public static function getReceivers($pagin, $filter) {
+    public static function getReceivers($pagin, $filter) {/* GET ALL RECEIVERS - RETURNS ARRAY OF OBJECTS */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -35,7 +35,7 @@ class ReceiverDao {
         }
     }
 
-    public static function getInactiveReceivers($pagin, $filter) {
+    public static function getInactiveReceivers($pagin, $filter) {/* GET ONLY INACTIVE RECEIVERS FOR RECEIVER FILTER */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -77,7 +77,7 @@ class ReceiverDao {
         }
     }
 
-    public static function getReceiverByHash($hash_email) {
+    public static function getReceiverByHash($hash_email) {/* GET RECEIVER BY HASH - USED FOR UNSUBS FROM EMAIL TEMP */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -213,7 +213,7 @@ class ReceiverDao {
         }
     }
 
-    public static function getSubscriptionBySubsId($subscriber_id) {
+    public static function getSubscriptionBySubsId($subscriber_id) {/* GET ARRAY OF SUBSCRIPTIONS BASED ON SUBSCRIBERS ID */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -227,7 +227,7 @@ class ReceiverDao {
         }
     }
 
-    public static function removeSubscriptionBySubscriber($subscriber_id) {
+    public static function removeSubscriptionBySubscriber($subscriber_id) {/* REMOVES SUBSCRIBER FROM SUBSCRIPTION LIST (BY SUBS ID) */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
@@ -241,7 +241,7 @@ class ReceiverDao {
         }
     }
 
-    public static function removeSubscriptionByStrategy($strategy) {
+    public static function removeSubscriptionByStrategy($strategy) {/* REMOVES SUBSCRIBER FROM SUBSCRIPTION LIST (BY STRATEGY ID) */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {

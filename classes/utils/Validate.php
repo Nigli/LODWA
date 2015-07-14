@@ -3,8 +3,8 @@
 namespace utils;
 
 use user\UserDAO,
-        traderec\TradeRec,
-        utils\Enum;
+    traderec\TradeRec,
+    utils\Enum;
 
 class Validate {
 
@@ -141,7 +141,6 @@ class Validate {
         } elseif (isset($valid['id_user']) && $valid['id_user'] == '') {
             return $valid;
         } else {
-            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
             return FALSE;
         }
     }
@@ -152,7 +151,6 @@ class Validate {
         if (!in_array(NULL || FALSE, $valid)) {//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
             return $valid;
         } else {
-            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
             return FALSE;
         }
     }
@@ -163,7 +161,6 @@ class Validate {
         if (!in_array(NULL || FALSE, $valid)) {//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
             return $valid;
         } else {
-            //echo "POLJE JE EMPTY ILI FALSE";//ERROR LOG
             return FALSE;
         }
     }

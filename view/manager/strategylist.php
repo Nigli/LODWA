@@ -3,7 +3,7 @@
         <h2>Strategies</h2>
         <span id="rightspan">To edit strategy click on the table row</span><br>
     </div>
-    <!--STRATEGY FORM-->
+    <!--strategy form-->
     <form id="strategy_form" method="post" action="processstrat">
         <div id="left" class="strategy_form">
             <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
@@ -15,8 +15,8 @@
         <div id="right">
             <label for="futures_form">Futures Contract (Contracts) *</label><br>
             <div id="futures_area">            
-                <?php 
-                if($this->futures){
+                <?php
+                if ($this->futures) {
                     foreach ($this->futures as $k => $v) {
                         ?>
                         <div id='futures_check'>
@@ -24,9 +24,9 @@
                         </div>
                         <?php
                     }
-                }else {
+                } else {
                     ?>
-                        <span>No Future Contracts in database</span>
+                    <span>No Future Contracts in database</span>
                     <?php
                 }
                 ?>
@@ -41,13 +41,12 @@
             </div>         
         </div>
     </form>
-    <!--END STRATEGY FORM-->
-    
+    <!--END strategy form-->    
     <span id="to_bottom"><i class="fa fa-arrow-down"></i></span>
 </div>
-<script>         
+<script>
     function getValStrat(obj) {
         document.getElementById("notice-confirm").value = obj.value;
         action = obj.value;
-    }  
+    }
 </script>

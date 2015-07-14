@@ -21,7 +21,7 @@ class User {
         }
     }
 
-    public static function pageAccess($user, $page_to_go) {
+    public static function pageAccess($user, $page_to_go) {/*CONTAINS ARRAYS OF PAGES THAT EACH USER CAN ACCESS*/
         $admin_pages = array("admin");
         $manager_pages = array("strategylist", "futureslist", "receiverlist", "emailtemp", "profile", "broker");
         $user_pages = array("trform", "trlist", "strategylist", "futureslist", "receiverlist", "profile", "broker");

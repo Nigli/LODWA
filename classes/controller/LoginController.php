@@ -43,7 +43,7 @@ class LoginController extends MainController {
         $ip_address = $_SERVER['REMOTE_ADDR'];
         $success = $user ? "OK" : "ERROR";
         $log = $success . "|" . $time . "|" . $email . "|" . $ip_address . "|" . "\n";
-        file_put_contents("log/errors/userlog.txt", $log, FILE_APPEND | LOCK_EX);
+        file_put_contents("log/userlog.txt", $log, FILE_APPEND | LOCK_EX);
         return FALSE;
     }
 

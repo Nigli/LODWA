@@ -3,7 +3,7 @@
         <h2>Future Contracts</h2>
         <span id="rightspan">To edit future click on the table row</span><br>
     </div>
-    <!--FUTURES FORM-->
+    <!--futures form-->
     <form id="futures_form" method="post" action="processfut">
         <div id="left"> 
             <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
@@ -26,10 +26,10 @@
             </div>           
         </div>
     </form>    
-    <!--END FORM-->
+    <!--END futures form-->
     <span id="to_bottom"><i class="fa fa-arrow-down"></i></span>
 </div>
-<script>         
+<script>
     function getValFutur(obj) {
         document.getElementById("notice-confirm").value = obj.value;
         action = obj.value;

@@ -1,3 +1,4 @@
+<!-- user form -->
 <form id="user_list_form" class="edit" method="post" action="processuser">
     <h2>Edit or add New</h2>
     <span id="rightspan">To edit user click on the table row</span><br>    
@@ -30,6 +31,7 @@
         </div>
     </div>
 </form>
+<!--END user form -->
 <div id="user_list">  
     <h2>Users List</h2>
     <table>

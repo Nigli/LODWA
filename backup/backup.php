@@ -17,7 +17,7 @@ function backup_tables($host, $user, $pass, $name, $tables = '*') {
         $tables = is_array($tables) ? $tables : explode(',', $tables);
     }
 
-    //cycle through
+    // cycle through
     $return = "";
     foreach ($tables as $table) {
         $result = mysqli_query($link, 'SELECT * FROM ' . $table);
