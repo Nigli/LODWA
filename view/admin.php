@@ -15,7 +15,7 @@
         </thead>
         <tr>
             <td><select id="status_id" name="status"><?php foreach ($this->status as $k => $v) {
-    echo "<option value='" . $v['user_status'] . "'>" . $v['status_name'] . "</option>";
+    echo "<option value='" . $v['id_status'] . "'>" . $v['status_name'] . "</option>";
 } ?></select></td>
             <td><input id="email" name="email" type="email" value="" required=""/></td>
             <td><input id="password" name="password" type="password" value="" required=""/></td>
@@ -49,7 +49,7 @@
                     <td data-title='User Status'><?php echo $user->status_name ?></td>
                     <td data-title='Email'  data-index="email"><?php echo $user->user_email ?></td>
                     <td data-index="id_user" class="td_hidden"><?php echo $user->user_id ?></td>                
-                    <td data-index="status_id" class="td_hidden"><?php echo $user->user_status ?></td>
+                    <td data-index="status_id" class="td_hidden"><?php echo $user->id_status ?></td>
                 </tr>
                 <?php
             }

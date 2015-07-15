@@ -72,12 +72,12 @@ class ReceiverlistController extends MainController {
                     if ($num_subscriptions != 0) {
                         $subs = ReceiverDao::insertSubscription($new, $strategy_id, $num_subscriptions);
                         $has_sub = true;
-                        $new && $remove_subs && $subs ? Session::set("notify", "sent") : Session::set("notify", "notsent");
+                        $new && $subs ? Session::set("notify", "sent") : Session::set("notify", "notsent");
                     }
                 }
                 if (!$has_sub) {
                     $unsub = ReceiverDao::unsubscribeReceiver($valid);
-                    $new && $remove_subs && $unsub ? Session::set("notify", "sent") : Session::set("notify", "notsent");
+                    $new && $unsub ? Session::set("notify", "sent") : Session::set("notify", "notsent");
                 }
             }
         } else {

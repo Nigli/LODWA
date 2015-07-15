@@ -58,7 +58,7 @@ class UserDAO {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
-            $res = $db->prepare("SELECT user_status,status_name FROM user_status");
+            $res = $db->prepare("SELECT id_status,status_name FROM user_status");
             $res->execute();
             $receivers = $res->fetchAll(PDO::FETCH_ASSOC);
             return $receivers;
