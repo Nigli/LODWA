@@ -9,9 +9,9 @@ class Enum {
     const ADMIN = 8;
     
     //sender server constants
-    const SENDER_PASS = "ngna321";
-    const SENDER_PORT = "25";
-    const SENDER_HOST = "smtpout.secureserver.net";
+    const SENDER_PASS = "glglepro2015";
+    const SENDER_PORT = "587";
+    const SENDER_HOST = "smtp.gmail.com";
     
     //referer constants
     const TR_REFERER = "http://localhost/LODWA/trade";

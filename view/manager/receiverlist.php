@@ -31,7 +31,7 @@
                     ?>
                     <div id='strat_check'>
                         <input id="strategy_type<?php echo $v->id_strategy ?>" type="checkbox" value="<?php echo $v->id_strategy ?>"/><label><?php echo $v->strategy_name ?></label>
-                        <input id="strategy_subs<?php echo $v->id_strategy ?>" type="number" name="subs_info[<?php echo $v->id_strategy ?>]" value=""/><br>
+                        <input id="strategy_subs<?php echo $v->id_strategy ?>" type="number" name="subs_info[<?php echo $v->id_strategy ?>]" value=""  min="1"/><br>
                     </div>
                     <?php
                 }

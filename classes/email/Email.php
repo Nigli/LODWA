@@ -96,12 +96,13 @@ class Email {
         $mail->CharSet = 'UTF-8';
         $mail->isSMTP();                                        //*
         //$mail->SMTPDebug  = 2;                                  //*
+        //$mail->Debugoutput = 'html';                            //*
         $mail->Host = Enum::SENDER_HOST;
         //$mail->Host = "relay-hosting.secureserver.net";         // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication*
         $mail->Username = $this->sender_email;                 // SMTP username
         $mail->Password = Enum::SENDER_PASS;                // SMTP password*
-        //$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = Enum::SENDER_PORT;                      // TCP port to connect to
 
         $mail->From = $this->sender_email;
