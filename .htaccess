@@ -31,7 +31,7 @@ RewriteRule ^(.*)$ https://www.localhost.com/$1 [L,R=301]
 <Files admin>
 AuthName "Please enter username and password"
 AuthType Basic
-AuthUserFile D:/wamp/www/LODWA/.passwd
+AuthUserFile D:/Nikola/programiranje/php/wamp/www/LODWA/.passwd
 Require valid-user
 </Files>
  

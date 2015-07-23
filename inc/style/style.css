@@ -395,7 +395,12 @@ table tbody tr:hover {
 [data-title='Futures Name'],[data-title='Date']{
     width: 150px;
 }
-
+.receiver_info {
+    color: #828286;
+}
+.receiver_info:hover {
+    color: #58585A;
+}
 /******EMAIL TEMPS*******/
 #emailtemp textarea{
     width: 740px;

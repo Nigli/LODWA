@@ -87,7 +87,7 @@ $(function(){
         var price_target = $("#price_target").val();
         var stop_loss = $("#stop_loss").val();
         $(".shade").show();
-        $("#notice").show();
+        $("#notice, #notice-title h3, #notice-span, #notice-entry-price, #notice-stop-loss, #notice-price-target").show();
         $("#notice-title h3").html("Confirm "+tr_type);//based on what button is clicked, tr_type is set on the bottom of html page
         $("#notice-span").html("<strong>"+entry_choice+"</strong> "+future+" "+month+" "+year+"<br>");        
         $("#notice-entry-price").html("<strong>"+entry_choice+" (Entry):</strong> "+entry_price+"<br>");
@@ -188,5 +188,41 @@ $(function(){
         $("#receiver_list_active").val("1");
         $("#receiver_list_strat").val("0");
         $("#receiver_list_ba").val("ALL");
+    });
+    //receivers info
+    $("#receiver_list .receiver_info").on("click", function () {
+        $("#notice-rec-type").html("<strong>Type: </strong><br>");
+        $("#notice-rec-first_name").html("<strong>First Name: </strong><br>");
+        $("#notice-rec-last_name").html("<strong>Last Name: </strong><br>");
+        $("#notice-rec-email").html("<strong>Email: </strong><br>");
+        $("#notice-rec-broker_acc").html("<strong>Broker Account: </strong><br>");
+        $("#notice-rec-na_number").html("<strong>NA Number: </strong><br>");
+        $("#notice-rec-strat_info").html("<strong>Strategy and # of Subs: </strong><br>");
+        var td = $(this).parent().children();
+        var rec = {};
+        $.each(td, function (count) {
+            rec[td.eq(count).data("index")] = td.eq(count).text();
+        });
+        $.each(rec, function (key, value) {
+            $("#notice-rec-" + key).append(value+"<br>");
+            if(key.substring(0, 13) == "strategy_name"){                
+                $("#notice-rec-strat_info").append(value+": ");
+            };
+            if(key.substring(0, 13) == "strategy_subs"){                
+                $("#notice-rec-strat_info").append(value+"<br>");
+            };
+        });
+        $("#notice-rec-broker_acc").html("");
+        if(rec['broker_acc'] == 0){
+            $("#notice-rec-broker_acc").html("<strong>Broker Account: </strong><br>No Account<br>");
+        }else {
+            $("#notice-rec-broker_acc").html("<strong>Broker Account: </strong><br>Has Account<br>");
+        };
+        $(".shade").show();        
+        $("#notice").show();
+        $("#notice-title h3").html("Subscriber Info");
+        $("#notice-close, #notice-rec-type, #notice-rec-first_name, #notice-rec-last_name, #notice-rec-email, #notice-rec-broker_acc, #notice-rec-na_number, #notice-rec-strat_info").show();
+        $("#notice-cancel").hide();
+        $("#notice-confirm").hide();
     });
 });

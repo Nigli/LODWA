@@ -56,7 +56,9 @@
     <table>
         <thead>
             <tr>
-                <th colspan="2">Type</th>
+                <th></th>
+                <th></th>
+                <th>Type</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
@@ -70,6 +72,7 @@
             foreach ($this->rec as $k => $receiver) {
                 ?>
                 <tr>
+                    <td class="receiver_info"><i class="fa fa-info"></i></td>
                     <td data-title='Receiver Type' data-index="type"><?php echo $receiver->receiver_type_name ?></td>
                     <td data-title='First Name' data-index="first_name"><?php echo $receiver->first_name ?></td>
                     <td data-title='Last Name' data-index="last_name"><?php echo $receiver->last_name ?></td>
@@ -86,6 +89,7 @@
                         foreach ($receiver->subs_info as $subs_info) {
                             ?>
                             <td data-index="strategy_type<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['fk_strategy'] ?></td>
+                            <td data-index="strategy_name<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['strategy_name'] ?></td>
                             <td data-index="strategy_subs<?php echo $subs_info['fk_strategy'] ?>" class="td_hidden"><?php echo $subs_info['num_subs'] ?></td>
                             <?php
                         }

@@ -218,6 +218,7 @@ class ReceiverDao {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
             $res = $db->prepare("SELECT * FROM subscriptions "
+                    . "LEFT JOIN strategy ON fk_strategy = id_strategy "
                     . "WHERE fk_id_receiver = :id_receiver");
             $res->bindParam(':id_receiver', $subscriber_id, PDO::PARAM_INT);
             $res->execute();
