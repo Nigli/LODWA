@@ -176,7 +176,7 @@
                                                                         <tr>
                                                                             <td valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                                 <a href="http://northernadvisors.com/" title="" target="_self" style="word-wrap: break-word !important;">
-<!--CHANGE IMAGE-->                                                                 <img align="left" alt="Northern Advisors" src="http://www.srlevel.com/images/index.png" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;"/>
+<!--CHANGE IMAGE-->                                                                 <img align="left" alt="Northern Advisors" src="http://www.srlevel.com/inc/images/index.png" width="266" style="max-width: 266px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;line-height: 100%;outline: none;text-decoration: none;height: auto !important;"/>
                                                                                 </a>
                                                                             </td>
                                                                         </tr>
@@ -479,7 +479,7 @@
                         <table border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td align="center" valign="top" style="color:#606060; font-family:Helvetica, Arial, sans-serif; font-size:11px; line-height:150%; padding-right:20px; padding-bottom:5px; padding-left:20px; text-align:center;"><br />
-                                    <a href="http://localhost/LODWA/unsub/[SUBS_ID]" target="_blank" style="color:#404040 !important;"><em>why did I get this?</em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost/LODWA/unsub/[SUBS_ID]" target="_blank" style="color:#404040 !important;">unsubscribe from this list</a>
+                                    <a href="http://www.srlevel.com/unsub/[SUBS_ID]" target="_blank" style="color:#404040 !important;"><em>why did I get this?</em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.srlevel.com/unsub/[SUBS_ID]" target="_blank" style="color:#404040 !important;">unsubscribe from this list</a>
                                     <br />
                                     This email was sent from <a href="mailto:[SENDER_EMAIL]" target="_blank" style="color:#404040 !important;">[SENDER_EMAIL]</a>
                                     <br />

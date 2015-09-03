@@ -35,6 +35,9 @@
                     }
                     ?>   
                     <td data-index="id_strategy" class="td_hidden"><?php echo $strategy->id_strategy ?></td>       
+                    <td data-index="num_tr_day" class="td_hidden"><?php echo $strategy->num_tr_day ?></td>  
+                    <td data-index="start_time" class="td_hidden"><?php echo $strategy->start_time ?></td>  
+                    <td data-index="end_time" class="td_hidden"><?php echo $strategy->end_time ?></td>  
                 </tr>
                 <?php
             }

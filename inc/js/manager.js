@@ -12,7 +12,25 @@ $(function () {
             $("#" + key).prop('checked', true);
             $("#futures_desc").html(rec.futures_description);
         });
-
+        if($("#num_tr_day").val()=== "-1"){
+            $("#num_tr_day").addClass("disable_time").css("color", "#eee");
+            $("#num_tr_day_check").prop('checked', true);
+        }else{
+            $("#num_tr_day").removeClass("disable_time").css("color", "inherit");
+        };
+        if($("#start_time").val()=== "00:00"){
+            $("#start_time").addClass("disable_time").css("color", "eee");
+            $("#start_time_check").prop('checked', true);
+        }else{
+            $("#start_time").removeClass("disable_time");
+        };
+        if($("#end_time").val()=== "00:00"){
+            $("#end_time").addClass("disable_time").css("color", "eee");
+            $("#end_time_check").prop('checked', true);
+        }else {
+            $("#end_time").removeClass("disable_time");
+        };
+        console.log($("#start_time").val());
         $("tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("#emailtemp tbody tr").removeClass("activetr");
@@ -99,6 +117,29 @@ $(function () {
         $("#notice-confirm").hide();
     }
     
+    //strategy
+    $("#num_tr_day_check").on("click", function(){
+        if($("#num_tr_day_check").is(':checked')){
+            $("#num_tr_day").addClass("disable_time").val("-1").css("color", "#eee");
+        }else{
+            $("#num_tr_day").removeClass("disable_time").val("1").css("color", "#000");
+        };
+    });
+    $("#start_time_check").on("click", function(){
+        if($("#start_time_check").is(':checked')){
+            $("#start_time").addClass("disable_time").val("00:00");
+        }else{
+            $("#start_time").removeClass("disable_time").val("08:00");
+        };
+    });
+    $("#end_time_check").on("click", function(){
+        if($("#end_time_check").is(':checked')){
+            $("#end_time").addClass("disable_time").val("00:00");
+        }else{
+            $("#end_time").removeClass("disable_time").val("18:00");
+        };
+    });
+    
     //receiver 
     $("#receiver_form input[type='checkbox']").on("change", function () {
         if ($(this).not(':checked')) {
@@ -128,7 +169,7 @@ $(function () {
     //*receiver
     
     //profile, broker and emailtemp
-    $("#change").on("click", function () {
+    $("#profile_change, #email_change").on("click", function () {
         $("#profile input").removeAttr("readonly").removeClass("readonly");
         $("textarea").removeAttr("disabled").removeClass("readonly");
         $(this).hide();
@@ -140,7 +181,7 @@ $(function () {
         $("textarea").attr("disabled", "disabled").addClass("readonly");
         $(this).hide();
         $(".update").hide();
-        $("#change").show();
+        $("#profile_change, #email_change").show();
     });
     $(".profile_button").on("click", function () {
         $(".shade").show();

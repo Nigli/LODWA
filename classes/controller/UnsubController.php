@@ -2,7 +2,7 @@
 
 namespace controller;
 
-use receiver\ReceiverDao,
+use receiver\ReceiverDAO,
     utils\Validate;
 
 class UnsubController extends MainController {
@@ -12,14 +12,14 @@ class UnsubController extends MainController {
 
     public function __construct() {
         parent::__construct();
-        $this->subscriber = isset($_GET['id']) ? ReceiverDao::getReceiverByHash($_GET['id']) : FALSE;
+        $this->subscriber = isset($_GET['id']) ? ReceiverDAO::getReceiverByHash($_GET['id']) : FALSE;
         $this->layout_unsub = "view/unsub.php";
     }
 
     public function process($post) {
         $valid = Validate::unsub($post);
-        $valid ? ReceiverDao::unsubscribeReceiver($valid) : FALSE;
-        ReceiverDao::removeSubscriptionBySubscriber($valid['id_receiver']);
+        $valid ? ReceiverDAO::unsubscribeReceiver($valid) : FALSE;
+        ReceiverDAO::removeSubscriptionBySubscriber($valid['id_receiver']);
         redirect_to("unsub");
     }
 

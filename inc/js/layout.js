@@ -116,6 +116,70 @@ $(function(){
             }
         }    
     });    
+    
+    //limiting trading time and number of trades a day
+    $("#tr_form_submit").on("click", function (){        
+        var curr_date_time = new Date();
+        var month = curr_date_time.getMonth()+1;
+        var day = curr_date_time.getDate();
+        var date =  (month<10 ? '0' : '') + month + '/' +
+        (day<10 ? '0' : '') + day + '/' +
+        curr_date_time.getFullYear();//                                         getting the date in a format 12/28/2011
+
+        var offset = (curr_date_time.getTimezoneOffset()-300)*60*1000;//        time offset - 300 minutes chicago time zone
+        var curr_mili = curr_date_time.getTime()+offset;//                      current time in miliseconds in chicago time 
+        
+        if($('#strategy_id option').length){ //                                 if it is a select option tag
+            var start_time = $("#strategy_id :selected").data("trstart");//     time when trade day starts
+            if (start_time === "00:00") {
+                start_time = "anytime";
+            }
+            var start_date = new Date(date+" "+start_time);
+            var start_mili = start_date.getTime();//                            start date in miliseconds
+            var end_time = $("#strategy_id :selected").data("trend");//         time when trade day ends
+            if (end_time === "00:00") {
+                end_time = "anytime";
+            }
+            var end_date = new Date(date+" "+end_time);
+            var end_mili = end_date.getTime();//                                end date in miliseconds
+            var tr_num_limit = $("#strategy_id :selected").data("trnum");//     check tr limit broken  
+        }else {
+            var start_time = $("#strategy_id").data("trstart");//               time when trade day starts
+            if (start_time === "00:00") {
+                start_time = "anytime";
+            }
+            var start_date = new Date(date+" "+start_time);
+            var start_mili = start_date.getTime();//                            start date in miliseconds
+            var end_time = $("#strategy_id").data("trend");//                   time when trade day ends
+            if (end_time === "00:00") {
+                end_time = "anytime";
+            }
+            var end_date = new Date(date+" "+end_time);
+            var end_mili = end_date.getTime();//                                end date in miliseconds
+            var tr_num_limit = $("#strategy_id").data("trnum");//               check tr limit broken  
+        }      
+        var dif = start_mili-curr_mili;
+        var time_to_hours = Math.floor(dif/1000/60/60);//                       hours until trade day starts
+        var time_to_minutes = Math.floor((dif/1000/60)%60);//                   minutes left 
+        
+        if(curr_mili<start_mili || curr_mili>=end_mili || tr_num_limit == "1"){
+            if (tr_num_limit == "1") {
+                $("#notice-span").html("You have reached strategy trade limits for today!<br>Come back tomorrow at "+start_time+" Chicago Time.");
+            }else if(curr_mili<start_mili){
+                $("#notice-span").html("Trading time for this strategy is set from "+start_time+" Chicago Time!<br>"+time_to_hours+" hours and "+time_to_minutes+" minutes before start.");
+            }else if(curr_mili>=end_mili){
+                $("#notice-span").html("Trading time for this strategy is set until "+end_time+" Chicago Time!<br>Come back tomorrow at "+start_time+".");
+            };
+            $(".shade").show();
+            $("#notice").show(); 
+            $("#notice-title h3").html("Notice!");
+            $("#notice-close").show();  
+            $("#notice-entry-price, #notice-stop-loss, #notice-price-target").hide();
+            $("#notice-confirm").hide();
+            $("#notice-cancel").hide();
+        };
+    });
+       
     $('.radio_rep').on("click",function (){
         $('.radio_rep').removeClass('radio_require');
     });

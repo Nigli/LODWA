@@ -15,7 +15,7 @@
         <div id="bottom">
             <div id="bottom-left">
                 <button id="cancel" class="cancel" name="emailtemp-cancel" type="button" value="cancel">Cancel</button>
-                <button id="change" class="change" name="emailtemp-submit" type="button" value="change">Change</button>
+                <button id="email_change" class="change" name="emailtemp-submit" type="button" value="change">Change</button>
                 <button class="update profile_button" name="emailtemp-submit" type="submit" value="update">Update</button>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <?php
-
+use utils\Conn;
 /* backup the db OR just a table */
 
 function backup_tables($host, $user, $pass, $name, $tables = '*') {
@@ -54,4 +54,4 @@ function backup_tables($host, $user, $pass, $name, $tables = '*') {
     fclose($handle);
 }
 //function to call, argument #5 can be name of the table
-backup_tables('localhost', 'root', '', 'LODWA');
+backup_tables(Conn::DBHOST, Conn::DBUSER, Conn::DBPASS, Conn::DB);

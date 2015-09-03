@@ -7,6 +7,7 @@ use traderec\TradeRec,
     futures\FuturesContractDAO,
     utils\Validate,
     email\Email,
+    utils\Enum,
     utils\Session;
 
 class TrformController extends MainController {
@@ -19,7 +20,7 @@ class TrformController extends MainController {
         parent::__construct();
         $this->futures = FuturesContractDAO::getActiveFutures(); /*         * GETS ARRAY OF FUTURES OBJECTS* */
         $this->last5TR = TradeRecDAO::getLast5TradeRecs(); /*         * GETS ARRAY OF 5 TR OBJECTS* */
-        $this->last5TR ? $this->lastTR = $this->last5TR[0] : null;
+        $this->last5TR ? $this->lastTR = $this->last5TR[0] : null;        
         $this->unsetNotice("notify");
     }
 
@@ -32,5 +33,4 @@ class TrformController extends MainController {
         $insert ? Session::set("notify", "sent") : Session::set("notify", "notsent");
         redirect_to("trade");
     }
-
 }

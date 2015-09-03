@@ -4,7 +4,7 @@ namespace email;
 
 use sender\SenderInfoDAO,
     broker\BrokerDAO,
-    receiver\ReceiverDao,
+    receiver\ReceiverDAO,
     email\EmailTempDAO,
     traderec\TradeRec,
     utils\Enum,
@@ -39,12 +39,13 @@ class Email {
     public $sender_pass;
     public $sender_port;
     public $sender_address;
+    public $brokers = array();
     public $id_broker;
     public $broker_company;
-    public $company_website;
     public $broker_name;
     public $broker_email;
-    public $recipients = array();
+    public $recipients = array();    
+    public $company_website;
     public $hash_email;
     public $disclosure;
 
@@ -69,18 +70,19 @@ class Email {
             $e = "No sender email";
             TradeRec::logTRerrors($e);
         }
-        $broker = BrokerDAO::getBrokerInfo();
-        if ($broker) {
-            foreach ($broker as $k => $v) {/*             * CREATES BROKER INFO OBJECT* */
-                $this->$k = $v;
+        $brokers = BrokerDAO::getBrokerInfo();
+        if ($brokers) {
+            foreach ($brokers as $k => $v) {/*             * CREATES BROKER INFO OBJECT* */
+                $this->brokers[] = $v;
+                //$this->$k = $v;
             }
         } else {
             $this->broker_email = null;
         }
-
-        $receivers = ReceiverDao::getReceiversByStrat($this->fk_strategy);
+        
+        $receivers = ReceiverDAO::getReceiversByStrat($this->fk_strategy);
         if ($receivers) {
-            foreach (ReceiverDao::getReceiversByStrat($this->fk_strategy) as $k => $v) {/*             * CREATES ARRAY OF CLIENT OBJECTS* */
+            foreach (ReceiverDAO::getReceiversByStrat($this->fk_strategy) as $k => $v) {/*             * CREATES ARRAY OF CLIENT OBJECTS* */
                 $this->recipients[] = $v->recipient;
             }
         } else {
@@ -95,8 +97,8 @@ class Email {
         $mail = new PHPMailer();
         $mail->CharSet = 'UTF-8';
         $mail->isSMTP();                                        //*
-        //$mail->SMTPDebug  = 2;                                  //*
-        //$mail->Debugoutput = 'html';                            //*
+        $mail->SMTPDebug  = 2;                                  //*
+        $mail->Debugoutput = 'html';                            //*
         $mail->Host = Enum::SENDER_HOST;
         //$mail->Host = "relay-hosting.secureserver.net";         // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication*
@@ -114,15 +116,20 @@ class Email {
         $mailclient = clone $mail;
 
         //mail to broker
-        if ($this->broker_email || $this->broker_name) {
-            $mail->addAddress($this->broker_email, $this->broker_name);
+        
+        if (in_array(!null, $this->brokers)) {
+            foreach($this->brokers as $k =>$broker) {
+                $mail->ClearAllRecipients();
+                $mail->addAddress($broker->broker_email, $broker->broker_name);                
+                $mail->Body = $this->broker_temp = $this->viewTemp()[0];
+                $plain = $mail->html2text($mail->Body);
+                $mail->AltBody = $plain;
+                $mail->send();
+            }
         } else {
             $e = "No broker email or broker name";
             TradeRec::logTRerrors($e);
-        }
-        $mail->Body = $this->broker_temp = $this->viewTemp()[0];
-        $plain = $mail->html2text($mail->Body);
-        $mail->AltBody = $plain;
+        }                
 
         //mail to clients
         if (in_array(!null, $this->recipients)) {

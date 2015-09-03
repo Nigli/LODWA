@@ -11,7 +11,7 @@ class Conn {
     const DBPASS = "";
     const DBHOST = "localhost";
     const DB = "lodwa";
-
+    
     public static $conn;
 
     public static function getConnection() {

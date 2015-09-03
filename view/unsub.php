@@ -35,7 +35,8 @@
                                     <h4>Dear <?php echo $this->subscriber->first_name . " " . $this->subscriber->last_name ?></h4>
                                     <p>You are receiving this email because you opted to receive Northern Advisors Research Reports.</p>        
                                     <p>You are not able to unsubscribe from <?php echo $this->subscriber->receiver_type_name ?> list. For more info please visit our website:</p>
-                                    <a href="http://nekiwebsite.com"  target="_blank">www.nekiwebsite.com</a>
+                                    <a href="http://www.northernadvisors.com"  target="_blank">www.northernadvisors.com</a>
+                                    <p>Or write as an email to: <a href="mailto:peter.levant@northernadvisors.com?Subject=Unsubscribe%20<?php echo $this->subscriber->first_name . "%20" . $this->subscriber->last_name ?>">peter.levant@northernadvisors.com </a></p>
                                 </div>
                                 <div id="bottom">
                                     <div id="bottom-left"></div>

@@ -55,7 +55,7 @@ h2 {
 #bottom-lef {    
     float: left;
 }
-#tr_form, #tr_list, #tr_list_5, #receiver_form, #receiver_list, #emailtemp, #strategy_list_form, #futures_list_form, #futures_list, #strategy_list, #profile, #login, #unsub,#user_list,#user_list_form, #notice {
+#tr_form, #tr_list, #tr_list_5, #receiver_form, #receiver_list, #emailtemp, #strategy_list_form, #futures_list_form, #futures_list, #strategy_list, #profile, #broker_form, #login, #unsub,#user_list,#user_list_form, #notice {
     margin:60px auto 0px auto;    
     padding: 15px;
     width: 800px;
@@ -201,10 +201,13 @@ h2 {
     color: #eb4102;
     font-weight: bold;
 }
-.disable {
+.disable, .disable_time {
     pointer-events: none;
     background-color: #eee;
     border: 1px solid #AEAEAE;
+}
+.disable_time {
+    color: #eee;
 }
 #tr_form #right .prices{
     width: 92%;
@@ -249,10 +252,6 @@ h2 {
     margin: 10px 0 30px 5px;
     padding: 4px 4px 4px 9px;
 }
-#strat_check, #futures_check {
-    height: 38px;
-    margin-bottom: 9px;
-}
 #receiver_form #subs_form input[type="number"] {
     width: 18%;
     float: right;
@@ -262,6 +261,10 @@ h2 {
 }
 #receiver_form #subs_form input[type="checkbox"], #strategy_list_form #futures_area input[type="checkbox"] {
     margin: 15px 6px 0px 0px;
+    height: 13px;   
+}
+#strategy_list_form input[type="checkbox"] {
+    margin: 15px 6px 0px 5px;
     height: 13px;   
 }
 #subs_form label {
@@ -274,7 +277,7 @@ h2 {
     width: 69%;
 }
 /******FUTURES & STRATEGIES*******/
-#strategy_list_form #right input, #strategy_list_form #left input, #futures_list_form  #left input, #futures_desc {
+#strategy_list_form #right input, #strategy_name, #num_tr_day, #start_time, #end_time, #futures_list_form  #left input, #futures_desc {
     margin: 10px 0px 30px 5px;
     padding: 4px;
     padding-left: 9px;
@@ -283,6 +286,20 @@ h2 {
 }
 #strategy_name {    
     width: 92%;  
+}
+#strat_check, #futures_check, #start_time_check, #end_time_check {
+    height: 38px;
+    margin-bottom: 9px;
+}
+#tr_time_left, #tr_time_right{
+    float: left;
+    width: 48%;
+}
+#tr_time_right {
+    margin-left: 10px;
+}
+#start_time, #end_time {
+    width: 87%
 }
 #futures_desc {
     width: 93%;
@@ -624,7 +641,7 @@ table tbody tr::after {
         width: 100%;
     }
     /******TR FORM RESP*******/
-    #tr_list,#tr_list_5,#tr_form,#receiver_form,#strategy_list_form,#futures_list_form, #strategy_list,#profile, #login, #unsub, #futures_list, #receiver_list, #emailtemp {
+    #tr_list,#tr_list_5,#tr_form,#receiver_form,#strategy_list_form,#futures_list_form, #strategy_list,#profile, #broker_form, #login, #unsub, #futures_list, #receiver_list, #emailtemp {
         width: 310px;
     }    
     #tr_list_5, #tr_list_5 table, #tr_list, #tr_list table, #receiver_list, #receiver_list table {

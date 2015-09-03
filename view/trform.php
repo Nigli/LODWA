@@ -55,7 +55,7 @@
         <!--END MONTH AND YEAR SELECT-->
     </div>
     <!--***-->
-    <!--PRICES INPUT-->
+    <!--PRICES INPUT-->    
     <div id="right">
         <label>Entry Price</label>
         <input id="entry_price" class="prices" name="entry_price" type="number" value="" required="" step="any"/><br> 

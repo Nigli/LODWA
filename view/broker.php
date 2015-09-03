@@ -1,37 +1,33 @@
-<!-- broker form -->
-<form id="profile" method="post"  action="processbrok">    
-    <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
-    <div id="top">
-        <h2>Broker Information</h2>
-    </div>
-    <div id="left">
+<?php $this->user_status == \utils\Enum::MANAGER ? include $this->broker_form : ""; ?>
+<!-- broker list -->
+<div id="profile">
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Broker Company Name</th>
+                <th>Broker Name</th>
+                <th>Broker Email</th>
+            </tr>
+        </thead>
         <?php
         if ($this->broker) {
-            ?>
-            <input type="hidden" name="id_broker" value="<?php echo $this->broker->id_broker; ?>"/>
-            <p>Broker Company Name:</p>
-            <input class="readonly" name="company" type="text" value="<?php echo $this->broker->broker_company; ?>" readonly/><br>
-            <p>Broker Name:</p>
-            <input class="readonly" name="name" type="text" value="<?php echo $this->broker->broker_name; ?>" readonly/><br>
-            <p>Broker Email:</p>
-            <input class="readonly" name="email" type="text" value="<?php echo $this->broker->broker_email; ?>" readonly/><br> 
-            <?php
+            foreach ($this->broker as $k => $broker) {
+                ?>
+                <tr>
+                    <td data-title='Broker Company Name' data-index="broker_company"><?php echo $broker->broker_company ?></td>
+                    <td data-title='Broker Name' data-index="broker_name"><?php echo $broker->broker_name ?></td>
+                    <td data-title='Broker Email' data-index="broker_email"><?php echo $broker->broker_email ?></td>
+                    <td data-index="id_broker" class="td_hidden"><?php echo $broker->id_broker ?></td>
+                </tr>
+                <?php
+            }
         } else {
             ?>
-            <span>There is no Broker info in database</span>
-            <input type="hidden" name="id_broker" value=""/>
-            <p>Broker Company Name:</p>
-            <input class="readonly" name="company" type="text" value="" readonly/><br>
-            <p>Broker Name:</p>
-            <input class="readonly" name="name" type="text" value="" readonly/><br>
-            <p>Broker Email:</p>
-            <input class="readonly" name="email" type="text" value="" readonly/><br>
+            <tr><td>No Brokers in Database</td></tr>
             <?php
         }
         ?>
-    </div>
-    <div id="bottom">
-        <?php $this->user_status == \utils\Enum::MANAGER ? include $this->broker_button : ""; ?>
-    </div>
-</form>
-<!--END broker form -->
+    </table>
+</div>
+<!-- end broker list -->

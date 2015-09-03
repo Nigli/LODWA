@@ -4,7 +4,7 @@ namespace controller;
 
 use strategy\StrategyDAO,
     futures\FuturesContractDAO,
-    receiver\ReceiverDao,
+    receiver\ReceiverDAO,
     utils\Validate,
     utils\Session;
 
@@ -36,7 +36,7 @@ class StrategylistController extends MainController {
                 $update ? Session::set("notify", "sent") : Session::set("notify", "notsent");
             } elseif ($valid['strategy-submit'] === "delete") {
                 $remove_strat_fut = StrategyDAO::deleteStrategyFuture($valid);
-                $remove_subscription = ReceiverDao::removeSubscriptionByStrategy($valid);
+                $remove_subscription = ReceiverDAO::removeSubscriptionByStrategy($valid);
                 $delete = StrategyDAO::removeStrategy($valid);
                 $delete ? Session::set("notify", "sent") : Session::set("notify", "notsent");
             } else {

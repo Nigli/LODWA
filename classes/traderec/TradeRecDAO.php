@@ -69,6 +69,23 @@ class TradeRecDAO {
         }
     }
 
+    public static function getTradeRecDateByStratId($strat_id) {/*     * GET STRATEGY TIME BY STRATEGY ID* */
+        $db = Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $res = $db->prepare("SELECT DATE_FORMAT(date_time,'%Y-%m-%d') as date "
+                    . "FROM trade_rec "
+                    . "LEFT JOIN strategy ON fk_strategy=id_strategy "
+                    . "WHERE id_strategy=:id_strategy");
+            $res->bindParam(':id_strategy', $strat_id);
+            $res->execute();
+            $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
+            return $tr;
+        } catch (\PDOException $e) {
+            Conn::logConnectionErr($e->getMessage());
+        }
+    }
+
     public static function insertTradeRec($tr) {/*     * INSERT NEW TR FROM EMAIL OBJECT - RETURNS TRUE* */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
