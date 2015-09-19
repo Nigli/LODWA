@@ -6,9 +6,9 @@ $(function(){
             rec[td.eq(count).data("index")] = td.eq(count).text();
         });
         $.each(rec, function (key, value) {
-            $("#" + key).val(value);
-            $('#rightspan').load('process/strategy_name.php?f='+rec['fk_future']);
+            $("#" + key).val(value);            
         });
+        $('#rightspan').load('process/strategy_name.php?f='+rec['fk_future']);
         $("#tr_list_5 tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({ scrollTop: 0 }, 600);
