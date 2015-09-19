@@ -97,14 +97,14 @@ class Email {
         $mail = new PHPMailer();
         $mail->CharSet = 'UTF-8';
         $mail->isSMTP();                                        //*
-        $mail->SMTPDebug  = 2;                                  //*
+        //$mail->SMTPDebug  = 2;                                  //*
         $mail->Debugoutput = 'html';                            //*
         $mail->Host = Enum::SENDER_HOST;
         //$mail->Host = "relay-hosting.secureserver.net";         // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication*
         $mail->Username = $this->sender_email;                 // SMTP username
         $mail->Password = Enum::SENDER_PASS;                // SMTP password*
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted*
         $mail->Port = Enum::SENDER_PORT;                      // TCP port to connect to
 
         $mail->From = $this->sender_email;
@@ -115,43 +115,55 @@ class Email {
 
         $mailclient = clone $mail;
 
-        //mail to broker
         
-        if (in_array(!null, $this->brokers)) {
-            foreach($this->brokers as $k =>$broker) {
-                $mail->ClearAllRecipients();
-                $mail->addAddress($broker->broker_email, $broker->broker_name);                
-                $mail->Body = $this->broker_temp = $this->viewTemp()[0];
-                $plain = $mail->html2text($mail->Body);
-                $mail->AltBody = $plain;
-                $mail->send();
-            }
-        } else {
-            $e = "No broker email or broker name";
-            TradeRec::logTRerrors($e);
-        }                
+        
+        if (in_array(!null, $this->brokers)&& in_array(!null, $this->recipients)) {
+            //mail to broker
+        
+            if (in_array(!null, $this->brokers)) {
+                foreach($this->brokers as $k =>$broker) {
+                    $mail->ClearAllRecipients();
+                    $mail->addAddress($broker->broker_email, $broker->broker_name);                
+                    $mail->Body = $this->broker_temp = $this->viewTemp()[0];
+                    $plain = $mail->html2text($mail->Body);
+                    $mail->AltBody = $plain;                  
+                    if ($mail->send()) {
+                        //echo $broker->broker_email;
+                        //return TRUE;
+                    } else {
+                        $e = "Email not sent";
+                        TradeRec::logTRerrors($e);
+                    }
+                }
+            } else {
+                $e = "No broker email or broker name";
+                TradeRec::logTRerrors($e);
+            }                
 
-        //mail to clients
-        if (in_array(!null, $this->recipients)) {
-            foreach ($this->recipients as $recipient) {
-                $this->hash_email = $recipient['hash_email'];
-                $mailclient->ClearAllRecipients();
-                $mailclient->AddAddress($recipient['email'], $recipient['first_name'] . " " . $recipient['last_name']);
-                $mailclient->Body = $this->viewTemp()[1];
-                $plainclients = $mailclient->html2text($mailclient->Body);
-                $mailclient->AltBody = $plainclients;
-                $mailclient->send();
+            //mail to clients
+            if (in_array(!null, $this->recipients)) {
+                foreach ($this->recipients as $recipient) {
+                    $this->hash_email = $recipient['hash_email'];
+                    $mailclient->ClearAllRecipients();
+                    $mailclient->AddAddress($recipient['email'], $recipient['first_name'] . " " . $recipient['last_name']);
+                    $mailclient->Body = $this->viewTemp()[1];
+                    $plainclients = $mailclient->html2text($mailclient->Body);
+                    $mailclient->AltBody = $plainclients;
+                    $mailclient->send();
+//                    if ($mailclient->send()) {
+//                        echo $recipient['email'];  
+//                        //return TRUE;
+//                    } else {
+//                        $e = "Email not sent";
+//                        TradeRec::logTRerrors($e);
+//                    }
+                }
+            } else {
+                $e = "No recipients";
+                TradeRec::logTRerrors($e);
             }
-        } else {
-            $e = "No recipients";
-            TradeRec::logTRerrors($e);
-        }
-        if ($mail->send()) {
             return TRUE;
-        } else {
-            $e = "Email not sent";
-            TradeRec::logTRerrors($e);
-        }
+        }    
     }
 
     private function nl2p($text) {/*     * SET ALL LETTERS UPPER AND REPLACE \n WITH <p> TAGS* */
