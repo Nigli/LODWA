@@ -5,8 +5,9 @@ class Enum {
     
     //user statuses constants
     const USER = 1;
-    const MANAGER = 4;
-    const ADMIN = 8;
+    const MANAGER_LEV1 = 4;
+    const MANAGER_LEV2 = 8;
+    const ADMIN = 16;
     
     //sender server constants
     const SENDER_PASS = "glglepro2015";

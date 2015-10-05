@@ -23,11 +23,13 @@ class LoginController extends MainController {
         if ($user) {/*         * CHECKS USER VALIDATION AND SETS SESSIONS OF USER ID AND USER STATUS* */
             Session::set("user_id", $user->user_id);
             Session::set("user_status", $user->user_status);
-            
+
             if ($user->user_status == Enum::ADMIN) {/*             * CHECKS USER STATUS AND REDIRECTS* */
                 redirect_to("admin/1"); /*                 * admin* */
-            } elseif ($user->user_status == Enum::MANAGER) {
-                redirect_to("strategylist"); /*                 * manager* */
+            } elseif ($user->user_status == Enum::MANAGER_LEV1) {
+                redirect_to("strategylist"); /*                 * manager level 1* */
+            } elseif ($user->user_status == Enum::MANAGER_LEV2) {
+                redirect_to("receiverlist"); /*                 * manager level 2* */
             } else {
                 redirect_to("trade"); /*                 * USER* */
             }

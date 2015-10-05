@@ -1,4 +1,4 @@
-<?php $this->user_status == \utils\Enum::MANAGER ? include $this->receiver_form : ''; ?>
+<?php $this->user_status == \utils\Enum::MANAGER_LEV1 || $this->user_status == \utils\Enum::MANAGER_LEV2 ? include $this->receiver_form : ''; ?>
 <div id="receiver_list">  
     <h2>Subscribers List</h2>
     <!--filter receiver list-->

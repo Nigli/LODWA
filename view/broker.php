@@ -1,4 +1,4 @@
-<?php $this->user_status == \utils\Enum::MANAGER ? include $this->broker_form : ""; ?>
+<?php $this->user_status == \utils\Enum::MANAGER_LEV1 || $this->user_status == \utils\Enum::MANAGER_LEV2 ? include $this->broker_form : ""; ?>
 <!-- broker list -->
 <div id="profile">
     <table>

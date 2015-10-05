@@ -1,4 +1,4 @@
-<?php $this->user_status == \utils\Enum::MANAGER ? include $this->strategy_form : ''; ?>
+<?php $this->user_status == \utils\Enum::MANAGER_LEV1 ? include $this->strategy_form : ''; ?>
 <div id="strategy_list">
     <h2>Trading Strategies</h2>
     <table>

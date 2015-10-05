@@ -1,4 +1,4 @@
-<?php $this->user_status == \utils\Enum::MANAGER ? include $this->futures_form : ""; ?>
+<?php $this->user_status == \utils\Enum::MANAGER_LEV1 ? include $this->futures_form : ""; ?>
 <div id="futures_list">
     <h2>Futures</h2>
     <table>

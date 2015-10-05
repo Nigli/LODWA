@@ -39,7 +39,7 @@
         ?>
     </div>
     <div id="bottom">
-        <?php $this->user_status==\utils\Enum::MANAGER?include $this->profile_buttons :''; ?>
+        <?php $this->user_status==\utils\Enum::MANAGER_LEV1 || $this->user_status==\utils\Enum::MANAGER_LEV2 ?include $this->profile_buttons :''; ?>
     </div>
 </form>
 <!--END profile form -->

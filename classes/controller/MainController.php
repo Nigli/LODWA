@@ -38,7 +38,8 @@ abstract class MainController {
 
         //layouts...
         $this->layout = file_get_contents("view/layouts/layout.html");
-        $this->layout_manager = file_get_contents("view/layouts/layout_manager.html");
+        $this->layout_manager_lev1 = file_get_contents("view/layouts/layout_manager_lev1.html");
+        $this->layout_manager_lev2 = file_get_contents("view/layouts/layout_manager_lev2.html");
         $this->layout_admin = file_get_contents("view/layouts/layout_admin.html");
     }
 
@@ -52,11 +53,16 @@ abstract class MainController {
             $view = ob_get_clean();
         } elseif ($this->access) {
 
-            if ($this->user_status == Enum::MANAGER) {
+            if ($this->user_status == Enum::MANAGER_LEV1) {
 
                 include "view/{$this->selected_page}.php";
                 $content = ob_get_clean();
-                $view = str_replace('[CONTENT]', $content, $this->layout_manager);
+                $view = str_replace('[CONTENT]', $content, $this->layout_manager_lev1);
+            } elseif ($this->user_status == Enum::MANAGER_LEV2) {
+
+                include "view/{$this->selected_page}.php";
+                $content = ob_get_clean();
+                $view = str_replace('[CONTENT]', $content, $this->layout_manager_lev2);
             } elseif ($this->user_status == Enum::USER) {
 
                 include "view/{$this->selected_page}.php";
