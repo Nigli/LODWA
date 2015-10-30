@@ -59,12 +59,15 @@ class StrategyDAO {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
             $res = $db->prepare("INSERT INTO strategy "
-                    . "(id_strategy,strategy_name, num_tr_day, start_time, end_time) "
-                    . "VALUES ('',:strategy_name, :num_tr_day, :start_time, :end_time)");
-            $res->bindParam(':strategy_name', $strategy['strategy_name']);
+                    . "(id_strategy,strategy_name, strategy_symbol, num_tr_day, start_time, end_time, cxr_start_time, cxr_end_time) "
+                    . "VALUES ('',:strategy_name, strategy_symbol, :num_tr_day, :start_time, :end_time, :cxr_start_time, :cxr_end_time)");
+            $res->bindParam(':strategy_name', $strategy['strategy_name']);       
+            $res->bindParam(':strategy_symbol', $strategy['strategy_symbol']);
             $res->bindParam(':num_tr_day', $strategy['num_tr_day']);
             $res->bindParam(':start_time', $strategy['start_time']);
             $res->bindParam(':end_time', $strategy['end_time']);
+            $res->bindParam(':cxr_start_time', $strategy['cxr_start_time']);
+            $res->bindParam(':cxr_end_time', $strategy['cxr_end_time']);
             $res->execute();
             return $db->lastInsertId();
         } catch (\PDOException $e) {
@@ -78,15 +81,21 @@ class StrategyDAO {
         try {
             $res = $db->prepare("UPDATE strategy "
                     . "SET strategy_name=:strategy_name, "
+                    . "strategy_symbol=:strategy_symbol, "
                     . "num_tr_day=:num_tr_day, "
                     . "start_time=:start_time, "
-                    . "end_time=:end_time "
+                    . "end_time=:end_time, "
+                    . "cxr_start_time=:cxr_start_time, "
+                    . "cxr_end_time=:cxr_end_time "
                     . "WHERE id_strategy=:id_strategy");
             $res->bindParam(':id_strategy', $strategy['id_strategy']);
-            $res->bindParam(':strategy_name', $strategy['strategy_name']);
+            $res->bindParam(':strategy_name', $strategy['strategy_name']);            
+            $res->bindParam(':strategy_symbol', $strategy['strategy_symbol']);
             $res->bindParam(':num_tr_day', $strategy['num_tr_day']);
             $res->bindParam(':start_time', $strategy['start_time']);
             $res->bindParam(':end_time', $strategy['end_time']);
+            $res->bindParam(':cxr_start_time', $strategy['cxr_start_time']);
+            $res->bindParam(':cxr_end_time', $strategy['cxr_end_time']);
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {

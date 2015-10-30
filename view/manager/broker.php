@@ -1,5 +1,5 @@
 <!-- broker form -->
-<form id="broker_form" method="post"  action="processbrok">    
+<form id="broker_form" method="post" action="processbrok">    
     <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
     <input id="manage" type="hidden" value="broker"/>
     <div id="top">

@@ -15,8 +15,8 @@ class Enum {
     const SENDER_HOST = "smtp.gmail.com";
     
     //referer constants
-    const TR_REFERER = "http://localhost/LODWA/trade";
-    const LOG_REFERER = "http://localhost/LODWA/";
+    const TR_REFERER = "http://srlevel.com/trade";
+    const LOG_REFERER = "http://srlevel.com/";
     
     //time constants
     const CHICAGO_TIME = "America/Chicago";

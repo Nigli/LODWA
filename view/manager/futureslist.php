@@ -10,12 +10,12 @@
             <input id="manage" type="hidden" value="futures"/>
             <input id="id_futures" type="hidden" name="id_futures" value=""/>
             <label for="futures_name">Futures Name and Number of Decimal Places</label><br>
-            <input id="futures_name" name="futures_name" type="text" value="" required=""/>        
-            <input id="futures_dec" name="futures_dec" type="number" required=""/><br>
+            <input id="futures_name" name="futures_name" type="text" placeholder="Futures Name" value="" required=""/>        
+            <input id="futures_dec" name="futures_dec" type="number" placeholder="Dec" required=""/><br>
         </div>
         <div id="right">            
             <label for="futures_desc">Write Description for Futures Contract</label><br>
-            <textarea id="futures_desc" name="futures_desc" required=""></textarea><br>
+            <textarea id="futures_desc" name="futures_desc" placeholder="Description..." required=""></textarea><br>
         </div>
         <div id="bottom"> 
             <div id="bottom-left">            

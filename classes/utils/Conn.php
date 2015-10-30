@@ -3,21 +3,21 @@
 namespace utils;
 
 use PDO;
-
 class Conn {
 
-    /* localhost wamp */
-    const DBUSER = "root";
-    const DBPASS = "";
-    const DBHOST = "localhost";
-    const DB = "lodwa";
-    
     public static $conn;
 
     public static function getConnection() {
+        if (HOST == 'lodwa.dev') {
+            /* localhost wamp */
+            $dbuser = "root";
+            $dbpass = "";
+            $dbhost = "localhost";
+            $db = "lodwa";
+        }
         if (!self::$conn) {
             try {
-                self::$conn = new PDO("mysql:dbhost=" . self::DBHOST . ";dbname=" . self::DB . ";charset=UTF8", self::DBUSER, self::DBPASS);
+                self::$conn = new PDO("mysql:dbhost=" . $dbhost . ";dbname=" . $db . ";charset=UTF8", $dbuser, $dbpass);
             } catch (\PDOException $e) {
                 Conn::logConnectionErr($e->getMessage());
             }

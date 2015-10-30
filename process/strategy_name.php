@@ -44,11 +44,11 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
             }
             //if subscribers under that one strategy
             if ($receivers) {
-                echo "Selected strategy: <input type='hidden' id='strategy_id' data-trstart='".$strategies[0]->start_time."' data-trend='".$strategies[0]->end_time."' data-trnum='" . $strategies[0]->num_tr_day_status . "' name='fk_strategy' value='" . $strategies[0]->id_strategy . "'/>" . $strategies[0]->strategy_name;
+                echo "Selected strategy: <input type='hidden' id='fk_strategy' data-trstart='".$strategies[0]->start_time."' data-trend='".$strategies[0]->end_time."' data-cxrstart='".$strategies[0]->cxr_start_time."' data-cxrend='".$strategies[0]->cxr_end_time."' data-trnum='" . $strategies[0]->num_tr_day_status . "' name='fk_strategy' value='" . $strategies[0]->id_strategy . "'/>" . $strategies[0]->strategy_name;
             }
             //if no subscribers under that on one strategy
             else {
-                echo "Selected strategy doesn't have any subscribers!<input type='hidden' id='strategy_id' name='fk_strategy' value='0'/>";
+                echo "Selected strategy doesn't have any subscribers!<input type='hidden' id='fk_strategy' name='fk_strategy' value='0'/>";
             }
         }
         //if more then one strategies then select option
@@ -65,7 +65,7 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
             }           
             //if none of the strategies has receivers
             if(!$num_of_receivers){                
-                echo "Selected strategy doesn't have any subscribers!<input type='hidden' id='strategy_id' name='fk_strategy' value='0'/>";
+                echo "Selected strategy doesn't have any subscribers!<input type='hidden' id='fk_strategy' name='fk_strategy' value='0'/>";
             }
             
             //if only one strategy has receivers 
@@ -83,7 +83,7 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
                 } else {
                     $strategy->num_tr_day_status = 0;
                 }
-                    echo "Selected strategy: <input type='hidden' id='strategy_id' data-trstart='".$strategy->start_time."' data-trend='".$strategy->end_time."' data-trnum='" . $strategy->num_tr_day_status . "' name='fk_strategy' value='" . $strategy->id_strategy . "'/>" . $strategy->strategy_name;
+                    echo "Selected strategy: <input type='hidden' id='fk_strategy' data-trstart='".$strategy->start_time."' data-trend='".$strategy->end_time."' data-cxrstart='".$strategy->cxr_start_time."' data-cxrend='".$strategy->cxr_end_time."' data-trnum='" . $strategy->num_tr_day_status . "' name='fk_strategy' value='" . $strategy->id_strategy . "'/>" . $strategy->strategy_name;
                                 
             }
             
@@ -91,7 +91,7 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
             else{
                 echo "Select one of the strategies: ";
             ?>
-            <select id='strategy_id' name='fk_strategy'>
+            <select id='fk_strategy' name='fk_strategy'>
                 <?php
                 foreach ($strategies as $strategy) {
                     
@@ -112,7 +112,7 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
                     }
                     if ($receivers) {
                         ?>
-                        <option data-trstart="<?php echo $strategy->start_time ?>" data-trend="<?php echo $strategy->end_time ?>" data-trnum="<?php echo $strategy->num_tr_day_status ?>" value="<?php echo $strategy->id_strategy ?>"><?php echo $strategy->strategy_name ?></option>                    
+                        <option data-trstart="<?php echo $strategy->start_time ?>" data-trend="<?php echo $strategy->end_time ?>" data-cxrstart="<?php echo $strategy->cxr_start_time ?>" data-cxrend="<?php echo $strategy->cxr_end_time ?>" data-trnum="<?php echo $strategy->num_tr_day_status ?>" value="<?php echo $strategy->id_strategy ?>" <?php echo (isset($_GET['s']) && $_GET['s'] == $strategy->id_strategy) ? "selected" : "" ?>><?php echo $strategy->strategy_name ?></option>                    
                         <?php
                     }
                 }
@@ -125,7 +125,7 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
     
     //if there are no strategies associated with selected futures
     else {
-        echo "Selected strategy is not active!<input type='hidden' id='strategy_id' name='fk_strategy' value='0'/>";
+        echo "Selected strategy is not active!<input type='hidden' id='fk_strategy' name='fk_strategy' value='0'/>";
     }
 }
 //initial selection of last TR
@@ -153,10 +153,10 @@ else {
         }
     }
     if ($strategies && $receivers) {
-        echo "Selected strategy: <input type='hidden' id='strategy_id' name='fk_strategy' data-trstart='".$strategies[0]->start_time."' data-trend='".$strategies[0]->end_time."'  data-trnum='" . $num_tr_day_status . "'  value='" . $this->lastTR->id_strategy . "'/>" . $this->lastTR->strategy_name;
+        echo "Selected strategy: <input type='hidden' id='fk_strategy' name='fk_strategy' data-trstart='".$strategies[0]->start_time."' data-trend='".$strategies[0]->end_time."' data-cxrstart='".$strategies[0]->cxr_start_time."' data-cxrend='".$strategies[0]->cxr_end_time."'  data-trnum='" . $num_tr_day_status . "'  value='" . $this->lastTR->id_strategy . "'/>" . $this->lastTR->strategy_name;
     } elseif (!$strategies) {
-        echo "Selected strategy is not active!<input type='hidden' id='strategy_id' name='fk_strategy' value='0'/>";
+        echo "Selected strategy is not active!<input type='hidden' id='fk_strategy' name='fk_strategy' value='0'/>";
     } else {
-        echo "Selected strategy dosn't have any subscribers!<input type='hidden' id='strategy_id' name='fk_strategy' value='0'/>";
+        echo "Selected strategy dosn't have any subscribers!<input type='hidden' id='fk_strategy' name='fk_strategy' value='0'/>";
     }
 }

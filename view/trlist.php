@@ -1,3 +1,4 @@
+<?php $this->user_status == \utils\Enum::MANAGER_LEV1 || $this->user_status == \utils\Enum::MANAGER_LEV2 ? include $this->trresult_form : ""; ?>
 <div id="tr_list">
     <h2>Trade Recommendations</h2> 
     <!--filter tr list-->
@@ -28,6 +29,18 @@
                 ?>
             </select>
         </div>
+        <div class="filter">
+            <label for="filter_result">By Result</label><br>
+            <select id="filter_result" name="result">
+                <option value="0">ANY</option>
+                <option>TGTH</option>
+                <option>STPH</option>
+                <option>UNEX</option>
+                <option>SCXL</option>
+                <option>REPL</option>
+                <option>TEST</option>
+            </select>
+        </div>
         <div id="bottom">
             <div id="bottom-left">
                 <button form="tr_list_filter" class="reset" value="reset">Reset</button>
@@ -41,11 +54,13 @@
         <thead>
             <tr>
                 <th colspan="2">#</th>
-                <th>Contract</th>
-                <th>Entry Choice</th>
+                <th>Contract</th>                
+                <th>Strat</th>
+                <th>Choice</th>
                 <th>Entry Price</th>
                 <th>Price Target</th>
                 <th>Stop Loss</th>
+                <th>Result</th>
                 <th>Date</th>
                 <th>Time</th>
             </tr>
@@ -56,12 +71,15 @@
                 $this->listnumb++;
                 ?>
                 <tr>
+                    <td data-index="id_tr" class="td_hidden"><?php echo $tr->id_tr ?></td>
                     <td data-title=''><?php echo $this->listnumb ?></td>
-                    <td data-title='Futures Name'><?php echo $tr->futures_name ?></td>
-                    <td data-title='Entry Choice'><?php echo $tr->entry_choice ?></td>
-                    <td data-title='Entry Price'><?php echo $tr->entry_price ?></td>
-                    <td data-title='Price Target'><?php echo $tr->price_target ?></td>
-                    <td data-title='Stop Loss'><?php echo $tr->stop_loss ?></td>
+                    <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                    
+                    <td data-title='Strat' data-index="strat_symbol"><?php echo $tr->strategy_symbol ?></td>
+                    <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
+                    <td data-title='Entry Price' data-index="entry_price"><?php echo $tr->entry_price ?></td>
+                    <td data-title='Price Target' data-index="price_target"><?php echo $tr->price_target ?></td>
+                    <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>                    
+                    <td data-title='Result' data-index="result"><?php echo $tr->result != ""? $tr->result : "/" ?></td>
                     <td data-title='Date'><?php echo $tr->date ?></td>
                     <td data-title='Time'><?php echo $tr->time ?></td>
                 </tr>
@@ -85,5 +103,6 @@
 </div>
 <script>
     $("#filter_entry_choice").val("<?php echo $this->links['entry_choice'] ?>");
-    $("#filter_future").val("<?php echo $this->links['fk_future'] ?>");
+    $("#filter_future").val("<?php echo $this->links['fk_future'] ?>");    
+    $("#filter_result").val("<?php echo $this->links['result'] ?>");
 </script>

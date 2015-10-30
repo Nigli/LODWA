@@ -11,21 +11,23 @@ class TradeRecDAO {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
-            $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,fk_strategy,futures_name,month,year,num_contr,id_strategy,strategy_name,description,entry_choice,duration, "
-                    . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
-                    . "DATE_FORMAT(date_time,'%e %M %Y') AS date, DATE_FORMAT(date_time, '%H:%i') AS time "
+            $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,fk_strategy,futures_name,month,year,num_contr,id_strategy,strategy_name,strategy_symbol,description,entry_choice,duration, "
+                    . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss, result, "
+                    . "DATE_FORMAT(date_time,'%e %b %Y') AS date, DATE_FORMAT(date_time, '%H:%i') AS time "
                     . "FROM trade_rec "
                     . "LEFT JOIN futures_cont ON fk_future=id_futures "
                     . "LEFT JOIN strategy ON fk_strategy=id_strategy "
                     . "WHERE fk_future= IF(:filter_future = 0, fk_future, :filter_future) AND "
-                    . "entry_choice= IF(:filter_entry_choice = '0', entry_choice, :filter_entry_choice) "
+                    . "entry_choice= IF(:filter_entry_choice = '0', entry_choice, :filter_entry_choice) AND "
+                    . "result= IF(:filter_result = '0', result, :filter_result) "
                     . "ORDER BY id_tr DESC "
                     . "LIMIT :limit "
                     . "OFFSET :offset");
             $res->bindParam(':limit', $pagin->limit, PDO::PARAM_INT);
             $res->bindParam(':offset', $pagin->offset, PDO::PARAM_INT);
             $res->bindParam(':filter_future', $filter['fk_future'], PDO::PARAM_INT);
-            $res->bindParam(':filter_entry_choice', $filter['entry_choice'], PDO::PARAM_STR);
+            $res->bindParam(':filter_entry_choice', $filter['entry_choice'], PDO::PARAM_STR);            
+            $res->bindParam(':filter_result', $filter['result'], PDO::PARAM_STR);
             $res->execute();
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
             return $tr;
@@ -38,9 +40,9 @@ class TradeRecDAO {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
-            $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,fk_strategy,futures_name,month,year,num_contr,id_strategy,strategy_name,description,entry_choice,duration, "
-                    . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss,"
-                    . "DATE_FORMAT(date_time,'%e %M %Y') AS date, DATE_FORMAT(date_time, '%H:%i') AS time "
+            $res = $db->prepare("SELECT id_tr,fk_tr_type,fk_future,fk_strategy,futures_name,month,year,num_contr,id_strategy,strategy_name,strategy_symbol,description,entry_choice,duration, "
+                    . "REPLACE(FORMAT(entry_price, dec_places),',','') AS entry_price,REPLACE(FORMAT(price_target,dec_places),',','') AS price_target,REPLACE(FORMAT(stop_loss,dec_places),',','') AS stop_loss, result, "
+                    . "DATE_FORMAT(date_time,'%e %b %Y') AS date, DATE_FORMAT(date_time, '%H:%i') AS time "
                     . "FROM trade_rec "
                     . "LEFT JOIN futures_cont ON fk_future=id_futures "
                     . "LEFT JOIN strategy ON fk_strategy=id_strategy "
@@ -111,6 +113,22 @@ class TradeRecDAO {
             Conn::logConnectionErr($e->getMessage());
         }
     }
+    
+    public static function setTradeRecResult($tr) {
+        $db = Conn::getConnection();
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $res = $db->prepare("UPDATE trade_rec "
+                    . "SET result = :result "
+                    . "WHERE id_tr = :id_tr");
+            $res->bindParam(':id_tr', $tr['id_tr']);
+            $res->bindParam(':result', $tr['result']);
+            $res->execute();
+            return TRUE;
+        } catch (\PDOException $e) {
+            Conn::logConnectionErr($e->getMessage());
+        }
+    }
 
     public static function countTrades($filter) {/*     * GET TOTAL NUMBER OF FILTERED TR - RETURNS COLUMN* */
         $db = Conn::getConnection();
@@ -118,9 +136,11 @@ class TradeRecDAO {
         try {
             $res = $db->prepare("SELECT COUNT(*) FROM trade_rec "
                     . "WHERE fk_future= IF(:filter_future = 0, fk_future, :filter_future) AND "
-                    . "entry_choice= IF(:filter_entry_choice = '0', entry_choice, :filter_entry_choice)");
+                    . "entry_choice= IF(:filter_entry_choice = '0', entry_choice, :filter_entry_choice) AND "
+                    . "result= IF(:filter_result = '0', result, :filter_result)");
             $res->bindParam(':filter_future', $filter['fk_future'], PDO::PARAM_INT);
             $res->bindParam(':filter_entry_choice', $filter['entry_choice'], PDO::PARAM_STR);
+            $res->bindParam(':filter_result', $filter['result'], PDO::PARAM_STR);
             $res->execute();
             $receivers = $res->fetchColumn();
             return $receivers;

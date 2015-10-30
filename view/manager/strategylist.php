@@ -9,12 +9,20 @@
             <input id="note" type="hidden" value="<?php echo $this->notice ?>"/>
             <input id="manage" type="hidden" value="strategy"/>
             <input id="id_strategy" type="hidden" name="id_strategy" value=""/>
-            <label for="strategy_name">Strategy Name</label><br>
-            <input id="strategy_name" name="strategy_name" type="text" value="" required=""/>
-            <label for="num_tr_day">Number of trades per day</label><br>
-            <input id="num_tr_day_check" type="checkbox"/>
-            <label for="num_tr_day_check">unlimited trades</label>
-            <input id="num_tr_day" name="num_tr_day" type="text" value=""/><br>
+            <div id="strategy_name_left">
+                <label for="strategy_name">Strategy Name</label><br>
+                <input id="strategy_name" name="strategy_name" type="text" placeholder="Strategy Name" value="" required=""/>
+            </div>
+            <div id="strategy_name_right">
+                <label for="strategy_symbol">Symbol</label><br>
+                <input id="strategy_symbol" name="strategy_symbol" type="text" placeholder="Symb" value="" required=""/>
+            </div>
+            <div id="tr_per_day">
+                <label for="num_tr_day">Number of trades per day</label><br>
+                <input id="num_tr_day_check" type="checkbox"/>
+                <label for="num_tr_day_check">unlimited trades</label><br>
+                <input id="num_tr_day" name="num_tr_day" type="text" placeholder="#TR's" value=""/><br>
+            </div>
             <div id="tr_time">
                 <div id="tr_time_left">
                     <label for="start_time">Trading starts at</label><br>
@@ -27,8 +35,22 @@
                     <input id="end_time_check" type="checkbox"/>
                     <label for="end_time_check">Any Time</label>
                     <input id="end_time" name="end_time" type="time" value=""/>
+                </div>               
+            </div>
+            <div id="cxr_time">
+                <div id="cxr_time_left">
+                    <label for="cxr_start_time">CXL and RPL starts at</label><br>
+                    <input id="cxr_start_time_check" type="checkbox"/>
+                    <label for="cxr_start_time_check">Any Time</label>
+                    <input id="cxr_start_time" name="cxr_start_time" type="time" value=""/>
+                </div>                
+                <div id="cxr_time_right">
+                    <label for="cxr_end_time">CXL and RPL ends at</label><br>
+                    <input id="cxr_end_time_check" type="checkbox"/>
+                    <label for="cxr_end_time_check">Any Time</label>
+                    <input id="cxr_end_time" name="cxr_end_time" type="time" value=""/>
                 </div>
-               
+
             </div>
         </div>
         <div id="right">

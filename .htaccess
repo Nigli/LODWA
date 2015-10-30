@@ -14,6 +14,7 @@ RewriteRule ^unsub/(.+) index.php?p=unsub&id=$1 [NC]
 RewriteRule ^unsub$ index.php?p=unsub [NC]
 
 RewriteRule ^processtr$ index.php?p=trform&process=process_tr.php [NC]
+RewriteRule ^processtrresult$ index.php?p=trlist&process=process_trresult.php [NC]
 RewriteRule ^processrec$ index.php?p=receiverlist&process=process_receiver.php [NC]
 RewriteRule ^processfut$ index.php?p=futureslist&process=process_futures.php [NC]
 RewriteRule ^processstrat$ index.php?p=strategylist&process=process_strategy.php [NC]
@@ -25,15 +26,15 @@ RewriteRule ^loginprocess$ index.php?p=login&process=process_login.php [NC]
 RewriteRule ^logout$ index.php?p=logout&process=process_logout.php [NC]
 RewriteRule ^unsubprocess$ index.php?p=unsub&process=process_unsub.php [NC]
 
-RewriteCond %{HTTP_HOST} ^localhost\.com [NC] 
-RewriteRule ^(.*)$ https://www.localhost.com/$1 [L,R=301]
+#RewriteCond %{HTTP_HOST} ^localhost\.com [NC] 
+#RewriteRule ^(.*)$ https://www.localhost.com/$1 [L,R=301]
 
-<Files admin>
-AuthName "Please enter username and password"
-AuthType Basic
-AuthUserFile D:/Nikola/programiranje/php/wamp/www/LODWA/.passwd
-Require valid-user
-</Files>
+#<Files admin>
+#AuthName "Please enter username and password"
+#AuthType Basic
+#AuthUserFile D:/Nikola/programiranje/php/wamp/www/LODWA/.passwd
+#Require valid-user
+#</Files>
  
 Options -Indexes
 

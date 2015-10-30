@@ -5,8 +5,13 @@
         <thead>
             <tr>
                 <th colspan="2">#</th>
-                <th>Strategy Name</th>
+                <th>Strategy</th>
                 <th>Futures Contracts</th>
+                <th>#TR/day</th>
+                <th>Start TR</th>                
+                <th>End TR</th>                
+                <th>Start CXR</th>                
+                <th>End CXR</th>
             </tr>
         </thead>
         <?php
@@ -16,7 +21,8 @@
                 ?>
                 <tr>
                     <td data-title=''><?php echo $this->index_numb ?></td>
-                    <td data-title='Strategy Name' data-index="strategy_name"><?php echo $strategy->strategy_name ?></td>
+                    <td data-title='Strategy Name' data-index="strategy_name" class="td_hidden"><?php echo $strategy->strategy_name ?></td>                    
+                    <td data-title='Strategy Symbol' data-index="strategy_symbol"><?php echo $strategy->strategy_symbol?></td>
                     <td data-title='Futures Contracts'>
                         <?php
                         $futures_list = "";
@@ -35,9 +41,11 @@
                     }
                     ?>   
                     <td data-index="id_strategy" class="td_hidden"><?php echo $strategy->id_strategy ?></td>       
-                    <td data-index="num_tr_day" class="td_hidden"><?php echo $strategy->num_tr_day ?></td>  
-                    <td data-index="start_time" class="td_hidden"><?php echo $strategy->start_time ?></td>  
-                    <td data-index="end_time" class="td_hidden"><?php echo $strategy->end_time ?></td>  
+                    <td data-index="num_tr_day"><?php echo ($strategy->num_tr_day != -1)? $strategy->num_tr_day : "unlimited" ?></td>  
+                    <td data-index="start_time"><?php echo $strategy->start_time ?></td>  
+                    <td data-index="end_time"><?php echo $strategy->end_time ?></td>  
+                    <td data-index="cxr_start_time"><?php echo $strategy->cxr_start_time ?></td>  
+                    <td data-index="cxr_end_time"><?php echo $strategy->cxr_end_time ?></td>  
                 </tr>
                 <?php
             }

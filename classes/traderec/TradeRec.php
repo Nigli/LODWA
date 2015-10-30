@@ -19,6 +19,7 @@ class TradeRec {
     public $year;
     public $num_contr;
     public $strategy_name;
+    public $strategy_symbol;
     public $description;
     public $entry_choice;
     public $op_entry_choice;

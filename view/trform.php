@@ -90,10 +90,12 @@
             <tr>
                 <th colspan="2">#</th>
                 <th>Contract</th>
-                <th>Entry Choice</th>
+                <th>Strat</th>
+                <th>Choice</th>
                 <th>Entry Price</th>
                 <th>Price Target</th>
                 <th>Stop Loss</th>
+                <th>Result</th>
                 <th>Date</th>
                 <th>Time</th>
             </tr>
@@ -105,11 +107,13 @@
                 ?>
                 <tr>
                     <td data-title=''><?php echo $this->index_numb ?></td>
-                    <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>
-                    <td data-title='Entry Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
+                    <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                   
+                    <td data-title='Strat'><?php echo $tr->strategy_symbol ?></td>
+                    <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
                     <td data-title='Entry Price' data-index="entry_price"><?php echo $tr->entry_price ?></td>
                     <td data-title='Price Target' data-index="price_target"><?php echo $tr->price_target ?></td>
-                    <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>
+                    <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>                    
+                    <td data-title='Result'><?php echo $tr->result != ""? $tr->result : "/" ?></td>
                     <td data-title='Date' data-index="date"><?php echo $tr->date ?></td>
                     <td data-title='Time' data-index="time"><?php echo $tr->time ?></td>
                     <td data-index="fk_future" class="td_hidden"><?php echo $tr->fk_future ?></td>
@@ -135,14 +139,15 @@
         document.getElementById("notice-confirm").value = obj.value;
         tr_type = obj.innerHTML;
     }
-    ;
-    $("#fk_future").val("<?php echo $this->lastTR->fk_future ?>");
-    $("#month").val("<?php echo $this->lastTR->month ?>");
-    $("#year").val("<?php echo $this->lastTR->year ?>");
-    $("#entry_choice").val("<?php echo $this->lastTR->entry_choice ?>");
-    $("#duration").val("<?php echo $this->lastTR->duration ?>");
-    $("#entry_price").val("<?php echo $this->lastTR->entry_price ?>");
-    $("#price_target").val("<?php echo $this->lastTR->price_target ?>");
-    $("#stop_loss").val("<?php echo $this->lastTR->stop_loss ?>");
-    $("#num_contr").val("<?php echo $this->lastTR->num_contr ?>");
+    $(document).ready(function(){
+        $("#fk_future").val("<?php echo $this->lastTR->fk_future ?>");
+        $("#month").val("<?php echo $this->lastTR->month ?>");
+        $("#year").val("<?php echo $this->lastTR->year ?>");
+        $("#entry_choice").val("<?php echo $this->lastTR->entry_choice ?>");
+        $("#duration").val("<?php echo $this->lastTR->duration ?>");
+        $("#entry_price").val("<?php echo $this->lastTR->entry_price ?>");
+        $("#price_target").val("<?php echo $this->lastTR->price_target ?>");
+        $("#stop_loss").val("<?php echo $this->lastTR->stop_loss ?>");
+        $("#num_contr").val("<?php echo $this->lastTR->num_contr ?>");      
+    });
 </script>

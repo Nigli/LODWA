@@ -23,7 +23,7 @@ abstract class MainController {
     public function __construct() {
         //filters...
         $this->default_receiver_filter = array("p" => "receiverlist", "page" => "1", "active" => "1", "type" => "0", "strategy" => "0", "ba" => "ALL");
-        $this->default_trlist_filter = array("p" => "trlist", "page" => "1", "entry_choice" => "0", "fk_future" => "0");
+        $this->default_trlist_filter = array("p" => "trlist", "page" => "1", "entry_choice" => "0", "fk_future" => "0", "result" => "0");
 
         //sessions...
         $this->user_id = Session::get('user_id');
@@ -37,10 +37,10 @@ abstract class MainController {
         $this->access = User::pageAccess($this->user_status, $this->selected_page);
 
         //layouts...
-        $this->layout = file_get_contents("view/layouts/layout.html");
-        $this->layout_manager_lev1 = file_get_contents("view/layouts/layout_manager_lev1.html");
-        $this->layout_manager_lev2 = file_get_contents("view/layouts/layout_manager_lev2.html");
-        $this->layout_admin = file_get_contents("view/layouts/layout_admin.html");
+        $this->layout = file_get_contents("view/layouts/layout.php");
+        $this->layout_manager_lev1 = file_get_contents("view/layouts/layout_manager_lev1.php");
+        $this->layout_manager_lev2 = file_get_contents("view/layouts/layout_manager_lev2.php");
+        $this->layout_admin = file_get_contents("view/layouts/layout_admin.php");
     }
 
     public function view() {

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>       
-        <base href="//localhost/LODWA/" />
+        <base href="<?=HOST?>" />
         <title>Northern Advisors LOD</title>
         <meta name="robots" content="noindex">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">        
@@ -25,8 +25,7 @@
                 <i class="fa fa-bars respons"></i>
                 <div id="header-nav">
                     <ul>
-                        <li><a href="strategylist">Strategies</a></li>
-                        <li><a href="futureslist">Futures</a></li>
+                        <li><a href="trlist">Trade Recs</a></li>
                         <li><a href="receiverlist">Subscribers</a></li>
                         <li><a href="emailtemp">Email Temp</a></li>
                         <li class="settings">

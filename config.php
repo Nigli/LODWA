@@ -9,3 +9,6 @@ function __autoload($classname) {
 function redirect_to($new_location) {
     header("Location: " . $new_location);
 }
+
+define('HOST', "lodwa.dev");
+//define('HOST', "srlevel.com");
