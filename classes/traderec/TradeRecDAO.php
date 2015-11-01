@@ -78,7 +78,7 @@ class TradeRecDAO {
             $res = $db->prepare("SELECT DATE_FORMAT(date_time,'%Y-%m-%d') as date "
                     . "FROM trade_rec "
                     . "LEFT JOIN strategy ON fk_strategy=id_strategy "
-                    . "WHERE id_strategy=:id_strategy");
+                    . "WHERE id_strategy=:id_strategy && trade_rec.fk_tr_type = 1");
             $res->bindParam(':id_strategy', $strat_id);
             $res->execute();
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
