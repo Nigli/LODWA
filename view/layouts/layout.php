@@ -1,8 +1,6 @@
-<?php require 'config.php'; ?>
 <!DOCTYPE HTML>
 <html>
     <head>        
-        <base href="<?=HOST?>" />
         <title>Northern Advisors LOD</title>
         <meta name="robots" content="noindex">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">        

@@ -14,6 +14,9 @@ class Conn {
             $dbpass = "";
             $dbhost = "localhost";
             $db = "lodwa";
+        } else {
+            
+           
         }
         if (!self::$conn) {
             try {

@@ -6,7 +6,8 @@ use traderec\TradeRecDAO,
     utils\Pagination,
     utils\Validate,
     utils\Session,
-    futures\FuturesContractDAO;
+    futures\FuturesContractDAO,
+    strategy\StrategyDAO;
 
 class TrlistController extends MainController {
 
@@ -26,8 +27,10 @@ class TrlistController extends MainController {
         $this->lastTR = TradeRecDAO::getTradeRecs($this->pagin, $this->links);
         $this->listnumb = $this->pagin->offset;
         $this->futures = FuturesContractDAO::getActiveFutures();
+        $this->strategies = StrategyDAO::getActiveStrategies();
         $this->unsetNotice("notify");
     }
+
     public function process($post) {
         $valid = Validate::manager($post);
         $update = $valid ? TradeRecDAO::setTradeRecResult($valid) : false;

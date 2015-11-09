@@ -60,7 +60,7 @@ class StrategyDAO {
         try {
             $res = $db->prepare("INSERT INTO strategy "
                     . "(id_strategy,strategy_name, strategy_symbol, num_tr_day, start_time, end_time, cxr_start_time, cxr_end_time) "
-                    . "VALUES ('',:strategy_name, strategy_symbol, :num_tr_day, :start_time, :end_time, :cxr_start_time, :cxr_end_time)");
+                    . "VALUES ('',:strategy_name, :strategy_symbol, :num_tr_day, :start_time, :end_time, :cxr_start_time, :cxr_end_time)");
             $res->bindParam(':strategy_name', $strategy['strategy_name']);       
             $res->bindParam(':strategy_symbol', $strategy['strategy_symbol']);
             $res->bindParam(':num_tr_day', $strategy['num_tr_day']);

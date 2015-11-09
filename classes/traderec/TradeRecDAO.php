@@ -19,7 +19,8 @@ class TradeRecDAO {
                     . "LEFT JOIN strategy ON fk_strategy=id_strategy "
                     . "WHERE fk_future= IF(:filter_future = 0, fk_future, :filter_future) AND "
                     . "entry_choice= IF(:filter_entry_choice = '0', entry_choice, :filter_entry_choice) AND "
-                    . "result= IF(:filter_result = '0', result, :filter_result) "
+                    . "result= IF(:filter_result = '0', result, :filter_result) AND "
+                    . "fk_strategy= IF(:filter_strategy = '0', fk_strategy, :filter_strategy) "
                     . "ORDER BY id_tr DESC "
                     . "LIMIT :limit "
                     . "OFFSET :offset");
@@ -27,7 +28,8 @@ class TradeRecDAO {
             $res->bindParam(':offset', $pagin->offset, PDO::PARAM_INT);
             $res->bindParam(':filter_future', $filter['fk_future'], PDO::PARAM_INT);
             $res->bindParam(':filter_entry_choice', $filter['entry_choice'], PDO::PARAM_STR);            
-            $res->bindParam(':filter_result', $filter['result'], PDO::PARAM_STR);
+            $res->bindParam(':filter_result', $filter['result'], PDO::PARAM_STR);          
+            $res->bindParam(':filter_strategy', $filter['strategy'], PDO::PARAM_STR);
             $res->execute();
             $tr = $res->fetchAll(PDO::FETCH_CLASS, "traderec\TradeRec");
             return $tr;
@@ -137,10 +139,12 @@ class TradeRecDAO {
             $res = $db->prepare("SELECT COUNT(*) FROM trade_rec "
                     . "WHERE fk_future= IF(:filter_future = 0, fk_future, :filter_future) AND "
                     . "entry_choice= IF(:filter_entry_choice = '0', entry_choice, :filter_entry_choice) AND "
-                    . "result= IF(:filter_result = '0', result, :filter_result)");
+                    . "result= IF(:filter_result = '0', result, :filter_result) AND "                    
+                    . "fk_strategy= IF(:filter_strategy = '0', fk_strategy, :filter_strategy)");
             $res->bindParam(':filter_future', $filter['fk_future'], PDO::PARAM_INT);
             $res->bindParam(':filter_entry_choice', $filter['entry_choice'], PDO::PARAM_STR);
-            $res->bindParam(':filter_result', $filter['result'], PDO::PARAM_STR);
+            $res->bindParam(':filter_result', $filter['result'], PDO::PARAM_STR);     
+            $res->bindParam(':filter_strategy', $filter['strategy'], PDO::PARAM_STR);
             $res->execute();
             $receivers = $res->fetchColumn();
             return $receivers;

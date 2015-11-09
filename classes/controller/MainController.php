@@ -23,7 +23,7 @@ abstract class MainController {
     public function __construct() {
         //filters...
         $this->default_receiver_filter = array("p" => "receiverlist", "page" => "1", "active" => "1", "type" => "0", "strategy" => "0", "ba" => "ALL");
-        $this->default_trlist_filter = array("p" => "trlist", "page" => "1", "entry_choice" => "0", "fk_future" => "0", "result" => "0");
+        $this->default_trlist_filter = array("p" => "trlist", "page" => "1", "entry_choice" => "0", "fk_future" => "0", "result" => "0", "strategy" => "0");
 
         //sessions...
         $this->user_id = Session::get('user_id');

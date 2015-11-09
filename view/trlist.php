@@ -41,6 +41,23 @@
                 <option>TEST</option>
             </select>
         </div>
+        <div class="filter">
+            <label for="filter_strategy">By Strategy</label><br>
+            <select id="filter_strategy" name="strategy">
+                <option value="0">ANY</option>
+                <?php
+                if ($this->strategies) {
+                    foreach ($this->strategies as $key => $strategy) {
+                        ?>
+                        <option value='<?php echo $strategy->id_strategy ?>' ><?php echo $strategy->strategy_name ?></option>
+                        <?php
+                    }
+                } else {
+                    //Session:set("err","trlisterror");
+                }
+                ?>
+            </select>
+        </div>
         <div id="bottom">
             <div id="bottom-left">
                 <button form="tr_list_filter" class="reset" value="reset">Reset</button>
@@ -53,7 +70,7 @@
     <table>
         <thead>
             <tr>
-                <th colspan="2">#</th>
+                <th colspan="2">ID</th>
                 <th>Contract</th>                
                 <th>Strat</th>
                 <th>Choice</th>
@@ -68,11 +85,10 @@
         <?php
         if ($this->lastTR) {
             foreach ($this->lastTR as $k => $tr) {
-                $this->listnumb++;
+//                $this->listnumb++;
                 ?>
                 <tr>
-                    <td data-index="id_tr" class="td_hidden"><?php echo $tr->id_tr ?></td>
-                    <td data-title=''><?php echo $this->listnumb ?></td>
+                    <td data-title='TR Id' data-index="id_tr" ><?php echo $tr->id_tr ?></td>
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                    
                     <td data-title='Strat' data-index="strat_symbol"><?php echo $tr->strategy_symbol ?></td>
                     <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
@@ -104,5 +120,6 @@
 <script>
     $("#filter_entry_choice").val("<?php echo $this->links['entry_choice'] ?>");
     $("#filter_future").val("<?php echo $this->links['fk_future'] ?>");    
-    $("#filter_result").val("<?php echo $this->links['result'] ?>");
+    $("#filter_result").val("<?php echo $this->links['result'] ?>");  
+    $("#filter_strategy").val("<?php echo $this->links['strategy'] ?>");
 </script>

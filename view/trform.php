@@ -88,7 +88,7 @@
     <table>
         <thead>
             <tr>
-                <th colspan="2">#</th>
+                <th colspan="2">ID</th>
                 <th>Contract</th>
                 <th>Strat</th>
                 <th>Choice</th>
@@ -103,10 +103,10 @@
         <?php
         if ($this->last5TR) {
             foreach ($this->last5TR as $k => $tr) {
-                $this->index_numb++;
+//                $this->index_numb++;
                 ?>
                 <tr>
-                    <td data-title=''><?php echo $this->index_numb ?></td>
+                    <td data-title=''><?php echo $tr->id_tr ?></td>
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                   
                     <td data-title='Strat'><?php echo $tr->strategy_symbol ?></td>
                     <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
