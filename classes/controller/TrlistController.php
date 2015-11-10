@@ -20,19 +20,19 @@ class TrlistController extends MainController {
 
     public function __construct() {
         parent::__construct();
-        $this->trresult_form = 'view/manager/trresult.php';
-        $this->links = isset($_GET["page"]) ? $_GET : $this->default_trlist_filter;
-        $this->count = TradeRecDAO::countTrades($this->links);
-        $this->pagin = new Pagination($this->links, $this->count);
-        $this->lastTR = TradeRecDAO::getTradeRecs($this->pagin, $this->links);
-        $this->listnumb = $this->pagin->offset;
-        $this->futures = FuturesContractDAO::getActiveFutures();
-        $this->strategies = StrategyDAO::getActiveStrategies();
+        $this->trresult_form    = 'view/manager/trresult.php';
+        $this->links            = isset($_GET["page"]) ? $_GET : $this->default_trlist_filter;
+        $this->count            = TradeRecDAO::countTrades($this->links);
+        $this->pagin            = new Pagination($this->links, $this->count);
+        $this->lastTR           = TradeRecDAO::getTradeRecs($this->pagin, $this->links);
+        $this->listnumb         = $this->pagin->offset;
+        $this->futures          = FuturesContractDAO::getActiveFutures();
+        $this->strategies       = StrategyDAO::getActiveStrategies();
         $this->unsetNotice("notify");
     }
 
     public function process($post) {
-        $valid = Validate::manager($post);
+        $valid  = Validate::manager($post);
         $update = $valid ? TradeRecDAO::setTradeRecResult($valid) : false;
         $update ? Session::set("notify", "sent") : Session::set("notify", "notsent");
         redirect_to("trlist");

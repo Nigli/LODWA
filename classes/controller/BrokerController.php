@@ -13,8 +13,8 @@ class BrokerController extends MainController {
 
     public function __construct() {
         parent::__construct();
-        $this->broker = BrokerDAO::getBrokerInfo(); /*         * GET BROKER INFO OBJECT* */
-        $this->broker_form = 'view/manager/broker.php';
+        $this->broker       = BrokerDAO::getBrokerInfo(); /*         * GET BROKER INFO OBJECT* */
+        $this->broker_form  = 'view/manager/broker.php';
         $this->unsetNotice("notify");
     }
 

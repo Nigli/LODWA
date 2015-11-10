@@ -17,8 +17,8 @@ class LoginController extends MainController {
     }
 
     public function process($post) {
-        $valid = Validate::login($post); /*         * VALIDATES LOGIN FIELDS* */
-        $user = $valid ? Validate::checkUser($valid) : false; /*         * CHECKS LOGIN VALIDATION* */
+        $valid  = Validate::login($post); /*         * VALIDATES LOGIN FIELDS* */
+        $user   = $valid ? Validate::checkUser($valid) : false; /*         * CHECKS LOGIN VALIDATION* */
         $this->logUser($post, $user);
         if ($user) {/*         * CHECKS USER VALIDATION AND SETS SESSIONS OF USER ID AND USER STATUS* */
             Session::set("user_id", $user->user_id);
@@ -40,11 +40,11 @@ class LoginController extends MainController {
     }
 
     public function logUser($post, $user) {
-        $time = date("Y-m-d H:i:s");
-        $email = $post['email'];
+        $time       = date("Y-m-d H:i:s");
+        $email      = $post['email'];
         $ip_address = $_SERVER['REMOTE_ADDR'];
-        $success = $user ? "OK" : "ERROR";
-        $log = $success . "|" . $time . "|" . $email . "|" . $ip_address . "|" . "\n";
+        $success    = $user ? "OK" : "ERROR";
+        $log        = $success . "|" . $time . "|" . $email . "|" . $ip_address . "|" . "\n";
         file_put_contents("log/userlog.txt", $log, FILE_APPEND | LOCK_EX);
         return FALSE;
     }

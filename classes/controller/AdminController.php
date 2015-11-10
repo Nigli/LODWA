@@ -19,12 +19,12 @@ class AdminController extends MainController {
 
     public function __construct() {
         parent::__construct();
-        $this->links = isset($_GET["page"]) ? $_GET : "";
-        $this->count = UserDAO::countUsers();
-        $this->pagin = new Pagination($this->links, $this->count);
-        $this->users = UserDAO::getUsers();
-        $this->status = UserDAO::getStatus();
-        $this->admin_page = "view/admin.php";
+        $this->links        = isset($_GET["page"]) ? $_GET : "";
+        $this->count        = UserDAO::countUsers();
+        $this->pagin        = new Pagination($this->links, $this->count);
+        $this->users        = UserDAO::getUsers();
+        $this->status       = UserDAO::getStatus();
+        $this->admin_page   = "view/admin.php";
         $this->unsetNotice("notify");
     }
 
@@ -33,15 +33,15 @@ class AdminController extends MainController {
         $hash = User::createPass($valid['password'], $valid['password_conf']);
         if ($valid && $hash) {
             if ($valid['user-submit'] === "update") {
-                $valid['hash'] = $hash;
-                $user = UserDAO::updateUser($valid);
+                $valid['hash']  = $hash;
+                $user           = UserDAO::updateUser($valid);
                 $user ? Session::set("notify", "sent") : Session::set("notify", "notsent");
             } elseif ($valid['user-submit'] === "remove") {
-                $user = UserDAO::removeUser($valid);
+                $user           = UserDAO::removeUser($valid);
                 $user ? Session::set("notify", "sent") : Session::set("notify", "notsent");
             } else {
                 $valid['hash'] = $hash;
-                $user = UserDAO::newUser($valid);
+                $user           = UserDAO::newUser($valid);
                 $user ? Session::set("notify", "sent") : Session::set("notify", "notsent");
             }
         } else {

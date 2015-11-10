@@ -171,7 +171,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td valign="top" style="padding-top: 30px; padding-right: 0px; padding-bottom: 20px;padding-left: 9px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
-                                                                <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                <table align="left" width="66%" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
                                                                     <tbody>
                                                                         <tr>
                                                                             <td valign="top" style="padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
@@ -181,7 +181,20 @@
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
-                                                                </table>
+                                                                </table>                                                               
+                                                                <table align="right" border="0" cellpadding="0" cellspacing="0" width="33%" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td valign="top" style="padding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 0;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;color: #606060;line-height: 125%;text-align: left;">
+                                                                                <div style="text-align: right;">
+                                                                                    <span style="font-family: Helvetica;font-style: normal;font-weight: bold;font-size:20px;">
+<!--TR NUMBER-->                                                                        TR Number: [TR_NUM]
+                                                                                    </span>
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>     
                                                             </td>
                                                         </tr>
                                                     </tbody>

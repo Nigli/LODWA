@@ -12,7 +12,7 @@ class UnsubController extends MainController {
 
     public function __construct() {
         parent::__construct();
-        $this->subscriber = isset($_GET['id']) ? ReceiverDAO::getReceiverByHash($_GET['id']) : FALSE;
+        $this->subscriber   = isset($_GET['id']) ? ReceiverDAO::getReceiverByHash($_GET['id']) : FALSE;
         $this->layout_unsub = "view/unsub.php";
     }
 

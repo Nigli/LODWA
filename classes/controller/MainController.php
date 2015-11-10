@@ -22,25 +22,25 @@ abstract class MainController {
 
     public function __construct() {
         //filters...
-        $this->default_receiver_filter = array("p" => "receiverlist", "page" => "1", "active" => "1", "type" => "0", "strategy" => "0", "ba" => "ALL");
-        $this->default_trlist_filter = array("p" => "trlist", "page" => "1", "entry_choice" => "0", "fk_future" => "0", "result" => "0", "strategy" => "0");
+        $this->default_receiver_filter  = array("p" => "receiverlist", "page" => "1", "active" => "1", "type" => "0", "strategy" => "0", "ba" => "ALL");
+        $this->default_trlist_filter    = array("p" => "trlist", "page" => "1", "entry_choice" => "0", "fk_future" => "0", "result" => "0", "strategy" => "0");
 
         //sessions...
-        $this->user_id = Session::get('user_id');
-        $this->user_status = Session::get('user_status');
-        $this->notice = null != (Session::get("notify")) ? Session::get("notify") : "";
+        $this->user_id      = Session::get('user_id');
+        $this->user_status  = Session::get('user_status');
+        $this->notice       = null != (Session::get("notify")) ? Session::get("notify") : "";
 
         //variables...
-        $this->token = md5(uniqid(rand(), true));
-        $this->index_numb = 0;
-        $this->selected_page = isset($_GET['p']) ? $_GET['p'] : "";
-        $this->access = User::pageAccess($this->user_status, $this->selected_page);
+        $this->token            = md5(uniqid(rand(), true));
+        $this->index_numb       = 0;
+        $this->selected_page    = isset($_GET['p']) ? $_GET['p'] : "";
+        $this->access           = User::pageAccess($this->user_status, $this->selected_page);
 
         //layouts...
-        $this->layout = file_get_contents("view/layouts/layout.php");
-        $this->layout_manager_lev1 = file_get_contents("view/layouts/layout_manager_lev1.php");
-        $this->layout_manager_lev2 = file_get_contents("view/layouts/layout_manager_lev2.php");
-        $this->layout_admin = file_get_contents("view/layouts/layout_admin.php");
+        $this->layout               = file_get_contents("view/layouts/layout.php");
+        $this->layout_manager_lev1  = file_get_contents("view/layouts/layout_manager_lev1.php");
+        $this->layout_manager_lev2  = file_get_contents("view/layouts/layout_manager_lev2.php");
+        $this->layout_admin         = file_get_contents("view/layouts/layout_admin.php");
     }
 
     public function view() {
@@ -56,23 +56,23 @@ abstract class MainController {
             if ($this->user_status == Enum::MANAGER_LEV1) {
 
                 include "view/{$this->selected_page}.php";
-                $content = ob_get_clean();
-                $view = str_replace('[CONTENT]', $content, $this->layout_manager_lev1);
+                $content    = ob_get_clean();
+                $view       = str_replace('[CONTENT]', $content, $this->layout_manager_lev1);
             } elseif ($this->user_status == Enum::MANAGER_LEV2) {
 
                 include "view/{$this->selected_page}.php";
-                $content = ob_get_clean();
-                $view = str_replace('[CONTENT]', $content, $this->layout_manager_lev2);
+                $content    = ob_get_clean();
+                $view       = str_replace('[CONTENT]', $content, $this->layout_manager_lev2);
             } elseif ($this->user_status == Enum::USER) {
 
                 include "view/{$this->selected_page}.php";
-                $content = ob_get_clean();
-                $view = str_replace('[CONTENT]', $content, $this->layout);
+                $content    = ob_get_clean();
+                $view       = str_replace('[CONTENT]', $content, $this->layout);
             } else {
 
                 include $this->admin_page;
-                $content = ob_get_clean();
-                $view = str_replace('[CONTENT]', $content, $this->layout_admin);
+                $content    = ob_get_clean();
+                $view       = str_replace('[CONTENT]', $content, $this->layout_admin);
             }
         } elseif ($this->selected_page == "unsub") {
             include $this->layout_unsub;

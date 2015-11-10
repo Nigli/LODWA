@@ -13,13 +13,13 @@ class Pagination {
     public $end;
 
     public function __construct($links, $count) {/*     * EXCEPTS GET ARRAY AND COUNT NUMBER* */
-        $this->total = $count;
-        $this->limit = 5;
-        $this->pages = ceil($this->total / $this->limit);
-        $this->page = min($this->pages, $links['page']);
-        $this->offset = ($this->page - 1) * $this->limit;
-        $this->start = $this->offset + 1;
-        $this->end = min(($this->offset + $this->limit), $this->total);
+        $this->total    = $count;
+        $this->limit    = 5;
+        $this->pages    = ceil($this->total / $this->limit);
+        $this->page     = min($this->pages, $links['page']);
+        $this->offset   = ($this->page - 1) * $this->limit;
+        $this->start    = $this->offset + 1;
+        $this->end      = min(($this->offset + $this->limit), $this->total);
     }
 
     public function createLinks($links) {

@@ -13,7 +13,7 @@ class FutureslistController extends MainController {
 
     public function __construct() {
         parent::__construct();
-        $this->future = FuturesContractDAO::getActiveFutures(); /*         * GET FUTURES INFO OBJECT* */
+        $this->future       = FuturesContractDAO::getActiveFutures(); /*         * GET FUTURES INFO OBJECT* */
         $this->futures_form = "view/manager/futureslist.php";
         $this->unsetNotice("notify");
     }

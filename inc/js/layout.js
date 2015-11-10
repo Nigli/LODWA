@@ -294,11 +294,11 @@ $(function () {
         $("html, body").animate({scrollTop: $(document).height()}, 1000);
     });
     //filter tr list
-    if ($("#filter_entry_choice").val() != 0 || $("#filter_future").val() != 0 || $("#filter_result").val() != 0) {
+    if ($("#filter_entry_choice").val() != 0 || $("#filter_future").val() != 0 || $("#filter_result").val() != 0 || $("#filter_strategy").val() != 0) {
         $("#tr_list_filter .reset").show();
     }
-    $("#filter_entry_choice, #filter_future, #filter_result").on("change", function () {
-        if ($("#filter_entry_choice").val() != 0 || $("#filter_future").val() != 0 || $("#filter_result").val() != 0) {
+    $("#filter_entry_choice, #filter_future, #filter_result, #filter_strategy").on("change", function () {
+        if ($("#filter_entry_choice").val() != 0 || $("#filter_future").val() != 0 || $("#filter_result").val() != 0 || $("#filter_strategy").val() != 0) {
             $("#tr_list_filter .reset").show();
         }
     });
@@ -307,6 +307,7 @@ $(function () {
         $("#filter_entry_choice").val("0");
         $("#filter_future").val("0");
         $("#filter_result").val("0");
+        $("#filter_strategy").val("0");
     });
     //filter receivers
     if ($("#receiver_list_type").val() != 0 || $("#receiver_list_active").val() != 1 || $("#receiver_list_ba").val() != "ALL" || $("#receiver_list_strat").val() != 0) {

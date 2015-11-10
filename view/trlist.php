@@ -30,18 +30,6 @@
             </select>
         </div>
         <div class="filter">
-            <label for="filter_result">By Result</label><br>
-            <select id="filter_result" name="result">
-                <option value="0">ANY</option>
-                <option>TGTH</option>
-                <option>STPH</option>
-                <option>UNEX</option>
-                <option>SCXL</option>
-                <option>REPL</option>
-                <option>TEST</option>
-            </select>
-        </div>
-        <div class="filter">
             <label for="filter_strategy">By Strategy</label><br>
             <select id="filter_strategy" name="strategy">
                 <option value="0">ANY</option>
@@ -58,6 +46,18 @@
                 ?>
             </select>
         </div>
+        <div class="filter">
+            <label for="filter_result">By Result</label><br>
+            <select id="filter_result" name="result">
+                <option value="0">ANY</option>
+                <option>TGTH</option>
+                <option>STPH</option>
+                <option>UNEX</option>
+                <option>SCXL</option>
+                <option>REPL</option>
+                <option>TEST</option>
+            </select>
+        </div>        
         <div id="bottom">
             <div id="bottom-left">
                 <button form="tr_list_filter" class="reset" value="reset">Reset</button>

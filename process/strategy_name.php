@@ -18,9 +18,9 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
     //selection by clicking
     require_once '../config.php';
     date_default_timezone_set(Enum::CHICAGO_TIME);
-    $date = new \DateTime();
-    $now_date = $date->format("Y-m-d");
-    $now_time = $date->format("H:i");
+    $date       = new \DateTime();
+    $now_date   = $date->format("Y-m-d");
+    $now_time   = $date->format("H:i");
     $strategies = StrategyDAO::getStrategiesByFutureId($_GET['f']);
     
     //if there are strategies from seleced futures id
@@ -28,9 +28,9 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
 
         //if there is only one strategy
         if (count($strategies) == 1) {
-            $receivers = ReceiverDAO::getReceiversByStrat($strategies[0]->id_strategy);
-            $trs = TradeRecDAO::getTradeRecDateByStratId($strategies[0]->id_strategy);
-            $same_date = array();
+            $receivers  = ReceiverDAO::getReceiversByStrat($strategies[0]->id_strategy);
+            $trs        = TradeRecDAO::getTradeRecDateByStratId($strategies[0]->id_strategy);
+            $same_date  = array();
             foreach ($trs as $tr) {
                 if ($now_date == $tr->date) {
                     $same_date[] = $tr->date;
@@ -59,8 +59,8 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
             $num_of_receivers = 0;
             for($i=0;$i<count($all_strategies_receivers);$i++){
                 if($all_strategies_receivers[$i]){
-                    $receivers[] = $all_strategies_receivers[$i];
-                    $num_of_receivers += 1;
+                    $receivers[]        = $all_strategies_receivers[$i];
+                    $num_of_receivers   += 1;
                 }
             }           
             //if none of the strategies has receivers
@@ -70,8 +70,8 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
             
             //if only one strategy has receivers 
             elseif ($num_of_receivers == 1) {                
-                $trs = TradeRecDAO::getTradeRecDateByStratId($strategy->id_strategy);
-                $same_date = array();
+                $trs        = TradeRecDAO::getTradeRecDateByStratId($strategy->id_strategy);
+                $same_date  = array();
                 foreach ($trs as $tr) {
                     if ($now_date == $tr->date) {
                         $same_date[] = $tr->date;
@@ -96,9 +96,9 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
                 foreach ($strategies as $strategy) {
                     
                     //getting subscribers to those strategies, if no subscribers that strategy won't be shown
-                    $receivers = ReceiverDAO::getReceiversByStrat($strategy->id_strategy);
-                    $trs = TradeRecDAO::getTradeRecDateByStratId($strategy->id_strategy);
-                    $same_date = array();
+                    $receivers  = ReceiverDAO::getReceiversByStrat($strategy->id_strategy);
+                    $trs        = TradeRecDAO::getTradeRecDateByStratId($strategy->id_strategy);
+                    $same_date  = array();
                     foreach ($trs as $tr) {
                         if ($now_date == $tr->date) {
                             $same_date[] = $tr->date;
@@ -132,13 +132,13 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
 //getting subscribers to those strategies, if no subscribers, form can not be submited
 else {
     date_default_timezone_set(Enum::CHICAGO_TIME);
-    $date = new \DateTime();
-    $now_date = $date->format("Y-m-d");
-    $now_time = $date->format("H:i");
-    $receivers = $this->lastTR ? ReceiverDAO::getReceiversByStrat($this->lastTR->id_strategy) : null;
+    $date       = new \DateTime();
+    $now_date   = $date->format("Y-m-d");
+    $now_time   = $date->format("H:i");
+    $receivers  = $this->lastTR ? ReceiverDAO::getReceiversByStrat($this->lastTR->id_strategy) : null;
     $strategies = $this->lastTR ? StrategyDAO::getStrategiesByFutureId($this->lastTR->fk_future) : null;
-    $trs = TradeRecDAO::getTradeRecDateByStratId($this->lastTR->id_strategy);
-    $same_date = array();
+    $trs        = TradeRecDAO::getTradeRecDateByStratId($this->lastTR->id_strategy);
+    $same_date  = array();
     foreach ($strategies as $strategy) {
         foreach ($trs as $tr) {
             if ($now_date == $tr->date) {

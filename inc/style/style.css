@@ -58,7 +58,7 @@ h2 {
 #tr_form, #tr_list, #tr_list_5, #trresult_form, #receiver_form, #receiver_list, #emailtemp, #strategy_list_form, #futures_list_form, #futures_list, #strategy_list, #profile, #broker_form, #login, #unsub,#user_list,#user_list_form, #notice {
     margin:60px auto 0px auto;    
     padding: 15px;
-    width: 850px;
+    width: 900px;
     -webkit-box-shadow: 1px 1px 1px 1px rgba(50, 50, 50, 0.2);
     -moz-box-shadow:    1px 1px 1px 1px rgba(50, 50, 50, 0.2);
     box-shadow:         1px 1px 1px 1px rgba(50, 50, 50, 0.2);

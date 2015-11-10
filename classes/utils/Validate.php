@@ -75,22 +75,23 @@ class Validate {
 
     static function tr($form) {
         $args = array(/*             * CHECKS EACH TR FORM FIELD* */
-            'fk_tr_type' => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
-            'fk_future' => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
-            'fk_strategy' => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
-            'month' => FILTER_SANITIZE_STRING,
-            'year' => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => date('Y'), 'max_range' => date('Y') + 10)),
-            'entry_choice' => FILTER_SANITIZE_STRING,
-            'rpl_price' => FILTER_SANITIZE_STRING,
-            'duration' => FILTER_SANITIZE_STRING,
-            'num_contr' => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
-            'entry_price' => array('filter' => FILTER_SANITIZE_NUMBER_FLOAT, 'flags' => FILTER_FLAG_ALLOW_FRACTION, 'options' => array('decimal' => '.')),
-            'price_target' => array('filter' => FILTER_SANITIZE_NUMBER_FLOAT, 'flags' => FILTER_FLAG_ALLOW_FRACTION, 'options' => array('decimal' => '.')),
-            'stop_loss' => array('filter' => FILTER_SANITIZE_NUMBER_FLOAT, 'flags' => FILTER_FLAG_ALLOW_FRACTION, 'options' => array('decimal' => '.'))
+            'fk_tr_type'    => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
+            'fk_future'     => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
+            'fk_strategy'   => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
+            'month'         => FILTER_SANITIZE_STRING,
+            'year'          => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => date('Y'), 'max_range' => date('Y') + 10)),
+            'entry_choice'  => FILTER_SANITIZE_STRING,
+            'rpl_price'     => FILTER_SANITIZE_STRING,
+            'duration'      => FILTER_SANITIZE_STRING,
+            'num_contr'     => array('filter' => FILTER_VALIDATE_INT, 'options' => array('min_range' => 1)),
+            'entry_price'   => array('filter' => FILTER_SANITIZE_NUMBER_FLOAT, 'flags' => FILTER_FLAG_ALLOW_FRACTION, 'options' => array('decimal' => '.')),
+            'price_target'  => array('filter' => FILTER_SANITIZE_NUMBER_FLOAT, 'flags' => FILTER_FLAG_ALLOW_FRACTION, 'options' => array('decimal' => '.')),
+            'stop_loss'     => array('filter' => FILTER_SANITIZE_NUMBER_FLOAT, 'flags' => FILTER_FLAG_ALLOW_FRACTION, 'options' => array('decimal' => '.'))
         );
         if (Validate::checkToken($form, "tr_token") && Validate::checkReferer(Enum::TR_REFERER) && Validate::trPrice($form)) {/*         * CHECKS TOKEN, REFERER AND PRICE* */
             array_filter($form, array('self', 'filter'));
             $valid = filter_var_array($form, $args);
+            
             /*             * CHECK IF FIELD NOT EMPTY OR FALSE, MONTH AND ENTRY_CHOICE ARE VALID* */
             if (in_array($valid['month'], cal_info(0)['months']) && in_array($valid['entry_choice'], array('BUY', 'SELL')) && in_array($valid['duration'], array('DAY', 'GTC'))) {
                 return $valid;
@@ -124,8 +125,8 @@ class Validate {
     static function manager($form) {
         array_filter($form, array('self', 'filter'));
         if (isset($form['email'])) {
-            $email = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
-            $form['email'] = $email;
+            $email          = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
+            $form['email']  = $email;
         }
         $valid = $form;
         return $valid;
@@ -133,9 +134,9 @@ class Validate {
 
     static function user($form) {
         array_filter($form, array('self', 'filter'));
-        $email = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
-        $form['email'] = $email;
-        $valid = $form;
+        $email          = filter_var($form['email'], FILTER_VALIDATE_EMAIL);
+        $form['email']  = $email;
+        $valid          = $form;
         if (!in_array(NULL || FALSE, $valid)) {//CHECK IF $VALID FIELD NOT EMPTY OR FALSE
             return $valid;
         } elseif (isset($valid['id_user']) && $valid['id_user'] == '') {
