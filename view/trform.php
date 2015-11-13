@@ -106,7 +106,7 @@
 //                $this->index_numb++;
                 ?>
                 <tr>
-                    <td data-title=''><?php echo $tr->id_tr ?></td>
+                    <td data-title=''><?php echo $tr->tr_symbol ?></td>
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                   
                     <td data-title='Strat'><?php echo $tr->strategy_symbol ?></td>
                     <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>

@@ -88,7 +88,7 @@
 //                $this->listnumb++;
                 ?>
                 <tr>
-                    <td data-title='TR Id' data-index="id_tr" ><?php echo $tr->id_tr ?></td>
+                    <td data-title='TR Symbol' data-index="tr_symbol" ><?php echo $tr->tr_symbol ?></td>
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                    
                     <td data-title='Strat' data-index="strat_symbol"><?php echo $tr->strategy_symbol ?></td>
                     <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>

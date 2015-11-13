@@ -9,6 +9,7 @@ use futures\FuturesContractDAO,
 class TradeRec {
 
     public $id_tr;
+    public $tr_symbol;
     public $fk_tr_type;
     public $rpl_price;
     public $tr_type_name;
@@ -46,7 +47,7 @@ class TradeRec {
             $this->futures_name = $future->futures_name;
             $this->description  = $future->description;
         }
-        $strategy = StrategyDAO::getStrategyById($this->fk_strategy);
+        $strategy               = StrategyDAO::getStrategyById($this->fk_strategy);
         $this->strategy_name    = $strategy ? $strategy->strategy_name : FALSE;
         $this->op_entry_choice  = ($this->entry_choice == "BUY") ? "SELL" : "BUY"; /*         * SET OPOSITE NAME FOR ENTRY CHOICE TO USE IT FOR EMAIL TEMPLATE* */
         $this->tr_type_name     = TradeRecDAO::getTradeRecType($this->fk_tr_type); /*         * GET TR TYPE NAME FROM TR TYPE ID* */

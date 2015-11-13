@@ -12,6 +12,7 @@ use sender\SenderInfoDAO,
 
 class Email {
 
+    public $tr_symbol;
     public $fk_tr_type;
     public $tr_type_name;
     public $rpl_price;
@@ -193,7 +194,7 @@ class Email {
         }
 
         $elements = array(/*             * ARRAY KEYS ARE STRINGS IN TEMPLATE AND VALUES OF ARRAY ELEMENTS HAS TO BE REPLACED WITH THOSE STRINGS* */
-            '[TR_NUM]'              => $this->id_tr,
+            '[TR_NUM]'              => $this->tr_symbol,
             '[TITLE]'               => $this->title,
             '[COLOR_TRADE_TITLE]'   => $color_title,
             '[COLOR_STOP_LOSS]'     => $color_stop_loss,
