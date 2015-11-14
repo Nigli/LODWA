@@ -23,6 +23,7 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
     $now_time   = $date->format("H:i");
     $strategies = StrategyDAO::getStrategiesByFutureId($_GET['f']);
     
+    
     //if there are strategies from seleced futures id
     if ($strategies) {
 
@@ -54,27 +55,23 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
         //if more then one strategies then select option
         else {
             foreach ($strategies as $strategy) {                   
-                $all_strategies_receivers[] = ReceiverDAO::getReceiversByStrat($strategy->id_strategy);
-            }
-            $num_of_receivers = 0;
-            for($i=0;$i<count($all_strategies_receivers);$i++){
-                if($all_strategies_receivers[$i]){
-                    $receivers[]        = $all_strategies_receivers[$i];
-                    $num_of_receivers   += 1;
-                }
-            }           
+                $all_strategies_receivers[]   = ReceiverDAO::getReceiversByStrat($strategy->id_strategy);
+            }            
+            
             //if none of the strategies has receivers
-            if(!$num_of_receivers){                
+            if(count($all_strategies_receivers) == 0){                
                 echo "Selected strategy doesn't have any subscribers!<input type='hidden' id='fk_strategy' name='fk_strategy' value='0'/>";
             }
             
             //if only one strategy has receivers 
-            elseif ($num_of_receivers == 1) {                
+            elseif (count(array_filter($all_strategies_receivers)) == 1) { 
+                $strategy = StrategyDAO::getStrategyById($all_strategies_receivers[0][0]->fk_strategy);
+                   
                 $trs        = TradeRecDAO::getTradeRecDateByStratId($strategy->id_strategy);
                 $same_date  = array();
                 foreach ($trs as $tr) {
                     if ($now_date == $tr->date) {
-                        $same_date[] = $tr->date;
+                        $same_date = $tr->date;
                     }
                 }
                 $number_of_trs_today = count($same_date);
@@ -83,7 +80,7 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
                 } else {
                     $strategy->num_tr_day_status = 0;
                 }
-                    echo "Selected strategy: <input type='hidden' id='fk_strategy' data-trstart='".$strategy->start_time."' data-trend='".$strategy->end_time."' data-cxrstart='".$strategy->cxr_start_time."' data-cxrend='".$strategy->cxr_end_time."' data-trnum='" . $strategy->num_tr_day_status . "' name='fk_strategy' value='" . $strategy->id_strategy . "'/>" . $strategy->strategy_name;
+                echo "Selected strategy: <input type='hidden' id='fk_strategy' data-trstart='".$strategy->start_time."' data-trend='".$strategy->end_time."' data-cxrstart='".$strategy->cxr_start_time."' data-cxrend='".$strategy->cxr_end_time."' data-trnum='" . $strategy->num_tr_day_status . "' name='fk_strategy' value='" . $strategy->id_strategy . "'/>" . $strategy->strategy_name;
                                 
             }
             
