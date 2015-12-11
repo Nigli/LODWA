@@ -74,6 +74,7 @@
                 <th>Contract</th>                
                 <th>Strat</th>
                 <th>Choice</th>
+                <th>Qty</th>
                 <th>Entry Price</th>
                 <th>Price Target</th>
                 <th>Stop Loss</th>
@@ -88,10 +89,12 @@
 //                $this->listnumb++;
                 ?>
                 <tr>
+                    <td data-title='TR ID' data-index="id_tr" class="td_hidden"><?php echo $tr->id_tr ?></td>
                     <td data-title='TR Symbol' data-index="tr_symbol" ><?php echo $tr->tr_symbol ?></td>
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                    
                     <td data-title='Strat' data-index="strat_symbol"><?php echo $tr->strategy_symbol ?></td>
                     <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
+                    <td data-title='Qty' data-index="num_contr"><?php echo $tr->num_contr ?></td>
                     <td data-title='Entry Price' data-index="entry_price"><?php echo $tr->entry_price ?></td>
                     <td data-title='Price Target' data-index="price_target"><?php echo $tr->price_target ?></td>
                     <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>                    

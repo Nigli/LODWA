@@ -92,6 +92,7 @@
                 <th>Contract</th>
                 <th>Strat</th>
                 <th>Choice</th>
+                <th>Qty</th>
                 <th>Entry Price</th>
                 <th>Price Target</th>
                 <th>Stop Loss</th>
@@ -109,7 +110,8 @@
                     <td data-title=''><?php echo $tr->tr_symbol ?></td>
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                   
                     <td data-title='Strat'><?php echo $tr->strategy_symbol ?></td>
-                    <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>
+                    <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>  
+                    <td data-title='Qty' data-index="num_contr"><?php echo $tr->num_contr ?></td>
                     <td data-title='Entry Price' data-index="entry_price"><?php echo $tr->entry_price ?></td>
                     <td data-title='Price Target' data-index="price_target"><?php echo $tr->price_target ?></td>
                     <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>                    
@@ -119,8 +121,7 @@
                     <td data-index="fk_future" class="td_hidden"><?php echo $tr->fk_future ?></td>
                     <td data-index="fk_strategy" class="td_hidden"><?php echo $tr->fk_strategy ?></td>
                     <td data-index="month" class="td_hidden"><?php echo $tr->month ?></td>
-                    <td data-index="year" class="td_hidden"><?php echo $tr->year ?></td>              
-                    <td data-index="num_contr" class="td_hidden"><?php echo $tr->num_contr ?></td>
+                    <td data-index="year" class="td_hidden"><?php echo $tr->year ?></td>            
                     <td data-index="duration" class="td_hidden"><?php echo $tr->duration ?></td>
                     <td data-index="strategy_name" class="td_hidden"><?php echo $tr->strategy_name ?></td>
                 </tr>
