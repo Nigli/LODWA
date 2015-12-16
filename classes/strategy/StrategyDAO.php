@@ -89,7 +89,7 @@ class StrategyDAO {
                     . "end_time=:end_time, "
                     . "cxr_start_time=:cxr_start_time, "
                     . "cxr_end_time=:cxr_end_time, "
-                    . "auto_tr=:auto_tr "
+                    . "auto_tr=:auto_tr, "
                     . "num_contracts=:num_contracts "
                     . "WHERE id_strategy=:id_strategy");
             $res->bindParam(':id_strategy', $strategy['id_strategy']);
