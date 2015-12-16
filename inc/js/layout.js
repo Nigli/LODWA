@@ -50,17 +50,7 @@ $(function () {
                 cxrend = response.cxrend;
                 trnum = response.trnum;
             }
-            if(autotr != 0) {                    
-                var entry_price = parseFloat($("#entry_price").val());
-                var entry_choice = $("#entry_choice").val();
-
-                if(entry_choice == "BUY") {            
-                    $("#price_target").val(entry_price + autotr);
-                    $("#stop_loss").val(entry_price - autotr);
-                } else {
-                    $("#price_target").val(entry_price - autotr);
-                    $("#stop_loss").val(entry_price + autotr);
-                }
+            if(autotr != 0) {   
                 $("#price_target, #stop_loss").addClass("disable");
             } else {
                 $("#price_target, #stop_loss").removeClass("disable");
