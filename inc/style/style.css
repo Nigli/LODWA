@@ -292,7 +292,7 @@ h2 {
     width: 69%;
 }
 /******FUTURES & STRATEGIES*******/
-#strategy_list_form #right input, #strategy_name, #strategy_symbol, #num_tr_day, #start_time, #end_time, #cxr_end_time, #cxr_start_time, #futures_list_form  #left input, #futures_desc, #broker_form input {
+#strategy_list_form #right input, #strategy_name, #strategy_symbol, #num_tr_day, #start_time, #end_time, #cxr_end_time, #cxr_start_time, #auto_tr, #num_contracts, #futures_list_form  #left input, #futures_desc, #broker_form input {
     margin: 10px 0px 30px 5px;
     padding: 4px;
     padding-left: 9px;
@@ -328,10 +328,14 @@ h2 {
     float: left;
     width: 48%;
 }
-#tr_time_right, #cxr_time_right {
+#auto_tr_left, #auto_tr_right, #auto_tr_center {
+    float: left;
+    width: 30%;
+}
+#tr_time_right, #cxr_time_right, #auto_tr_right, #auto_tr_center {
     margin-left: 10px;
 }
-#start_time, #end_time, #cxr_start_time, #cxr_end_time {
+#start_time, #end_time, #cxr_start_time, #cxr_end_time, #num_tr_day, #auto_tr, #num_contracts{
     width: 87%;
 }
 #futures_desc {

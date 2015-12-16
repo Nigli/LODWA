@@ -18,6 +18,8 @@ class Strategy {
     public $num_tr_day_status;
     public $tr_time_status;
     public $cxr_time_status;
+    public $auto_tr;
+    public $num_contracts;
     public $futures_info = array();
 
     public function __construct() {

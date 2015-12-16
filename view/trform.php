@@ -3,7 +3,7 @@
     <input id="tr_note" type="hidden" value="<?php echo $this->notice ?>"/>
     <div id="top">
         <h2>New Trade Rec</h2>    
-        <span id="rightspan"><?php include "process/strategy_name.php" ?></span><br>
+        <span id="rightspan"><?php //include "process/strategy_name.php" ?></span><br>
     </div>
     <div id="left">
         <!--ENTRY CHOICE SELECT-->
@@ -28,7 +28,7 @@
             }
             ?>
         </select>
-        <input id="num_contr" name="num_contr" type="number" value="" required="" min="1"/><br>
+        <input id="num_contr" class="disable" name="num_contr" type="number" value="" required="" min="1"/><br>
         <!--END FUTURE CONTRACT SELECT-->
         <!--MONTH AND YEAR SELECT-->
         <label>Month and Year</label><br>
@@ -58,13 +58,13 @@
     <!--PRICES INPUT-->    
     <div id="right">
         <label>Entry Price</label>
-        <input id="entry_price" class="prices" name="entry_price" type="number" value="" required="" step="any"/><br> 
+        <input id="entry_price" class="prices" name="entry_price" type="number" value="" required=""/><br> 
         <label>Stop Loss</label><br>
         <input type="radio" name="rpl_price" value="stop_loss" class="radio_rep"/>
-        <input id="stop_loss" class="prices" name="stop_loss" type="number" value='' required="" step="any"/><br>
+        <input id="stop_loss" class="prices disable" name="stop_loss" type="number" value='' required="" /><br>
         <label>Price Target</label><br>
         <input type="radio" name="rpl_price" value="price_target"  class="radio_rep"/>
-        <input id="price_target" class="prices" name="price_target" type="number" value="" required="" step="any"/>
+        <input id="price_target" class="prices disable" name="price_target" type="number" value="" required="" />
     </div>
     <!--END PRICES INPUT-->
     <!--BUTTONS-->

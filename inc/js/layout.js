@@ -1,4 +1,29 @@
 $(function () {
+    var autotr, num_contracts, trstart, trend, cxrstart, cxrend, trnum, trnum, data, strat_id;
+    $.getJSON('process/strategy_name.php', function (response) {
+        $('#rightspan').html(response.text);
+        if (response.data) {
+            data = response.data;
+            strat_id = $("#fk_strategy :selected").val();
+            autotr = parseFloat(data[strat_id].autotr);
+            num_contracts = data[strat_id].num_contracts;
+        } else {
+            data = null;
+            strat_id = null;
+            autotr = parseFloat(response.autotr);
+            num_contracts = response.num_contracts;
+            trstart = response.trstart;
+            trend = response.trend;
+            cxrstart = response.cxrstart;
+            cxrend = response.cxrend;
+            trnum = response.trnum;
+        }
+        if(autotr != 0) {
+            $("#price_target, #stop_loss").addClass("disable");
+        } else {
+            $("#price_target, #stop_loss").removeClass("disable");
+        }
+    });
     $("#tr_list_5 tbody tr").on("click", function () {
         var td = $(this).children();
         var rec = {};
@@ -8,16 +33,147 @@ $(function () {
         $.each(rec, function (key, value) {
             $("#" + key).val(value);
         });
-        $('#rightspan').load('process/strategy_name.php?f=' + rec['fk_future'] + '&s=' + rec['fk_strategy']);
+        $.getJSON('process/strategy_name.php?f=' + rec['fk_future'] + '&s=' + rec['fk_strategy'], function (response) {
+            $('#rightspan').html(response.text);
+            if (response.data) {
+                data = response.data;
+                strat_id = $("#fk_strategy :selected").val();
+                autotr = parseFloat(data[strat_id].autotr);
+            } else {
+                data = null;
+                strat_id = null;
+                autotr = parseFloat(response.autotr);
+                num_contracts = response.num_contracts;
+                trstart = response.trstart;
+                trend = response.trend;
+                cxrstart = response.cxrstart;
+                cxrend = response.cxrend;
+                trnum = response.trnum;
+            }
+            if(autotr != 0) {                    
+                var entry_price = parseFloat($("#entry_price").val());
+                var entry_choice = $("#entry_choice").val();
+
+                if(entry_choice == "BUY") {            
+                    $("#price_target").val(entry_price + autotr);
+                    $("#stop_loss").val(entry_price - autotr);
+                } else {
+                    $("#price_target").val(entry_price - autotr);
+                    $("#stop_loss").val(entry_price + autotr);
+                }
+                $("#price_target, #stop_loss").addClass("disable");
+            } else {
+                $("#price_target, #stop_loss").removeClass("disable");
+            }
+        });
+
         $("#tr_list_5 tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
         $("html, body").animate({scrollTop: 0}, 600);
+
+    });
+    $("body").on("change", "#fk_strategy", function () {
+//    $("#fk_strategy").on("change",  function () {
+        strat_id = $(this).val();
+        num_contracts = data[strat_id].num_contracts;
+        autotr = parseFloat(data[strat_id].autotr);
+        $("#num_contr").val(num_contracts);
+        
+        if(autotr != 0) {                    
+            var entry_price = parseFloat($("#entry_price").val());
+            var entry_choice = $("#entry_choice").val();
+
+            if(entry_choice == "BUY") {            
+                $("#price_target").val(entry_price + autotr);
+                $("#stop_loss").val(entry_price - autotr);
+            } else {
+                $("#price_target").val(entry_price - autotr);
+                $("#stop_loss").val(entry_price + autotr);
+            }
+            $("#price_target, #stop_loss").addClass("disable");
+        } else {
+            $("#price_target, #stop_loss").removeClass("disable");
+        }
     });
     //function for selecting future strategy, populating right span
     $('#fk_future').on('change', function () {
         var value = $(this).val();
-        $('#rightspan').load('process/strategy_name.php?f=' + value);
+        $.getJSON('process/strategy_name.php?f=' + value, function (response) {
+            $('#rightspan').html(response.text);
+            if (response.data) {
+                data = response.data;
+                strat_id = $("#fk_strategy :selected").val();
+                autotr = parseFloat(data[strat_id].autotr);
+                num_contracts = data[strat_id].num_contracts;
+                $("#num_contr").val(num_contracts);  
+            } else {
+                data = null;
+                strat_id = null;
+                autotr = parseFloat(response.autotr);
+                num_contracts = response.num_contracts;
+                trstart = response.trstart;
+                trend = response.trend;
+                cxrstart = response.cxrstart;
+                cxrend = response.cxrend;
+                trnum = response.trnum;                
+                $("#num_contr").val(num_contracts);     
+            }
+            if(autotr != 0) {                    
+                var entry_price = parseFloat($("#entry_price").val());
+                var entry_choice = $("#entry_choice").val();
+
+                if(entry_choice == "BUY") {            
+                    $("#price_target").val(entry_price + autotr);
+                    $("#stop_loss").val(entry_price - autotr);
+                } else {
+                    $("#price_target").val(entry_price - autotr);
+                    $("#stop_loss").val(entry_price + autotr);
+                }
+                $("#price_target, #stop_loss").addClass("disable");
+            } else {
+                $("#price_target, #stop_loss").removeClass("disable");
+            }
+        });
+        
     });
+    
+    $("#entry_price").focusout(function(){
+        if(autotr != 0) {                    
+            var entry_price = parseFloat($("#entry_price").val());
+            var entry_choice = $("#entry_choice").val();
+
+            if(entry_choice == "BUY") {            
+                $("#price_target").val(entry_price + autotr);
+                $("#stop_loss").val(entry_price - autotr);
+            } else {
+                $("#price_target").val(entry_price - autotr);
+                $("#stop_loss").val(entry_price + autotr);
+            }
+            $("#price_target, #stop_loss").addClass("disable");
+        } else {
+            $("#price_target, #stop_loss").removeClass("disable");
+        }
+    });
+    
+    $("#entry_choice").on("change", function(){
+        if(autotr != 0) {                    
+            var entry_price = parseFloat($("#entry_price").val());
+            var entry_choice = $("#entry_choice").val();
+
+            if(entry_choice == "BUY") {            
+                $("#price_target").val(entry_price + autotr);
+                $("#stop_loss").val(entry_price - autotr);
+            } else {
+                $("#price_target").val(entry_price - autotr);
+                $("#stop_loss").val(entry_price + autotr);
+            }
+            $("#price_target, #stop_loss").addClass("disable");
+        } else {
+            $("#price_target, #stop_loss").removeClass("disable");
+        }
+    });
+    
+    
     //when canceling tr, button submit is hidden, showing cxl, rpl, reset and radio button, 
     //shorter price input and other elements are disabled to change (css pointer event - none)
     $("#tr_form_cancel").on("click", function () {
@@ -51,6 +207,7 @@ $(function () {
     });
     $("#tr_form_cxl, #tr_form_rpl, #tr_form_submit").on("click", function () {
         var empty = false;
+        
         if ($(this).attr('id') === "tr_form_rpl") {
             if ($('input:checked').length === 0) {
                 $('.radio_rep').addClass('radio_require');
@@ -83,7 +240,7 @@ $(function () {
         var month = $("#month").val();
         var year = $("#year").val();
         var entry_choice = $("#entry_choice").val();
-        var entry_price = $("#entry_price").val();
+        var entry_price = parseFloat($("#entry_price").val());
         var price_target = $("#price_target").val();
         var stop_loss = $("#stop_loss").val();
         $(".shade").show();
@@ -96,7 +253,6 @@ $(function () {
         $("#notice-confirm").show();
         $("#notice-cancel").show();
         $("#notice-close").hide();
-
         /*checks the side of the trade*/
         if (entry_choice === "BUY") {
             if (price_target < stop_loss) {
@@ -111,8 +267,7 @@ $(function () {
                 $("#notice-close").show();
                 $("#notice-confirm").hide();
                 $("#notice-cancel").hide();
-            }
-
+            } 
         } else {
             if (stop_loss < price_target) {
                 $("#notice-title h3").html("Notice!");
@@ -143,33 +298,33 @@ $(function () {
         var curr_mili = curr_date_time.getTime() + offset;//                      current time in miliseconds in chicago time 
 
         if ($('#fk_strategy option').length) { //                                 if it is a select option tag
-            var start_time = $("#fk_strategy :selected").data("trstart");//     time when trade day starts
+            var start_time = data[strat_id].trstart;//     time when trade day starts
             if (start_time === "00:00") {
                 start_time = "anytime";
             }
             var start_date = new Date(date + " " + start_time);
             var start_mili = start_date.getTime();//                            start date in miliseconds
-            var end_time = $("#fk_strategy :selected").data("trend");//         time when trade day ends
+            var end_time = data[strat_id].trend;//         time when trade day ends
             if (end_time === "00:00") {
                 end_time = "anytime";
             }
             var end_date = new Date(date + " " + end_time);
             var end_mili = end_date.getTime();//                                end date in miliseconds
-            var tr_num_limit = $("#fk_strategy :selected").data("trnum");//     check tr limit broken  
+            var tr_num_limit = data[strat_id].trnum;//     check tr limit broken  
         } else {
-            var start_time = $("#fk_strategy").data("trstart");//               time when trade day starts
+            var start_time = trstart;//               time when trade day starts
             if (start_time === "00:00") {
                 start_time = "anytime";
             }
             var start_date = new Date(date + " " + start_time);
             var start_mili = start_date.getTime();//                            start date in miliseconds
-            var end_time = $("#fk_strategy").data("trend");//                   time when trade day ends
+            var end_time = trend;//                   time when trade day ends
             if (end_time === "00:00") {
                 end_time = "anytime";
             }
             var end_date = new Date(date + " " + end_time);
             var end_mili = end_date.getTime();//                                end date in miliseconds
-            var tr_num_limit = $("#fk_strategy").data("trnum");//               check tr limit broken  
+            var tr_num_limit = trnum;//               check tr limit broken  
         }
         var dif = start_mili - curr_mili;
         var time_to_hours = Math.floor(dif / 1000 / 60 / 60);//                       hours until trade day starts
@@ -205,26 +360,26 @@ $(function () {
         var curr_mili = curr_date_time.getTime() + offset;//                      current time in miliseconds in chicago time 
 
         if ($('#fk_strategy option').length) { //                                 if it is a select option tag
-            var cxr_start_time = $("#fk_strategy :selected").data("cxrstart");//     time when trade day starts
+            var cxr_start_time = data[strat_id].cxrstart;//     time when trade day starts
             if (cxr_start_time === "00:00") {
                 cxr_start_time = "anytime";
             }
             var cxr_start_date = new Date(date + " " + cxr_start_time);
             var cxr_start_mili = cxr_start_date.getTime();//                            start date in miliseconds
-            var cxr_end_time = $("#fk_strategy :selected").data("cxrend");//         time when trade day ends
+            var cxr_end_time = data[strat_id].cxrend;//         time when trade day ends
             if (cxr_end_time === "00:00") {
                 cxr_end_time = "anytime";
             }
             var cxr_end_date = new Date(date + " " + cxr_end_time);
             var cxr_end_mili = cxr_end_date.getTime();//                                end date in miliseconds            
         } else {
-            var cxr_start_time = $("#fk_strategy").data("cxrstart");//               time when trade day starts
+            var cxr_start_time = cxrstart;//               time when trade day starts
             if (cxr_start_time === "00:00") {
                 cxr_start_time = "anytime";
             }
             var cxr_start_date = new Date(date + " " + cxr_start_time);
             var cxr_start_mili = cxr_start_date.getTime();//                            start date in miliseconds
-            var cxr_end_time = $("#fk_strategy").data("cxrend");//                   time when trade day ends
+            var cxr_end_time = cxrend;//                   time when trade day ends
             if (cxr_end_time === "00:00") {
                 cxr_end_time = "anytime";
             }

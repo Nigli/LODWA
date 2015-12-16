@@ -59,8 +59,8 @@ class StrategyDAO {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         try {
             $res = $db->prepare("INSERT INTO strategy "
-                    . "(id_strategy,strategy_name, strategy_symbol, num_tr_day, start_time, end_time, cxr_start_time, cxr_end_time) "
-                    . "VALUES ('',:strategy_name, :strategy_symbol, :num_tr_day, :start_time, :end_time, :cxr_start_time, :cxr_end_time)");
+                    . "(id_strategy,strategy_name, strategy_symbol, num_tr_day, start_time, end_time, cxr_start_time, cxr_end_time, auto_tr, num_contracts) "
+                    . "VALUES ('',:strategy_name, :strategy_symbol, :num_tr_day, :start_time, :end_time, :cxr_start_time, :cxr_end_time, :auto_tr, :num_contracts)");
             $res->bindParam(':strategy_name', $strategy['strategy_name']);       
             $res->bindParam(':strategy_symbol', $strategy['strategy_symbol']);
             $res->bindParam(':num_tr_day', $strategy['num_tr_day']);
@@ -68,6 +68,8 @@ class StrategyDAO {
             $res->bindParam(':end_time', $strategy['end_time']);
             $res->bindParam(':cxr_start_time', $strategy['cxr_start_time']);
             $res->bindParam(':cxr_end_time', $strategy['cxr_end_time']);
+            $res->bindParam(':auto_tr', $strategy['auto_tr']);
+            $res->bindParam(':num_contracts', $strategy['num_contracts']);
             $res->execute();
             return $db->lastInsertId();
         } catch (\PDOException $e) {
@@ -86,7 +88,9 @@ class StrategyDAO {
                     . "start_time=:start_time, "
                     . "end_time=:end_time, "
                     . "cxr_start_time=:cxr_start_time, "
-                    . "cxr_end_time=:cxr_end_time "
+                    . "cxr_end_time=:cxr_end_time, "
+                    . "auto_tr=:auto_tr "
+                    . "num_contracts=:num_contracts "
                     . "WHERE id_strategy=:id_strategy");
             $res->bindParam(':id_strategy', $strategy['id_strategy']);
             $res->bindParam(':strategy_name', $strategy['strategy_name']);            
@@ -96,6 +100,8 @@ class StrategyDAO {
             $res->bindParam(':end_time', $strategy['end_time']);
             $res->bindParam(':cxr_start_time', $strategy['cxr_start_time']);
             $res->bindParam(':cxr_end_time', $strategy['cxr_end_time']);
+            $res->bindParam(':auto_tr', $strategy['auto_tr']);
+            $res->bindParam(':num_contracts', $strategy['num_contracts']);
             $res->execute();
             return TRUE;
         } catch (\PDOException $e) {

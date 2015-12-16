@@ -18,10 +18,24 @@
                 <input id="strategy_symbol" name="strategy_symbol" type="text" placeholder="Symb" value="" required=""/>
             </div>
             <div id="tr_per_day">
-                <label for="num_tr_day">Number of trades per day</label><br>
-                <input id="num_tr_day_check" type="checkbox"/>
-                <label for="num_tr_day_check">unlimited trades</label><br>
-                <input id="num_tr_day" name="num_tr_day" type="text" placeholder="#TR's" value=""/><br>
+                <div id="auto_tr_left">
+                    <label for="num_tr_day">#TR/day</label><br>
+                    <input id="num_tr_day_check" type="checkbox"/>
+                    <label for="num_tr_day_check">Unl TRs</label><br>
+                    <input id="num_tr_day" name="num_tr_day" type="text" placeholder="#TR's" value=""/><br>
+                </div>
+                <div id="auto_tr_center">
+                    <label for="num_contracts">#Contracts</label><br>
+                    <input id="num_contracts_check" type="checkbox"/>
+                    <label for="num_contracts_check"></label><br>
+                    <input id="num_contracts" name="num_contracts" type="text" placeholder="#Contracts" value="1"/><br>
+                </div>
+                <div id="auto_tr_right">
+                    <label for="auto_tr">Auto TR</label><br>
+                    <input id="auto_tr_check" type="checkbox"/>
+                    <label for="auto_tr_check">Use Auto TR</label><br>
+                    <input id="auto_tr" name="auto_tr" class="disable_time" type="text" placeholder="#Points" value="0"/><br>
+                </div>
             </div>
             <div id="tr_time">
                 <div id="tr_time_left">

@@ -43,6 +43,13 @@ $(function () {
         } else {
             $("#cxr_end_time").removeClass("disable_time");
         }
+        if ($("#auto_tr").val() === "0") {
+            $("#auto_tr").addClass("disable_time");
+            $("#auto_tr_check").prop('checked', false);
+        } else {
+            $("#auto_tr").removeClass("disable_time");
+            $("#auto_tr_check").prop('checked', true);
+        }
 
         $("tbody tr").removeClass("activetr");
         $(this).addClass("activetr");
@@ -163,6 +170,14 @@ $(function () {
             $("#cxr_end_time").addClass("disable_time").val("00:00");
         } else {
             $("#cxr_end_time").removeClass("disable_time").val("15:00");
+        }
+    });
+    $("#auto_tr_check").on("click", function () {
+        if ($("#auto_tr_check").is(':checked')) {
+            console.log("remove");
+            $("#auto_tr").removeClass("disable_time").val("5");
+        } else {
+            $("#auto_tr").addClass("disable_time").val("0");
         }
     });
     //filter tr list

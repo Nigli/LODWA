@@ -40,7 +40,9 @@
                         <?php
                     }
                     ?>   
-                    <td data-index="id_strategy" class="td_hidden"><?php echo $strategy->id_strategy ?></td>       
+                    <td data-index="id_strategy" class="td_hidden"><?php echo $strategy->id_strategy ?></td>  
+                    <td data-index="auto_tr" class="td_hidden"><?php echo $strategy->auto_tr ?></td>   
+                    <td data-index="num_contracts" class="td_hidden"><?php echo $strategy->num_contracts ?></td>      
                     <td data-index="num_tr_day"><?php echo ($strategy->num_tr_day != -1)? $strategy->num_tr_day : "unlimited" ?></td>  
                     <td data-index="start_time"><?php echo $strategy->start_time ?></td>  
                     <td data-index="end_time"><?php echo $strategy->end_time ?></td>  
