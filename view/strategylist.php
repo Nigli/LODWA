@@ -4,7 +4,8 @@
     <table>
         <thead>
             <tr>
-                <th colspan="2">#</th>
+                <th></th>
+                <th></th>
                 <th>Strategy</th>
                 <th>Futures Contracts</th>
                 <th>#TR/day</th>
@@ -20,7 +21,7 @@
                 $this->index_numb++;
                 ?>
                 <tr>
-                    <td data-title=''><?php echo $this->index_numb ?></td>
+                    <td class="strategy_info"><i class="fa fa-info"></i></td>
                     <td data-title='Strategy Name' data-index="strategy_name" class="td_hidden"><?php echo $strategy->strategy_name ?></td>                    
                     <td data-title='Strategy Symbol' data-index="strategy_symbol"><?php echo $strategy->strategy_symbol?></td>
                     <td data-title='Futures Contracts'>
@@ -41,13 +42,15 @@
                     }
                     ?>   
                     <td data-index="id_strategy" class="td_hidden"><?php echo $strategy->id_strategy ?></td>  
-                    <td data-index="auto_tr" class="td_hidden"><?php echo $strategy->auto_tr ?></td>   
-                    <td data-index="num_contracts" class="td_hidden"><?php echo $strategy->num_contracts ?></td>      
-                    <td data-index="num_tr_day"><?php echo ($strategy->num_tr_day != -1)? $strategy->num_tr_day : "unlimited" ?></td>  
-                    <td data-index="start_time"><?php echo $strategy->start_time ?></td>  
-                    <td data-index="end_time"><?php echo $strategy->end_time ?></td>  
-                    <td data-index="cxr_start_time"><?php echo $strategy->cxr_start_time ?></td>  
-                    <td data-index="cxr_end_time"><?php echo $strategy->cxr_end_time ?></td>  
+                    <td data-title='Auto TR' data-index="auto_tr" class="td_hidden"><?php echo $strategy->auto_tr?$strategy->auto_tr:"no" ?></td>   
+                    <td data-title='Num Contracts' data-index="num_contracts" class="td_hidden"><?php echo $strategy->num_contracts ?></td>                        
+                    <td data-title='Num Futures' data-index="num_futures" class="td_hidden"><?php echo $strategy->num_futures ?></td>                          
+                    <td data-title='Num Subscribers' data-index="num_receivers" class="td_hidden"><?php echo $strategy->num_receivers ?></td>  
+                    <td data-title='Num TR/Day' data-index="num_tr_day"><?php echo ($strategy->num_tr_day != -1)? $strategy->num_tr_day : "unlimited" ?></td>  
+                    <td data-title='Start Time' data-index="start_time"><?php echo $strategy->start_time ?></td>  
+                    <td data-title='End Time' data-index="end_time"><?php echo $strategy->end_time ?></td>  
+                    <td data-title='CXR Start Time' data-index="cxr_start_time"><?php echo $strategy->cxr_start_time ?></td>  
+                    <td data-title='CXR End Time' data-index="cxr_end_time"><?php echo $strategy->cxr_end_time ?></td>  
                 </tr>
                 <?php
             }

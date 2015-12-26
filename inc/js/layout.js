@@ -84,11 +84,11 @@ $(function () {
             var entry_choice = $("#entry_choice").val();
 
             if(entry_choice == "BUY") {            
-                $("#price_target").val(entry_price + autotrtgt);
-                $("#stop_loss").val(entry_price - autotrstp);
+                $("#price_target").val((entry_price + autotrtgt).toFixed(2));
+                $("#stop_loss").val((entry_price - autotrstp).toFixed(2));
             } else {
-                $("#price_target").val(entry_price - autotrtgt);
-                $("#stop_loss").val(entry_price + autotrstp);
+                $("#price_target").val((entry_price - autotrtgt).toFixed(2));
+                $("#stop_loss").val((entry_price + autotrstp).toFixed(2));
             }
             $("#price_target, #stop_loss").addClass("disable");
         } else {
@@ -127,18 +127,17 @@ $(function () {
                 var entry_choice = $("#entry_choice").val();
 
                 if(entry_choice == "BUY") {            
-                    $("#price_target").val(entry_price + autotrtgt);
-                    $("#stop_loss").val(entry_price - autotrstp);
+                    $("#price_target").val((entry_price + autotrtgt).toFixed(2));
+                    $("#stop_loss").val((entry_price - autotrstp).toFixed(2));
                 } else {
-                    $("#price_target").val(entry_price - autotrtgt);
-                    $("#stop_loss").val(entry_price + autotrstp);
+                    $("#price_target").val((entry_price - autotrtgt).toFixed(2));
+                    $("#stop_loss").val((entry_price + autotrstp).toFixed(2));
                 }
                 $("#price_target, #stop_loss").addClass("disable");
             } else {
                 $("#price_target, #stop_loss").removeClass("disable");
             }
         });
-        
     });
     
     $("#entry_price").focusout(function(){
@@ -147,11 +146,11 @@ $(function () {
             var entry_choice = $("#entry_choice").val();
 
             if(entry_choice == "BUY") {            
-                $("#price_target").val(entry_price + autotrtgt);
-                $("#stop_loss").val(entry_price - autotrstp);
+                $("#price_target").val((entry_price + autotrtgt).toFixed(2));
+                $("#stop_loss").val((entry_price - autotrstp).toFixed(2));
             } else {
-                $("#price_target").val(entry_price - autotrtgt);
-                $("#stop_loss").val(entry_price + autotrstp);
+                $("#price_target").val((entry_price - autotrtgt).toFixed(2));
+                $("#stop_loss").val((entry_price + autotrstp).toFixed(2));
             }
             $("#price_target, #stop_loss").addClass("disable");
         } else {
@@ -165,11 +164,11 @@ $(function () {
             var entry_choice = $("#entry_choice").val();
 
             if(entry_choice == "BUY") {            
-                $("#price_target").val(entry_price + autotrtgt);
-                $("#stop_loss").val(entry_price - autotrstp);
+                $("#price_target").val((entry_price + autotrtgt).toFixed(2));
+                $("#stop_loss").val((entry_price - autotrstp).toFixed(2));
             } else {
-                $("#price_target").val(entry_price - autotrtgt);
-                $("#stop_loss").val(entry_price + autotrstp);
+                $("#price_target").val((entry_price - autotrtgt).toFixed(2));
+                $("#stop_loss").val((entry_price + autotrstp).toFixed(2));
             }
             $("#price_target, #stop_loss").addClass("disable");
         } else {
@@ -519,6 +518,42 @@ $(function () {
         $("#notice").show();
         $("#notice-title h3").html("Subscriber Info");
         $("#notice-close, #notice-rec-type, #notice-rec-first_name, #notice-rec-last_name, #notice-rec-email, #notice-rec-broker_acc, #notice-rec-na_number, #notice-rec-strat_info").show();
+        $("#notice-cancel").hide();
+        $("#notice-confirm").hide();
+    });
+    
+    //stategy info
+    $("#strategy_list .strategy_info").on("click", function () {
+        $("#notice-strat-strategy_name").html("<strong>Strategy Name: </strong><br>");
+        $("#notice-strat-strategy_symbol").html("<strong>Strategy Symbol: </strong><br>");
+        $("#notice-strat-num_tr_day").html("<strong>Num TR/Day: </strong><br>");
+        $("#notice-strat-auto_tr").html("<strong>Auto TR: </strong><br>");
+        $("#notice-strat-num_contracts").html("<strong>Num Contracts: </strong><br>");
+        $("#notice-strat-num_futures").html("<strong>Num Futures: </strong><br>");
+        $("#notice-strat-num_receivers").html("<strong>Num Subscribers: </strong><br>");
+        $("#notice-strat-start_time").html("<strong>Start Time: </strong><br>");
+        $("#notice-strat-end_time").html("<strong>End Time: </strong><br>");
+        $("#notice-strat-cxr_start_time").html("<strong>CXL Start Time: </strong><br>");
+        $("#notice-strat-cxr_end_time").html("<strong>CXL End Time: </strong><br>");
+        var td = $(this).parent().children();
+        var rec = {};
+        $.each(td, function (count) {
+            rec[td.eq(count).data("index")] = td.eq(count).text();
+        });
+        $.each(rec, function (key, value) {
+            $("#notice-strat-" + key).append(value + "<br>");
+//            if (key.substring(0, 13) == "strategy_name") {
+//                $("#notice-rec-strat_info").append(value + ": ");
+//            }
+//            if (key.substring(0, 13) == "strategy_subs") {
+//                $("#notice-rec-strat_info").append(value + "<br>");
+//            }
+        });
+        ;
+        $(".shade").show();
+        $("#notice").show();
+        $("#notice-title h3").html("Strategy Info");
+        $("#notice-close, #notice-strat-strategy_name, #notice-strat-strategy_symbol, #notice-strat-num_tr_day, #notice-strat-auto_tr, #notice-strat-num_contracts, #notice-strat-num_futures, #notice-strat-num_receivers, #notice-strat-start_time, #notice-strat-end_time, #notice-strat-cxr_start_time, #notice-strat-cxr_end_time").show();
         $("#notice-cancel").hide();
         $("#notice-confirm").hide();
     });

@@ -61,11 +61,24 @@
                         <span id="notice-rec-first_name" class="hidden"></span>
                         <span id="notice-rec-last_name" class="hidden"></span>
                         <span id="notice-rec-email" class="hidden"></span>
+                        
+                        <span id="notice-strat-strategy_name" class="hidden"></span>
+                        <span id="notice-strat-strategy_symbol" class="hidden"></span>
+                        <span id="notice-strat-auto_tr" class="hidden"></span>
+                        <span id="notice-strat-num_tr_day" class="hidden"></span>
+                        <span id="notice-strat-num_contracts" class="hidden"></span>
+                        <span id="notice-strat-num_futures" class="hidden"></span>
                     </div>
                     <div id="right">
                         <span id="notice-rec-strat_info" class="hidden"></span>
                         <span id="notice-rec-broker_acc" class="hidden"></span>
-                        <span id="notice-rec-na_number" class="hidden"></span>
+                        <span id="notice-rec-na_number" class="hidden"></span>                       
+                        
+                        <span id="notice-strat-num_receivers" class="hidden"></span>
+                        <span id="notice-strat-start_time" class="hidden"></span>
+                        <span id="notice-strat-end_time" class="hidden"></span>
+                        <span id="notice-strat-cxr_start_time" class="hidden"></span>
+                        <span id="notice-strat-cxr_end_time" class="hidden"></span>
                     </div>
                     <div id="bottom">
                         <div id="bottom-left">              

@@ -782,4 +782,7 @@ table tbody tr::after {
     [data-title="Futures Name"], [data-title="Date"], [data-title='Date Added'] {
         width: 100%;
     }
+    .strategy_info, .receiver_info {
+        display: none;
+    }
 }
