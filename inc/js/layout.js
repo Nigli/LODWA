@@ -1,16 +1,20 @@
 $(function () {
-    var autotr, num_contracts, trstart, trend, cxrstart, cxrend, trnum, trnum, data, strat_id;
+    var autotr, autotrstp, autotrtgt, num_contracts, trstart, trend, cxrstart, cxrend, trnum, trnum, data, strat_id;
     $.getJSON('process/strategy_name.php', function (response) {
         $('#rightspan').html(response.text);
         if (response.data) {
             data = response.data;
             strat_id = $("#fk_strategy :selected").val();
-            autotr = parseFloat(data[strat_id].autotr);
+            autotr = data[strat_id].autotr;           
+            autotrstp = parseFloat(data[strat_id].autotrstp);
+            autotrtgt = parseFloat(data[strat_id].autotrtgt);            
             num_contracts = data[strat_id].num_contracts;
         } else {
             data = null;
             strat_id = null;
-            autotr = parseFloat(response.autotr);
+            autotr = response.autotr;
+            autotrstp = parseFloat(response.autotrstp);
+            autotrtgt = parseFloat(response.autotrtgt);
             num_contracts = response.num_contracts;
             trstart = response.trstart;
             trend = response.trend;
@@ -38,11 +42,15 @@ $(function () {
             if (response.data) {
                 data = response.data;
                 strat_id = $("#fk_strategy :selected").val();
-                autotr = parseFloat(data[strat_id].autotr);
+                autotr = data[strat_id].autotr;
+                autotrstp = parseFloat(data[strat_id].autotrstp);
+                autotrtgt = parseFloat(data[strat_id].autotrtgt);
             } else {
                 data = null;
                 strat_id = null;
-                autotr = parseFloat(response.autotr);
+                autotr = response.autotr;                
+                autotrstp = parseFloat(response.autotrstp);
+                autotrtgt = parseFloat(response.autotrtgt);
                 num_contracts = response.num_contracts;
                 trstart = response.trstart;
                 trend = response.trend;
@@ -66,7 +74,9 @@ $(function () {
 //    $("#fk_strategy").on("change",  function () {
         strat_id = $(this).val();
         num_contracts = data[strat_id].num_contracts;
-        autotr = parseFloat(data[strat_id].autotr);
+        autotr = data[strat_id].autotr;
+        autotrstp = parseFloat(data[strat_id].autotrstp);
+        autotrtgt = parseFloat(data[strat_id].autotrtgt);
         $("#num_contr").val(num_contracts);
         
         if(autotr != 0) {                    
@@ -74,11 +84,11 @@ $(function () {
             var entry_choice = $("#entry_choice").val();
 
             if(entry_choice == "BUY") {            
-                $("#price_target").val(entry_price + autotr);
-                $("#stop_loss").val(entry_price - autotr);
+                $("#price_target").val(entry_price + autotrtgt);
+                $("#stop_loss").val(entry_price - autotrstp);
             } else {
-                $("#price_target").val(entry_price - autotr);
-                $("#stop_loss").val(entry_price + autotr);
+                $("#price_target").val(entry_price - autotrtgt);
+                $("#stop_loss").val(entry_price + autotrstp);
             }
             $("#price_target, #stop_loss").addClass("disable");
         } else {
@@ -93,13 +103,17 @@ $(function () {
             if (response.data) {
                 data = response.data;
                 strat_id = $("#fk_strategy :selected").val();
-                autotr = parseFloat(data[strat_id].autotr);
+                autotr = data[strat_id].autotr;
+                autotrstp = parseFloat(data[strat_id].autotrstp);
+                autotrtgt = parseFloat(data[strat_id].autotrtgt);
                 num_contracts = data[strat_id].num_contracts;
                 $("#num_contr").val(num_contracts);  
             } else {
                 data = null;
                 strat_id = null;
-                autotr = parseFloat(response.autotr);
+                autotr = response.autotr;
+                autotrstp = parseFloat(response.autotrstp);
+                autotrtgt = parseFloat(response.autotrtgt);
                 num_contracts = response.num_contracts;
                 trstart = response.trstart;
                 trend = response.trend;
@@ -113,11 +127,11 @@ $(function () {
                 var entry_choice = $("#entry_choice").val();
 
                 if(entry_choice == "BUY") {            
-                    $("#price_target").val(entry_price + autotr);
-                    $("#stop_loss").val(entry_price - autotr);
+                    $("#price_target").val(entry_price + autotrtgt);
+                    $("#stop_loss").val(entry_price - autotrstp);
                 } else {
-                    $("#price_target").val(entry_price - autotr);
-                    $("#stop_loss").val(entry_price + autotr);
+                    $("#price_target").val(entry_price - autotrtgt);
+                    $("#stop_loss").val(entry_price + autotrstp);
                 }
                 $("#price_target, #stop_loss").addClass("disable");
             } else {
@@ -133,11 +147,11 @@ $(function () {
             var entry_choice = $("#entry_choice").val();
 
             if(entry_choice == "BUY") {            
-                $("#price_target").val(entry_price + autotr);
-                $("#stop_loss").val(entry_price - autotr);
+                $("#price_target").val(entry_price + autotrtgt);
+                $("#stop_loss").val(entry_price - autotrstp);
             } else {
-                $("#price_target").val(entry_price - autotr);
-                $("#stop_loss").val(entry_price + autotr);
+                $("#price_target").val(entry_price - autotrtgt);
+                $("#stop_loss").val(entry_price + autotrstp);
             }
             $("#price_target, #stop_loss").addClass("disable");
         } else {
@@ -151,11 +165,11 @@ $(function () {
             var entry_choice = $("#entry_choice").val();
 
             if(entry_choice == "BUY") {            
-                $("#price_target").val(entry_price + autotr);
-                $("#stop_loss").val(entry_price - autotr);
+                $("#price_target").val(entry_price + autotrtgt);
+                $("#stop_loss").val(entry_price - autotrstp);
             } else {
-                $("#price_target").val(entry_price - autotr);
-                $("#stop_loss").val(entry_price + autotr);
+                $("#price_target").val(entry_price - autotrtgt);
+                $("#stop_loss").val(entry_price + autotrstp);
             }
             $("#price_target, #stop_loss").addClass("disable");
         } else {

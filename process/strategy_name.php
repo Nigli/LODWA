@@ -46,7 +46,15 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
             //if subscribers under that one strategy
             if ($receivers) {
                 $responce['text'] = "Selected strategy: <input type='hidden' id='fk_strategy' name='fk_strategy' value='" . $strategies[0]->id_strategy . "'/>" . $strategies[0]->strategy_name;
-                $responce['autotr'] = $strategies[0]->auto_tr;
+                if($strategies[0]->auto_tr) {
+                    $responce['autotr']    = 1; 
+                    $responce['autotrstp'] = explode(':',$strategies[0]->auto_tr)[0];
+                    $responce['autotrtgt'] = explode(':',$strategies[0]->auto_tr)[1];                    
+                } else {
+                    $responce['autotr']    = 0; 
+                    $responce['autotrstp'] = 0;
+                    $responce['autotrtgt'] = 0;
+                }
                 $responce['num_contracts'] = $strategies[0]->num_contracts;
                 $responce['trstart']= $strategies[0]->start_time;           
                 $responce['trend']= $strategies[0]->end_time;       
@@ -89,7 +97,15 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
                     $strategy->num_tr_day_status = 0;
                 }
                 $responce['text']   = "Selected strategy: <input type='hidden' id='fk_strategy' name='fk_strategy' value='" . $strategy->id_strategy . "'/>" . $strategy->strategy_name;
-                $responce['autotr'] = $strategy->auto_tr;
+                if($strategy->auto_tr) {
+                    $responce['autotr']    = 1; 
+                    $responce['autotrstp'] = explode(':',$strategy->auto_tr)[0];
+                    $responce['autotrtgt'] = explode(':',$strategy->auto_tr)[1];                    
+                } else {
+                    $responce['autotr']    = 0;  
+                    $responce['autotrstp'] = 0;
+                    $responce['autotrtgt'] = 0;
+                }
                 $responce['num_contracts'] = $strategy->num_contracts;
                 $responce['trstart']= $strategy->start_time;           
                 $responce['trend']  = $strategy->end_time;       
@@ -124,8 +140,15 @@ if (isset($_GET['f'])) {/* * GET['f'] PARAMETER IS SET IN js/layout.js FILE* *//
                             $selected = (isset($_GET['s']) && $_GET['s'] == $strategy->id_strategy) ? "selected" : "";
                         
                             $responce['text'] .= "<option value='".$strategy->id_strategy."'".$selected.">".$strategy->strategy_name."</option>";                    
-                            
-                            $responce['data'][$strategy->id_strategy]['autotr'] = $strategy->auto_tr;
+                            if($strategy->auto_tr) {
+                                $responce['data'][$strategy->id_strategy]['autotr']    = 1; 
+                                $responce['data'][$strategy->id_strategy]['autotrstp'] = explode(':',$strategy->auto_tr)[0];
+                                $responce['data'][$strategy->id_strategy]['autotrtgt'] = explode(':',$strategy->auto_tr)[1];                    
+                            } else {
+                                $responce['data'][$strategy->id_strategy]['autotr']    = 0; 
+                                $responce['data'][$strategy->id_strategy]['autotrstp'] = 0;
+                                $responce['data'][$strategy->id_strategy]['autotrtgt'] = 0;       
+                            }
                             $responce['data'][$strategy->id_strategy]['num_contracts'] = $strategy->num_contracts;
                             $responce['data'][$strategy->id_strategy]['trstart']= $strategy->start_time;           
                             $responce['data'][$strategy->id_strategy]['trend']  = $strategy->end_time;       
@@ -175,7 +198,15 @@ else {
        //if subscribers under that one strategy
        if ($receivers) {
            $responce['text'] = "Selected strategy: <input type='hidden' id='fk_strategy' name='fk_strategy' value='" . $strategies[0]->id_strategy . "'/>" . $strategies[0]->strategy_name;
-           $responce['autotr'] = $strategies[0]->auto_tr;
+           if($strategies[0]->auto_tr) {
+                $responce['autotr']    = 1; 
+                $responce['autotrstp'] = explode(':',$strategies[0]->auto_tr)[0];
+                $responce['autotrtgt'] = explode(':',$strategies[0]->auto_tr)[1];
+            } else {
+                $responce['autotr']    = 0; 
+                $responce['autotrstp'] = 0;
+                $responce['autotrtgt'] = 0;
+            }
            $responce['num_contracts'] = $strategies[0]->num_contracts;
            $responce['trstart']= $strategies[0]->start_time;           
            $responce['trend']= $strategies[0]->end_time;       
@@ -219,7 +250,15 @@ else {
                $strategy->num_tr_day_status = 0;
             }
             $responce['text']   =  "Selected strategy: <input type='hidden' id='fk_strategy' name='fk_strategy' value='" . $strategy->id_strategy . "'/>" . $strategy->strategy_name;
-            $responce['autotr'] = $strategy->auto_tr;
+            if($strategy->auto_tr) {
+                $responce['autotr']    = 1; 
+                $responce['autotrstp'] = explode(':',$strategy->auto_tr)[0];
+                $responce['autotrtgt'] = explode(':',$strategy->auto_tr)[1];                    
+            } else {
+                $responce['autotr']    = 0;  
+                $responce['autotrstp'] = 0;
+                $responce['autotrtgt'] = 0;                   
+            }
             $responce['num_contracts'] = $strategy->num_contracts;
             $responce['trstart']= $strategy->start_time;           
             $responce['trend']  = $strategy->end_time;       
@@ -256,7 +295,15 @@ else {
                         $selected = (isset($_GET['s']) && $_GET['s'] == $strategy->id_strategy) ? "selected" : ""; 
                         $responce['text'] .= "<option value='".$strategy->id_strategy."'".$selected.">".$strategy->strategy_name."</option>";                    
                         
-                        $responce['data'][$strategy->id_strategy]['autotr'] = $strategy->auto_tr;
+                        if($strategy->auto_tr) {
+                            $responce['data'][$strategy->id_strategy]['autotr']    = 1;  
+                            $responce['data'][$strategy->id_strategy]['autotrstp'] = explode(':',$strategy->auto_tr)[0];
+                            $responce['data'][$strategy->id_strategy]['autotrtgt'] = explode(':',$strategy->auto_tr)[1];                    
+                        } else {
+                            $responce['data'][$strategy->id_strategy]['autotr']    = 0;   
+                            $responce['data'][$strategy->id_strategy]['autotrstp'] = 0;
+                            $responce['data'][$strategy->id_strategy]['autotrtgt'] = 0; 
+                        }
                         $responce['data'][$strategy->id_strategy]['num_contracts'] = $strategy->num_contracts;
                         $responce['data'][$strategy->id_strategy]['trstart']= $strategy->start_time;           
                         $responce['data'][$strategy->id_strategy]['trend']  = $strategy->end_time;       
