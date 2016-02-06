@@ -1,12 +1,8 @@
 <?php
-
 namespace receiver;
-
 use PDO,
     utils\Conn;
-
-class ReceiverDao {
-
+class ReceiverDAO {
     public static function getReceivers($pagin, $filter) {/* GET ALL RECEIVERS - RETURNS ARRAY OF OBJECTS */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -34,7 +30,6 @@ class ReceiverDao {
             return FALSE;
         }
     }
-
     public static function getInactiveReceivers($pagin, $filter) {/* GET ONLY INACTIVE RECEIVERS FOR RECEIVER FILTER */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -58,7 +53,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function getReceiverById($id) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -76,7 +70,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function getReceiverByHash($hash_email) {/* GET RECEIVER BY HASH - USED FOR UNSUBS FROM EMAIL TEMP */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -94,7 +87,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function getReceiversByStrat($strategy_id) {/*     * GET ALL CLIENTS BY STRATEGY - RETURN ARRAY OF OBJECTS* */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -111,7 +103,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function getTypes() {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -124,7 +115,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function countReceivers($filter) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -146,7 +136,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function countInactiveReceivers($filter) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -165,7 +154,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function newReceiver($receiver) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -185,7 +173,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function updateReceiver($receiver) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -212,7 +199,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function getSubscriptionBySubsId($subscriber_id) {/* GET ARRAY OF SUBSCRIPTIONS BASED ON SUBSCRIBERS ID */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -227,7 +213,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function removeSubscriptionBySubscriber($subscriber_id) {/* REMOVES SUBSCRIBER FROM SUBSCRIPTION LIST (BY SUBS ID) */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -241,7 +226,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function removeSubscriptionByStrategy($strategy) {/* REMOVES SUBSCRIBER FROM SUBSCRIPTION LIST (BY STRATEGY ID) */
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -255,7 +239,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function insertSubscription($subscriber_id, $strategy_id, $num_subscriptions) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -272,7 +255,6 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
     public static function unsubscribeReceiver($receiver) {
         $db = Conn::getConnection();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -289,5 +271,4 @@ class ReceiverDao {
             Conn::logConnectionErr($e->getMessage());
         }
     }
-
 }
