@@ -5,3 +5,4 @@ classes/utils/Conn.php
 classes/utils/Enum.php
 .htaccess
 log
+nbproject
