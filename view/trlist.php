@@ -1,4 +1,4 @@
-<?php $this->user_status == \utils\Enum::MANAGER_LEV1 || $this->user_status == \utils\Enum::MANAGER_LEV2 ? include $this->trresult_form : ""; ?>
+<?php $this->user_status == \utils\Enum::MANAGER_LEV1 ? include $this->trresult_form : ""; ?>
 <div id="tr_list">
     <h2>Trade Recommendations</h2> 
     <!--filter tr list-->
