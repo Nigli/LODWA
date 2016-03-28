@@ -419,7 +419,7 @@ table {
     border-collapse: collapse;
     padding-bottom: 0;
     width: 100%;    
-    font-size: 15px;
+    /*font-size: 15px;*/
 }
 table thead {    
     border-bottom: 2px solid #eee;
@@ -448,6 +448,9 @@ table tbody tr:hover {
     background-color: #1B3664;
     color: #ffffff;
     border-bottom-color: #1B3664;
+}
+#tr_list_5 table, #tr_list table {
+    font-size: 12px;
 }
 /*[data-title='Date']{
     width: 81px;

@@ -92,7 +92,9 @@
                 <th>Contract</th>
                 <th>Strat</th>
                 <th>Choice</th>
+                <th>M&Y</th>
                 <th>Qty</th>
+                <th>Dur</th>
                 <th>Entry Price</th>
                 <th>Price Target</th>
                 <th>Stop Loss</th>
@@ -111,7 +113,9 @@
                     <td data-title='Futures Name' data-index="futures_name"><?php echo $tr->futures_name ?></td>                   
                     <td data-title='Strat'><?php echo $tr->strategy_symbol ?></td>
                     <td data-title='Choice' data-index="entry_choice"><?php echo $tr->entry_choice ?></td>  
+                    <td data-title='M&Y'><?php echo $tr->month." ".$tr->year ?></td>
                     <td data-title='Qty' data-index="num_contr"><?php echo $tr->num_contr ?></td>
+                    <td data-title='Dur'><?php echo $tr->duration ?></td>
                     <td data-title='Entry Price' data-index="entry_price"><?php echo $tr->entry_price ?></td>
                     <td data-title='Price Target' data-index="price_target"><?php echo $tr->price_target ?></td>
                     <td data-title='Stop Loss' data-index="stop_loss"><?php echo $tr->stop_loss ?></td>                    

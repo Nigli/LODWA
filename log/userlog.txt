@@ -54,3 +54,6 @@ OK|2015-09-02 14:23:15|manager@manager.com|::1|
 OK|2015-09-02 14:23:49|user@user.com|::1|
 OK|2015-09-02 16:08:12|user@user.com|::1|
 OK|2015-09-02 16:26:32|manager@manager.com|::1|
+ERROR|2016-02-27 11:05:11|manager1@manager.com|127.0.0.1|
+OK|2016-02-27 11:05:22|manager1@manager.com|127.0.0.1|
+OK|2016-03-28 18:58:42|user@user.com|127.0.0.1|
