@@ -58,13 +58,13 @@
     <!--PRICES INPUT-->    
     <div id="right">
         <label>Entry Price</label>
-        <input id="entry_price" class="prices" name="entry_price" type="number" value="" required=""/><br> 
+        <input id="entry_price" class="prices" name="entry_price" type="number" value="" required="" step="any"/><br> 
         <label>Stop Loss</label><br>
         <input type="radio" name="rpl_price" value="stop_loss" class="radio_rep"/>
-        <input id="stop_loss" class="prices disable" name="stop_loss" type="number" value='' required="" /><br>
+        <input id="stop_loss" class="prices disable" name="stop_loss" type="number" value='' required="" step="any"/><br>
         <label>Price Target</label><br>
         <input type="radio" name="rpl_price" value="price_target"  class="radio_rep"/>
-        <input id="price_target" class="prices disable" name="price_target" type="number" value="" required="" />
+        <input id="price_target" class="prices disable" name="price_target" type="number" value="" required="" step="any"/>
     </div>
     <!--END PRICES INPUT-->
     <!--BUTTONS-->
