@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>        
-        <title>Northern Advisors LOD</title>
+        <title>TR</title>
         <meta name="robots" content="noindex">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
@@ -19,7 +19,7 @@
         <div id="header-outer">
             <div id="header-inner">
                 <div id="logo">
-                    <img src="inc/images/index.png" alt=""/>
+                    <img src="" alt=""/>
                 </div>
                 <i class="fa fa-bars respons"></i>
                 <div id="header-nav">

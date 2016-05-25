@@ -64,3 +64,9 @@ ERROR|2016-03-30 18:18:24|user@user.com|127.0.0.1|
 OK|2016-03-30 18:18:28|user@user.com|127.0.0.1|
 OK|2016-03-30 18:18:59|manager1@manager.com|127.0.0.1|
 OK|2016-04-01 17:32:40|user@user.com|127.0.0.1|
+OK|2016-05-25 20:51:24|user@user.com|127.0.0.1|
+ERROR|2016-05-25 20:53:34|manager1@manager1.com|127.0.0.1|
+ERROR|2016-05-25 20:53:43|manager1@manager.com|127.0.0.1|
+OK|2016-05-25 20:53:52|manager1@manager.com|127.0.0.1|
+OK|2016-05-25 20:54:54|admin@admin.com|127.0.0.1|
+OK|2016-05-25 20:55:17|user@user.com|127.0.0.1|
