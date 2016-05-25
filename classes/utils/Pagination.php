@@ -14,7 +14,7 @@ class Pagination {
 
     public function __construct($links, $count) {/*     * EXCEPTS GET ARRAY AND COUNT NUMBER* */
         $this->total    = $count;
-        $this->limit    = 5;
+        $this->limit    = 20;
         $this->pages    = ceil($this->total / $this->limit);
         $this->page     = min($this->pages, $links['page']);
         $this->offset   = ($this->page - 1) * $this->limit;

@@ -6,7 +6,6 @@
         <meta name="robots" content="noindex">
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <link rel="icon" href="favicon.ico" type="image/gif" sizes="16x16">
         <link href="inc/style/style.css" rel="stylesheet" type="text/css"/>
         <link href="inc/style/spinner.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>

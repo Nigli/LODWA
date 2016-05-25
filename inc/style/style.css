@@ -72,16 +72,18 @@ h2 {
     font-size: 16px;    
     padding-left: 8px;
 }
-#tr_list, #receiver_list, #user_list {
+#receiver_list, #user_list {
     height: 520px;
 }
 #tr_list_5 {
     height: 320px;
 }
 #tr_list table, #tr_list_5 table, #receiver_list table{
-    height: 270px;
     display: block;
     overflow: hidden;
+}
+#tr_list_5 table, #receiver_list table {
+    height: 270px;
 }
 #trresult_form input {
     color: #000;
